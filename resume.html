@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ATS Resume of Dakshana Sri M - Data Science & Data Engineering Candidate">
-  <title>Dakshana Sri M - ATS Resume</title>
-
-  <!-- Google Fonts: Inter / Roboto for high ATS readability -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Dakshana Sri M - Resume (ATS Friendly)</title>
+  <meta name="description" content="ATS-optimized resume of Dakshana Sri M, B.Sc. Data Science student and Innovation Engineer Trainee.">
   
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
   <style>
-    /* Global Styles */
+    /* ATS-Optimized Clean Typography & Styling */
+    @page {
+      margin: 15mm;
+      size: auto;
+    }
+    
     * {
       box-sizing: border-box;
       margin: 0;
@@ -23,451 +20,309 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #1a202c;
-      background-color: #f7fafc;
-      line-height: 1.5;
-      font-size: 14px;
-      -webkit-font-smoothing: antialiased;
+      font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+      color: #222222;
+      background-color: #f8fafc;
+      line-height: 1.45;
+      font-size: 10.5pt;
     }
 
-    /* Resume Container */
     .resume-wrapper {
-      max-width: 850px;
-      margin: 30px auto;
+      max-width: 800px;
+      margin: 20px auto;
       background: #ffffff;
-      padding: 45px 50px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border-radius: 8px;
+      padding: 35px 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-radius: 4px;
     }
 
-    /* Print & Floating Toolbar */
-    .toolbar {
-      max-width: 850px;
-      margin: 20px auto 0;
+    /* Print Specific ATS Rules */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+      .resume-wrapper {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none !important;
+      }
+      header, footer {
+        display: none !important;
+      }
+      a {
+        text-decoration: none;
+        color: #000000;
+      }
+    }
+
+    /* Action bar for easy printing */
+    .action-bar {
+      max-width: 800px;
+      margin: 20px auto 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 20px;
-      background: #0f172a;
-      border-radius: 8px;
-      color: #fff;
-    }
-
-    .toolbar-btn {
-      background: linear-gradient(135deg, #c4b5fd 0%, #f472b6 55%, #6ee7b7 100%);
-      color: #0f172a;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 8px 18px;
-      border: none;
+      background: #0b132b;
+      color: #ffffff;
       border-radius: 6px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: opacity 0.2s;
-      text-decoration: none;
     }
-
-    .toolbar-btn:hover {
-      opacity: 0.9;
-    }
-
-    .toolbar-link {
-      color: #94a3b8;
+    .btn {
+      background: #38bdf8;
+      color: #0b132b;
+      border: none;
+      padding: 8px 16px;
       font-size: 13px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
-
-    .toolbar-link:hover {
-      color: #c4b5fd;
+    .btn:hover {
+      background: #7dd3fc;
     }
 
-    /* Header Section */
-    .resume-header {
-      border-bottom: 2px solid #0f172a;
-      padding-bottom: 18px;
-      margin-bottom: 22px;
+    /* Header */
+    .name-header {
       text-align: center;
+      border-bottom: 2px solid #1c2541;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
     }
-
-    .candidate-name {
-      font-size: 28px;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.5px;
+    .name-header h1 {
+      font-size: 22pt;
+      font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0b132b;
+      margin-bottom: 4px;
     }
-
-    .candidate-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: #7c3aed;
-      margin-top: 3px;
-      letter-spacing: 0.3px;
-    }
-
-    .contact-bar {
-      margin-top: 10px;
+    .name-header .contact-line {
+      font-size: 9.5pt;
+      color: #444444;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 16px;
-      font-size: 12.5px;
-      color: #475569;
+      gap: 12px;
     }
-
-    .contact-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      color: #334155;
+    .name-header .contact-line a {
+      color: #0284c7;
       text-decoration: none;
     }
 
-    .contact-item:hover {
-      color: #d97706;
+    /* Section Structure */
+    .section {
+      margin-bottom: 16px;
     }
-
-    /* Section Styling */
-    .resume-section {
-      margin-bottom: 20px;
-    }
-
     .section-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: #0f172a;
+      font-size: 11.5pt;
+      font-weight: bold;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      color: #0b132b;
       border-bottom: 1.5px solid #cbd5e1;
-      padding-bottom: 4px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-title i {
-      color: #d97706;
-      font-size: 13px;
-    }
-
-    /* Professional Summary */
-    .summary-text {
-      color: #334155;
-      line-height: 1.6;
-      text-align: justify;
-      font-size: 13.5px;
-    }
-
-    /* Skills Grid */
-    .skills-category {
+      padding-bottom: 3px;
       margin-bottom: 8px;
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      font-size: 13.5px;
-      line-height: 1.5;
     }
 
-    .skills-label {
-      font-weight: 600;
-      color: #1e293b;
+    /* Items */
+    .item {
+      margin-bottom: 10px;
     }
-
-    .skills-list {
-      color: #334155;
-    }
-
-    /* Experience / Projects Items */
-    .item-block {
-      margin-bottom: 14px;
-    }
-
     .item-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 3px;
+      font-weight: bold;
     }
-
     .item-title {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 10.5pt;
       color: #0f172a;
     }
-
-    .item-tech {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #d97706;
-      font-weight: 500;
-    }
-
     .item-date {
-      font-size: 12.5px;
-      color: #64748b;
-      font-style: italic;
-      font-weight: 500;
+      font-size: 9pt;
+      color: #555555;
+      font-weight: normal;
     }
-
-    .item-subtitle {
-      font-size: 13px;
-      font-weight: 600;
-      color: #475569;
+    .item-sub {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9.5pt;
+      font-style: italic;
+      color: #334155;
       margin-bottom: 4px;
     }
 
-    .bullet-list {
-      list-style-type: disc;
+    /* Bullet Points */
+    ul.bullet-list {
+      list-style-type: square;
       padding-left: 18px;
       margin-top: 4px;
-      color: #334155;
-      font-size: 13px;
-      line-height: 1.55;
     }
-
-    .bullet-list li {
+    ul.bullet-list li {
+      font-size: 9.5pt;
+      color: #333333;
       margin-bottom: 3px;
     }
 
-    .bullet-list li strong {
-      color: #0f172a;
+    /* Skills Grid */
+    .skills-category {
+      font-size: 9.5pt;
+      margin-bottom: 4px;
     }
-
-    /* ATS Optimization Print Styles */
-    @media print {
-      @page {
-        margin: 15mm;
-      }
-      
-      body {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        font-size: 12pt;
-      }
-
-      .toolbar, header, footer {
-        display: none !important;
-      }
-
-      .resume-wrapper {
-        margin: 0 !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-        max-width: 100% !important;
-        border-radius: 0 !important;
-      }
-
-      .candidate-name {
-        color: #000 !important;
-      }
-
-      .candidate-title {
-        color: #333 !important;
-      }
-
-      .section-title {
-        color: #000 !important;
-        border-bottom: 1.5px solid #000 !important;
-      }
-
-      .section-title i {
-        display: none !important;
-      }
-
-      .item-tech {
-        color: #333 !important;
-      }
-
-      a {
-        text-decoration: none !important;
-        color: inherit !important;
-      }
+    .skills-category strong {
+      color: #0b132b;
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Print & Navigation Toolbar -->
-  <div class="toolbar">
-    <a href="index.html" class="toolbar-link">
-      <i class="fa-solid fa-arrow-left"></i>
-      <span>Back to Portfolio</span>
-    </a>
-    <span style="font-size: 12px; color: #94a3b8;">ATS-Friendly Standard Format</span>
-    <button onclick="window.print()" class="toolbar-btn">
-      <i class="fa-solid fa-print"></i>
-      <span>Print / Save to PDF</span>
-    </button>
+  <!-- Floating Print & Back CTA (Hidden on print) -->
+  <div class="action-bar no-print">
+    <div>
+      <strong>Dakshana Sri M</strong> — ATS Clean Resume
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <a href="index.html" class="btn" style="background:#334155; color:#ffffff;">&larr; Back to Portfolio</a>
+      <button onclick="window.print()" class="btn">🖨️ Print / Save as PDF</button>
+    </div>
   </div>
 
-  <!-- MAIN ATS RESUME WRAPPER -->
-  <main class="resume-wrapper">
-
-    <!-- RESUME HEADER -->
-    <header class="resume-header">
-      <h1 class="candidate-name">Dakshana Sri M</h1>
-      <p class="candidate-title">Data Science Student & Aspiring Data Engineer</p>
-      
-      <div class="contact-bar">
-        <span class="contact-item">
-          <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:dakshanasrim1406@gmail.com">dakshanasrim1406@gmail.com</a>
-        </span>
+  <div class="resume-wrapper">
+    
+    <!-- HEADER -->
+    <header class="name-header">
+      <h1>Dakshana Sri M</h1>
+      <div class="contact-line">
+        <span>Coimbatore, Tamil Nadu, India</span>
         <span>•</span>
-        <span class="contact-item">
-          <i class="fa-brands fa-linkedin"></i>
-          <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank">linkedin.com/in/dakshana-sri-m</a>
-        </span>
+        <span><a href="mailto:dakshanasrim1406@gmail.com">dakshanasrim1406@gmail.com</a></span>
         <span>•</span>
-        <span class="contact-item">
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/Dakshana-sri-m" target="_blank">github.com/Dakshana-sri-m</a>
-        </span>
+        <span><a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank">linkedin.com/in/dakshana-sri-m</a></span>
+        <span>•</span>
+        <span><a href="https://github.com/Dakshana-sri-m" target="_blank">github.com/Dakshana-sri-m</a></span>
       </div>
     </header>
 
     <!-- PROFESSIONAL SUMMARY -->
-    <section class="resume-section">
-      <h2 class="section-title"><i class="fa-solid fa-user"></i> Professional Summary</h2>
-      <p class="summary-text">
-        Results-oriented <strong>Data Science student</strong> with hands-on experience in machine learning model development, ETL pipeline design, and enterprise big data tools including <strong>Python, Google BigQuery, and Informatica PowerCenter</strong>. Proven ability to deliver data-driven solutions ranging from real-time IoT network traffic anomaly detection to automated data migration workflows. Possesses strong analytical rigor and pipeline architecture skills, seeking to contribute to high-impact data engineering and data science initiatives.
+    <section class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p style="font-size: 9.5pt; color: #333333; text-align: justify;">
+        B.Sc. Data Science student passionate about turning complex datasets into clear, actionable business intelligence. Leveraging Python, SQL, and Tableau to build efficient data workflows, extract meaningful patterns, and create intuitive visual stories. Demonstrated analytical aptitude through top-10 academic ranking, Deloitte job simulation in forensic analytics, and hands-on participation as an Innovation Engineer Trainee in the 20-week PRICE ProtoSem program.
       </p>
     </section>
 
-    <!-- TECHNICAL SKILLS -->
-    <section class="resume-section">
-      <h2 class="section-title"><i class="fa-solid fa-code"></i> Technical Skills</h2>
-      
-      <div class="skills-category">
-        <div class="skills-label">Programming & Querying:</div>
-        <div class="skills-list">Python (Pandas, NumPy, Scikit-learn), SQL, Bash / Shell Scripting</div>
-      </div>
-
-      <div class="skills-category">
-        <div class="skills-label">Big Data & ETL:</div>
-        <div class="skills-list">Google BigQuery, Informatica PowerCenter, Data Warehousing, Automated Migration Pipelines</div>
-      </div>
-
-      <div class="skills-category">
-        <div class="skills-label">Machine Learning:</div>
-        <div class="skills-list">Anomaly Detection, Supervised/Unsupervised Learning, Feature Engineering, Model Validation</div>
-      </div>
-
-      <div class="skills-category">
-        <div class="skills-label">BI & Visualization:</div>
-        <div class="skills-list">Microsoft Power BI, Tableau Desktop, Exploratory Data Analysis (EDA), KPI Dashboards</div>
-      </div>
-
-      <div class="skills-category">
-        <div class="skills-label">Tools & Practices:</div>
-        <div class="skills-list">Git, GitHub, Data Cleaning & Preprocessing, Data Modeling, Pipeline Monitoring</div>
-      </div>
-    </section>
-
     <!-- EDUCATION -->
-    <section class="resume-section">
-      <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-      
-      <div class="item-block">
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="item">
         <div class="item-header">
-          <span class="item-title">Bachelor of Science in Data Science (B.Sc Data Science)</span>
-          <span class="item-date">Present</span>
+          <span class="item-title">Kumaraguru College of Liberal Arts and Science (KCLAS)</span>
+          <span class="item-date">2025 – Present</span>
         </div>
-        <div class="item-subtitle">Relevant Coursework & Focus:</div>
+        <div class="item-sub">
+          <span>Bachelor of Science (B.Sc.) in Data Science</span>
+          <span>Coimbatore, India</span>
+        </div>
         <ul class="bullet-list">
-          <li>Core Curriculum: Data Structures & Algorithms, Applied Machine Learning, Database Management Systems (DBMS), Statistical Analysis & Inference, Big Data Architectures.</li>
-          <li>Focus on applied analytics, automated data transformations, and end-to-end predictive modeling.</li>
+          <li><strong>Academic Honors:</strong> Awarded the prestigious <strong>Mahatma Gandhi Merit Scholarship</strong> for securing a position in the Top 10 meritorious rank of the School of Data Science.</li>
+          <li><strong>Relevant Coursework:</strong> Python Programming, Relational Databases & SQL, Statistical Analysis, Data Structures, Business Intelligence, Data Storytelling.</li>
         </ul>
       </div>
     </section>
 
-    <!-- EXPERIENCE & FELLOWSHIPS -->
-    <section class="resume-section">
-      <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Experience & Fellowships</h2>
+    <!-- PROFESSIONAL EXPERIENCE & INNOVATION TRAINEESHIP -->
+    <section class="section">
+      <h2 class="section-title">Experience & Innovation Traineeships</h2>
       
-      <div class="item-block">
+      <div class="item">
         <div class="item-header">
           <span class="item-title">Innovation Engineer Trainee — PRICE ProtoSem</span>
-          <span class="item-date">Present</span>
+          <span class="item-date">2025 – 2026</span>
         </div>
-        <div class="item-subtitle">Industry-Integrated Innovation Fellowship (20-Week Programme)</div>
+        <div class="item-sub">
+          <span>Kumaraguru Institutions</span>
+          <span>20-Week Structured Programme</span>
+        </div>
         <ul class="bullet-list">
-          <li>Selected for a rigorous 20-week industry-integrated programme focused on solving retail and commerce challenges through AI, analytics, intelligent systems, and IoT.</li>
-          <li>Collaborated on industry problem statements to design, develop, and validate practical technology prototypes beyond conventional classroom coursework.</li>
+          <li>Selected for a 20-week industry-integrated innovation programme focused on solving real-world retail and commerce challenges through AI, analytics, intelligent systems, IoT, prototyping, and entrepreneurship.</li>
+          <li>Engaged with industry problem statements across 4 developmental phases to explore, develop, and validate practical technological solutions beyond conventional classroom learning.</li>
+          <li>Collaborated in multi-disciplinary teams applying agile development, prototyping workflows, and intelligent data systems.</li>
         </ul>
       </div>
     </section>
 
-    <!-- FEATURED PROJECTS & TECHNICAL CASE STUDIES -->
-    <section class="resume-section">
-      <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> Key Projects & Technical Implementations</h2>
-
-      <!-- Project 1 -->
-      <div class="item-block">
+    <!-- CERTIFICATIONS & PROFESSIONAL SIMULATIONS -->
+    <section class="section">
+      <h2 class="section-title">Certifications & Training</h2>
+      
+      <div class="item">
         <div class="item-header">
-          <span class="item-title">IoT Network Traffic Anomaly Detection System</span>
-          <span class="item-tech">[Python, Scikit-Learn, Pandas]</span>
+          <span class="item-title">Data Analytics Job Simulation — Deloitte (via Forage)</span>
+          <span class="item-date">March 2026</span>
         </div>
         <ul class="bullet-list">
-          <li>Engineered an automated machine learning classification pipeline to identify anomalous traffic patterns, volumetric packet spikes, and unauthorized device behaviors across simulated IoT network telemetry.</li>
-          <li>Preprocessed multi-dimensional time-series packet metadata, executing feature extraction, scaling, and correlation filtering.</li>
-          <li>Evaluated and tuned Isolation Forest and Random Forest algorithms to minimize false positive detection rates in high-throughput network environments.</li>
+          <li>Completed hands-on simulation covering real-world client data analysis and forensic technology investigations.</li>
+          <li>Extracted data insights, performed pattern discovery, and communicated analytical findings with business recommendations.</li>
         </ul>
       </div>
 
-      <!-- Project 2 -->
-      <div class="item-block">
+      <div class="item">
         <div class="item-header">
-          <span class="item-title">Automated Data Migration & ETL Engine</span>
-          <span class="item-tech">[Google BigQuery, Informatica PowerCenter, SQL]</span>
+          <span class="item-title">Entrepreneurship and Venture Building Bootcamp — River Venture Studios, Singapore</span>
+          <span class="item-date">February 2026</span>
         </div>
         <ul class="bullet-list">
-          <li>Designed and orchestrated automated ETL workflows using Informatica to extract transactional source datasets, execute data cleansing, and stage them into Google BigQuery.</li>
-          <li>Authored optimized SQL transformation routines to ensure data consistency, partitioned storage schemas, and reduced query latency.</li>
-          <li>Implemented data validation and reconciliation scripts to verify record completeness and structural integrity post-migration.</li>
+          <li>Completed intensive 2-day bootcamp held by River Venture Studios (Singapore) in association with Kumaraguru Institutions.</li>
+          <li>Acquired practical methodologies in technology product ideation, market validation, and venture development.</li>
         </ul>
       </div>
 
-      <!-- Project 3 -->
-      <div class="item-block">
+      <div class="item">
         <div class="item-header">
-          <span class="item-title">Enterprise BI & Telemetry Performance Suite</span>
-          <span class="item-tech">[Power BI, Tableau Desktop, DAX]</span>
+          <span class="item-title">Certificate in Data Analytical Tools — Ampyo</span>
+          <span class="item-date">2026</span>
         </div>
         <ul class="bullet-list">
-          <li>Constructed interactive, cross-filtered executive dashboards in Microsoft Power BI and Tableau to track pipeline health, traffic distributions, and anomaly alert metrics.</li>
-          <li>Formulated custom DAX measures, calculated columns, and multi-tier hierarchies for intuitive exploratory analysis and operational decision-making.</li>
+          <li>Trained in industry-standard data querying, manipulation, and dashboard analytics toolchains.</li>
         </ul>
       </div>
-
     </section>
 
-    <!-- CERTIFICATIONS -->
-    <section class="resume-section">
-      <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
+    <!-- TECHNICAL & CORE SKILLS -->
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-category">
+        <strong>Programming & Querying:</strong> Python, SQL, Pandas, NumPy, Data Cleaning, Data Modeling
+      </div>
+      <div class="skills-category">
+        <strong>Business Intelligence & Visualization:</strong> Tableau, Power BI, KPI Dashboards, Visual Storytelling
+      </div>
+      <div class="skills-category">
+        <strong>Analytical & Domain Disciplines:</strong> Exploratory Data Analysis (EDA), Forensic Analytics, Phygital Commerce Systems, Anomaly Detection
+      </div>
+      <div class="skills-category">
+        <strong>Core Competencies:</strong> Problem Solving, Rapid Prototyping, Technical Communication, Analytical Thinking
+      </div>
+    </section>
+
+    <!-- HONORS & AWARDS -->
+    <section class="section">
+      <h2 class="section-title">Honors & Awards</h2>
       <ul class="bullet-list">
-        <li><strong>Data Analytical Tools</strong> — Certified by Amypo</li>
-        <li><strong>Excel Certification</strong> — Certified by Simplilearn</li>
+        <li><strong>Mahatma Gandhi Merit Scholarship (2025–2026):</strong> Conferred by Kumaraguru College of Liberal Arts and Science in recognition of ranking in the Top 10 students of the cohort.</li>
       </ul>
     </section>
 
-    <!-- CORE COMPETENCIES / LEARNING FOCUS -->
-    <section class="resume-section">
-      <h2 class="section-title"><i class="fa-solid fa-award"></i> Core Competencies & Professional Strengths</h2>
-      <ul class="bullet-list">
-        <li><strong>Data Pipeline Architecture:</strong> End-to-end ETL schema mapping, data cleansing, normalization, and automated ingestion.</li>
-        <li><strong>Analytical Problem Solving:</strong> Statistical modeling, exploratory data analysis, and translation of raw datasets into business KPIs.</li>
-        <li><strong>Collaboration & Communication:</strong> Clear technical documentation, git version control, and cross-functional reporting.</li>
-      </ul>
-    </section>
-
-  </main>
+  </div>
 
 </body>
 </html>
