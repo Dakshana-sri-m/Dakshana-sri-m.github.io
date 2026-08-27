@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dakshana Sri M — Data Science Candidate & Innovation Engineer Trainee. Transforming raw data into actionable intelligence through ML, ETL Pipelines, and Business Intelligence." />
-  <meta name="author" content="Dakshana Sri M" />
-  <title>Dakshana Sri M — Creative Data Scientist & Innovation Trainee</title>
-
-  <!-- Google Fonts: Syne + Space Grotesk + Plus Jakarta Sans + Fira Code -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dakshana Sri M | Data Science Portfolio & Innovation Engineer Trainee</title>
+  <meta name="description" content="Portfolio of Dakshana Sri M - B.Sc. Data Science Student & Innovation Engineer Trainee specializing in Python, SQL, Tableau, and Business Intelligence.">
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -19,1282 +24,755 @@
       darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            brand: {
-              accent: '#FF8370',        // Pastel Coral / Warm Peach
-              accentGlow: 'rgba(255, 131, 112, 0.35)',
-              accentDark: '#E26D5C',
-              dark: '#0A0D15',          // Soft Velvet Midnight
-              darkCard: '#101524',      // Frosted Pastel Dark Surface
-              darkCardAlt: '#161D30',
-              border: 'rgba(255, 255, 255, 0.08)',
-              borderHover: 'rgba(255, 131, 112, 0.45)',
-              pastelMint: '#7FE0B2',    // Soft Pastel Sage
-              pastelLilac: '#B8A7EA',   // Soft Pastel Lavender
-              pastelSky: '#8BC8FE',     // Soft Pastel Blue
-              pastelButter: '#FFD166'   // Soft Pastel Amber
-            }
-          },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            syne: ['"Syne"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
-            mono: ['"Fira Code"', 'monospace']
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-6px)' },
+          colors: {
+            navy: {
+              950: '#060a14',
+              900: '#0b132b',
+              850: '#0f1b3d',
+              800: '#1c2541',
+              700: '#263456',
+            },
+            pastel: {
+              cyan: '#7dd3fc',
+              purple: '#c084fc',
+              mint: '#86efac',
+              rose: '#fda4af',
+              amber: '#fde68a',
+              indigo: '#a5b4fc',
             }
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 25px -5px rgba(125, 211, 252, 0.3)',
+            'glow-purple': '0 0 25px -5px rgba(192, 132, 252, 0.3)',
+            'glow-mint': '0 0 25px -5px rgba(134, 239, 172, 0.3)',
           }
         }
       }
     }
   </script>
-
-  <!-- AOS Animation CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Typed.js for Live Text Typing Animation -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
   <style>
-    /* Pastel Palette & Glassmorphism Design System */
-    body {
-      background-color: #0A0D15;
-      color: #E2E8F0;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    html.light body {
-      background-color: #FAF9F6;
-      color: #0F172A;
-    }
-
-    .kintaro-card {
-      background: rgba(16, 21, 36, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    html.light .kintaro-card {
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(0, 0, 0, 0.07);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
-    }
-
-    .kintaro-card:hover {
-      border-color: rgba(255, 131, 112, 0.45);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -15px rgba(255, 131, 112, 0.15);
-    }
-
-    .pill-dock {
-      background: rgba(16, 21, 36, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-    }
-
-    html.light .pill-dock {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
-    }
-
-    .accent-btn {
-      background-color: #FF8370;
-      color: #FFFFFF;
-      transition: all 0.25s ease;
-      box-shadow: 0 8px 25px -4px rgba(255, 131, 112, 0.35);
-    }
-
-    .accent-btn:hover {
-      background-color: #E26D5C;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -4px rgba(255, 131, 112, 0.5);
-    }
-
-    .accent-pill {
-      background-color: rgba(255, 131, 112, 0.14);
-      color: #FFA599;
-      border: 1px solid rgba(255, 131, 112, 0.3);
-    }
-
-    .glass-input {
-      background: rgba(12, 16, 26, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-    }
-
-    html.light .glass-input {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      color: #0F172A;
-    }
-
-    .glass-input:focus {
-      border-color: #FF8370;
-      box-shadow: 0 0 20px rgba(255, 131, 112, 0.25);
-      outline: none;
-    }
-
-    /* Waving Hand Keyframe Animation */
-    @keyframes wave {
-      0% { transform: rotate(0deg); }
-      10% { transform: rotate(14deg); }
-      20% { transform: rotate(-8deg); }
-      30% { transform: rotate(14deg); }
-      40% { transform: rotate(-4deg); }
-      50% { transform: rotate(10deg); }
-      60% { transform: rotate(0deg); }
-      100% { transform: rotate(0deg); }
-    }
-    .animate-wave {
-      display: inline-block;
-      transform-origin: 70% 70%;
-      animation: wave 2.2s infinite ease-in-out;
-    }
-
-    /* 3D Flippable Flashcard Styles */
-    .flashcard-scene {
-      perspective: 1000px;
-    }
-    .flashcard-inner {
-      position: relative;
-      width: 100%;
-      min-height: 220px;
-      text-align: left;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      transform-style: preserve-3d;
-    }
-    .flashcard-scene.is-flipped .flashcard-inner {
-      transform: rotateY(180deg);
-    }
-    .flashcard-front, .flashcard-back {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border-radius: 1.25rem;
-    }
-    .flashcard-back {
-      transform: rotateY(180deg);
-    }
-
-    /* Typed cursor style */
-    .typed-cursor {
-      color: #FF8370;
-      font-weight: 700;
-    }
-
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
+      width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #0A0D15;
+      background: #060a14;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1E2638;
-      border-radius: 9999px;
+      background: #1c2541;
+      border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #FF8370;
+      background: #7dd3fc;
+    }
+
+    .glass-card {
+      background: rgba(15, 27, 61, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(125, 211, 252, 0.12);
+    }
+    
+    .glass-card:hover {
+      border-color: rgba(125, 211, 252, 0.35);
+    }
+
+    .glass-nav {
+      background: rgba(6, 10, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(125, 211, 252, 0.1);
+    }
+
+    /* Cyber minimal accents */
+    .cyber-line {
+      background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.4), rgba(192, 132, 252, 0.4), transparent);
+    }
+
+    /* Carousel hide scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
+<body class="bg-navy-950 text-slate-200 font-sans selection:bg-pastel-cyan selection:text-navy-950 overflow-x-hidden antialiased">
 
-<body class="font-sans antialiased selection:bg-[#FF8370] selection:text-white min-h-screen relative overflow-x-hidden">
-
-  <!-- Ambient Pastel Glowing Aura Canvas -->
+  <!-- Ambient Cyber Background Glows -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#FF8370]/12 filter blur-[160px]"></div>
-    <div class="absolute top-[35%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#B8A7EA]/10 filter blur-[160px]"></div>
-    <div class="absolute bottom-[10%] left-[-5%] w-[550px] h-[550px] rounded-full bg-[#7FE0B2]/10 filter blur-[160px]"></div>
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,#000_70%,transparent_100%)]"></div>
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-pastel-cyan/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-pastel-purple/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-1/4 w-[500px] h-[500px] bg-pastel-indigo/10 rounded-full blur-3xl"></div>
   </div>
 
-  <!-- TOP HEADER (PASTEL ACCENTED BRAND & THEME SWITCHER) -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 backdrop-blur-md bg-black/30 dark:bg-black/30 border-b border-white/5 transition-all">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      
-      <!-- Brand Logo in Pastel Coral & Syne Font -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-[#FF8370] text-white flex items-center justify-center font-syne font-extrabold text-sm shadow-lg shadow-[#FF8370]/30 group-hover:scale-105 transition-transform">
-          DS
-        </div>
-        <div class="flex flex-col">
-          <span class="font-syne font-black text-lg sm:text-xl tracking-tighter uppercase text-white transition-all group-hover:text-[#FF8370]">
-            dakshana
-          </span>
-          <span class="text-[10px] font-mono text-slate-400 -mt-1 hidden sm:inline-block">
-            Data Science • PRICE ProtoSem
-          </span>
-        </div>
-      </a>
+  <!-- Primary Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pastel-cyan via-pastel-purple to-pastel-indigo p-[2px] transition-transform duration-300 group-hover:scale-105">
+            <div class="w-full h-full bg-navy-950 rounded-[10px] flex items-center justify-center">
+              <span class="font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-pastel-cyan to-pastel-purple text-lg">DS</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-base tracking-wide text-white group-hover:text-pastel-cyan transition-colors">Dakshana Sri M</span>
+            <span class="font-mono text-[10px] text-pastel-cyan/75 tracking-wider uppercase">Data Science • BI</span>
+          </div>
+        </a>
 
-      <!-- Center Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-6">
-        <a href="#hero" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-300 hover:text-white transition-colors py-1 relative group">
-          Home
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#about" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
-          About
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#skills" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
-          Stack
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#protosem" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group flex items-center gap-1.5">
-          <span>ProtoSem</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#FF8370]"></span>
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#certifications" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
-          Certifications
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#projects" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
-          Projects
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#contact" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
-          Contact
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
-        </a>
-      </nav>
+        <!-- Desktop Navigation Items -->
+        <nav class="hidden lg:flex items-center gap-1 font-medium text-sm">
+          <a href="#home" class="px-3 py-2 text-slate-300 hover:text-pastel-cyan hover:bg-navy-900/60 rounded-lg transition-all">Home</a>
+          <a href="#about" class="px-3 py-2 text-slate-300 hover:text-pastel-cyan hover:bg-navy-900/60 rounded-lg transition-all">About</a>
+          <a href="#skills" class="px-3 py-2 text-slate-300 hover:text-pastel-cyan hover:bg-navy-900/60 rounded-lg transition-all">Skills</a>
+          <a href="#protosem" class="px-3 py-2 text-pastel-cyan bg-pastel-cyan/10 border border-pastel-cyan/20 hover:bg-pastel-cyan/20 rounded-lg transition-all flex items-center gap-1.5 font-semibold">
+            <i class="fa-solid fa-layer-group text-xs text-pastel-cyan"></i> ProtoSem
+          </a>
+          <a href="#certificates" class="px-3 py-2 text-slate-300 hover:text-pastel-cyan hover:bg-navy-900/60 rounded-lg transition-all">Certificates</a>
+          <a href="#achievements" class="px-3 py-2 text-slate-300 hover:text-pastel-cyan hover:bg-navy-900/60 rounded-lg transition-all">Achievements</a>
+          <a href="#contact" class="px-3 py-2 text-slate-300 hover:text-pastel-cyan hover:bg-navy-900/60 rounded-lg transition-all">Contact</a>
+        </nav>
 
-      <!-- Right Controls: Theme Switcher & Actions -->
-      <div class="flex items-center gap-3">
-        <!-- Theme Switcher Button -->
-        <button id="themeToggleBtn" class="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#FF8370]/40 transition-all" title="Toggle theme">
-          <i class="fa-solid fa-moon text-xs dark:block hidden text-[#B8A7EA]"></i>
-          <i class="fa-solid fa-sun text-xs dark:hidden block text-[#FFD166]"></i>
+        <!-- Action Resume Button -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="resume.html" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold font-mono tracking-wider text-navy-950 bg-gradient-to-r from-pastel-cyan via-pastel-indigo to-pastel-purple hover:shadow-glow-cyan transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>ATS RESUME</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-400 hover:text-white rounded-lg focus:outline-none" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars text-xl"></i>
         </button>
 
-        <a href="resume.html" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/10 hover:bg-white/15 transition-all shadow-sm">
-          <i class="fa-solid fa-file-lines text-[#FF8370] text-xs"></i>
-          <span>ATS Resume</span>
-        </a>
-
-        <a href="#contact" class="px-4 sm:px-5 py-2 rounded-full text-xs font-bold font-syne uppercase tracking-wider accent-btn flex items-center gap-2">
-          <span>Get in Touch</span>
-          <i class="fa-solid fa-arrow-right text-[10px]"></i>
-        </a>
       </div>
+    </div>
 
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden px-4 pt-2 pb-6 bg-navy-900/95 border-b border-navy-800 space-y-2 text-sm font-medium">
+      <a href="#home" class="mobile-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-navy-800 hover:text-pastel-cyan">Home</a>
+      <a href="#about" class="mobile-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-navy-800 hover:text-pastel-cyan">About</a>
+      <a href="#skills" class="mobile-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-navy-800 hover:text-pastel-cyan">Skills</a>
+      <a href="#protosem" class="mobile-link block px-3 py-2 rounded-lg text-pastel-cyan font-semibold bg-pastel-cyan/10">PRICE ProtoSem</a>
+      <a href="#certificates" class="mobile-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-navy-800 hover:text-pastel-cyan">Certificates</a>
+      <a href="#achievements" class="mobile-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-navy-800 hover:text-pastel-cyan">Achievements</a>
+      <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg text-slate-300 hover:bg-navy-800 hover:text-pastel-cyan">Contact</a>
+      <a href="resume.html" target="_blank" class="block text-center mt-3 py-2.5 rounded-lg text-navy-950 font-bold bg-pastel-cyan">View ATS Resume</a>
     </div>
   </header>
 
-  <!-- MAIN WRAPPER -->
-  <main class="relative z-10 pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+  <!-- Main Content Wrapper -->
+  <main class="relative z-10 pt-20">
 
-    <!-- HERO SECTION (PASTEL BENTO WITH PORTRAIT, WAVING HAND & TYPED TEXT) -->
-    <section id="hero" class="pt-8 space-y-6 relative">
-      
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+    <!-- HERO SECTION (3D Floating Card + Cyberpunk Minimal Aesthetic) -->
+    <section id="home" class="min-h-[calc(100vh-5rem)] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Bento 1: Primary Profile Showcase & Animated Text (7 Cols) -->
-        <div class="md:col-span-12 lg:col-span-7 kintaro-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden" data-aos="fade-up">
-          
-          <!-- Live Status Pill -->
-          <div class="flex items-center justify-between gap-2 mb-6">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full accent-pill text-xs font-mono font-bold">
-              <span class="w-2 h-2 rounded-full bg-[#FF8370] animate-ping"></span>
-              <span>Available for Data Engineering & Science Roles</span>
-            </div>
-            <span class="text-xs font-mono text-[#B8A7EA] hidden sm:inline-block">B.Sc. Data Science</span>
+        <!-- Left Hero Introduction -->
+        <div class="lg:col-span-7 space-y-6" data-aos="fade-right" data-aos-duration="1000">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-900 border border-pastel-cyan/30 text-pastel-cyan text-xs font-mono tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-pastel-mint animate-pulse"></span>
+            AVAILABLE FOR DATA SCIENCE & BI OPPORTUNITIES
           </div>
 
-          <!-- Hero Headline in Pastel Coral & Dynamic Typed Text Animation -->
-          <div class="space-y-4 my-2">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-syne font-extrabold text-white tracking-tight leading-[1.15] flex flex-wrap items-center gap-3">
-              <span>Hi, I'm <span class="text-[#FF8370]">Dakshana Sri</span></span>
-              <span class="animate-wave text-3xl sm:text-4xl lg:text-5xl select-none" role="img" aria-label="Waving hand">👋</span>
-            </h1>
-            
-            <!-- Animated Dynamic Typing Headline -->
-            <div class="min-h-[60px] sm:min-h-[50px] flex items-center">
-              <span id="typedHeroText" class="text-xl sm:text-2xl font-syne font-semibold text-slate-200 leading-snug"></span>
-            </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-pastel-cyan via-pastel-purple to-pastel-mint">Dakshana Sri M</span>
+          </h1>
 
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-              I'm a <strong class="text-white font-bold">B.Sc. Data Science student</strong> and <strong class="text-[#FF8370] font-bold">PRICE ProtoSem Innovation Trainee</strong> passionate about turning raw data into actionable insights across <strong class="text-white">Machine Learning, BigQuery ETL, Power BI, Python, and SQL</strong>.
-            </p>
+          <div class="text-xl sm:text-2xl font-mono text-slate-300 h-10 flex items-center">
+            <span>&gt; </span>
+            <span id="typed" class="ml-2 text-pastel-cyan font-bold"></span>
           </div>
 
-          <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-white/5 mt-4">
-            <a href="resume.html" target="_blank" class="px-6 py-3 rounded-full accent-btn text-xs font-bold font-syne uppercase tracking-wider flex items-center gap-2">
-              <i class="fa-solid fa-file-arrow-down text-xs"></i>
-              <span>ATS Resume</span>
+          <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+            B.Sc. Data Science student passionate about turning complex datasets into clear, actionable business intelligence with <strong class="text-slate-200">Python</strong>, <strong class="text-slate-200">SQL</strong>, and <strong class="text-slate-200">Tableau</strong>.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#protosem" class="px-6 py-3 rounded-xl font-bold text-sm bg-pastel-cyan text-navy-950 hover:bg-pastel-cyan/90 shadow-glow-cyan transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+              <i class="fa-solid fa-compass"></i> Explore ProtoSem Journey
             </a>
-            <a href="#contact" class="px-6 py-3 rounded-full kintaro-card hover:border-[#FF8370] text-white font-semibold text-xs tracking-wider uppercase transition-all flex items-center gap-2">
-              <span>Get in Touch →</span>
+            <a href="#contact" class="px-6 py-3 rounded-xl font-semibold text-sm bg-navy-900 text-slate-200 border border-navy-700 hover:border-pastel-cyan/50 hover:bg-navy-850 transition-all flex items-center gap-2">
+              <i class="fa-regular fa-paper-plane text-pastel-purple"></i> Get in Touch
+            </a>
+            <a href="resume.html" target="_blank" class="px-5 py-3 rounded-xl font-mono text-xs text-pastel-mint border border-pastel-mint/30 bg-pastel-mint/5 hover:bg-pastel-mint/10 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-file-pdf"></i> ATS Resume
             </a>
           </div>
 
+          <!-- Quick Stat Badges -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-navy-800/80 max-w-lg">
+            <div class="glass-card p-3 rounded-xl text-center">
+              <p class="text-xs font-mono text-pastel-cyan uppercase">Scholarship</p>
+              <p class="text-lg font-bold text-white">Top 10 Rank</p>
+              <p class="text-[10px] text-slate-400">Mahatma Gandhi Merit</p>
+            </div>
+            <div class="glass-card p-3 rounded-xl text-center">
+              <p class="text-xs font-mono text-pastel-purple uppercase">Programme</p>
+              <p class="text-lg font-bold text-white">20 Weeks</p>
+              <p class="text-[10px] text-slate-400">PRICE ProtoSem</p>
+            </div>
+            <div class="glass-card p-3 rounded-xl text-center">
+              <p class="text-xs font-mono text-pastel-mint uppercase">Focus</p>
+              <p class="text-lg font-bold text-white">Data & AI</p>
+              <p class="text-[10px] text-slate-400">Business Intelligence</p>
+            </div>
+          </div>
         </div>
 
-        <!-- Bento 2: Hero Portrait Card (5 Cols) -->
-        <div class="md:col-span-12 lg:col-span-5 kintaro-card rounded-3xl p-4 sm:p-5 flex flex-col justify-center relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
-          
-          <div class="relative overflow-hidden rounded-[2rem] aspect-[4/5] bg-slate-900 shadow-inner">
-            <img 
-              src="profile.jpg" 
-              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Dakshana+Sri&background=FF8370&color=ffffff&size=512&bold=true';" 
-              alt="Dakshana Sri M" 
-              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-            />
-
-            <!-- Floating Pastel Info Badge -->
-            <div class="absolute bottom-3 inset-x-3 pill-dock rounded-2xl p-3 border border-white/10 flex items-center justify-between">
-              <div>
-                <h2 class="text-xs font-syne font-extrabold text-white">Dakshana Sri M</h2>
-                <p class="text-[10px] font-mono text-[#FF8370] font-semibold">Innovation Engineer Trainee</p>
+        <!-- Right 3D Interactive Floating Card (Vanilla Tilt) -->
+        <div class="lg:col-span-5 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+          <div id="hero3DCard" class="tilt-card relative w-full max-w-md glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border border-pastel-cyan/20 overflow-hidden transform-gpu" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+            
+            <!-- Top Card Header -->
+            <div class="flex items-center justify-between pb-6 border-b border-navy-800">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-pastel-rose/80"></span>
+                <span class="w-3 h-3 rounded-full bg-pastel-amber/80"></span>
+                <span class="w-3 h-3 rounded-full bg-pastel-mint/80"></span>
               </div>
-              <span class="px-2.5 py-1 rounded-lg bg-[#7FE0B2]/15 text-[#7FE0B2] font-mono text-[10px] border border-[#7FE0B2]/30 font-bold">
-                ProtoSem
+              <span class="text-xs font-mono text-pastel-cyan/80 bg-navy-900/90 px-3 py-1 rounded-full border border-pastel-cyan/20">
+                ds_profile.json
               </span>
             </div>
-          </div>
 
-        </div>
-
-      </div>
-
-      <!-- SECOND BENTO ROW: LIVE PASTEL WIDGETS & STATS (ASYMMETRICAL 4 WIDGETS) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
-        
-        <!-- Widget 1: Real-time Live Clock & Location (4 Cols) -->
-        <div class="lg:col-span-4 kintaro-card rounded-3xl p-6 flex flex-col justify-between space-y-4" data-aos="fade-up">
-          <div class="flex items-center justify-between text-xs font-mono text-slate-400">
-            <span class="flex items-center gap-2">
-              <i class="fa-solid fa-clock text-[#FF8370]"></i>
-              <span>LOCAL TIME (IST)</span>
-            </span>
-            <span class="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] text-[#8BC8FE]">SYNCED</span>
-          </div>
-
-          <div>
-            <div id="liveClock" class="text-3xl sm:text-4xl font-mono font-extrabold text-white tracking-tight">
-              --:--:--
-            </div>
-            <p class="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
-              <i class="fa-solid fa-location-dot text-[#FF8370]"></i>
-              <span>Tamil Nadu, India • Open to Global / Relocation</span>
-            </p>
-          </div>
-
-          <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span>Timezone: UTC +05:30</span>
-            <span class="text-[#7FE0B2] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#7FE0B2] animate-pulse"></span> Active Now</span>
-          </div>
-        </div>
-
-        <!-- Widget 2: Current Focus / Project Activity (4 Cols) -->
-        <div class="lg:col-span-4 kintaro-card rounded-3xl p-6 flex flex-col justify-between space-y-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex items-center justify-between text-xs font-mono text-slate-400">
-            <span class="flex items-center gap-2">
-              <i class="fa-solid fa-bolt text-[#FF8370]"></i>
-              <span>CURRENT FOCUS</span>
-            </span>
-            <span class="px-2.5 py-0.5 rounded-full accent-pill text-[10px] font-bold">IN PROGRESS</span>
-          </div>
-
-          <div>
-            <h3 class="text-base font-syne font-bold text-white">PRICE ProtoSem Fellowship</h3>
-            <p class="text-xs text-slate-300 mt-1">Researching & prototyping intelligent retail solutions via AI, Analytics, IoT & rapid hardware iterations.</p>
-          </div>
-
-          <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span>20-Week Programme</span>
-            <a href="#protosem" class="text-[#FF8370] font-bold hover:underline">Explore Flashcards →</a>
-          </div>
-        </div>
-
-        <!-- Widget 3: Stat Metrics Counter (4 Cols) -->
-        <div class="lg:col-span-4 kintaro-card rounded-3xl p-6 flex flex-col justify-between space-y-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center justify-between text-xs font-mono text-slate-400">
-            <span class="flex items-center gap-2">
-              <i class="fa-solid fa-chart-simple text-[#FF8370]"></i>
-              <span>METRICS & STATS</span>
-            </span>
-            <span class="text-slate-500">2026</span>
-          </div>
-
-          <div class="grid grid-cols-3 gap-2 py-1 text-center">
-            <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-syne font-extrabold text-[#FF8370]">20W</div>
-              <p class="text-[10px] font-mono text-slate-400">ProtoSem</p>
-            </div>
-            <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-syne font-extrabold text-white">3+</div>
-              <p class="text-[10px] font-mono text-slate-400">Pipelines</p>
-            </div>
-            <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-syne font-extrabold text-[#7FE0B2]">100%</div>
-              <p class="text-[10px] font-mono text-slate-400">Precision</p>
-            </div>
-          </div>
-
-          <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span>Data • ML • BigQuery</span>
-            <span class="text-[#B8A7EA] font-semibold">Verified Skills</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- THIRD BENTO ROW: INTERACTIVE TECH ARSENAL DOCK (PASTEL ACCENTS) -->
-      <div class="kintaro-card rounded-3xl p-6 space-y-4" data-aos="fade-up">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
-          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-[#FF8370]"></i>
-            <span>Interactive Tech Stack Dock</span>
-          </span>
-          <span class="text-[11px] font-mono text-slate-500">Hover for core stack tools</span>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 text-center">
-          
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#B8A7EA]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-brands fa-python text-2xl text-[#B8A7EA] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">Python</span>
-            <span class="text-[10px] font-mono text-slate-500">Pandas/NumPy</span>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF8370]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-database text-2xl text-[#FF8370] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">SQL</span>
-            <span class="text-[10px] font-mono text-slate-500">Complex Queries</span>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#8BC8FE]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-cloud text-2xl text-[#8BC8FE] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">BigQuery</span>
-            <span class="text-[10px] font-mono text-slate-500">Warehousing</span>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#F472B6]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-server text-2xl text-[#F472B6] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">Informatica</span>
-            <span class="text-[10px] font-mono text-slate-500">ETL Workflows</span>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FFD166]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-brain text-2xl text-[#FFD166] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">ML Models</span>
-            <span class="text-[10px] font-mono text-slate-500">Scikit-Learn</span>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FBBF24]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-chart-pie text-2xl text-[#FBBF24] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">Power BI</span>
-            <span class="text-[10px] font-mono text-slate-500">DAX Modeling</span>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#7FE0B2]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-chart-line text-2xl text-[#7FE0B2] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">Tableau</span>
-            <span class="text-[10px] font-mono text-slate-500">Visual Analytics</span>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#A7F3D0]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-file-excel text-2xl text-[#A7F3D0] group-hover:scale-110 transition-transform"></i>
-            <span class="block text-xs font-bold text-slate-200 mt-2">Excel</span>
-            <span class="text-[10px] font-mono text-slate-500">Certified Tools</span>
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ABOUT SECTION (PASTEL BENTO DESIGN) -->
-    <section id="about" class="scroll-mt-32 space-y-6" data-aos="fade-up">
-      
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(01)</span>
-          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">About Me</h2>
-        </div>
-        <span class="text-xs font-mono text-slate-400">Data Lifecycle • Engineering • Analytics</span>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <!-- Main Narrative Card (Exact Verbatim Copy) -->
-        <div class="lg:col-span-8 kintaro-card rounded-3xl p-8 space-y-5 flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full accent-pill text-xs font-mono font-bold">
-              <span>Personal Narrative</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
-              I'm <strong class="text-white font-bold">Dakshana</strong>, a <strong class="text-[#FF8370] font-bold">B.Sc. Data Science student</strong> (currently in my proto-sem) passionate about transforming raw data into actionable insights.
-            </p>
-            <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
-              Working across the entire data lifecycle as a <strong class="text-white">Data Analyst</strong>, <strong class="text-[#FF8370] font-semibold">Data Engineer</strong>, and <strong class="text-[#7FE0B2] font-semibold">Data Visualizer</strong>, I bring hands-on skills in <strong class="text-white">Machine Learning, Deep Learning, Python, SQL, Power BI, Excel, and R</strong>.
-            </p>
-          </div>
-
-          <div class="pt-4 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono text-slate-400">
-            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#B8A7EA]">#DataPipelines</span>
-            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#FF8370]">#MachineLearning</span>
-            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#7FE0B2]">#PRICEProtoSem</span>
-            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#8BC8FE]">#BusinessIntelligence</span>
-          </div>
-        </div>
-
-        <!-- Right Side: 3 Micro Bento Cards -->
-        <div class="lg:col-span-4 space-y-4 flex flex-col justify-between">
-          
-          <div class="kintaro-card rounded-2xl p-5">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-8 h-8 rounded-xl bg-[#FF8370]/15 text-[#FF8370] flex items-center justify-center text-sm font-bold border border-[#FF8370]/30">
-                <i class="fa-solid fa-network-wired"></i>
+            <!-- Avatar & Profile Details -->
+            <div class="text-center my-6">
+              <div class="relative inline-block">
+                <div class="w-28 h-28 rounded-2xl bg-gradient-to-tr from-pastel-cyan via-pastel-purple to-pastel-mint p-1 shadow-glow-cyan mx-auto">
+                  <img src="https://ui-avatars.com/api/?name=Dakshana+Sri+M&background=0b132b&color=7dd3fc&size=256&bold=true" alt="Dakshana Sri M" class="w-full h-full object-cover rounded-[14px]">
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-navy-950 border border-pastel-mint text-pastel-mint p-1.5 rounded-lg text-xs" title="Verified Data Science Scholar">
+                  <i class="fa-solid fa-award"></i>
+                </div>
               </div>
-              <h3 class="text-sm font-syne font-bold text-white">Data Engineering</h3>
-            </div>
-            <p class="text-xs text-slate-400">Automated ETL pipelines, staging schemas, and BigQuery warehouse optimizations.</p>
-          </div>
 
-          <div class="kintaro-card rounded-2xl p-5">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-8 h-8 rounded-xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-sm font-bold border border-[#B8A7EA]/30">
-                <i class="fa-solid fa-brain"></i>
+              <h2 class="text-xl font-bold text-white mt-4">Dakshana Sri M</h2>
+              <p class="text-xs font-mono text-pastel-cyan">Innovation Engineer Trainee • Data Science</p>
+              <p class="text-xs text-slate-400 mt-1">Kumaraguru College of Liberal Arts & Science</p>
+            </div>
+
+            <!-- Focus Highlights Matrix -->
+            <div class="space-y-2.5 pt-2">
+              <div class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-navy-900/70 border border-navy-800">
+                <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-code text-pastel-cyan"></i> Core Stack</span>
+                <span class="font-mono text-pastel-cyan font-medium">Python • SQL • Tableau</span>
               </div>
-              <h3 class="text-sm font-syne font-bold text-white">Machine Learning</h3>
-            </div>
-            <p class="text-xs text-slate-400">Real-time IoT anomaly detection, predictive classification, and evaluation metrics.</p>
-          </div>
-
-          <div class="kintaro-card rounded-2xl p-5">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-8 h-8 rounded-xl bg-[#7FE0B2]/15 text-[#7FE0B2] flex items-center justify-center text-sm font-bold border border-[#7FE0B2]/30">
-                <i class="fa-solid fa-chart-line"></i>
+              <div class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-navy-900/70 border border-navy-800">
+                <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-microchip text-pastel-purple"></i> Specialization</span>
+                <span class="font-mono text-pastel-purple font-medium">AI, Retail & Intelligent Systems</span>
               </div>
-              <h3 class="text-sm font-syne font-bold text-white">BI & Analytics</h3>
+              <div class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-navy-900/70 border border-navy-800">
+                <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-pastel-mint"></i> Academic Honor</span>
+                <span class="font-mono text-pastel-mint font-medium">MG Merit Scholar '26</span>
+              </div>
             </div>
-            <p class="text-xs text-slate-400">Power BI DAX modeling, KPI architectures, and cross-filtered Tableau dashboards.</p>
-          </div>
 
+            <!-- Social Links inside card -->
+            <div class="flex items-center justify-center gap-4 mt-6 pt-4 border-t border-navy-800">
+              <a href="https://github.com/Dakshana-sri-m" target="_blank" class="w-9 h-9 rounded-lg bg-navy-900 text-slate-300 hover:text-pastel-cyan hover:border-pastel-cyan border border-navy-750 flex items-center justify-center transition-colors" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="w-9 h-9 rounded-lg bg-navy-900 text-slate-300 hover:text-pastel-purple hover:border-pastel-purple border border-navy-750 flex items-center justify-center transition-colors" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="mailto:dakshanasrim1406@gmail.com" class="w-9 h-9 rounded-lg bg-navy-900 text-slate-300 hover:text-pastel-rose hover:border-pastel-rose border border-navy-750 flex items-center justify-center transition-colors" title="Email">
+                <i class="fa-regular fa-envelope"></i>
+              </a>
+            </div>
+
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- SKILLS SECTION (PASTEL BENTO GRID WITH CERTIFICATION BADGES) -->
-    <section id="skills" class="scroll-mt-32 space-y-6" data-aos="fade-up">
-      
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(02)</span>
-          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Technical Arsenal</h2>
-        </div>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-navy-900/80 relative">
+      <div class="max-w-6xl mx-auto">
         
-        <!-- Certifications Pills -->
-        <div class="flex flex-wrap gap-2">
-          <span class="px-3.5 py-1 rounded-full accent-pill text-xs font-mono font-bold flex items-center gap-1.5">
-            <i class="fa-solid fa-certificate text-[10px]"></i>
-            <span>Data Analytical Tools (Amypo)</span>
-          </span>
-          <span class="px-3.5 py-1 rounded-full bg-[#7FE0B2]/15 text-[#7FE0B2] border border-[#7FE0B2]/30 text-xs font-mono font-bold flex items-center gap-1.5">
-            <i class="fa-solid fa-certificate text-[10px]"></i>
-            <span>Excel (Simplilearn)</span>
-          </span>
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+          <span class="text-xs font-mono text-pastel-cyan uppercase tracking-widest bg-pastel-cyan/10 px-3 py-1 rounded-full border border-pastel-cyan/20">01 // Background</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">About Me</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-pastel-cyan to-pastel-purple mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- Narrative Card -->
+          <div class="lg:col-span-7 glass-card p-8 rounded-3xl flex flex-col justify-between" data-aos="fade-right">
+            <div>
+              <div class="flex items-center gap-3 text-pastel-cyan mb-4">
+                <i class="fa-solid fa-chart-line text-2xl"></i>
+                <h3 class="text-xl font-bold text-white">Turning Raw Data into Actionable Insights</h3>
+              </div>
+              
+              <!-- Exact Description provided by user -->
+              <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6 font-light">
+                "I am <strong class="text-white font-semibold">Dakshana Sri M</strong>, a B.Sc. Data Science student passionate about turning complex datasets into clear, actionable business intelligence. Leveraging Python, SQL, and Tableau, I build efficient data workflows, extract meaningful patterns, and create intuitive visual stories. I thrive on solving analytical challenges and am excited to apply my skills to real-world, data-driven projects."
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <div class="p-4 rounded-2xl bg-navy-900/80 border border-navy-800">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="p-2 rounded-lg bg-pastel-cyan/10 text-pastel-cyan"><i class="fa-solid fa-brain"></i></span>
+                    <h4 class="font-bold text-white text-sm">Analytical Mindset</h4>
+                  </div>
+                  <p class="text-xs text-slate-400">Specialized in pattern discovery, statistical validation, and translating metrics into business value.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-navy-900/80 border border-navy-800">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="p-2 rounded-lg bg-pastel-purple/10 text-pastel-purple"><i class="fa-solid fa-lightbulb"></i></span>
+                    <h4 class="font-bold text-white text-sm">Innovation Driven</h4>
+                  </div>
+                  <p class="text-xs text-slate-400">Selected for the prestigious PRICE ProtoSem 20-week industry problem incubation.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-navy-800 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400">
+              <span>📍 Coimbatore, Tamil Nadu, India</span>
+              <span>🎓 KCLAS - School of Data Science</span>
+            </div>
+          </div>
+
+          <!-- Academic & Education Card -->
+          <div class="lg:col-span-5 space-y-6 flex flex-col" data-aos="fade-left">
+            <div class="glass-card p-6 rounded-3xl flex-1 border-l-4 border-l-pastel-cyan">
+              <span class="text-xs font-mono text-pastel-cyan font-semibold uppercase tracking-wider">Education</span>
+              <h3 class="text-lg font-bold text-white mt-1">Bachelor of Science in Data Science</h3>
+              <p class="text-sm text-pastel-indigo font-medium">Kumaraguru College of Liberal Arts and Science (KCLAS)</p>
+              <p class="text-xs text-slate-400 mt-0.5">Kumaraguru Institutions • First Year (2025 – Present)</p>
+              
+              <div class="mt-4 pt-4 border-t border-navy-800 space-y-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-pastel-mint"></i>
+                  <span>Core Coursework: Python, Relational Databases & SQL, Statistics, Data Visualization</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-pastel-mint"></i>
+                  <span>Practical Data Analytics & Forensic Investigations</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-pastel-mint"></i>
+                  <span>Venture Prototyping & Entrepreneurship Bootcamp</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl border-l-4 border-l-pastel-amber">
+              <span class="text-xs font-mono text-pastel-amber font-semibold uppercase tracking-wider">Key Recognition</span>
+              <div class="flex items-center gap-3 mt-2">
+                <div class="w-10 h-10 rounded-xl bg-pastel-amber/10 text-pastel-amber flex items-center justify-center text-lg">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white">Mahatma Gandhi Merit Scholarship</h4>
+                  <p class="text-xs text-slate-400">Awarded for ranking in Top 10 academic excellence</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-navy-900/80 relative">
+      <div class="max-w-6xl mx-auto">
         
-        <!-- Card 1 -->
-        <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-lg font-bold border border-[#B8A7EA]/30">
-              <i class="fa-brands fa-python"></i>
-            </div>
-            <h3 class="text-base font-syne font-bold text-white">Languages & Querying</h3>
-            <p class="text-xs text-slate-400">Core statistical scripting & high-throughput querying.</p>
-          </div>
-          <ul class="space-y-2 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Python (Pandas, NumPy)</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">SQL & Dialects</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">R & Bash</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="4/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-slate-600"></i>
-              </div>
-            </li>
-          </ul>
+        <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+          <span class="text-xs font-mono text-pastel-purple uppercase tracking-widest bg-pastel-purple/10 px-3 py-1 rounded-full border border-pastel-purple/20">02 // Capabilities</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Technical Stack & Domain Skills</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-pastel-purple to-pastel-cyan mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-[#8BC8FE]/15 text-[#8BC8FE] flex items-center justify-center text-lg font-bold border border-[#8BC8FE]/30">
-              <i class="fa-solid fa-server"></i>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Category 1: Languages & Querying -->
+          <div class="glass-card p-6 rounded-2xl hover:shadow-glow-cyan transition-all" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-12 h-12 rounded-xl bg-pastel-cyan/10 text-pastel-cyan flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-code"></i>
             </div>
-            <h3 class="text-base font-syne font-bold text-white">Big Data & ETL</h3>
-            <p class="text-xs text-slate-400">Cloud warehousing, schema mapping & pipeline automation.</p>
-          </div>
-          <ul class="space-y-2 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Google BigQuery</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Informatica PowerCenter</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="4/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-slate-600"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Data Migrations</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="4/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-slate-600"></i>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-[#FFD166]/15 text-[#FFD166] flex items-center justify-center text-lg font-bold border border-[#FFD166]/30">
-              <i class="fa-solid fa-brain"></i>
+            <h3 class="text-lg font-bold text-white mb-2">Programming & DB</h3>
+            <p class="text-xs text-slate-400 mb-4">Building efficient pipelines and querying multi-table architectures.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-cyan font-mono text-xs border border-navy-800">Python</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-cyan font-mono text-xs border border-navy-800">SQL</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-cyan font-mono text-xs border border-navy-800">Data Structures</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-cyan font-mono text-xs border border-navy-800">Pandas / NumPy</span>
             </div>
-            <h3 class="text-base font-syne font-bold text-white">Machine & Deep Learning</h3>
-            <p class="text-xs text-slate-400">Pattern classification & telemetry anomaly detectors.</p>
           </div>
-          <ul class="space-y-2 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">IoT Anomaly Detection</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Scikit-Learn Modeling</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Deep Learning Basics</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="4/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-slate-600"></i>
-              </div>
-            </li>
-          </ul>
-        </div>
 
-        <!-- Card 4 -->
-        <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-[#7FE0B2]/15 text-[#7FE0B2] flex items-center justify-center text-lg font-bold border border-[#7FE0B2]/30">
+          <!-- Category 2: BI & Visualization -->
+          <div class="glass-card p-6 rounded-2xl hover:shadow-glow-purple transition-all" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 rounded-xl bg-pastel-purple/10 text-pastel-purple flex items-center justify-center text-xl mb-4">
               <i class="fa-solid fa-chart-pie"></i>
             </div>
-            <h3 class="text-base font-syne font-bold text-white">BI & Visualization</h3>
-            <p class="text-xs text-slate-400">Executive metrics, calculated models & visual suites.</p>
+            <h3 class="text-lg font-bold text-white mb-2">BI & Storytelling</h3>
+            <p class="text-xs text-slate-400 mb-4">Transforming complex datasets into intuitive visual dashboards.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-purple font-mono text-xs border border-navy-800">Tableau</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-purple font-mono text-xs border border-navy-800">Power BI</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-purple font-mono text-xs border border-navy-800">Visual Storytelling</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-purple font-mono text-xs border border-navy-800">KPI Dashboards</span>
+            </div>
           </div>
-          <ul class="space-y-2 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Microsoft Power BI</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Tableau Desktop</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
-              <span class="font-medium">Advanced Excel</span>
-              <div class="flex items-center gap-1 text-[#FFD166] text-[11px]" title="5/5 Stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </li>
-          </ul>
-        </div>
 
+          <!-- Category 3: Analytics & Forensics -->
+          <div class="glass-card p-6 rounded-2xl hover:shadow-glow-mint transition-all" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-12 h-12 rounded-xl bg-pastel-mint/10 text-pastel-mint flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Analytics & Forensics</h3>
+            <p class="text-xs text-slate-400 mb-4">Pattern detection, anomaly inspection, and structured forensics.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-mint font-mono text-xs border border-navy-800">Forensic Analytics</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-mint font-mono text-xs border border-navy-800">Exploratory Data</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-mint font-mono text-xs border border-navy-800">Pattern Mining</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-mint font-mono text-xs border border-navy-800">Data Cleansing</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Innovation & Systems -->
+          <div class="glass-card p-6 rounded-2xl hover:shadow-glow-cyan transition-all" data-aos="fade-up" data-aos-delay="400">
+            <div class="w-12 h-12 rounded-xl bg-pastel-amber/10 text-pastel-amber flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Systems & Venture</h3>
+            <p class="text-xs text-slate-400 mb-4">Real-world prototyping, industry innovation, and problem validation.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-amber font-mono text-xs border border-navy-800">Phygital Retail</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-amber font-mono text-xs border border-navy-800">IoT & Intelligent AI</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-amber font-mono text-xs border border-navy-800">Prototyping</span>
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-pastel-amber font-mono text-xs border border-navy-800">Venture Building</span>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- PROTOSEM SECTION (PRICE PROTOSEM 20-WEEK 3D FLIPPABLE FLASHCARDS) -->
-    <section id="protosem" class="scroll-mt-32 space-y-6" data-aos="fade-up">
+    <!-- PROTOSEM DEDICATED SECTION (Exact Specification Implementation) -->
+    <section id="protosem" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-navy-900/90 relative bg-gradient-to-b from-navy-950 via-navy-900/60 to-navy-950">
       
-      <!-- Section Intro Card -->
-      <div class="kintaro-card rounded-3xl p-8 sm:p-10 space-y-6">
-        
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-white/10 pb-5">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(03)</span>
-            <h2 class="text-2xl sm:text-4xl font-syne font-extrabold text-white tracking-tight">PRICE ProtoSem</h2>
-          </div>
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="px-3.5 py-1 rounded-full text-xs font-mono font-bold accent-pill">
-              Innovation Engineer Trainee
-            </span>
-            <span class="px-3.5 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 text-slate-300 border border-white/10">
-              20-Week Industry-Integrated Programme
-            </span>
-          </div>
-        </div>
+      <!-- Ambient decorative banner accent -->
+      <div class="absolute top-0 inset-x-0 h-px cyber-line"></div>
 
-        <!-- Description (Exact Content) -->
-        <div class="space-y-3 max-w-4xl text-slate-300 leading-relaxed text-sm sm:text-base">
-          <p>
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- SECTION INTRO -->
+        <div class="max-w-4xl mx-auto text-center mb-12" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pastel-cyan/10 border border-pastel-cyan/30 text-pastel-cyan text-xs font-mono tracking-widest uppercase mb-4">
+            <i class="fa-solid fa-cubes-stacked"></i> PROTOSEM
+          </div>
+          
+          <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            PRICE ProtoSem
+          </h2>
+          
+          <div class="flex flex-wrap items-center justify-center gap-3 mt-3">
+            <span class="text-sm font-semibold font-mono text-pastel-mint px-3 py-1 rounded-lg bg-pastel-mint/10 border border-pastel-mint/20">
+              Role: Innovation Engineer Trainee
+            </span>
+            <span class="text-sm font-medium font-mono text-pastel-purple px-3 py-1 rounded-lg bg-pastel-purple/10 border border-pastel-purple/20">
+              20-Week Industry-Integrated Innovation Programme
+            </span>
+          </div>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mt-6 text-center max-w-3xl mx-auto">
             Selected for a 20-week industry-integrated innovation programme focused on solving real-world retail and commerce challenges through AI, analytics, intelligent systems, IoT, prototyping, and entrepreneurship.
           </p>
-          <p>
+          <p class="text-slate-400 text-sm mt-2 max-w-2xl mx-auto">
             Working with industry problem statements to explore, develop, and validate practical technology solutions beyond conventional classroom learning.
           </p>
         </div>
 
-        <!-- 5 Programme Disciplines -->
-        <div class="pt-2">
-          <p class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">Programme Disciplines & Focus Areas:</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF8370]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-[#FF8370]/15 text-[#FF8370] flex items-center justify-center text-xs font-bold border border-[#FF8370]/30">
-                <i class="fa-solid fa-store"></i>
-              </div>
-              <span class="text-xs font-bold text-slate-200">Phygital Retail</span>
-            </div>
-
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#B8A7EA]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-xs font-bold border border-[#B8A7EA]/30">
-                <i class="fa-solid fa-brain"></i>
-              </div>
-              <span class="text-xs font-bold text-slate-200">AI & Analytics</span>
-            </div>
-
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#8BC8FE]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-[#8BC8FE]/15 text-[#8BC8FE] flex items-center justify-center text-xs font-bold border border-[#8BC8FE]/30">
-                <i class="fa-solid fa-microchip"></i>
-              </div>
-              <span class="text-xs font-bold text-slate-200">IoT Systems</span>
-            </div>
-
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FFD166]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-[#FFD166]/15 text-[#FFD166] flex items-center justify-center text-xs font-bold border border-[#FFD166]/30">
-                <i class="fa-solid fa-cube"></i>
-              </div>
-              <span class="text-xs font-bold text-slate-200">Prototyping</span>
-            </div>
-
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#7FE0B2]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-[#7FE0B2]/15 text-[#7FE0B2] flex items-center justify-center text-xs font-bold border border-[#7FE0B2]/30">
-                <i class="fa-solid fa-lightbulb"></i>
-              </div>
-              <span class="text-xs font-bold text-slate-200">Entrepreneurship</span>
-            </div>
+        <!-- 3. DOMAIN / FOCUS TAGS (Programme Disciplines) -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-16" data-aos="fade-up" data-aos-delay="100">
+          <div class="px-4 py-2 rounded-xl bg-navy-900/90 border border-pastel-cyan/30 text-pastel-cyan text-xs font-semibold tracking-wide flex items-center gap-2 hover:bg-pastel-cyan/10 transition-all shadow-sm">
+            <i class="fa-solid fa-store text-pastel-cyan"></i> Phygital Retail & Intelligent Commerce
+          </div>
+          <div class="px-4 py-2 rounded-xl bg-navy-900/90 border border-pastel-purple/30 text-pastel-purple text-xs font-semibold tracking-wide flex items-center gap-2 hover:bg-pastel-purple/10 transition-all shadow-sm">
+            <i class="fa-solid fa-microchip text-pastel-purple"></i> AI & Analytics
+          </div>
+          <div class="px-4 py-2 rounded-xl bg-navy-900/90 border border-pastel-mint/30 text-pastel-mint text-xs font-semibold tracking-wide flex items-center gap-2 hover:bg-pastel-mint/10 transition-all shadow-sm">
+            <i class="fa-solid fa-network-wired text-pastel-mint"></i> Intelligent Systems & IoT
+          </div>
+          <div class="px-4 py-2 rounded-xl bg-navy-900/90 border border-pastel-amber/30 text-pastel-amber text-xs font-semibold tracking-wide flex items-center gap-2 hover:bg-pastel-amber/10 transition-all shadow-sm">
+            <i class="fa-solid fa-drafting-compass text-pastel-amber"></i> Prototyping
+          </div>
+          <div class="px-4 py-2 rounded-xl bg-navy-900/90 border border-pastel-rose/30 text-pastel-rose text-xs font-semibold tracking-wide flex items-center gap-2 hover:bg-pastel-rose/10 transition-all shadow-sm">
+            <i class="fa-solid fa-rocket text-pastel-rose"></i> Entrepreneurship
           </div>
         </div>
 
-        <!-- 4-Phase Progression Rail -->
-        <div class="pt-4 mt-2 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs font-mono text-slate-400">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-[#FF8370]"></span>
-            <span class="font-bold text-slate-200">20-WEEK CONTINUOUS JOURNEY</span>
+        <!-- 12. PROGRAMME PROGRESS INDICATOR -->
+        <div class="max-w-4xl mx-auto mb-10 px-4" data-aos="fade-up">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+            <span class="text-pastel-cyan font-bold">WEEK 01</span>
+            <span>PHASE 01 (01-05)</span>
+            <span>PHASE 02 (06-10)</span>
+            <span>PHASE 03 (11-15)</span>
+            <span class="text-pastel-purple font-bold">WEEK 20</span>
           </div>
-          <div class="flex items-center gap-2 overflow-x-auto py-1 text-[11px]">
-            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white font-semibold">Phase 01 (W01–W05)</span>
-            <span class="text-slate-600">━━</span>
-            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white font-semibold">Phase 02 (W06–W10)</span>
-            <span class="text-slate-600">━━</span>
-            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white font-semibold">Phase 03 (W11–W15)</span>
-            <span class="text-slate-600">━━</span>
-            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white font-semibold">Phase 04 (W16–W20)</span>
+          <div class="w-full bg-navy-900 h-2 rounded-full overflow-hidden p-0.5 border border-navy-800 flex items-center">
+            <div class="h-full bg-gradient-to-r from-pastel-cyan via-pastel-purple to-pastel-mint rounded-full w-full opacity-80"></div>
           </div>
         </div>
 
-      </div>
-
-      <!-- 20-Week Interactive Flashcard Deck -->
-      <div class="space-y-6">
-        <!-- Phase Filter Tabs & Flashcard Controls -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-lg font-syne font-extrabold text-white flex items-center gap-2">
-              <span>ProtoSem 20-Week Flashcards</span>
-              <span class="text-xs font-mono font-normal text-[#FF8370] bg-[#FF8370]/10 px-2 py-0.5 rounded-full border border-[#FF8370]/20">Interactive Deck</span>
-            </h3>
-            <p class="text-xs font-mono text-slate-400">Click or tap any flashcard to flip between key objectives and field notes.</p>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2">
-            <!-- Flip All Toggle Button -->
-            <button id="toggleFlipAllBtn" class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/10 text-white border border-white/10 hover:bg-white/20 transition-all flex items-center gap-1.5 shadow-sm">
-              <i class="fa-solid fa-arrows-rotate text-[#FF8370] text-xs"></i>
-              <span id="flipAllText">Flip All Cards</span>
+        <!-- 7. PHASE NAVIGATION & INTERACTIVE CONTROLS -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 max-w-6xl mx-auto px-2" data-aos="fade-up">
+          
+          <!-- Phase Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2" id="phaseFilterGroup">
+            <button onclick="filterPhase('all')" class="phase-btn active px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-pastel-cyan text-navy-950 border border-pastel-cyan" data-phase="all">
+              ALL (20 WEEKS)
             </button>
-
-            <!-- Phase Navigation Tabs -->
-            <div class="flex flex-wrap gap-1 p-1 rounded-full pill-dock" id="phaseFilterGroup" role="tablist">
-              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all bg-[#FF8370] text-white shadow-sm" data-phase="all" role="tab" aria-selected="true">
-                ALL (01–20)
-              </button>
-              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="1" role="tab" aria-selected="false">
-                Phase 01
-              </button>
-              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="2" role="tab" aria-selected="false">
-                Phase 02
-              </button>
-              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="3" role="tab" aria-selected="false">
-                Phase 03
-              </button>
-              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="4" role="tab" aria-selected="false">
-                Phase 04
-              </button>
-            </div>
+            <button onclick="filterPhase(1)" class="phase-btn px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-navy-900 text-slate-300 border border-navy-800 hover:border-pastel-cyan/50 hover:text-pastel-cyan" data-phase="1">
+              PHASE 01 (01–05)
+            </button>
+            <button onclick="filterPhase(2)" class="phase-btn px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-navy-900 text-slate-300 border border-navy-800 hover:border-pastel-purple/50 hover:text-pastel-purple" data-phase="2">
+              PHASE 02 (06–10)
+            </button>
+            <button onclick="filterPhase(3)" class="phase-btn px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-navy-900 text-slate-300 border border-navy-800 hover:border-pastel-mint/50 hover:text-pastel-mint" data-phase="3">
+              PHASE 03 (11–15)
+            </button>
+            <button onclick="filterPhase(4)" class="phase-btn px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-navy-900 text-slate-300 border border-navy-800 hover:border-pastel-amber/50 hover:text-pastel-amber" data-phase="4">
+              PHASE 04 (16–20)
+            </button>
           </div>
-        </div>
 
-        <!-- 20 Flashcards Container (Populated via Data-Driven JS) -->
-        <div id="protosemWeeksContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          <!-- Reusable 3D Flashcards dynamically populated by JavaScript -->
-        </div>
-      </div>
-
-      <!-- Placeholder Story Notification Modal -->
-      <div id="protoSemModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4 transition-all duration-300">
-        <div class="kintaro-card max-w-md w-full rounded-3xl p-7 border border-[#FF8370]/40 space-y-4 shadow-2xl relative">
-          <button id="closeProtoSemModal" class="absolute top-5 right-5 text-slate-400 hover:text-white text-base focus:outline-none" aria-label="Close modal">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+          <!-- Forward and Backward Interactive Arrows -->
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-2xl bg-[#FF8370]/20 text-[#FF8370] flex items-center justify-center text-base border border-[#FF8370]/40 font-bold">
-              <i class="fa-solid fa-compass-drafting"></i>
-            </div>
-            <div>
-              <span id="modalWeekBadge" class="text-[11px] font-mono text-[#FF8370] font-bold tracking-wider uppercase">WEEK 01</span>
-              <h4 class="text-base font-syne font-bold text-white">Field Notes in Progress</h4>
-            </div>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Detailed retrospective story, technical insights, and prototype artifacts for this week will be published here as part of the continuous <strong>PRICE ProtoSem</strong> archive.
-          </p>
-          <div class="p-3 rounded-xl bg-black/50 border border-white/10 font-mono text-[11px] text-slate-400 flex items-center justify-between">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#FF8370] animate-pulse"></span>
-              <span>Status: Coming Soon</span>
-            </span>
-            <span class="text-[#FF8370] font-bold"><span id="modalWeekSlug">/protosem/week-01</span></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS & ACHIEVEMENTS SECTION -->
-    <section id="certifications" class="scroll-mt-32 space-y-6" data-aos="fade-up">
-      
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(04)</span>
-          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Certifications & Achievements</h2>
-        </div>
-        <span class="text-xs font-mono text-slate-400">Verified credentials & competitive recognitions</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Certification 1 -->
-        <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full accent-pill flex items-center gap-1.5">
-                <i class="fa-solid fa-certificate text-[11px]"></i>
-                <span>Certified Credential</span>
-              </span>
-              <span class="text-xs font-mono text-slate-500">Amypo</span>
-            </div>
-
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
-              Data Analytical Tools
-            </h3>
-
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Certified in professional data analytical methodologies, exploratory analytics, data wrangling, and statistical tools for industry problem solving.
-            </p>
-
-            <div class="space-y-2 pt-1 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Exploratory & Statistical Analysis</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Data Transformation & Cleaning</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Analytical Workflow Design</span></div>
-            </div>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-            <span class="text-slate-400">Issued by Amypo</span>
-            <span class="text-[#7FE0B2] font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-[10px]"></i> Verified</span>
-          </div>
-        </div>
-
-        <!-- Certification 2 -->
-        <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#7FE0B2]/15 text-[#7FE0B2] border border-[#7FE0B2]/30 flex items-center gap-1.5">
-                <i class="fa-solid fa-certificate text-[11px]"></i>
-                <span>Certified Credential</span>
-              </span>
-              <span class="text-xs font-mono text-slate-500">Simplilearn</span>
-            </div>
-
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
-              Excel for Data Analytics
-            </h3>
-
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Comprehensive certification covering advanced formulas, pivot tables, multi-parameter modeling, conditional logic, and spreadsheet-based reporting.
-            </p>
-
-            <div class="space-y-2 pt-1 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Advanced Lookup & Logical Formulas</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Pivot Tables & Slicers Modeling</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Data Visualization & Reporting</span></div>
-            </div>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-            <span class="text-slate-400">Issued by Simplilearn</span>
-            <span class="text-[#7FE0B2] font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-[10px]"></i> Verified</span>
-          </div>
-        </div>
-
-        <!-- Achievement 3 -->
-        <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#FFD166]/15 text-[#FFD166] border border-[#FFD166]/30 flex items-center gap-1.5">
-                <i class="fa-solid fa-trophy text-[11px]"></i>
-                <span>Fellowship Selection</span>
-              </span>
-              <span class="text-xs font-mono text-slate-500">PRICE ProtoSem</span>
-            </div>
-
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
-              Innovation Fellowship Selection
-            </h3>
-
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Competitively selected for the intensive 20-week industry-integrated innovation programme to design, prototype, and build intelligent commerce & retail IoT solutions.
-            </p>
-
-            <div class="space-y-2 pt-1 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FFD166] text-[10px]"></i><span>Selected from candidate pool</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FFD166] text-[10px]"></i><span>Direct industry statement prototyping</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FFD166] text-[10px]"></i><span>AI, IoT & Intelligent Systems R&D</span></div>
-            </div>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-            <span class="text-[#FFD166] font-bold">20-Week Programme</span>
-            <a href="#protosem" class="text-[#FF8370] font-bold hover:underline flex items-center gap-1"><span>View Flashcards</span> →</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SELECTED PROJECTS SECTION (PASTEL BENTO CASE STUDIES) -->
-    <section id="projects" class="scroll-mt-32 space-y-6" data-aos="fade-up">
-      
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(05)</span>
-          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Featured Projects</h2>
-        </div>
-        <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-xs font-mono text-[#FF8370] font-bold hover:underline flex items-center gap-1.5">
-          <span>Explore All on GitHub</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <!-- Project 1 -->
-        <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full accent-pill">
-                Machine Learning
-              </span>
-              <span class="text-xs font-mono text-slate-500">01 / 03</span>
-            </div>
-
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
-              IoT Network Traffic Anomaly Detection
-            </h3>
-
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Automated classification pipeline to spot anomalous traffic spikes, volumetric anomalies, and sensor malfunction signatures across simulated IoT telemetry streams.
-            </p>
-
-            <ul class="space-y-2 pt-1 text-xs text-slate-300">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Multivariable timestamp & payload analysis</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Isolation Forest & Random Forest models</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Intrusion confidence heatmaps</span></li>
-            </ul>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-            <div class="flex gap-1.5">
-              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#B8A7EA]">Python</span>
-              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#FF8370]">Scikit-Learn</span>
-            </div>
-            <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
-              <i class="fa-brands fa-github text-base"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#8BC8FE]/15 text-[#8BC8FE] border border-[#8BC8FE]/30">
-                Data Engineering
-              </span>
-              <span class="text-xs font-mono text-slate-500">02 / 03</span>
-            </div>
-
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
-              Automated Data Migration & ETL Engine
-            </h3>
-
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Automated extraction, validation, and staging pipelines to migrate transactional database tables into Google BigQuery warehouse schemas with error-handling.
-            </p>
-
-            <ul class="space-y-2 pt-1 text-xs text-slate-300">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#8BC8FE] text-[10px]"></i><span>Informatica workflow orchestration</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#8BC8FE] text-[10px]"></i><span>BigQuery partitioned table schemas</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#8BC8FE] text-[10px]"></i><span>Row reconciliation & integrity checks</span></li>
-            </ul>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-            <div class="flex gap-1.5">
-              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#8BC8FE]">BigQuery</span>
-              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#F472B6]">Informatica</span>
-            </div>
-            <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
-              <i class="fa-brands fa-github text-base"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#7FE0B2]/15 text-[#7FE0B2] border border-[#7FE0B2]/30">
-                BI & Analytics
-              </span>
-              <span class="text-xs font-mono text-slate-500">03 / 03</span>
-            </div>
-
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
-              Operational BI & Telemetry Suite
-            </h3>
-
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Interactive executive dashboards in Power BI and Tableau tracking pipeline velocity, anomaly frequency rates, and operational KPIs with DAX data models.
-            </p>
-
-            <ul class="space-y-2 pt-1 text-xs text-slate-300">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Custom DAX calculated hierarchies</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Temporal & spatial drill-down views</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Automated dataset refresh cycles</span></li>
-            </ul>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-            <div class="flex gap-1.5">
-              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#FBBF24]">Power BI</span>
-              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#7FE0B2]">Tableau</span>
-            </div>
-            <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
-              <i class="fa-brands fa-github text-base"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- INTERACTIVE TERMINAL / SANDBOX SECTION (PASTEL CONSOLE) -->
-    <section id="terminal-demo" class="scroll-mt-32 space-y-6" data-aos="fade-up">
-      
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(06)</span>
-          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Interactive Sandbox</h2>
-        </div>
-        <span class="text-xs font-mono text-slate-400">Query background, skills, certifications & ProtoSem</span>
-      </div>
-
-      <div class="kintaro-card rounded-3xl overflow-hidden shadow-2xl border border-white/10">
-        <!-- Terminal Header -->
-        <div class="px-6 py-4 bg-black/80 border-b border-white/10 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-[#FF8370] inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-[#FFD166] inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-[#7FE0B2] inline-block"></span>
-            <span class="ml-2 text-xs font-mono text-slate-400">dakshana@data-node:~</span>
-          </div>
-          <span class="text-xs font-mono text-[#FF8370] font-bold">Type 'help' for commands</span>
-        </div>
-
-        <!-- Terminal Body -->
-        <div id="cliOutput" class="p-6 font-mono text-xs sm:text-sm text-slate-300 space-y-3 bg-black/60 h-64 overflow-y-auto">
-          <p class="text-slate-400">Welcome to Dakshana's interactive console! 🚀</p>
-          <p class="text-slate-400">Type <span class="text-[#FF8370] font-bold">help</span> or click prompt chips below to query data.</p>
-        </div>
-
-        <!-- CLI Input Area -->
-        <div class="p-4 bg-black/80 border-t border-white/10 flex items-center gap-2">
-          <span class="text-[#FF8370] font-mono text-sm pl-2 font-bold">$</span>
-          <input 
-            type="text" 
-            id="cliInput" 
-            placeholder="e.g. certifications, protosem, skills, projects, contact, resume, clear..." 
-            class="flex-1 bg-transparent font-mono text-sm text-white placeholder-slate-500 focus:outline-none"
-            autocomplete="off"
-          />
-          <button id="cliSubmitBtn" class="px-5 py-2 rounded-full accent-btn font-bold text-xs font-mono">
-            Execute
-          </button>
-        </div>
-
-        <!-- Quick Chips -->
-        <div class="px-6 py-3 bg-black/50 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono">
-          <span class="text-slate-500 self-center text-[11px]">Quick:</span>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="certifications">certifications</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="protosem">protosem</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="skills">skills</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="projects">projects</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="education">education</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="contact">contact</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="clear">clear</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT & CONNECT SECTION -->
-    <section id="contact" class="scroll-mt-32 space-y-6" data-aos="fade-up">
-      
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(07)</span>
-          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Let's Connect</h2>
-        </div>
-        <span class="text-xs font-mono text-slate-400">Open for Data Science roles & collaborations</span>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <!-- Left: Quick Info Cards -->
-        <div class="lg:col-span-5 space-y-4">
-          <a href="mailto:dakshanasrim1406@gmail.com" class="kintaro-card rounded-2xl p-5 block group">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-[#FF8370]/15 text-[#FF8370] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#FF8370]/30">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <div>
-                <p class="text-[11px] font-mono text-slate-400">Email Coordinates</p>
-                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#FF8370] transition-colors">dakshanasrim1406@gmail.com</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" rel="noopener noreferrer" class="kintaro-card rounded-2xl p-5 block group">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-[#8BC8FE]/20 text-[#8BC8FE] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#8BC8FE]/30">
-                <i class="fa-brands fa-linkedin"></i>
-              </div>
-              <div>
-                <p class="text-[11px] font-mono text-slate-400">LinkedIn Profile</p>
-                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#8BC8FE] transition-colors">linkedin.com/in/dakshana-sri-m</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://github.com/Dakshana-sri-m" target="_blank" rel="noopener noreferrer" class="kintaro-card rounded-2xl p-5 block group">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#B8A7EA]/30">
-                <i class="fa-brands fa-github"></i>
-              </div>
-              <div>
-                <p class="text-[11px] font-mono text-slate-400">GitHub Repositories</p>
-                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#FF8370] transition-colors">github.com/Dakshana-sri-m</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Right: Message Form -->
-        <div class="lg:col-span-7">
-          <form class="kintaro-card rounded-3xl p-8 space-y-4" onsubmit="event.preventDefault(); alert('Thank you for reaching out, Dakshana will get back to you shortly!');">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-mono font-bold text-slate-300 mb-1.5">Your Name</label>
-                <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm" />
-              </div>
-              <div>
-                <label class="block text-xs font-mono font-bold text-slate-300 mb-1.5">Your Email</label>
-                <input type="email" required placeholder="jane@example.com" class="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm" />
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono font-bold text-slate-300 mb-1.5">Subject / Opportunity</label>
-              <input type="text" required placeholder="Data Engineering / ProtoSem Collaboration" class="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm" />
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono font-bold text-slate-300 mb-1.5">Message</label>
-              <textarea rows="4" required placeholder="Hi Dakshana, we would love to discuss..." class="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm resize-none"></textarea>
-            </div>
-
-            <button type="submit" class="w-full py-4 rounded-full accent-btn font-syne font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
-              <i class="fa-solid fa-paper-plane text-xs"></i>
-              <span>Send Message</span>
+            <button id="prevWeekBtn" onclick="navigateWeek(-1)" class="w-10 h-10 rounded-xl bg-navy-900 border border-navy-750 text-slate-300 hover:text-pastel-cyan hover:border-pastel-cyan flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-md" title="Previous Weeks" aria-label="Previous Weeks">
+              <i class="fa-solid fa-chevron-left"></i>
             </button>
-          </form>
+            <button id="nextWeekBtn" onclick="navigateWeek(1)" class="w-10 h-10 rounded-xl bg-navy-900 border border-navy-750 text-slate-300 hover:text-pastel-cyan hover:border-pastel-cyan flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-md" title="Next Weeks" aria-label="Next Weeks">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- 4. THE 20-WEEK JOURNEY CONTAINER (Data-Driven Architecture) -->
+        <div class="max-w-6xl mx-auto">
+          <div id="weeksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            <!-- Dynamic 20 week cards populated by JavaScript (safe schema without fake data) -->
+          </div>
+        </div>
+
+        <!-- Note on Future Stories -->
+        <div class="text-center mt-12 text-xs font-mono text-slate-500 max-w-xl mx-auto flex items-center justify-center gap-2">
+          <i class="fa-solid fa-book-bookmark text-pastel-cyan/70"></i>
+          <span>Future story & field notes will connect directly to each week card without altering layout.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CERTIFICATES & RECOGNITION SECTION -->
+    <section id="certificates" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-navy-900/80 relative">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+          <span class="text-xs font-mono text-pastel-mint uppercase tracking-widest bg-pastel-mint/10 px-3 py-1 rounded-full border border-pastel-mint/20">03 // Certifications</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Verified Certifications & Training</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-pastel-mint to-pastel-cyan mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Certificate 1: Deloitte -->
+          <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-cyan/40 hover:shadow-glow-cyan transition-all group" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-lg bg-navy-900 font-mono text-[10px] text-pastel-cyan border border-pastel-cyan/20">
+                  MARCH 28, 2026
+                </span>
+                <i class="fa-solid fa-shield-halved text-pastel-cyan text-lg"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-pastel-cyan transition-colors">Deloitte</h3>
+              <p class="text-sm font-semibold text-pastel-cyan mt-1">Data Analytics Job Simulation</p>
+              <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                Completed comprehensive practical tasks in <strong>Data Analysis</strong> and <strong>Forensic Technology</strong> issued via Forage.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-navy-800 text-[11px] font-mono text-slate-500 flex items-center justify-between">
+              <span>Auth: Tina McCreery (CHRO)</span>
+              <span class="text-pastel-mint"><i class="fa-solid fa-circle-check"></i> Verified</span>
+            </div>
+          </div>
+
+          <!-- Certificate 2: River Venture Studios Singapore -->
+          <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-purple/40 hover:shadow-glow-purple transition-all group" data-aos="fade-up" data-aos-delay="200">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-lg bg-navy-900 font-mono text-[10px] text-pastel-purple border border-pastel-purple/20">
+                  FEB 9–10, 2026
+                </span>
+                <i class="fa-solid fa-lightbulb text-pastel-purple text-lg"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-pastel-purple transition-colors">River Venture Studios, Singapore</h3>
+              <p class="text-sm font-semibold text-pastel-purple mt-1">Entrepreneurship & Venture Building Bootcamp</p>
+              <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                Two-Day intensive Venture Building Bootcamp conducted in association with Kumaraguru Institutions & Dr. Viveka Kalidasan (Founder/CEO, River Ventures).
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-navy-800 text-[11px] font-mono text-slate-500 flex items-center justify-between">
+              <span>Kumaraguru × River Studios</span>
+              <span class="text-pastel-mint"><i class="fa-solid fa-circle-check"></i> Verified</span>
+            </div>
+          </div>
+
+          <!-- Certificate 3: Ampyo -->
+          <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-mint/40 hover:shadow-glow-mint transition-all group" data-aos="fade-up" data-aos-delay="300">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-lg bg-navy-900 font-mono text-[10px] text-pastel-mint border border-pastel-mint/20">
+                  PROFESSIONAL SKILL
+                </span>
+                <i class="fa-solid fa-chart-pie text-pastel-mint text-lg"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-pastel-mint transition-colors">Ampyo</h3>
+              <p class="text-sm font-semibold text-pastel-mint mt-1">Data Analytical Tools Certification</p>
+              <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                Rigorous training and practical hands-on proficiency in modern analytical toolkits, data querying pipelines, and business visualization software.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-navy-800 text-[11px] font-mono text-slate-500 flex items-center justify-between">
+              <span>Data Analytical Suite</span>
+              <span class="text-pastel-mint"><i class="fa-solid fa-circle-check"></i> Verified</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-navy-900/80 relative">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+          <span class="text-xs font-mono text-pastel-amber uppercase tracking-widest bg-pastel-amber/10 px-3 py-1 rounded-full border border-pastel-amber/20">04 // Honors</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Achievements & Accolades</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-pastel-amber to-pastel-rose mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-8 glass-card p-8 rounded-3xl border border-pastel-amber/30 relative overflow-hidden" data-aos="fade-right">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-pastel-amber/10 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-pastel-amber/15 text-pastel-amber flex items-center justify-center text-2xl shrink-0 border border-pastel-amber/30">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pastel-amber/10 text-pastel-amber text-[11px] font-mono font-semibold">
+                  <span>AWARDED ON MARCH 26, 2026</span>
+                </div>
+                <h3 class="text-2xl font-extrabold text-white">Mahatma Gandhi Merit Scholarship</h3>
+                <p class="text-sm font-semibold text-pastel-amber">Kumaraguru Institutions & Kumaraguru College of Liberal Arts and Science</p>
+                <p class="text-slate-300 text-sm leading-relaxed pt-2">
+                  Recognized and awarded the prestigious institutional merit scholarship for achieving meritorious rank in the <strong>Top 10</strong> of the class during the Academic Year 2025–2026.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4 text-xs font-mono text-slate-400">
+                  <span>Signed by: Dr. Deepesh (Principal i/c, KCLAS)</span>
+                  <span>•</span>
+                  <span>Shri. Shankar Vanavarayar (President, KI)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 glass-card p-6 rounded-3xl space-y-4 text-center border border-navy-800" data-aos="fade-left">
+            <div class="w-12 h-12 rounded-xl bg-pastel-mint/10 text-pastel-mint flex items-center justify-center text-xl mx-auto">
+              <i class="fa-solid fa-users-gear"></i>
+            </div>
+            <h4 class="text-base font-bold text-white">Innovation Cohort Member</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Selected into the selective PRICE ProtoSem Innovation Engineer Cohort tackling real-world industry problem statements.
+            </p>
+            <div class="pt-2">
+              <a href="#protosem" class="text-xs font-mono text-pastel-cyan hover:underline inline-flex items-center gap-1">
+                View 20-Week Plan <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-navy-900/80 relative">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+          <span class="text-xs font-mono text-pastel-rose uppercase tracking-widest bg-pastel-rose/10 px-3 py-1 rounded-full border border-pastel-rose/20">05 // Connect</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Let's Connect & Collaborate</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-pastel-rose to-pastel-purple mx-auto mt-4 rounded-full"></div>
+          <p class="text-slate-400 text-sm mt-3">Open for Data Science internships, BI projects, and collaborative research.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
+          
+          <!-- Email Card -->
+          <a href="mailto:dakshanasrim1406@gmail.com" class="glass-card p-6 rounded-3xl text-center group hover:border-pastel-rose/50 hover:shadow-glow-cyan transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-pastel-rose/10 text-pastel-rose flex items-center justify-center text-xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">Direct Email</h3>
+            <p class="text-xs font-mono text-pastel-rose mt-1 break-all">dakshanasrim1406@gmail.com</p>
+            <span class="mt-4 inline-block text-[11px] font-mono text-slate-400 group-hover:text-pastel-cyan">Send a Message &rarr;</span>
+          </a>
+
+          <!-- LinkedIn Card -->
+          <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="glass-card p-6 rounded-3xl text-center group hover:border-pastel-cyan/50 hover:shadow-glow-cyan transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-pastel-cyan/10 text-pastel-cyan flex items-center justify-center text-xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">LinkedIn Profile</h3>
+            <p class="text-xs font-mono text-pastel-cyan mt-1">/in/dakshana-sri-m</p>
+            <span class="mt-4 inline-block text-[11px] font-mono text-slate-400 group-hover:text-pastel-cyan">Connect on LinkedIn &rarr;</span>
+          </a>
+
+          <!-- GitHub Card -->
+          <a href="https://github.com/Dakshana-sri-m" target="_blank" class="glass-card p-6 rounded-3xl text-center group hover:border-pastel-purple/50 hover:shadow-glow-purple transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-pastel-purple/10 text-pastel-purple flex items-center justify-center text-xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">GitHub Repositories</h3>
+            <p class="text-xs font-mono text-pastel-purple mt-1">@Dakshana-sri-m</p>
+            <span class="mt-4 inline-block text-[11px] font-mono text-slate-400 group-hover:text-pastel-purple">View Code & Projects &rarr;</span>
+          </a>
+
+        </div>
+
+        <!-- Quick Resume Download CTA Bar -->
+        <div class="mt-12 p-6 glass-card rounded-3xl text-center flex flex-col sm:flex-row items-center justify-between gap-4 border border-pastel-cyan/20">
+          <div class="text-left">
+            <h4 class="font-bold text-white text-base">Need a formal copy of my credentials?</h4>
+            <p class="text-xs text-slate-400">View or print my clean, ATS-optimized one-page resume.</p>
+          </div>
+          <a href="resume.html" target="_blank" class="px-6 py-2.5 rounded-xl font-bold font-mono text-xs text-navy-950 bg-pastel-cyan hover:bg-pastel-cyan/90 transition-all flex items-center gap-2 shrink-0">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> OPEN ATS RESUME
+          </a>
         </div>
 
       </div>
@@ -1302,432 +780,183 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 px-4 relative z-10 bg-[#0A0D15]">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-[#FF8370]"></span>
-        <span>© <span id="currentYear"></span> Dakshana Sri M. All rights reserved.</span>
-      </div>
-
-      <div class="flex items-center gap-6">
-        <a href="#hero" class="hover:text-[#FF8370] transition-colors">Back to Top ↑</a>
-        <a href="#protosem" class="hover:text-[#FF8370] transition-colors">ProtoSem</a>
-        <a href="resume.html" class="hover:text-[#FF8370] transition-colors">ATS Resume</a>
-        <a href="https://github.com/Dakshana-sri-m" target="_blank" class="hover:text-white transition-colors">GitHub</a>
-        <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="hover:text-[#8BC8FE] transition-colors">LinkedIn</a>
+  <!-- Footer -->
+  <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-navy-900 bg-navy-950/90 text-center text-xs text-slate-500 font-mono">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; <span id="year"></span> Dakshana Sri M. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="#home" class="hover:text-pastel-cyan transition-colors">Back to top ↑</a>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts: Theme Switcher, Typed.js, Live Clock, AOS, Dynamic Architecture -->
+  <!-- Scripts: Typed.js, AOS, Vanilla-Tilt -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
   <script>
-    // Initialize AOS
+    // Set Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Initialize AOS Animations (Smooth Scroll Reveals)
     AOS.init({
       once: true,
       duration: 800,
+      offset: 60,
       easing: 'ease-out-cubic',
-      offset: 40
     });
 
-    // Current Year
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    // Initialize Typed.js for Dynamic Role Display
+    new Typed('#typed', {
+      strings: [
+        'B.Sc. Data Science Student',
+        'Innovation Engineer Trainee @ ProtoSem',
+        'Python & SQL Developer',
+        'Tableau & BI Visual Storyteller'
+      ],
+      typeSpeed: 45,
+      backSpeed: 30,
+      backDelay: 1800,
+      loop: true
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
 
     // ==========================================
-    // THEME SWITCHER (DARK / LIGHT MODE)
+    // 20-WEEK PROTOSEM DATA & INTERACTION SYSTEM
     // ==========================================
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const htmlElement = document.documentElement;
-
-    // Check saved theme or default to dark
-    const savedTheme = localStorage.getItem('site-theme') || 'dark';
-    if (savedTheme === 'light') {
-      htmlElement.classList.remove('dark');
-      htmlElement.classList.add('light');
-    } else {
-      htmlElement.classList.add('dark');
-      htmlElement.classList.remove('light');
-    }
-
-    if (themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', () => {
-        if (htmlElement.classList.contains('dark')) {
-          htmlElement.classList.remove('dark');
-          htmlElement.classList.add('light');
-          localStorage.setItem('site-theme', 'light');
-        } else {
-          htmlElement.classList.add('dark');
-          htmlElement.classList.remove('light');
-          localStorage.setItem('site-theme', 'dark');
-        }
-      });
-    }
-
-    // ==========================================
-    // LIVE REAL-TIME CLOCK WIDGET (SYNCED TO IST)
-    // ==========================================
-    function updateLiveClock() {
-      const clockElement = document.getElementById('liveClock');
-      if (!clockElement) return;
-
-      const now = new Date();
-      // Format to Indian Standard Time (IST) or User Local
-      const options = {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-      };
-      const timeFormatter = new Intl.DateTimeFormat('en-US', options);
-      clockElement.textContent = timeFormatter.format(now);
-    }
-    setInterval(updateLiveClock, 1000);
-    updateLiveClock();
-
-    // ==========================================
-    // TYPED.JS DYNAMIC TEXT ANIMATION IN HERO
-    // ==========================================
-    if (document.getElementById('typedHeroText')) {
-      new Typed('#typedHeroText', {
-        strings: [
-          "B.Sc. Data Science Candidate",
-          "PRICE ProtoSem Innovation Trainee",
-          "Data Analyst & Pipeline Engineer",
-          "Machine Learning & Anomaly Specialist",
-          "Power BI & Tableau Data Visualizer"
-        ],
-        typeSpeed: 45,
-        backSpeed: 25,
-        backDelay: 1800,
-        startDelay: 400,
-        loop: true,
-        showCursor: true,
-        cursorChar: '|'
-      });
-    }
-
-    // ==========================================
-    // PROTOSEM 20-WEEK FLASHCARD ARCHITECTURE & DATA
-    // ==========================================
-    const protoSemWeekTopics = [
-      { title: "Retail Ecosystem Discovery", desc: "Mapping phygital commerce friction points and framing problem statement." },
-      { title: "Customer Persona & Audits", desc: "Identifying shopper journeys, store drop-offs, and behavioral metrics." },
-      { title: "IoT Telemetry Architecture", desc: "Selecting smart sensor arrays and formulating data telemetry streams." },
-      { title: "Data Pipeline Ingestion", desc: "Setting up ETL flows for high-frequency sensor readings." },
-      { title: "Phase 01 Gate Review", desc: "Milestone demonstration, proof-of-concept audit, and mentor feedback." },
-      { title: "Feature Engineering & Prep", desc: "Wrangling noisy telemetry and generating predictive features." },
-      { title: "ML Anomaly Detection", desc: "Training baseline models to identify irregular sensor patterns." },
-      { title: "Edge & Cloud Gateway", desc: "Connecting IoT hardware gateways to cloud data storage." },
-      { title: "Stream Processing", desc: "Optimizing real-time event filtering and rule-based alerts." },
-      { title: "Phase 02 Gate Review", desc: "Model accuracy validation, latency benchmarks, and pipeline checks." },
-      { title: "Warehouse Optimization", desc: "Partitioning BigQuery schemas and indexing tables for analytics." },
-      { title: "Power BI DAX Dashboard", desc: "Building executive KPI reports and real-time operational views." },
-      { title: "Hardware Integration", desc: "Enclosing sensor nodes and stress-testing physical reliability." },
-      { title: "Field Telemetry Trials", desc: "Simulating live retail traffic and capturing anomaly logs." },
-      { title: "Phase 03 Gate Review", desc: "Integrated software-hardware system demo and evaluation." },
-      { title: "Full-Stack System Sync", desc: "Unifying ML models, data pipelines, and visual analytics suites." },
-      { title: "Performance Benchmarking", desc: "Load testing, latency reduction, and reliability hardening." },
-      { title: "Commercialization Model", desc: "Cost-benefit modeling, unit economics, and business viability." },
-      { title: "Executive Demo Polish", desc: "Refining prototype demonstration and final presentation deck." },
-      { title: "Fellowship Graduation", desc: "Final PRICE ProtoSem showcase and continuous R&D transition." }
+    const protoSemWeeks = [
+      { week: 1, phase: 1, title: "", slug: "week-01", status: "placeholder", phaseLabel: "PHASE 01" },
+      { week: 2, phase: 1, title: "", slug: "week-02", status: "placeholder", phaseLabel: "PHASE 01" },
+      { week: 3, phase: 1, title: "", slug: "week-03", status: "placeholder", phaseLabel: "PHASE 01" },
+      { week: 4, phase: 1, title: "", slug: "week-04", status: "placeholder", phaseLabel: "PHASE 01" },
+      { week: 5, phase: 1, title: "", slug: "week-05", status: "placeholder", phaseLabel: "PHASE 01" },
+      
+      { week: 6, phase: 2, title: "", slug: "week-06", status: "placeholder", phaseLabel: "PHASE 02" },
+      { week: 7, phase: 2, title: "", slug: "week-07", status: "placeholder", phaseLabel: "PHASE 02" },
+      { week: 8, phase: 2, title: "", slug: "week-08", status: "placeholder", phaseLabel: "PHASE 02" },
+      { week: 9, phase: 2, title: "", slug: "week-09", status: "placeholder", phaseLabel: "PHASE 02" },
+      { week: 10, phase: 2, title: "", slug: "week-10", status: "placeholder", phaseLabel: "PHASE 02" },
+      
+      { week: 11, phase: 3, title: "", slug: "week-11", status: "placeholder", phaseLabel: "PHASE 03" },
+      { week: 12, phase: 3, title: "", slug: "week-12", status: "placeholder", phaseLabel: "PHASE 03" },
+      { week: 13, phase: 3, title: "", slug: "week-13", status: "placeholder", phaseLabel: "PHASE 03" },
+      { week: 14, phase: 3, title: "", slug: "week-14", status: "placeholder", phaseLabel: "PHASE 03" },
+      { week: 15, phase: 3, title: "", slug: "week-15", status: "placeholder", phaseLabel: "PHASE 03" },
+      
+      { week: 16, phase: 4, title: "", slug: "week-16", status: "placeholder", phaseLabel: "PHASE 04" },
+      { week: 17, phase: 4, title: "", slug: "week-17", status: "placeholder", phaseLabel: "PHASE 04" },
+      { week: 18, phase: 4, title: "", slug: "week-18", status: "placeholder", phaseLabel: "PHASE 04" },
+      { week: 19, phase: 4, title: "", slug: "week-19", status: "placeholder", phaseLabel: "PHASE 04" },
+      { week: 20, phase: 4, title: "", slug: "week-20", status: "placeholder", phaseLabel: "PHASE 04" }
     ];
 
-    const protoSemWeeks = protoSemWeekTopics.map((topic, i) => {
-      const weekNum = i + 1;
-      const formattedNum = weekNum < 10 ? `0${weekNum}` : `${weekNum}`;
-      const phaseNum = Math.ceil(weekNum / 5);
-      return {
-        week: weekNum,
-        phase: phaseNum,
-        label: `WEEK ${formattedNum}`,
-        slug: `week-${formattedNum}`,
-        phaseName: `Phase 0${phaseNum}`,
-        title: topic.title,
-        desc: topic.desc,
-        status: "ACTIVE R&D",
-        sub: "FLIP FOR SUMMARY"
-      };
-    });
+    let currentActivePhase = 'all';
 
-    const protosemWeeksContainer = document.getElementById('protosemWeeksContainer');
-    const protoSemModal = document.getElementById('protoSemModal');
-    const closeProtoSemModal = document.getElementById('closeProtoSemModal');
-    const modalWeekBadge = document.getElementById('modalWeekBadge');
-    const modalWeekSlug = document.getElementById('modalWeekSlug');
-    const phaseTabBtns = document.querySelectorAll('.phase-tab-btn');
-    const toggleFlipAllBtn = document.getElementById('toggleFlipAllBtn');
-    const flipAllText = document.getElementById('flipAllText');
-    let areAllFlipped = false;
+    function renderWeeks(phaseFilter = 'all') {
+      const container = document.getElementById('weeksGrid');
+      container.innerHTML = '';
 
-    function renderProtoSemCards(filterPhase = 'all') {
-      if (!protosemWeeksContainer) return;
-      protosemWeeksContainer.innerHTML = '';
-      areAllFlipped = false;
-      if (flipAllText) flipAllText.textContent = "Flip All Cards";
-
-      const filteredWeeks = filterPhase === 'all' 
+      const filtered = phaseFilter === 'all' 
         ? protoSemWeeks 
-        : protoSemWeeks.filter(w => w.phase === parseInt(filterPhase));
+        : protoSemWeeks.filter(w => w.phase === parseInt(phaseFilter));
 
-      filteredWeeks.forEach(item => {
-        const scene = document.createElement('div');
-        scene.className = "flashcard-scene";
+      filtered.forEach(item => {
+        const weekPad = String(item.week).padStart(2, '0');
+        
+        // Colors corresponding to phases
+        let phaseColor = 'text-pastel-cyan border-pastel-cyan/30';
+        let badgeBg = 'bg-pastel-cyan/10 text-pastel-cyan';
+        if (item.phase === 2) { phaseColor = 'text-pastel-purple border-pastel-purple/30'; badgeBg = 'bg-pastel-purple/10 text-pastel-purple'; }
+        if (item.phase === 3) { phaseColor = 'text-pastel-mint border-pastel-mint/30'; badgeBg = 'bg-pastel-mint/10 text-pastel-mint'; }
+        if (item.phase === 4) { phaseColor = 'text-pastel-amber border-pastel-amber/30'; badgeBg = 'bg-pastel-amber/10 text-pastel-amber'; }
 
-        scene.innerHTML = `
-          <div class="flashcard-inner cursor-pointer" tabindex="0" role="button" aria-label="${item.label} Flashcard - Click to flip">
-            
-            <!-- FLASHCARD FRONT -->
-            <div class="flashcard-front kintaro-card p-4 sm:p-5 flex flex-col justify-between hover:border-[#FF8370]/50 transition-all">
-              <div class="space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full accent-pill">
-                    ${item.phaseName}
-                  </span>
-                  <span class="text-[10px] font-mono text-slate-500">
-                    ${item.week < 10 ? '0' + item.week : item.week}/20
-                  </span>
-                </div>
+        const card = document.createElement('a');
+        card.href = `#protosem-week-${weekPad}`;
+        card.className = `group relative glass-card p-5 rounded-2xl border transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-glow-cyan flex flex-col justify-between cursor-pointer overflow-hidden block`;
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('title', `WEEK ${weekPad} - Field Notes in Progress`);
+        
+        card.onclick = (e) => {
+          e.preventDefault();
+          alert(`📖 ProtoSem WEEK ${weekPad} [Phase 0${item.phase}]\n\nStatus: Field notes & project archive currently in progress.\nDetailed blog documentation will connect directly here soon!`);
+        };
 
-                <div class="pt-1">
-                  <h4 class="text-base font-syne font-extrabold text-white flex items-center justify-between">
-                    <span>${item.label}</span>
-                    <i class="fa-solid fa-arrow-rotate-right text-xs text-[#FF8370]"></i>
-                  </h4>
-                  <p class="text-xs font-semibold text-slate-200 mt-1 line-clamp-1">
-                    ${item.title}
-                  </p>
-                </div>
-              </div>
-
-              <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                <span class="flex items-center gap-1.5 text-[#FF8370] font-bold">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#FF8370] animate-ping"></span>
-                  <span>Flip Card 🔄</span>
-                </span>
-                <span class="text-slate-500">Tap to Reveal</span>
-              </div>
+        card.innerHTML = `
+          <!-- Top Metadata -->
+          <div class="flex items-center justify-between pb-3 border-b border-navy-800">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded ${badgeBg}">
+              Phase 0${item.phase}
+            </span>
+            <div class="flex items-center gap-1 text-slate-500 group-hover:text-pastel-cyan transition-colors">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
             </div>
+          </div>
 
-            <!-- FLASHCARD BACK -->
-            <div class="flashcard-back kintaro-card p-4 sm:p-5 flex flex-col justify-between bg-slate-950 border border-[#FF8370]/40">
-              <div class="space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-mono font-bold text-[#FF8370] uppercase">
-                    ${item.label} • Key Focus
-                  </span>
-                  <span class="text-[10px] font-mono text-slate-400">Back</span>
-                </div>
+          <!-- Main Week Heading -->
+          <div class="my-4">
+            <p class="font-mono text-2xl font-extrabold text-white group-hover:text-pastel-cyan transition-colors">
+              WEEK ${weekPad}
+            </p>
+            <p class="text-[11px] font-mono tracking-wide text-slate-400 mt-1 uppercase">
+              FIELD NOTES IN PROGRESS
+            </p>
+          </div>
 
-                <div>
-                  <h5 class="text-xs font-syne font-bold text-white">${item.title}</h5>
-                  <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">
-                    ${item.desc}
-                  </p>
-                </div>
-              </div>
-
-              <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono">
-                <span class="text-slate-400 hover:text-white flex items-center gap-1">
-                  <i class="fa-solid fa-arrow-rotate-left text-[9px]"></i> Flip Back
-                </span>
-                <button class="open-notes-btn px-2 py-0.5 rounded-md bg-[#FF8370] text-white font-bold hover:bg-[#E26D5C] transition-colors" data-week="${item.label}" data-phase="${item.phaseName}" data-slug="${item.slug}">
-                  Field Notes 📖
-                </button>
-              </div>
-            </div>
-
+          <!-- Footer State -->
+          <div class="pt-3 border-t border-navy-800 flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-pastel-cyan/60 animate-ping"></span>
+              <span>COMING SOON</span>
+            </span>
+            <span class="group-hover:translate-x-1 transition-transform text-slate-400 group-hover:text-pastel-cyan">
+              &rarr;
+            </span>
           </div>
         `;
-
-        const inner = scene.querySelector('.flashcard-inner');
-
-        // Flip Card on Click (unless clicking the modal button)
-        inner.addEventListener('click', (e) => {
-          if (e.target.closest('.open-notes-btn')) {
-            const btn = e.target.closest('.open-notes-btn');
-            const week = btn.getAttribute('data-week');
-            const phase = btn.getAttribute('data-phase');
-            const slug = btn.getAttribute('data-slug');
-            if (modalWeekBadge) modalWeekBadge.textContent = `${week} • ${phase}`;
-            if (modalWeekSlug) modalWeekSlug.textContent = `/protosem/${slug}`;
-            if (protoSemModal) protoSemModal.classList.remove('hidden');
-            window.location.hash = `protosem-${slug}`;
-            return;
-          }
-          scene.classList.toggle('is-flipped');
-        });
-
-        // Keyboard accessibility (Space / Enter)
-        inner.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            scene.classList.toggle('is-flipped');
-          }
-        });
-
-        protosemWeeksContainer.appendChild(scene);
+        container.appendChild(card);
       });
     }
 
-    // Toggle Flip All Cards Button
-    if (toggleFlipAllBtn) {
-      toggleFlipAllBtn.addEventListener('click', () => {
-        const scenes = document.querySelectorAll('.flashcard-scene');
-        areAllFlipped = !areAllFlipped;
-        scenes.forEach(scene => {
-          if (areAllFlipped) {
-            scene.classList.add('is-flipped');
-          } else {
-            scene.classList.remove('is-flipped');
-          }
-        });
-        if (flipAllText) {
-          flipAllText.textContent = areAllFlipped ? "Reset All Cards" : "Flip All Cards";
+    function filterPhase(phase) {
+      currentActivePhase = phase;
+      
+      // Update UI button states
+      document.querySelectorAll('.phase-btn').forEach(btn => {
+        const btnPhase = btn.getAttribute('data-phase');
+        if (btnPhase == phase) {
+          btn.className = "phase-btn active px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-pastel-cyan text-navy-950 border border-pastel-cyan";
+        } else {
+          btn.className = "phase-btn px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-navy-900 text-slate-300 border border-navy-800 hover:border-pastel-cyan/50 hover:text-pastel-cyan";
         }
       });
+
+      renderWeeks(phase);
     }
 
-    // Modal Close Listeners
-    if (closeProtoSemModal && protoSemModal) {
-      closeProtoSemModal.addEventListener('click', () => {
-        protoSemModal.classList.add('hidden');
-      });
-      protoSemModal.addEventListener('click', (e) => {
-        if (e.target === protoSemModal) {
-          protoSemModal.classList.add('hidden');
-        }
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !protoSemModal.classList.contains('hidden')) {
-          protoSemModal.classList.add('hidden');
-        }
-      });
+    function navigateWeek(direction) {
+      const phases = ['all', 1, 2, 3, 4];
+      let currentIndex = phases.indexOf(currentActivePhase);
+      if (currentIndex === -1) currentIndex = 0;
+      
+      let nextIndex = currentIndex + direction;
+      if (nextIndex < 0) nextIndex = phases.length - 1;
+      if (nextIndex >= phases.length) nextIndex = 0;
+      
+      filterPhase(phases[nextIndex]);
     }
 
-    // Phase Filter Switching
-    phaseTabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        phaseTabBtns.forEach(b => {
-          b.classList.remove('bg-[#FF8370]', 'text-white', 'shadow-md', 'font-bold');
-          b.classList.add('text-slate-300', 'font-medium');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.remove('text-slate-300', 'font-medium');
-        btn.classList.add('bg-[#FF8370]', 'text-white', 'shadow-md', 'font-bold');
-        btn.setAttribute('aria-selected', 'true');
-
-        const phase = btn.getAttribute('data-phase');
-        renderProtoSemCards(phase);
-      });
-    });
-
-    // Initial render
-    renderProtoSemCards('all');
-
-    // ==========================================
-    // INTERACTIVE SANDBOX CLI LOGIC
-    // ==========================================
-    const cliInput = document.getElementById('cliInput');
-    const cliOutput = document.getElementById('cliOutput');
-    const cliSubmitBtn = document.getElementById('cliSubmitBtn');
-
-    const commands = {
-      help: `Available commands:
-  - <span class="text-[#FF8370] font-bold">certifications</span>: Lists verified certifications & achievements
-  - <span class="text-[#FF8370] font-bold">protosem</span>: Details on PRICE ProtoSem 20-week fellowship
-  - <span class="text-[#FF8370] font-bold">skills</span>: Lists all languages, ETL tools & ML frameworks
-  - <span class="text-[#FF8370] font-bold">projects</span>: Displays signature case studies & repositories
-  - <span class="text-[#FF8370] font-bold">education</span>: Shows degree and academic major
-  - <span class="text-[#FF8370] font-bold">contact</span>: Shows direct email and social links
-  - <span class="text-[#FF8370] font-bold">resume</span>: Links directly to the ATS resume
-  - <span class="text-[#FF8370] font-bold">clear</span>: Clears the terminal output`,
-
-      certifications: `🏆 <strong>Certifications & Key Achievements:</strong>
-  1. <strong class="text-[#FF8370]">Data Analytical Tools</strong> — Certified by Amypo
-  2. <strong class="text-[#7FE0B2]">Excel for Data Analytics</strong> — Certified by Simplilearn
-  3. <strong class="text-[#FFD166]">Innovation Fellowship Selection</strong> — PRICE ProtoSem 20-Week Programme
-  • <a href="#certifications" class="text-[#FF8370] underline">Jump to the Certifications Section ↑</a>`,
-
-      protosem: `🚀 <strong>PRICE ProtoSem — 20-Week Innovation Programme:</strong>
-  • Role: <strong>Innovation Engineer Trainee</strong>
-  • Focus: Retail & Commerce challenges via AI, IoT, intelligent systems, prototyping, and entrepreneurship.
-  • Structure: <strong>4 Phases • 20 Weeks Journey</strong>
-    - Phase 01: Weeks 01–05
-    - Phase 02: Weeks 06–10
-    - Phase 03: Weeks 11–15
-    - Phase 04: Weeks 16–20
-  • Disciplines: Phygital Retail, AI & Analytics, IoT Systems, Prototyping, Entrepreneurship.
-  • <a href="#protosem" class="text-[#FF8370] underline">Jump to the ProtoSem Section ↑</a>`,
-
-      skills: `⚡ <strong>Technical Skills & Certifications:</strong>
-  • Languages: Python (Pandas, NumPy, Scikit-learn), SQL, R, Bash
-  • Big Data & ETL: Google BigQuery, Informatica PowerCenter, Pipeline Automation
-  • BI & Analytics: Power BI, Tableau Desktop, Advanced Excel
-  • Machine Learning: IoT Network Traffic Anomaly Detection, Predictive Classifiers, Deep Learning
-  • Certifications: <strong>Data Analytical Tools (Amypo)</strong>, <strong>Excel (Simplilearn)</strong>`,
-
-      projects: `🚀 <strong>Featured Projects:</strong>
-  1. <strong class="text-[#FF8370]">IoT Network Traffic Anomaly Detection</strong> - Real-time ML classifier for abnormal traffic
-  2. <strong class="text-[#8BC8FE]">Automated Data Migration & ETL Engine</strong> - BigQuery & Informatica automated pipelines
-  3. <strong class="text-[#7FE0B2]">Operational BI & Telemetry Dashboard</strong> - High-impact Power BI & Tableau visual suites`,
-
-      education: `🎓 <strong>Academic Background & Fellowships:</strong>
-  • Degree: <strong>B.Sc (Data Science)</strong>
-  • Fellowship: <strong>Innovation Engineer Trainee (PRICE ProtoSem)</strong> - 20-Week Industry-Integrated Programme
-  • Focus: Machine Learning, Big Data Architecture, AI Prototypes & ETL`,
-
-      contact: `📬 <strong>Contact Coordinates:</strong>
-  • Email: <a href="mailto:dakshanasrim1406@gmail.com" class="text-[#FF8370] underline">dakshanasrim1406@gmail.com</a>
-  • LinkedIn: <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="text-[#FF8370] underline">dakshana-sri-m</a>
-  • GitHub: <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-[#FF8370] underline">Dakshana-sri-m</a>`,
-
-      resume: `📄 <a href="resume.html" target="_blank" class="text-[#FF8370] font-bold underline">Click here to open and print the ATS Resume (resume.html)</a>`
-    };
-
-    function runCommand(cmd) {
-      const trimmed = cmd.trim().toLowerCase();
-      const line = document.createElement('div');
-      line.className = "mt-2 pt-1 border-t border-white/10";
-
-      if (trimmed === 'clear') {
-        cliOutput.innerHTML = `<p class="text-slate-400">Terminal output cleared. Type <span class="text-[#FF8370] font-bold">help</span> for commands.</p>`;
-        return;
-      }
-
-      const promptLine = `<div class="text-slate-400"><span class="text-[#7FE0B2]">dakshana@cluster</span>:<span class="text-[#FF8370]">~</span>$ <span class="text-white">${cmd}</span></div>`;
-
-      if (commands[trimmed]) {
-        line.innerHTML = `${promptLine}<div class="mt-1 text-slate-300 leading-relaxed">${commands[trimmed]}</div>`;
-      } else if (trimmed === '') {
-        return;
-      } else {
-        line.innerHTML = `${promptLine}<div class="mt-1 text-rose-400">command not found: "${cmd}". Type <span class="text-[#FF8370] underline font-bold">help</span> for valid commands.</div>`;
-      }
-
-      cliOutput.appendChild(line);
-      cliOutput.scrollTop = cliOutput.scrollHeight;
-    }
-
-    cliSubmitBtn.addEventListener('click', () => {
-      runCommand(cliInput.value);
-      cliInput.value = '';
-    });
-
-    cliInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        runCommand(cliInput.value);
-        cliInput.value = '';
-      }
-    });
-
-    document.querySelectorAll('.quick-cmd').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const cmd = btn.getAttribute('data-cmd');
-        runCommand(cmd);
-      });
-    });
+    // Initial Render
+    renderWeeks('all');
   </script>
 </body>
 </html>
