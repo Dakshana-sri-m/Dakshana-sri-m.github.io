@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Dakshana Sri M — Data Science Candidate & Innovation Engineer Trainee. Transforming raw data into actionable intelligence through ML, ETL Pipelines, and Business Intelligence." />
   <meta name="author" content="Dakshana Sri M" />
-  <title>Dakshana Sri M — Kintaro Awwwards Portfolio</title>
+  <title>Dakshana Sri M — Creative Data Scientist & Innovation Trainee</title>
 
-  <!-- Google Fonts: Space Grotesk + Plus Jakarta Sans + Fira Code -->
+  <!-- Google Fonts: Syne + Space Grotesk + Plus Jakarta Sans + Fira Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -25,7 +25,7 @@
               accentGlow: 'rgba(255, 59, 48, 0.35)',
               accentDark: '#C92A20',
               dark: '#050507',          // Awwwards Deep Obsidian
-              darkCard: '#0E1017',      // Kintaro Frosted Surface
+              darkCard: '#0E1017',      // Frosted Card Surface
               darkCardAlt: '#131622',
               border: 'rgba(255, 255, 255, 0.08)',
               borderHover: 'rgba(255, 59, 48, 0.45)'
@@ -33,17 +33,27 @@
           },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            syne: ['"Syne"', 'sans-serif'],
             display: ['"Space Grotesk"', 'sans-serif'],
             mono: ['"Fira Code"', 'monospace']
           },
           animation: {
             'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'scroll-v-1': 'scrollUp 25s linear infinite',
+            'scroll-v-2': 'scrollDown 30s linear infinite',
           },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
               '50%': { transform: 'translateY(-6px)' },
+            },
+            scrollUp: {
+              '0%': { transform: 'translateY(0)' },
+              '100%': { transform: 'translateY(-50%)' }
+            },
+            scrollDown: {
+              '0%': { transform: 'translateY(-50%)' },
+              '100%': { transform: 'translateY(0)' }
             }
           }
         }
@@ -61,10 +71,16 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
   <style>
-    /* Kintaro Awwwards Portfolio Custom Styles */
+    /* xkintaro.com Signature Styling */
     body {
       background-color: #050507;
       color: #E2E8F0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    html.light body {
+      background-color: #F8FAFC;
+      color: #0F172A;
     }
 
     .kintaro-card {
@@ -74,6 +90,12 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.light .kintaro-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
     }
 
     .kintaro-card:hover {
@@ -88,6 +110,12 @@
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+    }
+
+    html.light .pill-dock {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
     }
 
     .accent-btn {
@@ -115,6 +143,12 @@
       backdrop-filter: blur(12px);
     }
 
+    html.light .glass-input {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      color: #0F172A;
+    }
+
     .glass-input:focus {
       border-color: #FF3B30;
       box-shadow: 0 0 20px rgba(255, 59, 48, 0.25);
@@ -136,12 +170,6 @@
       display: inline-block;
       transform-origin: 70% 70%;
       animation: wave 2.2s infinite ease-in-out;
-    }
-
-    /* Typed cursor style */
-    .typed-cursor {
-      color: #FF3B30;
-      font-weight: 700;
     }
 
     /* 3D Flippable Flashcard Styles */
@@ -172,6 +200,12 @@
       transform: rotateY(180deg);
     }
 
+    /* Typed cursor style */
+    .typed-cursor {
+      color: #FF3B30;
+      font-weight: 700;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -199,32 +233,72 @@
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,#000_70%,transparent_100%)]"></div>
   </div>
 
-  <!-- TOP HEADER BRANDING & QUICK ACTIONS -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 pointer-events-none">
+  <!-- TOP HEADER (xkintaro.com STYLE WITH THEME TOGGLE & BRAND) -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 backdrop-blur-md bg-black/40 dark:bg-black/40 border-b border-white/5 transition-all">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- Brand Logo -->
-      <a href="#hero" class="pointer-events-auto flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-2xl bg-[#FF3B30] text-white flex items-center justify-center font-display font-extrabold text-base shadow-lg shadow-[#FF3B30]/30 group-hover:scale-105 transition-transform">
+      <!-- Brand Logo in xkintaro.com Typography -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-[#FF3B30] text-white flex items-center justify-center font-syne font-extrabold text-sm shadow-lg shadow-[#FF3B30]/30 group-hover:scale-105 transition-transform">
           DS
         </div>
-        <div class="hidden sm:flex flex-col">
-          <span class="font-display font-bold text-sm tracking-tight text-white group-hover:text-[#FF3B30] transition-colors">
-            Dakshana Sri M
+        <div class="flex flex-col">
+          <span class="font-syne font-black text-lg sm:text-xl tracking-tighter uppercase text-white transition-all group-hover:text-[#FF3B30]">
+            dakshana
           </span>
-          <span class="text-[11px] font-mono text-slate-400">
+          <span class="text-[10px] font-mono text-slate-400 -mt-1 hidden sm:inline-block">
             Data Science • PRICE ProtoSem
           </span>
         </div>
       </a>
 
-      <!-- Quick Action Buttons -->
-      <div class="pointer-events-auto flex items-center gap-3">
-        <a href="resume.html" target="_blank" class="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/10 hover:bg-white/15 transition-all shadow-sm">
+      <!-- Center Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-6">
+        <a href="#hero" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-300 hover:text-white transition-colors py-1 relative group">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#about" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
+          About
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#skills" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
+          Stack
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#protosem" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group flex items-center gap-1.5">
+          <span>ProtoSem</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF3B30]"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#certifications" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
+          Certifications
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#projects" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
+          Projects
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
+          Contact
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- Right Controls: Theme Switcher & Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Switcher Button -->
+        <button id="themeToggleBtn" class="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#FF3B30]/40 transition-all" title="Toggle theme">
+          <i class="fa-solid fa-moon text-xs dark:block hidden"></i>
+          <i class="fa-solid fa-sun text-xs dark:hidden block"></i>
+        </button>
+
+        <a href="resume.html" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/10 hover:bg-white/15 transition-all shadow-sm">
           <i class="fa-solid fa-file-lines text-[#FF3B30] text-xs"></i>
           <span>ATS Resume</span>
         </a>
-        <a href="#contact" class="px-5 py-2 rounded-full text-xs font-bold font-display uppercase tracking-wider accent-btn flex items-center gap-2">
+
+        <a href="#contact" class="px-4 sm:px-5 py-2 rounded-full text-xs font-bold font-syne uppercase tracking-wider accent-btn flex items-center gap-2">
           <span>Get in Touch</span>
           <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </a>
@@ -233,39 +307,11 @@
     </div>
   </header>
 
-  <!-- CENTERED FLOATING PILL DOCK NAVBAR -->
-  <div class="fixed top-5 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
-    <nav class="pointer-events-auto pill-dock rounded-full px-3 py-1.5 flex items-center gap-1 max-w-fit shadow-2xl">
-      <a href="#hero" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-[#FF3B30] text-white shadow-md">
-        Home
-      </a>
-      <a href="#about" class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
-        About
-      </a>
-      <a href="#skills" class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
-        Skills
-      </a>
-      <a href="#protosem" class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all flex items-center gap-1.5">
-        <span>ProtoSem</span>
-        <span class="w-1.5 h-1.5 rounded-full bg-[#FF3B30]"></span>
-      </a>
-      <a href="#certifications" class="hidden sm:inline-block px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
-        Certifications
-      </a>
-      <a href="#projects" class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
-        Projects
-      </a>
-      <a href="#contact" class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
-        Contact
-      </a>
-    </nav>
-  </div>
-
   <!-- MAIN WRAPPER -->
-  <main class="relative z-10 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+  <main class="relative z-10 pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
 
-    <!-- HERO BENTO GRID SUITE (KINTARO AWWWARDS EDITORIAL LAYOUT) -->
-    <section id="hero" class="pt-6 space-y-6">
+    <!-- HERO SECTION (xkintaro.com STYLE WITH VERTICAL PORTRAIT SLIDER + TYPED HEADLINE) -->
+    <section id="hero" class="pt-8 space-y-6 relative">
       
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
         
@@ -281,26 +327,26 @@
             <span class="text-xs font-mono text-slate-400 hidden sm:inline-block">B.Sc. Data Science</span>
           </div>
 
-          <!-- Hero Headline & Dynamic Typed Text Animation -->
+          <!-- Hero Headline in xkintaro.com Syne Typography & Dynamic Typed Text Animation -->
           <div class="space-y-4 my-2">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.15] flex flex-wrap items-center gap-3">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-syne font-extrabold text-white tracking-tight leading-[1.15] flex flex-wrap items-center gap-3">
               <span>Hi, I'm <span class="text-[#FF3B30]">Dakshana Sri</span></span>
               <span class="animate-wave text-3xl sm:text-4xl lg:text-5xl select-none" role="img" aria-label="Waving hand">👋</span>
             </h1>
             
             <!-- Animated Dynamic Typing Headline -->
             <div class="min-h-[60px] sm:min-h-[50px] flex items-center">
-              <span id="typedHeroText" class="text-xl sm:text-2xl font-display font-semibold text-slate-200 leading-snug"></span>
+              <span id="typedHeroText" class="text-xl sm:text-2xl font-syne font-semibold text-slate-200 leading-snug"></span>
             </div>
 
             <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-              I'm a <strong class="text-white">B.Sc. Data Science student</strong> and <strong class="text-[#FF3B30]">PRICE ProtoSem Innovation Trainee</strong> passionate about turning raw data into actionable insights across <strong class="text-white">Machine Learning, BigQuery ETL, Power BI, Python, and SQL</strong>.
+              I'm a <strong class="text-white font-bold">B.Sc. Data Science student</strong> and <strong class="text-[#FF3B30] font-bold">PRICE ProtoSem Innovation Trainee</strong> passionate about turning raw data into actionable insights across <strong class="text-white">Machine Learning, BigQuery ETL, Power BI, Python, and SQL</strong>.
             </p>
           </div>
 
           <!-- Action Buttons -->
           <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-white/5 mt-4">
-            <a href="resume.html" target="_blank" class="px-6 py-3 rounded-full accent-btn text-xs font-bold font-display uppercase tracking-wider flex items-center gap-2">
+            <a href="resume.html" target="_blank" class="px-6 py-3 rounded-full accent-btn text-xs font-bold font-syne uppercase tracking-wider flex items-center gap-2">
               <i class="fa-solid fa-file-arrow-down text-xs"></i>
               <span>ATS Resume</span>
             </a>
@@ -325,7 +371,7 @@
             <!-- Floating Awwwards Info Badge -->
             <div class="absolute bottom-3 inset-x-3 pill-dock rounded-2xl p-3 border border-white/10 flex items-center justify-between">
               <div>
-                <h2 class="text-xs font-display font-extrabold text-white">Dakshana Sri M</h2>
+                <h2 class="text-xs font-syne font-extrabold text-white">Dakshana Sri M</h2>
                 <p class="text-[10px] font-mono text-[#FF3B30] font-semibold">Innovation Engineer Trainee</p>
               </div>
               <span class="px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-mono text-[10px] border border-emerald-500/30">
@@ -378,13 +424,13 @@
           </div>
 
           <div>
-            <h3 class="text-base font-display font-bold text-white">PRICE ProtoSem Fellowship</h3>
+            <h3 class="text-base font-syne font-bold text-white">PRICE ProtoSem Fellowship</h3>
             <p class="text-xs text-slate-300 mt-1">Researching & prototyping intelligent retail solutions via AI, Analytics, IoT & rapid hardware iterations.</p>
           </div>
 
           <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>20-Week Programme</span>
-            <a href="#protosem" class="text-[#FF3B30] font-bold hover:underline">Explore Rail →</a>
+            <a href="#protosem" class="text-[#FF3B30] font-bold hover:underline">Explore Flashcards →</a>
           </div>
         </div>
 
@@ -400,15 +446,15 @@
 
           <div class="grid grid-cols-3 gap-2 py-1 text-center">
             <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-display font-extrabold text-[#FF3B30]">20W</div>
+              <div class="text-xl font-syne font-extrabold text-[#FF3B30]">20W</div>
               <p class="text-[10px] font-mono text-slate-400">ProtoSem</p>
             </div>
             <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-display font-extrabold text-white">3+</div>
+              <div class="text-xl font-syne font-extrabold text-white">3+</div>
               <p class="text-[10px] font-mono text-slate-400">Pipelines</p>
             </div>
             <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-display font-extrabold text-emerald-400">100%</div>
+              <div class="text-xl font-syne font-extrabold text-emerald-400">100%</div>
               <p class="text-[10px] font-mono text-slate-400">Precision</p>
             </div>
           </div>
@@ -492,7 +538,7 @@
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
           <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(01)</span>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">About Me</h2>
+          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">About Me</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Data Lifecycle • Engineering • Analytics</span>
       </div>
@@ -529,7 +575,7 @@
               <div class="w-8 h-8 rounded-xl bg-[#FF3B30]/15 text-[#FF3B30] flex items-center justify-center text-sm font-bold border border-[#FF3B30]/30">
                 <i class="fa-solid fa-network-wired"></i>
               </div>
-              <h3 class="text-sm font-display font-bold text-white">Data Engineering</h3>
+              <h3 class="text-sm font-syne font-bold text-white">Data Engineering</h3>
             </div>
             <p class="text-xs text-slate-400">Automated ETL pipelines, staging schemas, and BigQuery warehouse optimizations.</p>
           </div>
@@ -539,7 +585,7 @@
               <div class="w-8 h-8 rounded-xl bg-orange-500/15 text-orange-400 flex items-center justify-center text-sm font-bold border border-orange-500/30">
                 <i class="fa-solid fa-brain"></i>
               </div>
-              <h3 class="text-sm font-display font-bold text-white">Machine Learning</h3>
+              <h3 class="text-sm font-syne font-bold text-white">Machine Learning</h3>
             </div>
             <p class="text-xs text-slate-400">Real-time IoT anomaly detection, predictive classification, and evaluation metrics.</p>
           </div>
@@ -549,7 +595,7 @@
               <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-300 flex items-center justify-center text-sm font-bold border border-emerald-500/30">
                 <i class="fa-solid fa-chart-line"></i>
               </div>
-              <h3 class="text-sm font-display font-bold text-white">BI & Analytics</h3>
+              <h3 class="text-sm font-syne font-bold text-white">BI & Analytics</h3>
             </div>
             <p class="text-xs text-slate-400">Power BI DAX modeling, KPI architectures, and cross-filtered Tableau dashboards.</p>
           </div>
@@ -565,7 +611,7 @@
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
           <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(02)</span>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">Technical Arsenal</h2>
+          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Technical Arsenal</h2>
         </div>
         
         <!-- Certifications Pills -->
@@ -589,7 +635,7 @@
             <div class="w-10 h-10 rounded-2xl bg-white/10 text-white flex items-center justify-center text-lg font-bold">
               <i class="fa-brands fa-python"></i>
             </div>
-            <h3 class="text-base font-display font-bold text-white">Languages & Querying</h3>
+            <h3 class="text-base font-syne font-bold text-white">Languages & Querying</h3>
             <p class="text-xs text-slate-400">Core statistical scripting & high-throughput querying.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
@@ -605,7 +651,7 @@
             <div class="w-10 h-10 rounded-2xl bg-[#FF3B30]/20 text-[#FF3B30] flex items-center justify-center text-lg font-bold border border-[#FF3B30]/30">
               <i class="fa-solid fa-server"></i>
             </div>
-            <h3 class="text-base font-display font-bold text-white">Big Data & ETL</h3>
+            <h3 class="text-base font-syne font-bold text-white">Big Data & ETL</h3>
             <p class="text-xs text-slate-400">Cloud warehousing, schema mapping & pipeline automation.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
@@ -621,7 +667,7 @@
             <div class="w-10 h-10 rounded-2xl bg-orange-500/20 text-orange-400 flex items-center justify-center text-lg font-bold border border-orange-500/30">
               <i class="fa-solid fa-brain"></i>
             </div>
-            <h3 class="text-base font-display font-bold text-white">Machine & Deep Learning</h3>
+            <h3 class="text-base font-syne font-bold text-white">Machine & Deep Learning</h3>
             <p class="text-xs text-slate-400">Pattern classification & telemetry anomaly detectors.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
@@ -637,7 +683,7 @@
             <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-lg font-bold border border-emerald-500/30">
               <i class="fa-solid fa-chart-pie"></i>
             </div>
-            <h3 class="text-base font-display font-bold text-white">BI & Visualization</h3>
+            <h3 class="text-base font-syne font-bold text-white">BI & Visualization</h3>
             <p class="text-xs text-slate-400">Executive metrics, calculated models & visual suites.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
@@ -650,7 +696,7 @@
       </div>
     </section>
 
-    <!-- PROTOSEM SECTION (PRICE PROTOSEM 20-WEEK ARCHIVE) -->
+    <!-- PROTOSEM SECTION (PRICE PROTOSEM 20-WEEK 3D FLIPPABLE FLASHCARDS) -->
     <section id="protosem" class="scroll-mt-32 space-y-6" data-aos="fade-up">
       
       <!-- Section Intro Card -->
@@ -659,7 +705,7 @@
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-white/10 pb-5">
           <div class="flex items-center gap-3">
             <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(03)</span>
-            <h2 class="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight">PRICE ProtoSem</h2>
+            <h2 class="text-2xl sm:text-4xl font-syne font-extrabold text-white tracking-tight">PRICE ProtoSem</h2>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <span class="px-3.5 py-1 rounded-full text-xs font-mono font-bold accent-pill">
@@ -741,12 +787,12 @@
 
       </div>
 
-      <!-- 20-Week Interactive Timeline & Card Archive -->
+      <!-- 20-Week Interactive Flashcard Deck -->
       <div class="space-y-6">
         <!-- Phase Filter Tabs & Flashcard Controls -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 class="text-lg font-display font-extrabold text-white flex items-center gap-2">
+            <h3 class="text-lg font-syne font-extrabold text-white flex items-center gap-2">
               <span>ProtoSem 20-Week Flashcards</span>
               <span class="text-xs font-mono font-normal text-[#FF3B30] bg-[#FF3B30]/10 px-2 py-0.5 rounded-full border border-[#FF3B30]/20">Interactive Deck</span>
             </h3>
@@ -799,7 +845,7 @@
             </div>
             <div>
               <span id="modalWeekBadge" class="text-[11px] font-mono text-[#FF3B30] font-bold tracking-wider uppercase">WEEK 01</span>
-              <h4 class="text-base font-display font-bold text-white">Field Notes in Progress</h4>
+              <h4 class="text-base font-syne font-bold text-white">Field Notes in Progress</h4>
             </div>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
@@ -822,7 +868,7 @@
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
           <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(04)</span>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">Certifications & Achievements</h2>
+          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Certifications & Achievements</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Verified credentials & competitive recognitions</span>
       </div>
@@ -840,7 +886,7 @@
               <span class="text-xs font-mono text-slate-500">Amypo</span>
             </div>
 
-            <h3 class="text-xl font-display font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
               Data Analytical Tools
             </h3>
 
@@ -872,7 +918,7 @@
               <span class="text-xs font-mono text-slate-500">Simplilearn</span>
             </div>
 
-            <h3 class="text-xl font-display font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
               Excel for Data Analytics
             </h3>
 
@@ -904,7 +950,7 @@
               <span class="text-xs font-mono text-slate-500">PRICE ProtoSem</span>
             </div>
 
-            <h3 class="text-xl font-display font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
               Innovation Fellowship Selection
             </h3>
 
@@ -921,7 +967,7 @@
 
           <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
             <span class="text-orange-400 font-bold">20-Week Programme</span>
-            <a href="#protosem" class="text-[#FF3B30] font-bold hover:underline flex items-center gap-1"><span>View Journey</span> →</a>
+            <a href="#protosem" class="text-[#FF3B30] font-bold hover:underline flex items-center gap-1"><span>View Flashcards</span> →</a>
           </div>
         </div>
 
@@ -934,7 +980,7 @@
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
           <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(05)</span>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">Featured Projects</h2>
+          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Featured Projects</h2>
         </div>
         <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-xs font-mono text-[#FF3B30] font-bold hover:underline flex items-center gap-1.5">
           <span>Explore All on GitHub</span>
@@ -954,7 +1000,7 @@
               <span class="text-xs font-mono text-slate-500">01 / 03</span>
             </div>
 
-            <h3 class="text-xl font-display font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
               IoT Network Traffic Anomaly Detection
             </h3>
 
@@ -990,7 +1036,7 @@
               <span class="text-xs font-mono text-slate-500">02 / 03</span>
             </div>
 
-            <h3 class="text-xl font-display font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
               Automated Data Migration & ETL Engine
             </h3>
 
@@ -1026,7 +1072,7 @@
               <span class="text-xs font-mono text-slate-500">03 / 03</span>
             </div>
 
-            <h3 class="text-xl font-display font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
               Operational BI & Telemetry Suite
             </h3>
 
@@ -1061,7 +1107,7 @@
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
           <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(06)</span>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">Interactive Sandbox</h2>
+          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Interactive Sandbox</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Query background, skills, certifications & ProtoSem</span>
       </div>
@@ -1119,7 +1165,7 @@
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
           <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(07)</span>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">Let's Connect</h2>
+          <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Let's Connect</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Open for Data Science roles & collaborations</span>
       </div>
@@ -1189,7 +1235,7 @@
               <textarea rows="4" required placeholder="Hi Dakshana, we would love to discuss..." class="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm resize-none"></textarea>
             </div>
 
-            <button type="submit" class="w-full py-4 rounded-full accent-btn font-display font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
+            <button type="submit" class="w-full py-4 rounded-full accent-btn font-syne font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
               <i class="fa-solid fa-paper-plane text-xs"></i>
               <span>Send Message</span>
             </button>
@@ -1219,7 +1265,7 @@
     </div>
   </footer>
 
-  <!-- Scripts: Typed.js, Live Clock, AOS, Dynamic Architecture -->
+  <!-- Scripts: Theme Switcher, Typed.js, Live Clock, AOS, Dynamic Architecture -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     // Initialize AOS
@@ -1232,6 +1278,36 @@
 
     // Current Year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // ==========================================
+    // THEME SWITCHER (DARK / LIGHT MODE)
+    // ==========================================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlElement = document.documentElement;
+
+    // Check saved theme or default to dark
+    const savedTheme = localStorage.getItem('site-theme') || 'dark';
+    if (savedTheme === 'light') {
+      htmlElement.classList.remove('dark');
+      htmlElement.classList.add('light');
+    } else {
+      htmlElement.classList.add('dark');
+      htmlElement.classList.remove('light');
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        if (htmlElement.classList.contains('dark')) {
+          htmlElement.classList.remove('dark');
+          htmlElement.classList.add('light');
+          localStorage.setItem('site-theme', 'light');
+        } else {
+          htmlElement.classList.add('dark');
+          htmlElement.classList.remove('light');
+          localStorage.setItem('site-theme', 'dark');
+        }
+      });
+    }
 
     // ==========================================
     // LIVE REAL-TIME CLOCK WIDGET (SYNCED TO IST)
@@ -1360,7 +1436,7 @@
                 </div>
 
                 <div class="pt-1">
-                  <h4 class="text-base font-display font-extrabold text-white flex items-center justify-between">
+                  <h4 class="text-base font-syne font-extrabold text-white flex items-center justify-between">
                     <span>${item.label}</span>
                     <i class="fa-solid fa-arrow-rotate-right text-xs text-[#FF3B30]"></i>
                   </h4>
@@ -1390,7 +1466,7 @@
                 </div>
 
                 <div>
-                  <h5 class="text-xs font-display font-bold text-white">${item.title}</h5>
+                  <h5 class="text-xs font-syne font-bold text-white">${item.title}</h5>
                   <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">
                     ${item.desc}
                   </p>
