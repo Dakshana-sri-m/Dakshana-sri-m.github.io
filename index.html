@@ -127,6 +127,23 @@
       font-weight: 700;
     }
 
+    /* Waving Hand Keyframe Animation */
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      30% { transform: rotate(14deg); }
+      40% { transform: rotate(-4deg); }
+      50% { transform: rotate(10deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .animate-wave {
+      display: inline-block;
+      transform-origin: 70% 70%;
+      animation: wave 2.2s infinite ease-in-out;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -238,8 +255,9 @@
 
           <!-- Hero Headline & Dynamic Typed Text Animation -->
           <div class="space-y-4 my-2">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.15]">
-              Hi, I'm <span class="text-[#FF3B30]">Dakshana Sri</span> —
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.15] flex flex-wrap items-center gap-3">
+              <span>Hi, I'm <span class="text-[#FF3B30]">Dakshana Sri</span></span>
+              <span class="animate-wave text-3xl sm:text-4xl lg:text-5xl select-none" role="img" aria-label="Waving hand">👋</span>
             </h1>
             
             <!-- Animated Dynamic Typing Headline -->
@@ -247,8 +265,8 @@
               <span id="typedHeroText" class="text-xl sm:text-2xl font-display font-semibold text-slate-200 leading-snug"></span>
             </div>
 
-            <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
-              Transforming raw datasets into high-performance predictive models, scalable BigQuery ETL pipelines, and executive dashboards.
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+              I'm a <strong class="text-white">B.Sc. Data Science student</strong> and <strong class="text-[#FF3B30]">PRICE ProtoSem Innovation Trainee</strong> passionate about turning raw data into actionable insights across <strong class="text-white">Machine Learning, BigQuery ETL, Power BI, Python, and SQL</strong>.
             </p>
           </div>
 
