@@ -144,6 +144,34 @@
       font-weight: 700;
     }
 
+    /* 3D Flippable Flashcard Styles */
+    .flashcard-scene {
+      perspective: 1000px;
+    }
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      min-height: 220px;
+      text-align: left;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flashcard-scene.is-flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1.25rem;
+    }
+    .flashcard-back {
+      transform: rotateY(180deg);
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -715,36 +743,47 @@
 
       <!-- 20-Week Interactive Timeline & Card Archive -->
       <div class="space-y-6">
-        <!-- Phase Filter Tabs -->
+        <!-- Phase Filter Tabs & Flashcard Controls -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 class="text-lg font-display font-extrabold text-white">Programme Archive & Field Notes</h3>
-            <p class="text-xs font-mono text-slate-400">Explore chapters across the 4 programme phases.</p>
+            <h3 class="text-lg font-display font-extrabold text-white flex items-center gap-2">
+              <span>ProtoSem 20-Week Flashcards</span>
+              <span class="text-xs font-mono font-normal text-[#FF3B30] bg-[#FF3B30]/10 px-2 py-0.5 rounded-full border border-[#FF3B30]/20">Interactive Deck</span>
+            </h3>
+            <p class="text-xs font-mono text-slate-400">Click or tap any flashcard to flip between key objectives and field notes.</p>
           </div>
 
-          <!-- Phase Navigation Tabs -->
-          <div class="flex flex-wrap gap-1 p-1 rounded-full pill-dock" id="phaseFilterGroup" role="tablist">
-            <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all bg-[#FF3B30] text-white shadow-sm" data-phase="all" role="tab" aria-selected="true">
-              ALL (01–20)
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- Flip All Toggle Button -->
+            <button id="toggleFlipAllBtn" class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/10 text-white border border-white/10 hover:bg-white/20 transition-all flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-arrows-rotate text-[#FF3B30] text-xs"></i>
+              <span id="flipAllText">Flip All Cards</span>
             </button>
-            <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="1" role="tab" aria-selected="false">
-              Phase 01
-            </button>
-            <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="2" role="tab" aria-selected="false">
-              Phase 02
-            </button>
-            <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="3" role="tab" aria-selected="false">
-              Phase 03
-            </button>
-            <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="4" role="tab" aria-selected="false">
-              Phase 04
-            </button>
+
+            <!-- Phase Navigation Tabs -->
+            <div class="flex flex-wrap gap-1 p-1 rounded-full pill-dock" id="phaseFilterGroup" role="tablist">
+              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all bg-[#FF3B30] text-white shadow-sm" data-phase="all" role="tab" aria-selected="true">
+                ALL (01–20)
+              </button>
+              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="1" role="tab" aria-selected="false">
+                Phase 01
+              </button>
+              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="2" role="tab" aria-selected="false">
+                Phase 02
+              </button>
+              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="3" role="tab" aria-selected="false">
+                Phase 03
+              </button>
+              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="4" role="tab" aria-selected="false">
+                Phase 04
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- 20 Cards Container (Populated via Data-Driven JS) -->
+        <!-- 20 Flashcards Container (Populated via Data-Driven JS) -->
         <div id="protosemWeeksContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          <!-- Reusable Week Cards dynamically populated by JavaScript -->
+          <!-- Reusable 3D Flashcards dynamically populated by JavaScript -->
         </div>
       </div>
 
@@ -1239,9 +1278,32 @@
     }
 
     // ==========================================
-    // PROTOSEM 20-WEEK ARCHITECTURE & DATA MODEL
+    // PROTOSEM 20-WEEK FLASHCARD ARCHITECTURE & DATA
     // ==========================================
-    const protoSemWeeks = Array.from({ length: 20 }, (_, i) => {
+    const protoSemWeekTopics = [
+      { title: "Retail Ecosystem Discovery", desc: "Mapping phygital commerce friction points and framing problem statement." },
+      { title: "Customer Persona & Audits", desc: "Identifying shopper journeys, store drop-offs, and behavioral metrics." },
+      { title: "IoT Telemetry Architecture", desc: "Selecting smart sensor arrays and formulating data telemetry streams." },
+      { title: "Data Pipeline Ingestion", desc: "Setting up ETL flows for high-frequency sensor readings." },
+      { title: "Phase 01 Gate Review", desc: "Milestone demonstration, proof-of-concept audit, and mentor feedback." },
+      { title: "Feature Engineering & Prep", desc: "Wrangling noisy telemetry and generating predictive features." },
+      { title: "ML Anomaly Detection", desc: "Training baseline models to identify irregular sensor patterns." },
+      { title: "Edge & Cloud Gateway", desc: "Connecting IoT hardware gateways to cloud data storage." },
+      { title: "Stream Processing", desc: "Optimizing real-time event filtering and rule-based alerts." },
+      { title: "Phase 02 Gate Review", desc: "Model accuracy validation, latency benchmarks, and pipeline checks." },
+      { title: "Warehouse Optimization", desc: "Partitioning BigQuery schemas and indexing tables for analytics." },
+      { title: "Power BI DAX Dashboard", desc: "Building executive KPI reports and real-time operational views." },
+      { title: "Hardware Integration", desc: "Enclosing sensor nodes and stress-testing physical reliability." },
+      { title: "Field Telemetry Trials", desc: "Simulating live retail traffic and capturing anomaly logs." },
+      { title: "Phase 03 Gate Review", desc: "Integrated software-hardware system demo and evaluation." },
+      { title: "Full-Stack System Sync", desc: "Unifying ML models, data pipelines, and visual analytics suites." },
+      { title: "Performance Benchmarking", desc: "Load testing, latency reduction, and reliability hardening." },
+      { title: "Commercialization Model", desc: "Cost-benefit modeling, unit economics, and business viability." },
+      { title: "Executive Demo Polish", desc: "Refining prototype demonstration and final presentation deck." },
+      { title: "Fellowship Graduation", desc: "Final PRICE ProtoSem showcase and continuous R&D transition." }
+    ];
+
+    const protoSemWeeks = protoSemWeekTopics.map((topic, i) => {
       const weekNum = i + 1;
       const formattedNum = weekNum < 10 ? `0${weekNum}` : `${weekNum}`;
       const phaseNum = Math.ceil(weekNum / 5);
@@ -1251,8 +1313,10 @@
         label: `WEEK ${formattedNum}`,
         slug: `week-${formattedNum}`,
         phaseName: `Phase 0${phaseNum}`,
-        status: "COMING SOON",
-        sub: "FIELD NOTES IN PROGRESS"
+        title: topic.title,
+        desc: topic.desc,
+        status: "ACTIVE R&D",
+        sub: "FLIP FOR SUMMARY"
       };
     });
 
@@ -1262,68 +1326,135 @@
     const modalWeekBadge = document.getElementById('modalWeekBadge');
     const modalWeekSlug = document.getElementById('modalWeekSlug');
     const phaseTabBtns = document.querySelectorAll('.phase-tab-btn');
+    const toggleFlipAllBtn = document.getElementById('toggleFlipAllBtn');
+    const flipAllText = document.getElementById('flipAllText');
+    let areAllFlipped = false;
 
     function renderProtoSemCards(filterPhase = 'all') {
       if (!protosemWeeksContainer) return;
       protosemWeeksContainer.innerHTML = '';
+      areAllFlipped = false;
+      if (flipAllText) flipAllText.textContent = "Flip All Cards";
 
       const filteredWeeks = filterPhase === 'all' 
         ? protoSemWeeks 
         : protoSemWeeks.filter(w => w.phase === parseInt(filterPhase));
 
       filteredWeeks.forEach(item => {
-        const card = document.createElement('div');
-        card.className = "kintaro-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between cursor-pointer group hover:-translate-y-1";
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', `${item.label} - ${item.phaseName}`);
+        const scene = document.createElement('div');
+        scene.className = "flashcard-scene";
 
-        card.innerHTML = `
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full accent-pill">
-                ${item.phaseName}
-              </span>
-              <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300 transition-colors">
-                ${item.week < 10 ? '0' + item.week : item.week}/20
-              </span>
+        scene.innerHTML = `
+          <div class="flashcard-inner cursor-pointer" tabindex="0" role="button" aria-label="${item.label} Flashcard - Click to flip">
+            
+            <!-- FLASHCARD FRONT -->
+            <div class="flashcard-front kintaro-card p-4 sm:p-5 flex flex-col justify-between hover:border-[#FF3B30]/50 transition-all">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full accent-pill">
+                    ${item.phaseName}
+                  </span>
+                  <span class="text-[10px] font-mono text-slate-500">
+                    ${item.week < 10 ? '0' + item.week : item.week}/20
+                  </span>
+                </div>
+
+                <div class="pt-1">
+                  <h4 class="text-base font-display font-extrabold text-white flex items-center justify-between">
+                    <span>${item.label}</span>
+                    <i class="fa-solid fa-arrow-rotate-right text-xs text-[#FF3B30]"></i>
+                  </h4>
+                  <p class="text-xs font-semibold text-slate-200 mt-1 line-clamp-1">
+                    ${item.title}
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                <span class="flex items-center gap-1.5 text-[#FF3B30] font-bold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#FF3B30] animate-ping"></span>
+                  <span>Flip Card 🔄</span>
+                </span>
+                <span class="text-slate-500">Tap to Reveal</span>
+              </div>
             </div>
 
-            <div class="pt-1">
-              <h4 class="text-base font-display font-extrabold text-white group-hover:text-[#FF3B30] transition-colors flex items-center justify-between">
-                <span>${item.label}</span>
-                <i class="fa-solid fa-arrow-right text-[11px] text-slate-500 group-hover:text-[#FF3B30] group-hover:translate-x-1 transition-all"></i>
-              </h4>
-              <p class="text-[11px] font-mono text-[#FF3B30] font-semibold mt-1 flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#FF3B30] animate-ping"></span>
-                <span>${item.status}</span>
-              </p>
-            </div>
-          </div>
+            <!-- FLASHCARD BACK -->
+            <div class="flashcard-back kintaro-card p-4 sm:p-5 flex flex-col justify-between bg-slate-950 border border-[#FF3B30]/40">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-mono font-bold text-[#FF3B30] uppercase">
+                    ${item.label} • Key Focus
+                  </span>
+                  <span class="text-[10px] font-mono text-slate-400">Back</span>
+                </div>
 
-          <div class="pt-3 mt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
-            <span class="text-slate-400 group-hover:text-slate-200 transition-colors">${item.sub}</span>
-            <span class="text-[#FF3B30] font-bold opacity-0 group-hover:opacity-100 transition-opacity">Preview →</span>
+                <div>
+                  <h5 class="text-xs font-display font-bold text-white">${item.title}</h5>
+                  <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                    ${item.desc}
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono">
+                <span class="text-slate-400 hover:text-white flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-rotate-left text-[9px]"></i> Flip Back
+                </span>
+                <button class="open-notes-btn px-2 py-0.5 rounded-md bg-[#FF3B30] text-white font-bold hover:bg-[#E02E24] transition-colors" data-week="${item.label}" data-phase="${item.phaseName}" data-slug="${item.slug}">
+                  Field Notes 📖
+                </button>
+              </div>
+            </div>
+
           </div>
         `;
 
-        // Click & Keyboard Interaction
-        const openModal = () => {
-          if (modalWeekBadge) modalWeekBadge.textContent = `${item.label} • ${item.phaseName}`;
-          if (modalWeekSlug) modalWeekSlug.textContent = `/protosem/${item.slug}`;
-          if (protoSemModal) protoSemModal.classList.remove('hidden');
-          window.location.hash = `protosem-${item.slug}`;
-        };
+        const inner = scene.querySelector('.flashcard-inner');
 
-        card.addEventListener('click', openModal);
-        card.addEventListener('keydown', (e) => {
+        // Flip Card on Click (unless clicking the modal button)
+        inner.addEventListener('click', (e) => {
+          if (e.target.closest('.open-notes-btn')) {
+            const btn = e.target.closest('.open-notes-btn');
+            const week = btn.getAttribute('data-week');
+            const phase = btn.getAttribute('data-phase');
+            const slug = btn.getAttribute('data-slug');
+            if (modalWeekBadge) modalWeekBadge.textContent = `${week} • ${phase}`;
+            if (modalWeekSlug) modalWeekSlug.textContent = `/protosem/${slug}`;
+            if (protoSemModal) protoSemModal.classList.remove('hidden');
+            window.location.hash = `protosem-${slug}`;
+            return;
+          }
+          scene.classList.toggle('is-flipped');
+        });
+
+        // Keyboard accessibility (Space / Enter)
+        inner.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            openModal();
+            scene.classList.toggle('is-flipped');
           }
         });
 
-        protosemWeeksContainer.appendChild(card);
+        protosemWeeksContainer.appendChild(scene);
+      });
+    }
+
+    // Toggle Flip All Cards Button
+    if (toggleFlipAllBtn) {
+      toggleFlipAllBtn.addEventListener('click', () => {
+        const scenes = document.querySelectorAll('.flashcard-scene');
+        areAllFlipped = !areAllFlipped;
+        scenes.forEach(scene => {
+          if (areAllFlipped) {
+            scene.classList.add('is-flipped');
+          } else {
+            scene.classList.remove('is-flipped');
+          }
+        });
+        if (flipAllText) {
+          flipAllText.textContent = areAllFlipped ? "Reset All Cards" : "Flip All Cards";
+        }
       });
     }
 
