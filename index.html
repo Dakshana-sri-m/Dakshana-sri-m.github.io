@@ -525,8 +525,8 @@
         <!-- PROGRAMME PROGRESS INDICATOR -->
         <div class="max-w-4xl mx-auto mb-10 px-4" data-aos="fade-up">
           <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
-            <span class="text-pastel-cyan font-bold">WEEK 01</span>
-            <span>PHASE 01 (01-05)</span>
+            <span class="text-pastel-cyan font-bold">WEEK 00</span>
+            <span>PHASE 01 (00-05)</span>
             <span>PHASE 02 (06-10)</span>
             <span>PHASE 03 (11-15)</span>
             <span class="text-pastel-purple font-bold">WEEK 20</span>
@@ -542,10 +542,10 @@
           <!-- Phase Filter Tabs -->
           <div class="flex flex-wrap items-center gap-2" id="phaseFilterGroup">
             <button onclick="filterPhase('all')" class="phase-btn active px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-pastel-cyan text-navy-950 border border-pastel-cyan" data-phase="all">
-              ALL (20 WEEKS)
+              ALL (WEEKS 00–20)
             </button>
             <button onclick="filterPhase(1)" class="phase-btn px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-navy-900 text-slate-300 border border-navy-800 hover:border-pastel-cyan/50 hover:text-pastel-cyan" data-phase="1">
-              PHASE 01 (01–05)
+              PHASE 01 (00–05)
             </button>
             <button onclick="filterPhase(2)" class="phase-btn px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-navy-900 text-slate-300 border border-navy-800 hover:border-pastel-purple/50 hover:text-pastel-purple" data-phase="2">
               PHASE 02 (06–10)
@@ -953,9 +953,10 @@
     });
 
     // ==========================================
-    // 20-WEEK PROTOSEM DATA & INTERACTION SYSTEM
+    // 21-WEEK PROTOSEM DATA & INTERACTION SYSTEM (WEEK 00 - 20)
     // ==========================================
     const protoSemWeeks = [
+      { week: 0, phase: 1, title: "", slug: "week-00", status: "placeholder", phaseLabel: "PHASE 01" },
       { week: 1, phase: 1, title: "", slug: "week-01", status: "placeholder", phaseLabel: "PHASE 01" },
       { week: 2, phase: 1, title: "", slug: "week-02", status: "placeholder", phaseLabel: "PHASE 01" },
       { week: 3, phase: 1, title: "", slug: "week-03", status: "placeholder", phaseLabel: "PHASE 01" },
