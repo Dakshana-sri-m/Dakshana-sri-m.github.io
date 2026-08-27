@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Dakshana Sri M — Data Science Candidate & Innovation Engineer Trainee. Transforming raw data into actionable intelligence through ML, ETL Pipelines, and Business Intelligence." />
   <meta name="author" content="Dakshana Sri M" />
-  <title>Dakshana Sri M — Portfolio 2026</title>
+  <title>Dakshana Sri M — Modern Bento Portfolio</title>
 
   <!-- Google Fonts: Space Grotesk + Plus Jakarta Sans + Fira Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,14 @@
         extend: {
           colors: {
             brand: {
-              accent: '#FF3B30',        // Electric 2026 Red-Orange
+              accent: '#FF3B30',        // Electric Red-Orange
               accentGlow: 'rgba(255, 59, 48, 0.35)',
               accentDark: '#C92A20',
-              dark: '#07090E',          // Deep Carbon Slate
-              darkCard: '#0E1424',      // 21st.dev Bento Surface
-              darkCardHover: '#131B30',
+              dark: '#080B11',          // Apple Sleek Obsidian
+              darkCard: '#0E131F',      // Modern Bento Surface
+              darkCardAlt: '#141B2D',
               border: 'rgba(255, 255, 255, 0.08)',
-              borderGlow: 'rgba(255, 59, 48, 0.4)'
+              borderHover: 'rgba(255, 59, 48, 0.45)'
             }
           },
           fontFamily: {
@@ -37,22 +37,13 @@
             mono: ['"Fira Code"', 'monospace']
           },
           animation: {
-            'marquee': 'marquee 25s linear infinite',
-            'float': 'float 5s ease-in-out infinite',
-            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
           },
           keyframes: {
-            marquee: {
-              '0%': { transform: 'translateX(0%)' },
-              '100%': { transform: 'translateX(-50%)' },
-            },
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
               '50%': { transform: 'translateY(-6px)' },
-            },
-            pulseGlow: {
-              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-              '50%': { opacity: '0.8', transform: 'scale(1.05)' },
             }
           }
         }
@@ -66,46 +57,50 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Typed.js for Live Text Typing Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
   <style>
-    /* 21st.dev Portfolio-2026 Custom Styles */
+    /* Apple-inspired Bento Grid Styling */
     body {
-      background-color: #07090E;
+      background-color: #080B11;
       color: #E2E8F0;
     }
 
+    .bento-card {
+      background: rgba(14, 19, 31, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .bento-card:hover {
+      border-color: rgba(255, 59, 48, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(255, 59, 48, 0.15);
+    }
+
     .pill-dock {
-      background: rgba(14, 20, 36, 0.75);
+      background: rgba(14, 19, 31, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
     }
 
-    .bento-card {
-      background: rgba(14, 20, 36, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .bento-card:hover {
-      border-color: rgba(255, 59, 48, 0.45);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -15px rgba(255, 59, 48, 0.15);
-    }
-
     .accent-btn {
       background-color: #FF3B30;
       color: #FFFFFF;
       transition: all 0.25s ease;
-      box-shadow: 0 10px 25px -5px rgba(255, 59, 48, 0.35);
+      box-shadow: 0 8px 25px -4px rgba(255, 59, 48, 0.35);
     }
 
     .accent-btn:hover {
       background-color: #E02E24;
       transform: translateY(-2px);
-      box-shadow: 0 15px 30px -5px rgba(255, 59, 48, 0.5);
+      box-shadow: 0 12px 30px -4px rgba(255, 59, 48, 0.5);
     }
 
     .accent-pill {
@@ -115,7 +110,7 @@
     }
 
     .glass-input {
-      background: rgba(10, 15, 28, 0.85);
+      background: rgba(10, 14, 24, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
     }
@@ -126,12 +121,18 @@
       outline: none;
     }
 
+    /* Typed cursor style */
+    .typed-cursor {
+      color: #FF3B30;
+      font-weight: 700;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #07090E;
+      background: #080B11;
     }
     ::-webkit-scrollbar-thumb {
       background: #1E293B;
@@ -145,20 +146,19 @@
 
 <body class="font-sans antialiased selection:bg-[#FF3B30] selection:text-white min-h-screen relative overflow-x-hidden">
 
-  <!-- Ambient Glowing Auroras (21st.dev Style Background) -->
+  <!-- Ambient Glowing Aura Canvas -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute top-[-10%] left-[25%] w-[600px] h-[600px] rounded-full bg-[#FF3B30]/10 filter blur-[150px] animate-pulse-glow"></div>
-    <div class="absolute top-[40%] right-[-5%] w-[500px] h-[500px] rounded-full bg-orange-600/8 filter blur-[160px]"></div>
+    <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#FF3B30]/10 filter blur-[160px]"></div>
+    <div class="absolute top-[35%] right-[-5%] w-[500px] h-[500px] rounded-full bg-orange-600/8 filter blur-[160px]"></div>
     <div class="absolute bottom-[10%] left-[-5%] w-[550px] h-[550px] rounded-full bg-rose-600/8 filter blur-[160px]"></div>
-    <!-- Fine 21st.dev Tech Grid Overlay -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,#000_70%,transparent_100%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,#000_70%,transparent_100%)]"></div>
   </div>
 
   <!-- TOP HEADER BRANDING & QUICK ACTIONS -->
   <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 pointer-events-none">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- Top Left: Brand Badge -->
+      <!-- Brand Logo -->
       <a href="#hero" class="pointer-events-auto flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-2xl bg-[#FF3B30] text-white flex items-center justify-center font-display font-extrabold text-base shadow-lg shadow-[#FF3B30]/30 group-hover:scale-105 transition-transform">
           DS
@@ -173,7 +173,7 @@
         </div>
       </a>
 
-      <!-- Top Right: Actions -->
+      <!-- Quick Action Buttons -->
       <div class="pointer-events-auto flex items-center gap-3">
         <a href="resume.html" target="_blank" class="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/10 hover:bg-white/15 transition-all shadow-sm">
           <i class="fa-solid fa-file-lines text-[#FF3B30] text-xs"></i>
@@ -188,7 +188,7 @@
     </div>
   </header>
 
-  <!-- CENTERED FLOATING PILL DOCK NAVBAR (Portfolio-2026 Design) -->
+  <!-- CENTERED FLOATING PILL DOCK NAVBAR -->
   <div class="fixed top-5 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
     <nav class="pointer-events-auto pill-dock rounded-full px-3 py-1.5 flex items-center gap-1 max-w-fit shadow-2xl">
       <a href="#hero" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-[#FF3B30] text-white shadow-md">
@@ -217,143 +217,222 @@
   </div>
 
   <!-- MAIN WRAPPER -->
-  <main class="relative z-10 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
+  <main class="relative z-10 pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
 
-    <!-- HERO SECTION (PORTFOLIO-2026 SPLIT/LAYERED WITH OVERSIZED HEADLINE & STATS) -->
-    <section id="hero" class="pt-8 pb-4 relative">
+    <!-- HERO BENTO GRID SUITE (ASYMMETRICAL APPLE-INSPIRED GRID WITH LIVE WIDGETS & ANIMATED TEXT) -->
+    <section id="hero" class="pt-6 space-y-6">
       
-      <!-- Background Giant Typographic Watermark -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none overflow-hidden opacity-[0.04] -z-10 leading-none">
-        <span class="font-display font-extrabold text-[12vw] tracking-tighter text-white uppercase block">
-          PORTFOLIO 2026
-        </span>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
         
-        <!-- Left: Minimalist Vertical Stat Counters -->
-        <div class="lg:col-span-3 order-2 lg:order-1 space-y-4" data-aos="fade-right">
+        <!-- Bento 1: Primary Profile Showcase & Animated Text (7 Cols) -->
+        <div class="md:col-span-12 lg:col-span-7 bento-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden" data-aos="fade-up">
           
-          <div class="bento-card rounded-3xl p-5 border border-white/10">
-            <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">FELLOWSHIP</span>
-            <div class="text-3xl sm:text-4xl font-display font-extrabold text-white">20-Week</div>
-            <p class="text-xs text-slate-400 mt-1">PRICE ProtoSem Innovation Trainee in AI, IoT & Retail Prototyping.</p>
+          <!-- Live Status Pill -->
+          <div class="flex items-center justify-between gap-2 mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full accent-pill text-xs font-mono font-bold">
+              <span class="w-2 h-2 rounded-full bg-[#FF3B30] animate-ping"></span>
+              <span>Available for Data Engineering & Science Roles</span>
+            </div>
+            <span class="text-xs font-mono text-slate-400 hidden sm:inline-block">B.Sc. Data Science</span>
           </div>
 
-          <div class="bento-card rounded-3xl p-5 border border-white/10">
-            <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">PIPELINES</span>
-            <div class="text-3xl sm:text-4xl font-display font-extrabold text-white">3+ Core</div>
-            <p class="text-xs text-slate-400 mt-1">ML Anomaly Detection, BigQuery ETL Engine & BI Telemetry Suites.</p>
-          </div>
-
-          <div class="bento-card rounded-3xl p-5 border border-white/10">
-            <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">PRECISION</span>
-            <div class="text-3xl sm:text-4xl font-display font-extrabold text-white">100%</div>
-            <p class="text-xs text-slate-400 mt-1">Data-driven execution across Python, SQL, Power BI & Cloud Schemas.</p>
-          </div>
-
-        </div>
-
-        <!-- Center: 3D Portrait Frame with Vibrant Accents -->
-        <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center" data-aos="zoom-in">
-          <div class="relative w-full max-w-sm">
+          <!-- Hero Headline & Dynamic Typed Text Animation -->
+          <div class="space-y-4 my-2">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.15]">
+              Hi, I'm <span class="text-[#FF3B30]">Dakshana Sri</span> —
+            </h1>
             
-            <!-- Radiant Backdrop Glow -->
-            <div class="absolute -inset-4 bg-gradient-to-b from-[#FF3B30]/30 via-orange-500/20 to-transparent rounded-[3rem] blur-2xl -z-10"></div>
-
-            <!-- Portrait Card -->
-            <div class="bento-card rounded-[2.5rem] p-3 sm:p-4 border border-white/15 shadow-2xl relative overflow-hidden group">
-              <div class="rounded-[2rem] overflow-hidden aspect-[4/5] bg-slate-900 relative">
-                <img 
-                  src="profile.jpg" 
-                  onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Dakshana+Sri&background=FF3B30&color=ffffff&size=512&bold=true';" 
-                  alt="Dakshana Sri Portrait" 
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-
-                <!-- Floating Role Pill -->
-                <div class="absolute bottom-3 inset-x-3 pill-dock rounded-2xl p-3 border border-white/10 flex items-center justify-between">
-                  <div>
-                    <h2 class="text-xs font-display font-extrabold text-white">Dakshana Sri M</h2>
-                    <p class="text-[10px] font-mono text-[#FF3B30] font-semibold">Data Science Candidate</p>
-                  </div>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                </div>
-              </div>
+            <!-- Animated Dynamic Typing Headline -->
+            <div class="min-h-[60px] sm:min-h-[50px] flex items-center">
+              <span id="typedHeroText" class="text-xl sm:text-2xl font-display font-semibold text-slate-200 leading-snug"></span>
             </div>
 
+            <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
+              Transforming raw datasets into high-performance predictive models, scalable BigQuery ETL pipelines, and executive dashboards.
+            </p>
           </div>
-        </div>
-
-        <!-- Right: Bold Headline & Narrative -->
-        <div class="lg:col-span-4 order-3 space-y-6 text-left" data-aos="fade-left">
-          
-          <!-- Availability Pill -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full accent-pill text-xs font-mono font-bold">
-            <span class="w-2 h-2 rounded-full bg-[#FF3B30] animate-pulse"></span>
-            <span>Available for Opportunities</span>
-          </div>
-
-          <!-- Bold Headline -->
-          <div class="space-y-2">
-            <span class="text-xs font-mono text-slate-400 uppercase tracking-widest block">// BORN TO ENGINEER</span>
-            <h1 class="text-3xl sm:text-4xl xl:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.1]">
-              Data Pipelines, <span class="text-[#FF3B30]">Intelligence</span> & Analytics.
-            </h1>
-          </div>
-
-          <p class="text-sm text-slate-300 leading-relaxed">
-            I'm <strong class="text-white">Dakshana</strong>, a Data Science student passionate about converting raw, chaotic datasets into robust pipelines and high-value predictive breakthroughs.
-          </p>
 
           <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a href="resume.html" target="_blank" class="px-6 py-3.5 rounded-full accent-btn text-xs font-bold font-display uppercase tracking-wider shadow-lg flex items-center gap-2">
+          <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-white/5 mt-4">
+            <a href="resume.html" target="_blank" class="px-6 py-3 rounded-full accent-btn text-xs font-bold font-display uppercase tracking-wider flex items-center gap-2">
               <i class="fa-solid fa-file-arrow-down text-xs"></i>
               <span>ATS Resume</span>
             </a>
-            <a href="#contact" class="px-6 py-3.5 rounded-full bento-card hover:border-[#FF3B30] text-white font-medium text-xs tracking-wider uppercase transition-all flex items-center gap-2">
+            <a href="#contact" class="px-6 py-3 rounded-full bento-card hover:border-[#FF3B30] text-white font-semibold text-xs tracking-wider uppercase transition-all flex items-center gap-2">
               <span>Get in Touch →</span>
             </a>
           </div>
 
         </div>
 
-      </div>
-
-      <!-- CONTINUOUS AUTO-SCROLLING HORIZONTAL TICKER BAR (Bottom Marquee) -->
-      <div class="mt-14 overflow-hidden bento-card rounded-2xl py-3.5 border border-white/10 bg-[#0E1424]/90 relative shadow-lg">
-        <div class="flex items-center gap-8 whitespace-nowrap animate-marquee font-display font-bold text-xs uppercase tracking-wider text-slate-300">
+        <!-- Bento 2: Hero Portrait Card (5 Cols) -->
+        <div class="md:col-span-12 lg:col-span-5 bento-card rounded-3xl p-4 sm:p-5 flex flex-col justify-center relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
           
-          <div class="flex items-center gap-8">
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Data Science Candidate</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Machine Learning & Anomaly Detection</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> BigQuery & ETL Architecture</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Power BI & Tableau Visual Suites</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> PRICE ProtoSem Innovation Trainee</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Python, SQL & R Modeling</span>
-            <span class="text-slate-600">•</span>
+          <div class="relative overflow-hidden rounded-[2rem] aspect-[4/5] bg-slate-900 shadow-inner">
+            <img 
+              src="profile.jpg" 
+              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Dakshana+Sri&background=FF3B30&color=ffffff&size=512&bold=true';" 
+              alt="Dakshana Sri M" 
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            />
+
+            <!-- Floating Apple-style Info Badge -->
+            <div class="absolute bottom-3 inset-x-3 pill-dock rounded-2xl p-3 border border-white/10 flex items-center justify-between">
+              <div>
+                <h2 class="text-xs font-display font-extrabold text-white">Dakshana Sri M</h2>
+                <p class="text-[10px] font-mono text-[#FF3B30] font-semibold">Innovation Engineer Trainee</p>
+              </div>
+              <span class="px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-mono text-[10px] border border-emerald-500/30">
+                ProtoSem
+              </span>
+            </div>
           </div>
 
-          <!-- Duplicate for Seamless Infinite Scroll -->
-          <div class="flex items-center gap-8" aria-hidden="true">
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Data Science Candidate</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Machine Learning & Anomaly Detection</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> BigQuery & ETL Architecture</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Power BI & Tableau Visual Suites</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> PRICE ProtoSem Innovation Trainee</span>
-            <span class="text-slate-600">•</span>
-            <span class="flex items-center gap-2 text-white"><span class="w-2 h-2 rounded-full bg-[#FF3B30] shadow-sm shadow-[#FF3B30]"></span> Python, SQL & R Modeling</span>
-            <span class="text-slate-600">•</span>
+        </div>
+
+      </div>
+
+      <!-- SECOND BENTO ROW: LIVE WIDGETS & STATS (ASYMMETRICAL 4 WIDGETS) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
+        
+        <!-- Widget 1: Real-time Live Clock & Location (4 Cols) -->
+        <div class="lg:col-span-4 bento-card rounded-3xl p-6 flex flex-col justify-between space-y-4" data-aos="fade-up">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-clock text-[#FF3B30]"></i>
+              <span>LOCAL TIME (IST)</span>
+            </span>
+            <span class="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px]">SYNCED</span>
+          </div>
+
+          <div>
+            <div id="liveClock" class="text-3xl sm:text-4xl font-mono font-extrabold text-white tracking-tight">
+              --:--:--
+            </div>
+            <p class="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-[#FF3B30]"></i>
+              <span>Tamil Nadu, India • Open to Global / Relocation</span>
+            </p>
+          </div>
+
+          <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span>Timezone: UTC +05:30</span>
+            <span class="text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Active Now</span>
+          </div>
+        </div>
+
+        <!-- Widget 2: Current Focus / Project Activity (4 Cols) -->
+        <div class="lg:col-span-4 bento-card rounded-3xl p-6 flex flex-col justify-between space-y-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-bolt text-[#FF3B30]"></i>
+              <span>CURRENT FOCUS</span>
+            </span>
+            <span class="px-2 py-0.5 rounded-full accent-pill text-[10px]">IN PROGRESS</span>
+          </div>
+
+          <div>
+            <h3 class="text-base font-display font-bold text-white">PRICE ProtoSem Fellowship</h3>
+            <p class="text-xs text-slate-300 mt-1">Researching & prototyping intelligent retail solutions via AI, Analytics, IoT & rapid hardware iterations.</p>
+          </div>
+
+          <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span>20-Week Programme</span>
+            <a href="#protosem" class="text-[#FF3B30] font-bold hover:underline">Explore Rail →</a>
+          </div>
+        </div>
+
+        <!-- Widget 3: Stat Metrics Counter (4 Cols) -->
+        <div class="lg:col-span-4 bento-card rounded-3xl p-6 flex flex-col justify-between space-y-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-chart-simple text-[#FF3B30]"></i>
+              <span>METRICS & STATS</span>
+            </span>
+            <span class="text-slate-500">2026</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 py-1 text-center">
+            <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
+              <div class="text-xl font-display font-extrabold text-[#FF3B30]">20W</div>
+              <p class="text-[10px] font-mono text-slate-400">ProtoSem</p>
+            </div>
+            <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
+              <div class="text-xl font-display font-extrabold text-white">3+</div>
+              <p class="text-[10px] font-mono text-slate-400">Pipelines</p>
+            </div>
+            <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
+              <div class="text-xl font-display font-extrabold text-emerald-400">100%</div>
+              <p class="text-[10px] font-mono text-slate-400">Precision</p>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span>Data • ML • BigQuery</span>
+            <span class="text-purple-300">Verified Skills</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- THIRD BENTO ROW: INTERACTIVE TECH ARSENAL DOCK -->
+      <div class="bento-card rounded-3xl p-6 space-y-4" data-aos="fade-up">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-[#FF3B30]"></i>
+            <span>Interactive Tech Stack Dock</span>
+          </span>
+          <span class="text-[11px] font-mono text-slate-500">Hover for core stack tools</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 text-center">
+          
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-brands fa-python text-2xl text-purple-300 group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">Python</span>
+            <span class="text-[10px] font-mono text-slate-500">Pandas/NumPy</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-database text-2xl text-[#FF3B30] group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">SQL</span>
+            <span class="text-[10px] font-mono text-slate-500">Complex Queries</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-cloud text-2xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">BigQuery</span>
+            <span class="text-[10px] font-mono text-slate-500">Warehousing</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-server text-2xl text-pink-400 group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">Informatica</span>
+            <span class="text-[10px] font-mono text-slate-500">ETL Workflows</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-brain text-2xl text-orange-400 group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">ML Models</span>
+            <span class="text-[10px] font-mono text-slate-500">Scikit-Learn</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-chart-pie text-2xl text-amber-400 group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">Power BI</span>
+            <span class="text-[10px] font-mono text-slate-500">DAX Modeling</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-chart-line text-2xl text-teal-400 group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">Tableau</span>
+            <span class="text-[10px] font-mono text-slate-500">Visual Analytics</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-file-excel text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+            <span class="block text-xs font-bold text-slate-200 mt-2">Excel</span>
+            <span class="text-[10px] font-mono text-slate-500">Certified Tools</span>
           </div>
 
         </div>
@@ -919,7 +998,7 @@
       </div>
     </section>
 
-    <!-- INTERACTIVE TERMINAL / SANDBOX SECTION (21ST.DEV DARK BENTO CARD) -->
+    <!-- INTERACTIVE TERMINAL / SANDBOX SECTION -->
     <section id="terminal-demo" class="scroll-mt-32 space-y-6" data-aos="fade-up">
       
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
@@ -1066,7 +1145,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 px-4 relative z-10 bg-[#07090E]">
+  <footer class="border-t border-white/10 py-10 px-4 relative z-10 bg-[#080B11]">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-[#FF3B30]"></span>
@@ -1083,7 +1162,7 @@
     </div>
   </footer>
 
-  <!-- Scripts: AOS, Interactive Logic, Reusable Architecture -->
+  <!-- Scripts: Typed.js, Live Clock, AOS, Dynamic Architecture -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     // Initialize AOS
@@ -1096,6 +1175,50 @@
 
     // Current Year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // ==========================================
+    // LIVE REAL-TIME CLOCK WIDGET (SYNCED TO IST)
+    // ==========================================
+    function updateLiveClock() {
+      const clockElement = document.getElementById('liveClock');
+      if (!clockElement) return;
+
+      const now = new Date();
+      // Format to Indian Standard Time (IST) or User Local
+      const options = {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+      const timeFormatter = new Intl.DateTimeFormat('en-US', options);
+      clockElement.textContent = timeFormatter.format(now);
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+
+    // ==========================================
+    // TYPED.JS DYNAMIC TEXT ANIMATION IN HERO
+    // ==========================================
+    if (document.getElementById('typedHeroText')) {
+      new Typed('#typedHeroText', {
+        strings: [
+          "B.Sc. Data Science Candidate",
+          "PRICE ProtoSem Innovation Trainee",
+          "Data Analyst & Pipeline Engineer",
+          "Machine Learning & Anomaly Specialist",
+          "Power BI & Tableau Data Visualizer"
+        ],
+        typeSpeed: 45,
+        backSpeed: 25,
+        backDelay: 1800,
+        startDelay: 400,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|'
+      });
+    }
 
     // ==========================================
     // PROTOSEM 20-WEEK ARCHITECTURE & DATA MODEL
