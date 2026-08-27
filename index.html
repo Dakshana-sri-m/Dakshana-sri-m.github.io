@@ -21,14 +21,18 @@
         extend: {
           colors: {
             brand: {
-              accent: '#FF3B30',        // Electric Red-Orange
-              accentGlow: 'rgba(255, 59, 48, 0.35)',
-              accentDark: '#C92A20',
-              dark: '#050507',          // Awwwards Deep Obsidian
-              darkCard: '#0E1017',      // Frosted Card Surface
-              darkCardAlt: '#131622',
+              accent: '#FF8370',        // Pastel Coral / Warm Peach
+              accentGlow: 'rgba(255, 131, 112, 0.35)',
+              accentDark: '#E26D5C',
+              dark: '#0A0D15',          // Soft Velvet Midnight
+              darkCard: '#101524',      // Frosted Pastel Dark Surface
+              darkCardAlt: '#161D30',
               border: 'rgba(255, 255, 255, 0.08)',
-              borderHover: 'rgba(255, 59, 48, 0.45)'
+              borderHover: 'rgba(255, 131, 112, 0.45)',
+              pastelMint: '#7FE0B2',    // Soft Pastel Sage
+              pastelLilac: '#B8A7EA',   // Soft Pastel Lavender
+              pastelSky: '#8BC8FE',     // Soft Pastel Blue
+              pastelButter: '#FFD166'   // Soft Pastel Amber
             }
           },
           fontFamily: {
@@ -39,21 +43,12 @@
           },
           animation: {
             'float': 'float 6s ease-in-out infinite',
-            'scroll-v-1': 'scrollUp 25s linear infinite',
-            'scroll-v-2': 'scrollDown 30s linear infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
           },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
               '50%': { transform: 'translateY(-6px)' },
-            },
-            scrollUp: {
-              '0%': { transform: 'translateY(0)' },
-              '100%': { transform: 'translateY(-50%)' }
-            },
-            scrollDown: {
-              '0%': { transform: 'translateY(-50%)' },
-              '100%': { transform: 'translateY(0)' }
             }
           }
         }
@@ -71,87 +66,87 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
   <style>
-    /* xkintaro.com Signature Styling */
+    /* Pastel Palette & Glassmorphism Design System */
     body {
-      background-color: #050507;
+      background-color: #0A0D15;
       color: #E2E8F0;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     html.light body {
-      background-color: #F8FAFC;
+      background-color: #FAF9F6;
       color: #0F172A;
     }
 
     .kintaro-card {
-      background: rgba(14, 16, 23, 0.75);
+      background: rgba(16, 21, 36, 0.75);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     html.light .kintaro-card {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
     }
 
     .kintaro-card:hover {
-      border-color: rgba(255, 59, 48, 0.45);
+      border-color: rgba(255, 131, 112, 0.45);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px -15px rgba(255, 59, 48, 0.15);
+      box-shadow: 0 20px 40px -15px rgba(255, 131, 112, 0.15);
     }
 
     .pill-dock {
-      background: rgba(14, 16, 23, 0.85);
+      background: rgba(16, 21, 36, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
     }
 
     html.light .pill-dock {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
     }
 
     .accent-btn {
-      background-color: #FF3B30;
+      background-color: #FF8370;
       color: #FFFFFF;
       transition: all 0.25s ease;
-      box-shadow: 0 8px 25px -4px rgba(255, 59, 48, 0.35);
+      box-shadow: 0 8px 25px -4px rgba(255, 131, 112, 0.35);
     }
 
     .accent-btn:hover {
-      background-color: #E02E24;
+      background-color: #E26D5C;
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px -4px rgba(255, 59, 48, 0.5);
+      box-shadow: 0 12px 30px -4px rgba(255, 131, 112, 0.5);
     }
 
     .accent-pill {
-      background-color: rgba(255, 59, 48, 0.12);
-      color: #FF6B61;
-      border: 1px solid rgba(255, 59, 48, 0.3);
+      background-color: rgba(255, 131, 112, 0.14);
+      color: #FFA599;
+      border: 1px solid rgba(255, 131, 112, 0.3);
     }
 
     .glass-input {
-      background: rgba(10, 12, 18, 0.85);
+      background: rgba(12, 16, 26, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
     }
 
     html.light .glass-input {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       color: #0F172A;
     }
 
     .glass-input:focus {
-      border-color: #FF3B30;
-      box-shadow: 0 0 20px rgba(255, 59, 48, 0.25);
+      border-color: #FF8370;
+      box-shadow: 0 0 20px rgba(255, 131, 112, 0.25);
       outline: none;
     }
 
@@ -202,7 +197,7 @@
 
     /* Typed cursor style */
     .typed-cursor {
-      color: #FF3B30;
+      color: #FF8370;
       font-weight: 700;
     }
 
@@ -211,39 +206,39 @@
       width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #050507;
+      background: #0A0D15;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1E293B;
+      background: #1E2638;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #FF3B30;
+      background: #FF8370;
     }
   </style>
 </head>
 
-<body class="font-sans antialiased selection:bg-[#FF3B30] selection:text-white min-h-screen relative overflow-x-hidden">
+<body class="font-sans antialiased selection:bg-[#FF8370] selection:text-white min-h-screen relative overflow-x-hidden">
 
-  <!-- Ambient Glowing Aura Canvas -->
+  <!-- Ambient Pastel Glowing Aura Canvas -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#FF3B30]/10 filter blur-[160px]"></div>
-    <div class="absolute top-[35%] right-[-5%] w-[500px] h-[500px] rounded-full bg-orange-600/8 filter blur-[160px]"></div>
-    <div class="absolute bottom-[10%] left-[-5%] w-[550px] h-[550px] rounded-full bg-rose-600/8 filter blur-[160px]"></div>
+    <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#FF8370]/12 filter blur-[160px]"></div>
+    <div class="absolute top-[35%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#B8A7EA]/10 filter blur-[160px]"></div>
+    <div class="absolute bottom-[10%] left-[-5%] w-[550px] h-[550px] rounded-full bg-[#7FE0B2]/10 filter blur-[160px]"></div>
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,#000_70%,transparent_100%)]"></div>
   </div>
 
-  <!-- TOP HEADER (xkintaro.com STYLE WITH THEME TOGGLE & BRAND) -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 backdrop-blur-md bg-black/40 dark:bg-black/40 border-b border-white/5 transition-all">
+  <!-- TOP HEADER (PASTEL ACCENTED BRAND & THEME SWITCHER) -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 backdrop-blur-md bg-black/30 dark:bg-black/30 border-b border-white/5 transition-all">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- Brand Logo in xkintaro.com Typography -->
+      <!-- Brand Logo in Pastel Coral & Syne Font -->
       <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-[#FF3B30] text-white flex items-center justify-center font-syne font-extrabold text-sm shadow-lg shadow-[#FF3B30]/30 group-hover:scale-105 transition-transform">
+        <div class="w-9 h-9 rounded-xl bg-[#FF8370] text-white flex items-center justify-center font-syne font-extrabold text-sm shadow-lg shadow-[#FF8370]/30 group-hover:scale-105 transition-transform">
           DS
         </div>
         <div class="flex flex-col">
-          <span class="font-syne font-black text-lg sm:text-xl tracking-tighter uppercase text-white transition-all group-hover:text-[#FF3B30]">
+          <span class="font-syne font-black text-lg sm:text-xl tracking-tighter uppercase text-white transition-all group-hover:text-[#FF8370]">
             dakshana
           </span>
           <span class="text-[10px] font-mono text-slate-400 -mt-1 hidden sm:inline-block">
@@ -256,45 +251,45 @@
       <nav class="hidden lg:flex items-center gap-6">
         <a href="#hero" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-300 hover:text-white transition-colors py-1 relative group">
           Home
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#about" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
           About
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#skills" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
           Stack
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#protosem" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group flex items-center gap-1.5">
           <span>ProtoSem</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#FF3B30]"></span>
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF8370]"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#certifications" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
           Certifications
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#projects" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
           Projects
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#contact" class="text-xs font-medium uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors py-1 relative group">
           Contact
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF3B30] transition-all duration-300 group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8370] transition-all duration-300 group-hover:w-full"></span>
         </a>
       </nav>
 
       <!-- Right Controls: Theme Switcher & Actions -->
       <div class="flex items-center gap-3">
         <!-- Theme Switcher Button -->
-        <button id="themeToggleBtn" class="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#FF3B30]/40 transition-all" title="Toggle theme">
-          <i class="fa-solid fa-moon text-xs dark:block hidden"></i>
-          <i class="fa-solid fa-sun text-xs dark:hidden block"></i>
+        <button id="themeToggleBtn" class="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#FF8370]/40 transition-all" title="Toggle theme">
+          <i class="fa-solid fa-moon text-xs dark:block hidden text-[#B8A7EA]"></i>
+          <i class="fa-solid fa-sun text-xs dark:hidden block text-[#FFD166]"></i>
         </button>
 
         <a href="resume.html" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/10 hover:bg-white/15 transition-all shadow-sm">
-          <i class="fa-solid fa-file-lines text-[#FF3B30] text-xs"></i>
+          <i class="fa-solid fa-file-lines text-[#FF8370] text-xs"></i>
           <span>ATS Resume</span>
         </a>
 
@@ -310,7 +305,7 @@
   <!-- MAIN WRAPPER -->
   <main class="relative z-10 pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
 
-    <!-- HERO SECTION (xkintaro.com STYLE WITH VERTICAL PORTRAIT SLIDER + TYPED HEADLINE) -->
+    <!-- HERO SECTION (PASTEL BENTO WITH PORTRAIT, WAVING HAND & TYPED TEXT) -->
     <section id="hero" class="pt-8 space-y-6 relative">
       
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
@@ -320,17 +315,17 @@
           
           <!-- Live Status Pill -->
           <div class="flex items-center justify-between gap-2 mb-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full accent-pill text-xs font-mono font-bold">
-              <span class="w-2 h-2 rounded-full bg-[#FF3B30] animate-ping"></span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full accent-pill text-xs font-mono font-bold">
+              <span class="w-2 h-2 rounded-full bg-[#FF8370] animate-ping"></span>
               <span>Available for Data Engineering & Science Roles</span>
             </div>
-            <span class="text-xs font-mono text-slate-400 hidden sm:inline-block">B.Sc. Data Science</span>
+            <span class="text-xs font-mono text-[#B8A7EA] hidden sm:inline-block">B.Sc. Data Science</span>
           </div>
 
-          <!-- Hero Headline in xkintaro.com Syne Typography & Dynamic Typed Text Animation -->
+          <!-- Hero Headline in Pastel Coral & Dynamic Typed Text Animation -->
           <div class="space-y-4 my-2">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-syne font-extrabold text-white tracking-tight leading-[1.15] flex flex-wrap items-center gap-3">
-              <span>Hi, I'm <span class="text-[#FF3B30]">Dakshana Sri</span></span>
+              <span>Hi, I'm <span class="text-[#FF8370]">Dakshana Sri</span></span>
               <span class="animate-wave text-3xl sm:text-4xl lg:text-5xl select-none" role="img" aria-label="Waving hand">👋</span>
             </h1>
             
@@ -340,7 +335,7 @@
             </div>
 
             <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-              I'm a <strong class="text-white font-bold">B.Sc. Data Science student</strong> and <strong class="text-[#FF3B30] font-bold">PRICE ProtoSem Innovation Trainee</strong> passionate about turning raw data into actionable insights across <strong class="text-white">Machine Learning, BigQuery ETL, Power BI, Python, and SQL</strong>.
+              I'm a <strong class="text-white font-bold">B.Sc. Data Science student</strong> and <strong class="text-[#FF8370] font-bold">PRICE ProtoSem Innovation Trainee</strong> passionate about turning raw data into actionable insights across <strong class="text-white">Machine Learning, BigQuery ETL, Power BI, Python, and SQL</strong>.
             </p>
           </div>
 
@@ -350,7 +345,7 @@
               <i class="fa-solid fa-file-arrow-down text-xs"></i>
               <span>ATS Resume</span>
             </a>
-            <a href="#contact" class="px-6 py-3 rounded-full kintaro-card hover:border-[#FF3B30] text-white font-semibold text-xs tracking-wider uppercase transition-all flex items-center gap-2">
+            <a href="#contact" class="px-6 py-3 rounded-full kintaro-card hover:border-[#FF8370] text-white font-semibold text-xs tracking-wider uppercase transition-all flex items-center gap-2">
               <span>Get in Touch →</span>
             </a>
           </div>
@@ -363,18 +358,18 @@
           <div class="relative overflow-hidden rounded-[2rem] aspect-[4/5] bg-slate-900 shadow-inner">
             <img 
               src="profile.jpg" 
-              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Dakshana+Sri&background=FF3B30&color=ffffff&size=512&bold=true';" 
+              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Dakshana+Sri&background=FF8370&color=ffffff&size=512&bold=true';" 
               alt="Dakshana Sri M" 
               class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
             />
 
-            <!-- Floating Awwwards Info Badge -->
+            <!-- Floating Pastel Info Badge -->
             <div class="absolute bottom-3 inset-x-3 pill-dock rounded-2xl p-3 border border-white/10 flex items-center justify-between">
               <div>
                 <h2 class="text-xs font-syne font-extrabold text-white">Dakshana Sri M</h2>
-                <p class="text-[10px] font-mono text-[#FF3B30] font-semibold">Innovation Engineer Trainee</p>
+                <p class="text-[10px] font-mono text-[#FF8370] font-semibold">Innovation Engineer Trainee</p>
               </div>
-              <span class="px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-mono text-[10px] border border-emerald-500/30">
+              <span class="px-2.5 py-1 rounded-lg bg-[#7FE0B2]/15 text-[#7FE0B2] font-mono text-[10px] border border-[#7FE0B2]/30 font-bold">
                 ProtoSem
               </span>
             </div>
@@ -384,17 +379,17 @@
 
       </div>
 
-      <!-- SECOND BENTO ROW: LIVE WIDGETS & STATS (ASYMMETRICAL 4 WIDGETS) -->
+      <!-- SECOND BENTO ROW: LIVE PASTEL WIDGETS & STATS (ASYMMETRICAL 4 WIDGETS) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
         
         <!-- Widget 1: Real-time Live Clock & Location (4 Cols) -->
         <div class="lg:col-span-4 kintaro-card rounded-3xl p-6 flex flex-col justify-between space-y-4" data-aos="fade-up">
           <div class="flex items-center justify-between text-xs font-mono text-slate-400">
             <span class="flex items-center gap-2">
-              <i class="fa-solid fa-clock text-[#FF3B30]"></i>
+              <i class="fa-solid fa-clock text-[#FF8370]"></i>
               <span>LOCAL TIME (IST)</span>
             </span>
-            <span class="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px]">SYNCED</span>
+            <span class="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] text-[#8BC8FE]">SYNCED</span>
           </div>
 
           <div>
@@ -402,14 +397,14 @@
               --:--:--
             </div>
             <p class="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
-              <i class="fa-solid fa-location-dot text-[#FF3B30]"></i>
+              <i class="fa-solid fa-location-dot text-[#FF8370]"></i>
               <span>Tamil Nadu, India • Open to Global / Relocation</span>
             </p>
           </div>
 
           <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>Timezone: UTC +05:30</span>
-            <span class="text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Active Now</span>
+            <span class="text-[#7FE0B2] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#7FE0B2] animate-pulse"></span> Active Now</span>
           </div>
         </div>
 
@@ -417,10 +412,10 @@
         <div class="lg:col-span-4 kintaro-card rounded-3xl p-6 flex flex-col justify-between space-y-4" data-aos="fade-up" data-aos-delay="100">
           <div class="flex items-center justify-between text-xs font-mono text-slate-400">
             <span class="flex items-center gap-2">
-              <i class="fa-solid fa-bolt text-[#FF3B30]"></i>
+              <i class="fa-solid fa-bolt text-[#FF8370]"></i>
               <span>CURRENT FOCUS</span>
             </span>
-            <span class="px-2 py-0.5 rounded-full accent-pill text-[10px]">IN PROGRESS</span>
+            <span class="px-2.5 py-0.5 rounded-full accent-pill text-[10px] font-bold">IN PROGRESS</span>
           </div>
 
           <div>
@@ -430,7 +425,7 @@
 
           <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>20-Week Programme</span>
-            <a href="#protosem" class="text-[#FF3B30] font-bold hover:underline">Explore Flashcards →</a>
+            <a href="#protosem" class="text-[#FF8370] font-bold hover:underline">Explore Flashcards →</a>
           </div>
         </div>
 
@@ -438,7 +433,7 @@
         <div class="lg:col-span-4 kintaro-card rounded-3xl p-6 flex flex-col justify-between space-y-3" data-aos="fade-up" data-aos-delay="200">
           <div class="flex items-center justify-between text-xs font-mono text-slate-400">
             <span class="flex items-center gap-2">
-              <i class="fa-solid fa-chart-simple text-[#FF3B30]"></i>
+              <i class="fa-solid fa-chart-simple text-[#FF8370]"></i>
               <span>METRICS & STATS</span>
             </span>
             <span class="text-slate-500">2026</span>
@@ -446,7 +441,7 @@
 
           <div class="grid grid-cols-3 gap-2 py-1 text-center">
             <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-syne font-extrabold text-[#FF3B30]">20W</div>
+              <div class="text-xl font-syne font-extrabold text-[#FF8370]">20W</div>
               <p class="text-[10px] font-mono text-slate-400">ProtoSem</p>
             </div>
             <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
@@ -454,24 +449,24 @@
               <p class="text-[10px] font-mono text-slate-400">Pipelines</p>
             </div>
             <div class="p-2 rounded-2xl bg-white/5 border border-white/5">
-              <div class="text-xl font-syne font-extrabold text-emerald-400">100%</div>
+              <div class="text-xl font-syne font-extrabold text-[#7FE0B2]">100%</div>
               <p class="text-[10px] font-mono text-slate-400">Precision</p>
             </div>
           </div>
 
           <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>Data • ML • BigQuery</span>
-            <span class="text-purple-300">Verified Skills</span>
+            <span class="text-[#B8A7EA] font-semibold">Verified Skills</span>
           </div>
         </div>
 
       </div>
 
-      <!-- THIRD BENTO ROW: INTERACTIVE TECH ARSENAL DOCK -->
+      <!-- THIRD BENTO ROW: INTERACTIVE TECH ARSENAL DOCK (PASTEL ACCENTS) -->
       <div class="kintaro-card rounded-3xl p-6 space-y-4" data-aos="fade-up">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
           <span class="text-xs font-mono text-slate-400 uppercase tracking-wider flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-[#FF3B30]"></i>
+            <i class="fa-solid fa-layer-group text-[#FF8370]"></i>
             <span>Interactive Tech Stack Dock</span>
           </span>
           <span class="text-[11px] font-mono text-slate-500">Hover for core stack tools</span>
@@ -479,50 +474,50 @@
 
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 text-center">
           
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-brands fa-python text-2xl text-purple-300 group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#B8A7EA]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-brands fa-python text-2xl text-[#B8A7EA] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">Python</span>
             <span class="text-[10px] font-mono text-slate-500">Pandas/NumPy</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-database text-2xl text-[#FF3B30] group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF8370]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-database text-2xl text-[#FF8370] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">SQL</span>
             <span class="text-[10px] font-mono text-slate-500">Complex Queries</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-cloud text-2xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#8BC8FE]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-cloud text-2xl text-[#8BC8FE] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">BigQuery</span>
             <span class="text-[10px] font-mono text-slate-500">Warehousing</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-server text-2xl text-pink-400 group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#F472B6]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-server text-2xl text-[#F472B6] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">Informatica</span>
             <span class="text-[10px] font-mono text-slate-500">ETL Workflows</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-brain text-2xl text-orange-400 group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FFD166]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-brain text-2xl text-[#FFD166] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">ML Models</span>
             <span class="text-[10px] font-mono text-slate-500">Scikit-Learn</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-chart-pie text-2xl text-amber-400 group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FBBF24]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-chart-pie text-2xl text-[#FBBF24] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">Power BI</span>
             <span class="text-[10px] font-mono text-slate-500">DAX Modeling</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-chart-line text-2xl text-teal-400 group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#7FE0B2]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-chart-line text-2xl text-[#7FE0B2] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">Tableau</span>
             <span class="text-[10px] font-mono text-slate-500">Visual Analytics</span>
           </div>
 
-          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FF3B30]/40 hover:-translate-y-1 transition-all group">
-            <i class="fa-solid fa-file-excel text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#A7F3D0]/40 hover:-translate-y-1 transition-all group">
+            <i class="fa-solid fa-file-excel text-2xl text-[#A7F3D0] group-hover:scale-110 transition-transform"></i>
             <span class="block text-xs font-bold text-slate-200 mt-2">Excel</span>
             <span class="text-[10px] font-mono text-slate-500">Certified Tools</span>
           </div>
@@ -532,12 +527,12 @@
 
     </section>
 
-    <!-- ABOUT SECTION (KINTARO BENTO DESIGN) -->
+    <!-- ABOUT SECTION (PASTEL BENTO DESIGN) -->
     <section id="about" class="scroll-mt-32 space-y-6" data-aos="fade-up">
       
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(01)</span>
+          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(01)</span>
           <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">About Me</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Data Lifecycle • Engineering • Analytics</span>
@@ -552,18 +547,18 @@
               <span>Personal Narrative</span>
             </div>
             <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
-              I'm <strong class="text-white font-bold">Dakshana</strong>, a <strong class="text-[#FF3B30] font-bold">B.Sc. Data Science student</strong> (currently in my proto-sem) passionate about transforming raw data into actionable insights.
+              I'm <strong class="text-white font-bold">Dakshana</strong>, a <strong class="text-[#FF8370] font-bold">B.Sc. Data Science student</strong> (currently in my proto-sem) passionate about transforming raw data into actionable insights.
             </p>
             <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
-              Working across the entire data lifecycle as a <strong class="text-white">Data Analyst</strong>, <strong class="text-[#FF3B30] font-semibold">Data Engineer</strong>, and <strong class="text-emerald-300 font-semibold">Data Visualizer</strong>, I bring hands-on skills in <strong class="text-white">Machine Learning, Deep Learning, Python, SQL, Power BI, Excel, and R</strong>.
+              Working across the entire data lifecycle as a <strong class="text-white">Data Analyst</strong>, <strong class="text-[#FF8370] font-semibold">Data Engineer</strong>, and <strong class="text-[#7FE0B2] font-semibold">Data Visualizer</strong>, I bring hands-on skills in <strong class="text-white">Machine Learning, Deep Learning, Python, SQL, Power BI, Excel, and R</strong>.
             </p>
           </div>
 
           <div class="pt-4 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono text-slate-400">
-            <span class="px-2.5 py-1 rounded-lg bg-white/5">#DataPipelines</span>
-            <span class="px-2.5 py-1 rounded-lg bg-white/5">#MachineLearning</span>
-            <span class="px-2.5 py-1 rounded-lg bg-white/5">#PRICEProtoSem</span>
-            <span class="px-2.5 py-1 rounded-lg bg-white/5">#BusinessIntelligence</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#B8A7EA]">#DataPipelines</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#FF8370]">#MachineLearning</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#7FE0B2]">#PRICEProtoSem</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white/5 text-[#8BC8FE]">#BusinessIntelligence</span>
           </div>
         </div>
 
@@ -572,7 +567,7 @@
           
           <div class="kintaro-card rounded-2xl p-5">
             <div class="flex items-center gap-3 mb-2">
-              <div class="w-8 h-8 rounded-xl bg-[#FF3B30]/15 text-[#FF3B30] flex items-center justify-center text-sm font-bold border border-[#FF3B30]/30">
+              <div class="w-8 h-8 rounded-xl bg-[#FF8370]/15 text-[#FF8370] flex items-center justify-center text-sm font-bold border border-[#FF8370]/30">
                 <i class="fa-solid fa-network-wired"></i>
               </div>
               <h3 class="text-sm font-syne font-bold text-white">Data Engineering</h3>
@@ -582,7 +577,7 @@
 
           <div class="kintaro-card rounded-2xl p-5">
             <div class="flex items-center gap-3 mb-2">
-              <div class="w-8 h-8 rounded-xl bg-orange-500/15 text-orange-400 flex items-center justify-center text-sm font-bold border border-orange-500/30">
+              <div class="w-8 h-8 rounded-xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-sm font-bold border border-[#B8A7EA]/30">
                 <i class="fa-solid fa-brain"></i>
               </div>
               <h3 class="text-sm font-syne font-bold text-white">Machine Learning</h3>
@@ -592,7 +587,7 @@
 
           <div class="kintaro-card rounded-2xl p-5">
             <div class="flex items-center gap-3 mb-2">
-              <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-300 flex items-center justify-center text-sm font-bold border border-emerald-500/30">
+              <div class="w-8 h-8 rounded-xl bg-[#7FE0B2]/15 text-[#7FE0B2] flex items-center justify-center text-sm font-bold border border-[#7FE0B2]/30">
                 <i class="fa-solid fa-chart-line"></i>
               </div>
               <h3 class="text-sm font-syne font-bold text-white">BI & Analytics</h3>
@@ -605,22 +600,22 @@
       </div>
     </section>
 
-    <!-- SKILLS SECTION (KINTARO BENTO GRID WITH CERTIFICATION BADGES) -->
+    <!-- SKILLS SECTION (PASTEL BENTO GRID WITH CERTIFICATION BADGES) -->
     <section id="skills" class="scroll-mt-32 space-y-6" data-aos="fade-up">
       
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(02)</span>
+          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(02)</span>
           <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Technical Arsenal</h2>
         </div>
         
         <!-- Certifications Pills -->
         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded-full accent-pill text-xs font-mono font-bold flex items-center gap-1.5">
+          <span class="px-3.5 py-1 rounded-full accent-pill text-xs font-mono font-bold flex items-center gap-1.5">
             <i class="fa-solid fa-certificate text-[10px]"></i>
             <span>Data Analytical Tools (Amypo)</span>
           </span>
-          <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-mono font-bold flex items-center gap-1.5">
+          <span class="px-3.5 py-1 rounded-full bg-[#7FE0B2]/15 text-[#7FE0B2] border border-[#7FE0B2]/30 text-xs font-mono font-bold flex items-center gap-1.5">
             <i class="fa-solid fa-certificate text-[10px]"></i>
             <span>Excel (Simplilearn)</span>
           </span>
@@ -632,15 +627,15 @@
         <!-- Card 1 -->
         <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
           <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-white/10 text-white flex items-center justify-center text-lg font-bold">
+            <div class="w-10 h-10 rounded-2xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-lg font-bold border border-[#B8A7EA]/30">
               <i class="fa-brands fa-python"></i>
             </div>
             <h3 class="text-base font-syne font-bold text-white">Languages & Querying</h3>
             <p class="text-xs text-slate-400">Core statistical scripting & high-throughput querying.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Python (Pandas, NumPy)</span><span class="text-[#FF3B30] font-bold">Advanced</span></li>
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>SQL & Dialects</span><span class="text-[#FF3B30] font-bold">Proficient</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Python (Pandas, NumPy)</span><span class="text-[#FF8370] font-bold">Advanced</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>SQL & Dialects</span><span class="text-[#FF8370] font-bold">Proficient</span></li>
             <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>R & Bash</span><span class="text-slate-400">Working</span></li>
           </ul>
         </div>
@@ -648,15 +643,15 @@
         <!-- Card 2 -->
         <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
           <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-[#FF3B30]/20 text-[#FF3B30] flex items-center justify-center text-lg font-bold border border-[#FF3B30]/30">
+            <div class="w-10 h-10 rounded-2xl bg-[#8BC8FE]/15 text-[#8BC8FE] flex items-center justify-center text-lg font-bold border border-[#8BC8FE]/30">
               <i class="fa-solid fa-server"></i>
             </div>
             <h3 class="text-base font-syne font-bold text-white">Big Data & ETL</h3>
             <p class="text-xs text-slate-400">Cloud warehousing, schema mapping & pipeline automation.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Google BigQuery</span><span class="text-[#FF3B30] font-bold">Proficient</span></li>
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Informatica PowerCenter</span><span class="text-[#FF3B30] font-bold">Proficient</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Google BigQuery</span><span class="text-[#8BC8FE] font-bold">Proficient</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Informatica PowerCenter</span><span class="text-[#8BC8FE] font-bold">Proficient</span></li>
             <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Data Migrations</span><span class="text-slate-400">Hands-on</span></li>
           </ul>
         </div>
@@ -664,15 +659,15 @@
         <!-- Card 3 -->
         <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
           <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-orange-500/20 text-orange-400 flex items-center justify-center text-lg font-bold border border-orange-500/30">
+            <div class="w-10 h-10 rounded-2xl bg-[#FFD166]/15 text-[#FFD166] flex items-center justify-center text-lg font-bold border border-[#FFD166]/30">
               <i class="fa-solid fa-brain"></i>
             </div>
             <h3 class="text-base font-syne font-bold text-white">Machine & Deep Learning</h3>
             <p class="text-xs text-slate-400">Pattern classification & telemetry anomaly detectors.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>IoT Anomaly Detection</span><span class="text-[#FF3B30] font-bold">Applied</span></li>
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Scikit-Learn Modeling</span><span class="text-[#FF3B30] font-bold">Applied</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>IoT Anomaly Detection</span><span class="text-[#FF8370] font-bold">Applied</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Scikit-Learn Modeling</span><span class="text-[#FF8370] font-bold">Applied</span></li>
             <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Deep Learning Basics</span><span class="text-slate-400">Hands-on</span></li>
           </ul>
         </div>
@@ -680,16 +675,16 @@
         <!-- Card 4 -->
         <div class="kintaro-card rounded-3xl p-6 flex flex-col justify-between">
           <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-lg font-bold border border-emerald-500/30">
+            <div class="w-10 h-10 rounded-2xl bg-[#7FE0B2]/15 text-[#7FE0B2] flex items-center justify-center text-lg font-bold border border-[#7FE0B2]/30">
               <i class="fa-solid fa-chart-pie"></i>
             </div>
             <h3 class="text-base font-syne font-bold text-white">BI & Visualization</h3>
             <p class="text-xs text-slate-400">Executive metrics, calculated models & visual suites.</p>
           </div>
           <ul class="space-y-1.5 pt-4 text-xs font-mono text-slate-300">
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Microsoft Power BI</span><span class="text-[#FF3B30] font-bold">Proficient</span></li>
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Tableau Desktop</span><span class="text-[#FF3B30] font-bold">Proficient</span></li>
-            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Advanced Excel</span><span class="text-emerald-300 font-bold">Certified</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Microsoft Power BI</span><span class="text-[#FF8370] font-bold">Proficient</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Tableau Desktop</span><span class="text-[#FF8370] font-bold">Proficient</span></li>
+            <li class="p-2 rounded-xl bg-white/5 flex justify-between"><span>Advanced Excel</span><span class="text-[#7FE0B2] font-bold">Certified</span></li>
           </ul>
         </div>
 
@@ -704,7 +699,7 @@
         
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-white/10 pb-5">
           <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(03)</span>
+            <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(03)</span>
             <h2 class="text-2xl sm:text-4xl font-syne font-extrabold text-white tracking-tight">PRICE ProtoSem</h2>
           </div>
           <div class="flex flex-wrap items-center gap-2">
@@ -731,36 +726,36 @@
         <div class="pt-2">
           <p class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">Programme Disciplines & Focus Areas:</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF3B30]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-[#FF3B30]/15 text-[#FF3B30] flex items-center justify-center text-xs font-bold border border-[#FF3B30]/30">
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF8370]/40 transition-all flex items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-[#FF8370]/15 text-[#FF8370] flex items-center justify-center text-xs font-bold border border-[#FF8370]/30">
                 <i class="fa-solid fa-store"></i>
               </div>
               <span class="text-xs font-bold text-slate-200">Phygital Retail</span>
             </div>
 
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF3B30]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-orange-500/15 text-orange-400 flex items-center justify-center text-xs font-bold border border-orange-500/30">
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#B8A7EA]/40 transition-all flex items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-xs font-bold border border-[#B8A7EA]/30">
                 <i class="fa-solid fa-brain"></i>
               </div>
               <span class="text-xs font-bold text-slate-200">AI & Analytics</span>
             </div>
 
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF3B30]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center text-xs font-bold border border-blue-500/30">
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#8BC8FE]/40 transition-all flex items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-[#8BC8FE]/15 text-[#8BC8FE] flex items-center justify-center text-xs font-bold border border-[#8BC8FE]/30">
                 <i class="fa-solid fa-microchip"></i>
               </div>
               <span class="text-xs font-bold text-slate-200">IoT Systems</span>
             </div>
 
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF3B30]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center text-xs font-bold border border-purple-500/30">
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FFD166]/40 transition-all flex items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-[#FFD166]/15 text-[#FFD166] flex items-center justify-center text-xs font-bold border border-[#FFD166]/30">
                 <i class="fa-solid fa-cube"></i>
               </div>
               <span class="text-xs font-bold text-slate-200">Prototyping</span>
             </div>
 
-            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FF3B30]/40 transition-all flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-300 flex items-center justify-center text-xs font-bold border border-emerald-500/30">
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#7FE0B2]/40 transition-all flex items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-[#7FE0B2]/15 text-[#7FE0B2] flex items-center justify-center text-xs font-bold border border-[#7FE0B2]/30">
                 <i class="fa-solid fa-lightbulb"></i>
               </div>
               <span class="text-xs font-bold text-slate-200">Entrepreneurship</span>
@@ -771,7 +766,7 @@
         <!-- 4-Phase Progression Rail -->
         <div class="pt-4 mt-2 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs font-mono text-slate-400">
           <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-[#FF3B30]"></span>
+            <span class="w-2 h-2 rounded-full bg-[#FF8370]"></span>
             <span class="font-bold text-slate-200">20-WEEK CONTINUOUS JOURNEY</span>
           </div>
           <div class="flex items-center gap-2 overflow-x-auto py-1 text-[11px]">
@@ -794,7 +789,7 @@
           <div>
             <h3 class="text-lg font-syne font-extrabold text-white flex items-center gap-2">
               <span>ProtoSem 20-Week Flashcards</span>
-              <span class="text-xs font-mono font-normal text-[#FF3B30] bg-[#FF3B30]/10 px-2 py-0.5 rounded-full border border-[#FF3B30]/20">Interactive Deck</span>
+              <span class="text-xs font-mono font-normal text-[#FF8370] bg-[#FF8370]/10 px-2 py-0.5 rounded-full border border-[#FF8370]/20">Interactive Deck</span>
             </h3>
             <p class="text-xs font-mono text-slate-400">Click or tap any flashcard to flip between key objectives and field notes.</p>
           </div>
@@ -802,13 +797,13 @@
           <div class="flex flex-wrap items-center gap-2">
             <!-- Flip All Toggle Button -->
             <button id="toggleFlipAllBtn" class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/10 text-white border border-white/10 hover:bg-white/20 transition-all flex items-center gap-1.5 shadow-sm">
-              <i class="fa-solid fa-arrows-rotate text-[#FF3B30] text-xs"></i>
+              <i class="fa-solid fa-arrows-rotate text-[#FF8370] text-xs"></i>
               <span id="flipAllText">Flip All Cards</span>
             </button>
 
             <!-- Phase Navigation Tabs -->
             <div class="flex flex-wrap gap-1 p-1 rounded-full pill-dock" id="phaseFilterGroup" role="tablist">
-              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all bg-[#FF3B30] text-white shadow-sm" data-phase="all" role="tab" aria-selected="true">
+              <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all bg-[#FF8370] text-white shadow-sm" data-phase="all" role="tab" aria-selected="true">
                 ALL (01–20)
               </button>
               <button class="phase-tab-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" data-phase="1" role="tab" aria-selected="false">
@@ -835,16 +830,16 @@
 
       <!-- Placeholder Story Notification Modal -->
       <div id="protoSemModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4 transition-all duration-300">
-        <div class="kintaro-card max-w-md w-full rounded-3xl p-7 border border-[#FF3B30]/40 space-y-4 shadow-2xl relative">
+        <div class="kintaro-card max-w-md w-full rounded-3xl p-7 border border-[#FF8370]/40 space-y-4 shadow-2xl relative">
           <button id="closeProtoSemModal" class="absolute top-5 right-5 text-slate-400 hover:text-white text-base focus:outline-none" aria-label="Close modal">
             <i class="fa-solid fa-xmark"></i>
           </button>
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-2xl bg-[#FF3B30]/20 text-[#FF3B30] flex items-center justify-center text-base border border-[#FF3B30]/40 font-bold">
+            <div class="w-10 h-10 rounded-2xl bg-[#FF8370]/20 text-[#FF8370] flex items-center justify-center text-base border border-[#FF8370]/40 font-bold">
               <i class="fa-solid fa-compass-drafting"></i>
             </div>
             <div>
-              <span id="modalWeekBadge" class="text-[11px] font-mono text-[#FF3B30] font-bold tracking-wider uppercase">WEEK 01</span>
+              <span id="modalWeekBadge" class="text-[11px] font-mono text-[#FF8370] font-bold tracking-wider uppercase">WEEK 01</span>
               <h4 class="text-base font-syne font-bold text-white">Field Notes in Progress</h4>
             </div>
           </div>
@@ -853,10 +848,10 @@
           </p>
           <div class="p-3 rounded-xl bg-black/50 border border-white/10 font-mono text-[11px] text-slate-400 flex items-center justify-between">
             <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#FF3B30] animate-pulse"></span>
+              <span class="w-2 h-2 rounded-full bg-[#FF8370] animate-pulse"></span>
               <span>Status: Coming Soon</span>
             </span>
-            <span class="text-[#FF3B30] font-bold"><span id="modalWeekSlug">/protosem/week-01</span></span>
+            <span class="text-[#FF8370] font-bold"><span id="modalWeekSlug">/protosem/week-01</span></span>
           </div>
         </div>
       </div>
@@ -867,7 +862,7 @@
       
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(04)</span>
+          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(04)</span>
           <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Certifications & Achievements</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Verified credentials & competitive recognitions</span>
@@ -886,7 +881,7 @@
               <span class="text-xs font-mono text-slate-500">Amypo</span>
             </div>
 
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
               Data Analytical Tools
             </h3>
 
@@ -895,15 +890,15 @@
             </p>
 
             <div class="space-y-2 pt-1 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Exploratory & Statistical Analysis</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Data Transformation & Cleaning</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Analytical Workflow Design</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Exploratory & Statistical Analysis</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Data Transformation & Cleaning</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Analytical Workflow Design</span></div>
             </div>
           </div>
 
           <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
             <span class="text-slate-400">Issued by Amypo</span>
-            <span class="text-emerald-400 font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-[10px]"></i> Verified</span>
+            <span class="text-[#7FE0B2] font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-[10px]"></i> Verified</span>
           </div>
         </div>
 
@@ -911,14 +906,14 @@
         <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#7FE0B2]/15 text-[#7FE0B2] border border-[#7FE0B2]/30 flex items-center gap-1.5">
                 <i class="fa-solid fa-certificate text-[11px]"></i>
                 <span>Certified Credential</span>
               </span>
               <span class="text-xs font-mono text-slate-500">Simplilearn</span>
             </div>
 
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
               Excel for Data Analytics
             </h3>
 
@@ -927,15 +922,15 @@
             </p>
 
             <div class="space-y-2 pt-1 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i><span>Advanced Lookup & Logical Formulas</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i><span>Pivot Tables & Slicers Modeling</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i><span>Data Visualization & Reporting</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Advanced Lookup & Logical Formulas</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Pivot Tables & Slicers Modeling</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Data Visualization & Reporting</span></div>
             </div>
           </div>
 
           <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
             <span class="text-slate-400">Issued by Simplilearn</span>
-            <span class="text-emerald-400 font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-[10px]"></i> Verified</span>
+            <span class="text-[#7FE0B2] font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-[10px]"></i> Verified</span>
           </div>
         </div>
 
@@ -943,14 +938,14 @@
         <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-orange-500/15 text-orange-400 border border-orange-500/30 flex items-center gap-1.5">
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#FFD166]/15 text-[#FFD166] border border-[#FFD166]/30 flex items-center gap-1.5">
                 <i class="fa-solid fa-trophy text-[11px]"></i>
                 <span>Fellowship Selection</span>
               </span>
               <span class="text-xs font-mono text-slate-500">PRICE ProtoSem</span>
             </div>
 
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
               Innovation Fellowship Selection
             </h3>
 
@@ -959,30 +954,30 @@
             </p>
 
             <div class="space-y-2 pt-1 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-orange-400 text-[10px]"></i><span>Selected from candidate pool</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-orange-400 text-[10px]"></i><span>Direct industry statement prototyping</span></div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-orange-400 text-[10px]"></i><span>AI, IoT & Intelligent Systems R&D</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FFD166] text-[10px]"></i><span>Selected from candidate pool</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FFD166] text-[10px]"></i><span>Direct industry statement prototyping</span></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FFD166] text-[10px]"></i><span>AI, IoT & Intelligent Systems R&D</span></div>
             </div>
           </div>
 
           <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-            <span class="text-orange-400 font-bold">20-Week Programme</span>
-            <a href="#protosem" class="text-[#FF3B30] font-bold hover:underline flex items-center gap-1"><span>View Flashcards</span> →</a>
+            <span class="text-[#FFD166] font-bold">20-Week Programme</span>
+            <a href="#protosem" class="text-[#FF8370] font-bold hover:underline flex items-center gap-1"><span>View Flashcards</span> →</a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- SELECTED PROJECTS SECTION (KINTARO BENTO GRID CASE STUDIES) -->
+    <!-- SELECTED PROJECTS SECTION (PASTEL BENTO CASE STUDIES) -->
     <section id="projects" class="scroll-mt-32 space-y-6" data-aos="fade-up">
       
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(05)</span>
+          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(05)</span>
           <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Featured Projects</h2>
         </div>
-        <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-xs font-mono text-[#FF3B30] font-bold hover:underline flex items-center gap-1.5">
+        <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-xs font-mono text-[#FF8370] font-bold hover:underline flex items-center gap-1.5">
           <span>Explore All on GitHub</span>
           <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
         </a>
@@ -1000,7 +995,7 @@
               <span class="text-xs font-mono text-slate-500">01 / 03</span>
             </div>
 
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
               IoT Network Traffic Anomaly Detection
             </h3>
 
@@ -1009,16 +1004,16 @@
             </p>
 
             <ul class="space-y-2 pt-1 text-xs text-slate-300">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Multivariable timestamp & payload analysis</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Isolation Forest & Random Forest models</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Intrusion confidence heatmaps</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Multivariable timestamp & payload analysis</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Isolation Forest & Random Forest models</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF8370] text-[10px]"></i><span>Intrusion confidence heatmaps</span></li>
             </ul>
           </div>
 
           <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
             <div class="flex gap-1.5">
-              <span class="px-2 py-0.5 rounded-md bg-white/5">Python</span>
-              <span class="px-2 py-0.5 rounded-md bg-white/5">Scikit-Learn</span>
+              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#B8A7EA]">Python</span>
+              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#FF8370]">Scikit-Learn</span>
             </div>
             <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
               <i class="fa-brands fa-github text-base"></i>
@@ -1030,13 +1025,13 @@
         <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30">
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#8BC8FE]/15 text-[#8BC8FE] border border-[#8BC8FE]/30">
                 Data Engineering
               </span>
               <span class="text-xs font-mono text-slate-500">02 / 03</span>
             </div>
 
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
               Automated Data Migration & ETL Engine
             </h3>
 
@@ -1045,16 +1040,16 @@
             </p>
 
             <ul class="space-y-2 pt-1 text-xs text-slate-300">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Informatica workflow orchestration</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>BigQuery partitioned table schemas</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#FF3B30] text-[10px]"></i><span>Row reconciliation & integrity checks</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#8BC8FE] text-[10px]"></i><span>Informatica workflow orchestration</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#8BC8FE] text-[10px]"></i><span>BigQuery partitioned table schemas</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#8BC8FE] text-[10px]"></i><span>Row reconciliation & integrity checks</span></li>
             </ul>
           </div>
 
           <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
             <div class="flex gap-1.5">
-              <span class="px-2 py-0.5 rounded-md bg-white/5">BigQuery</span>
-              <span class="px-2 py-0.5 rounded-md bg-white/5">Informatica</span>
+              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#8BC8FE]">BigQuery</span>
+              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#F472B6]">Informatica</span>
             </div>
             <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
               <i class="fa-brands fa-github text-base"></i>
@@ -1066,13 +1061,13 @@
         <div class="kintaro-card rounded-3xl p-7 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#7FE0B2]/15 text-[#7FE0B2] border border-[#7FE0B2]/30">
                 BI & Analytics
               </span>
               <span class="text-xs font-mono text-slate-500">03 / 03</span>
             </div>
 
-            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF3B30] transition-colors">
+            <h3 class="text-xl font-syne font-bold text-white group-hover:text-[#FF8370] transition-colors">
               Operational BI & Telemetry Suite
             </h3>
 
@@ -1081,16 +1076,16 @@
             </p>
 
             <ul class="space-y-2 pt-1 text-xs text-slate-300">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i><span>Custom DAX calculated hierarchies</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i><span>Temporal & spatial drill-down views</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i><span>Automated dataset refresh cycles</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Custom DAX calculated hierarchies</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Temporal & spatial drill-down views</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#7FE0B2] text-[10px]"></i><span>Automated dataset refresh cycles</span></li>
             </ul>
           </div>
 
           <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
             <div class="flex gap-1.5">
-              <span class="px-2 py-0.5 rounded-md bg-white/5">Power BI</span>
-              <span class="px-2 py-0.5 rounded-md bg-white/5">Tableau</span>
+              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#FBBF24]">Power BI</span>
+              <span class="px-2 py-0.5 rounded-md bg-white/5 text-[#7FE0B2]">Tableau</span>
             </div>
             <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
               <i class="fa-brands fa-github text-base"></i>
@@ -1101,12 +1096,12 @@
       </div>
     </section>
 
-    <!-- INTERACTIVE TERMINAL / SANDBOX SECTION (KINTARO DARK CONSOLE) -->
+    <!-- INTERACTIVE TERMINAL / SANDBOX SECTION (PASTEL CONSOLE) -->
     <section id="terminal-demo" class="scroll-mt-32 space-y-6" data-aos="fade-up">
       
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(06)</span>
+          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(06)</span>
           <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Interactive Sandbox</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Query background, skills, certifications & ProtoSem</span>
@@ -1116,23 +1111,23 @@
         <!-- Terminal Header -->
         <div class="px-6 py-4 bg-black/80 border-b border-white/10 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-[#FF8370] inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-[#FFD166] inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-[#7FE0B2] inline-block"></span>
             <span class="ml-2 text-xs font-mono text-slate-400">dakshana@data-node:~</span>
           </div>
-          <span class="text-xs font-mono text-[#FF3B30] font-bold">Type 'help' for commands</span>
+          <span class="text-xs font-mono text-[#FF8370] font-bold">Type 'help' for commands</span>
         </div>
 
         <!-- Terminal Body -->
         <div id="cliOutput" class="p-6 font-mono text-xs sm:text-sm text-slate-300 space-y-3 bg-black/60 h-64 overflow-y-auto">
           <p class="text-slate-400">Welcome to Dakshana's interactive console! 🚀</p>
-          <p class="text-slate-400">Type <span class="text-[#FF3B30] font-bold">help</span> or click prompt chips below to query data.</p>
+          <p class="text-slate-400">Type <span class="text-[#FF8370] font-bold">help</span> or click prompt chips below to query data.</p>
         </div>
 
         <!-- CLI Input Area -->
         <div class="p-4 bg-black/80 border-t border-white/10 flex items-center gap-2">
-          <span class="text-[#FF3B30] font-mono text-sm pl-2 font-bold">$</span>
+          <span class="text-[#FF8370] font-mono text-sm pl-2 font-bold">$</span>
           <input 
             type="text" 
             id="cliInput" 
@@ -1148,13 +1143,13 @@
         <!-- Quick Chips -->
         <div class="px-6 py-3 bg-black/50 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono">
           <span class="text-slate-500 self-center text-[11px]">Quick:</span>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF3B30] hover:text-white text-slate-300 transition-colors" data-cmd="certifications">certifications</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF3B30] hover:text-white text-slate-300 transition-colors" data-cmd="protosem">protosem</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF3B30] hover:text-white text-slate-300 transition-colors" data-cmd="skills">skills</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF3B30] hover:text-white text-slate-300 transition-colors" data-cmd="projects">projects</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF3B30] hover:text-white text-slate-300 transition-colors" data-cmd="education">education</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF3B30] hover:text-white text-slate-300 transition-colors" data-cmd="contact">contact</button>
-          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF3B30] hover:text-white text-slate-300 transition-colors" data-cmd="clear">clear</button>
+          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="certifications">certifications</button>
+          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="protosem">protosem</button>
+          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="skills">skills</button>
+          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="projects">projects</button>
+          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="education">education</button>
+          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="contact">contact</button>
+          <button class="quick-cmd px-3 py-1 rounded-full bg-white/5 hover:bg-[#FF8370] hover:text-white text-slate-300 transition-colors" data-cmd="clear">clear</button>
         </div>
       </div>
     </section>
@@ -1164,7 +1159,7 @@
       
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-4">
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-[#FF3B30] uppercase tracking-widest">(07)</span>
+          <span class="text-xs font-mono font-bold text-[#FF8370] uppercase tracking-widest">(07)</span>
           <h2 class="text-2xl sm:text-3xl font-syne font-extrabold text-white tracking-tight">Let's Connect</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Open for Data Science roles & collaborations</span>
@@ -1176,36 +1171,36 @@
         <div class="lg:col-span-5 space-y-4">
           <a href="mailto:dakshanasrim1406@gmail.com" class="kintaro-card rounded-2xl p-5 block group">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-[#FF3B30]/15 text-[#FF3B30] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#FF3B30]/30">
+              <div class="w-12 h-12 rounded-2xl bg-[#FF8370]/15 text-[#FF8370] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#FF8370]/30">
                 <i class="fa-solid fa-envelope"></i>
               </div>
               <div>
                 <p class="text-[11px] font-mono text-slate-400">Email Coordinates</p>
-                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#FF3B30] transition-colors">dakshanasrim1406@gmail.com</p>
+                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#FF8370] transition-colors">dakshanasrim1406@gmail.com</p>
               </div>
             </div>
           </a>
 
           <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" rel="noopener noreferrer" class="kintaro-card rounded-2xl p-5 block group">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-[#0A66C2]/20 text-[#0A66C2] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#0A66C2]/30">
+              <div class="w-12 h-12 rounded-2xl bg-[#8BC8FE]/20 text-[#8BC8FE] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#8BC8FE]/30">
                 <i class="fa-brands fa-linkedin"></i>
               </div>
               <div>
                 <p class="text-[11px] font-mono text-slate-400">LinkedIn Profile</p>
-                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#0A66C2] transition-colors">linkedin.com/in/dakshana-sri-m</p>
+                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#8BC8FE] transition-colors">linkedin.com/in/dakshana-sri-m</p>
               </div>
             </div>
           </a>
 
           <a href="https://github.com/Dakshana-sri-m" target="_blank" rel="noopener noreferrer" class="kintaro-card rounded-2xl p-5 block group">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-white/15">
+              <div class="w-12 h-12 rounded-2xl bg-[#B8A7EA]/15 text-[#B8A7EA] flex items-center justify-center text-xl group-hover:scale-110 transition-transform font-bold border border-[#B8A7EA]/30">
                 <i class="fa-brands fa-github"></i>
               </div>
               <div>
                 <p class="text-[11px] font-mono text-slate-400">GitHub Repositories</p>
-                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#FF3B30] transition-colors">github.com/Dakshana-sri-m</p>
+                <p class="text-sm sm:text-base font-bold text-white group-hover:text-[#FF8370] transition-colors">github.com/Dakshana-sri-m</p>
               </div>
             </div>
           </a>
@@ -1248,19 +1243,19 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 px-4 relative z-10 bg-[#050507]">
+  <footer class="border-t border-white/10 py-10 px-4 relative z-10 bg-[#0A0D15]">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-[#FF3B30]"></span>
+        <span class="w-2 h-2 rounded-full bg-[#FF8370]"></span>
         <span>© <span id="currentYear"></span> Dakshana Sri M. All rights reserved.</span>
       </div>
 
       <div class="flex items-center gap-6">
-        <a href="#hero" class="hover:text-[#FF3B30] transition-colors">Back to Top ↑</a>
-        <a href="#protosem" class="hover:text-[#FF3B30] transition-colors">ProtoSem</a>
-        <a href="resume.html" class="hover:text-[#FF3B30] transition-colors">ATS Resume</a>
+        <a href="#hero" class="hover:text-[#FF8370] transition-colors">Back to Top ↑</a>
+        <a href="#protosem" class="hover:text-[#FF8370] transition-colors">ProtoSem</a>
+        <a href="resume.html" class="hover:text-[#FF8370] transition-colors">ATS Resume</a>
         <a href="https://github.com/Dakshana-sri-m" target="_blank" class="hover:text-white transition-colors">GitHub</a>
-        <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="hover:text-[#0A66C2] transition-colors">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="hover:text-[#8BC8FE] transition-colors">LinkedIn</a>
       </div>
     </div>
   </footer>
@@ -1424,7 +1419,7 @@
           <div class="flashcard-inner cursor-pointer" tabindex="0" role="button" aria-label="${item.label} Flashcard - Click to flip">
             
             <!-- FLASHCARD FRONT -->
-            <div class="flashcard-front kintaro-card p-4 sm:p-5 flex flex-col justify-between hover:border-[#FF3B30]/50 transition-all">
+            <div class="flashcard-front kintaro-card p-4 sm:p-5 flex flex-col justify-between hover:border-[#FF8370]/50 transition-all">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
                   <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full accent-pill">
@@ -1438,7 +1433,7 @@
                 <div class="pt-1">
                   <h4 class="text-base font-syne font-extrabold text-white flex items-center justify-between">
                     <span>${item.label}</span>
-                    <i class="fa-solid fa-arrow-rotate-right text-xs text-[#FF3B30]"></i>
+                    <i class="fa-solid fa-arrow-rotate-right text-xs text-[#FF8370]"></i>
                   </h4>
                   <p class="text-xs font-semibold text-slate-200 mt-1 line-clamp-1">
                     ${item.title}
@@ -1447,8 +1442,8 @@
               </div>
 
               <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                <span class="flex items-center gap-1.5 text-[#FF3B30] font-bold">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#FF3B30] animate-ping"></span>
+                <span class="flex items-center gap-1.5 text-[#FF8370] font-bold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#FF8370] animate-ping"></span>
                   <span>Flip Card 🔄</span>
                 </span>
                 <span class="text-slate-500">Tap to Reveal</span>
@@ -1456,10 +1451,10 @@
             </div>
 
             <!-- FLASHCARD BACK -->
-            <div class="flashcard-back kintaro-card p-4 sm:p-5 flex flex-col justify-between bg-slate-950 border border-[#FF3B30]/40">
+            <div class="flashcard-back kintaro-card p-4 sm:p-5 flex flex-col justify-between bg-slate-950 border border-[#FF8370]/40">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-mono font-bold text-[#FF3B30] uppercase">
+                  <span class="text-[10px] font-mono font-bold text-[#FF8370] uppercase">
                     ${item.label} • Key Focus
                   </span>
                   <span class="text-[10px] font-mono text-slate-400">Back</span>
@@ -1477,7 +1472,7 @@
                 <span class="text-slate-400 hover:text-white flex items-center gap-1">
                   <i class="fa-solid fa-arrow-rotate-left text-[9px]"></i> Flip Back
                 </span>
-                <button class="open-notes-btn px-2 py-0.5 rounded-md bg-[#FF3B30] text-white font-bold hover:bg-[#E02E24] transition-colors" data-week="${item.label}" data-phase="${item.phaseName}" data-slug="${item.slug}">
+                <button class="open-notes-btn px-2 py-0.5 rounded-md bg-[#FF8370] text-white font-bold hover:bg-[#E26D5C] transition-colors" data-week="${item.label}" data-phase="${item.phaseName}" data-slug="${item.slug}">
                   Field Notes 📖
                 </button>
               </div>
@@ -1555,12 +1550,12 @@
     phaseTabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         phaseTabBtns.forEach(b => {
-          b.classList.remove('bg-[#FF3B30]', 'text-white', 'shadow-md', 'font-bold');
+          b.classList.remove('bg-[#FF8370]', 'text-white', 'shadow-md', 'font-bold');
           b.classList.add('text-slate-300', 'font-medium');
           b.setAttribute('aria-selected', 'false');
         });
         btn.classList.remove('text-slate-300', 'font-medium');
-        btn.classList.add('bg-[#FF3B30]', 'text-white', 'shadow-md', 'font-bold');
+        btn.classList.add('bg-[#FF8370]', 'text-white', 'shadow-md', 'font-bold');
         btn.setAttribute('aria-selected', 'true');
 
         const phase = btn.getAttribute('data-phase');
@@ -1580,20 +1575,20 @@
 
     const commands = {
       help: `Available commands:
-  - <span class="text-[#FF3B30] font-bold">certifications</span>: Lists verified certifications & achievements
-  - <span class="text-[#FF3B30] font-bold">protosem</span>: Details on PRICE ProtoSem 20-week fellowship
-  - <span class="text-[#FF3B30] font-bold">skills</span>: Lists all languages, ETL tools & ML frameworks
-  - <span class="text-[#FF3B30] font-bold">projects</span>: Displays signature case studies & repositories
-  - <span class="text-[#FF3B30] font-bold">education</span>: Shows degree and academic major
-  - <span class="text-[#FF3B30] font-bold">contact</span>: Shows direct email and social links
-  - <span class="text-[#FF3B30] font-bold">resume</span>: Links directly to the ATS resume
-  - <span class="text-[#FF3B30] font-bold">clear</span>: Clears the terminal output`,
+  - <span class="text-[#FF8370] font-bold">certifications</span>: Lists verified certifications & achievements
+  - <span class="text-[#FF8370] font-bold">protosem</span>: Details on PRICE ProtoSem 20-week fellowship
+  - <span class="text-[#FF8370] font-bold">skills</span>: Lists all languages, ETL tools & ML frameworks
+  - <span class="text-[#FF8370] font-bold">projects</span>: Displays signature case studies & repositories
+  - <span class="text-[#FF8370] font-bold">education</span>: Shows degree and academic major
+  - <span class="text-[#FF8370] font-bold">contact</span>: Shows direct email and social links
+  - <span class="text-[#FF8370] font-bold">resume</span>: Links directly to the ATS resume
+  - <span class="text-[#FF8370] font-bold">clear</span>: Clears the terminal output`,
 
       certifications: `🏆 <strong>Certifications & Key Achievements:</strong>
-  1. <strong class="text-[#FF3B30]">Data Analytical Tools</strong> — Certified by Amypo
-  2. <strong class="text-emerald-400">Excel for Data Analytics</strong> — Certified by Simplilearn
-  3. <strong class="text-orange-400">Innovation Fellowship Selection</strong> — PRICE ProtoSem 20-Week Programme
-  • <a href="#certifications" class="text-[#FF3B30] underline">Jump to the Certifications Section ↑</a>`,
+  1. <strong class="text-[#FF8370]">Data Analytical Tools</strong> — Certified by Amypo
+  2. <strong class="text-[#7FE0B2]">Excel for Data Analytics</strong> — Certified by Simplilearn
+  3. <strong class="text-[#FFD166]">Innovation Fellowship Selection</strong> — PRICE ProtoSem 20-Week Programme
+  • <a href="#certifications" class="text-[#FF8370] underline">Jump to the Certifications Section ↑</a>`,
 
       protosem: `🚀 <strong>PRICE ProtoSem — 20-Week Innovation Programme:</strong>
   • Role: <strong>Innovation Engineer Trainee</strong>
@@ -1604,7 +1599,7 @@
     - Phase 03: Weeks 11–15
     - Phase 04: Weeks 16–20
   • Disciplines: Phygital Retail, AI & Analytics, IoT Systems, Prototyping, Entrepreneurship.
-  • <a href="#protosem" class="text-[#FF3B30] underline">Jump to the ProtoSem Section ↑</a>`,
+  • <a href="#protosem" class="text-[#FF8370] underline">Jump to the ProtoSem Section ↑</a>`,
 
       skills: `⚡ <strong>Technical Skills & Certifications:</strong>
   • Languages: Python (Pandas, NumPy, Scikit-learn), SQL, R, Bash
@@ -1614,9 +1609,9 @@
   • Certifications: <strong>Data Analytical Tools (Amypo)</strong>, <strong>Excel (Simplilearn)</strong>`,
 
       projects: `🚀 <strong>Featured Projects:</strong>
-  1. <strong class="text-[#FF3B30]">IoT Network Traffic Anomaly Detection</strong> - Real-time ML classifier for abnormal traffic
-  2. <strong class="text-orange-400">Automated Data Migration & ETL Engine</strong> - BigQuery & Informatica automated pipelines
-  3. <strong class="text-emerald-400">Operational BI & Telemetry Dashboard</strong> - High-impact Power BI & Tableau visual suites`,
+  1. <strong class="text-[#FF8370]">IoT Network Traffic Anomaly Detection</strong> - Real-time ML classifier for abnormal traffic
+  2. <strong class="text-[#8BC8FE]">Automated Data Migration & ETL Engine</strong> - BigQuery & Informatica automated pipelines
+  3. <strong class="text-[#7FE0B2]">Operational BI & Telemetry Dashboard</strong> - High-impact Power BI & Tableau visual suites`,
 
       education: `🎓 <strong>Academic Background & Fellowships:</strong>
   • Degree: <strong>B.Sc (Data Science)</strong>
@@ -1624,11 +1619,11 @@
   • Focus: Machine Learning, Big Data Architecture, AI Prototypes & ETL`,
 
       contact: `📬 <strong>Contact Coordinates:</strong>
-  • Email: <a href="mailto:dakshanasrim1406@gmail.com" class="text-[#FF3B30] underline">dakshanasrim1406@gmail.com</a>
-  • LinkedIn: <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="text-[#FF3B30] underline">dakshana-sri-m</a>
-  • GitHub: <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-[#FF3B30] underline">Dakshana-sri-m</a>`,
+  • Email: <a href="mailto:dakshanasrim1406@gmail.com" class="text-[#FF8370] underline">dakshanasrim1406@gmail.com</a>
+  • LinkedIn: <a href="https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b" target="_blank" class="text-[#FF8370] underline">dakshana-sri-m</a>
+  • GitHub: <a href="https://github.com/Dakshana-sri-m" target="_blank" class="text-[#FF8370] underline">Dakshana-sri-m</a>`,
 
-      resume: `📄 <a href="resume.html" target="_blank" class="text-[#FF3B30] font-bold underline">Click here to open and print the ATS Resume (resume.html)</a>`
+      resume: `📄 <a href="resume.html" target="_blank" class="text-[#FF8370] font-bold underline">Click here to open and print the ATS Resume (resume.html)</a>`
     };
 
     function runCommand(cmd) {
@@ -1637,18 +1632,18 @@
       line.className = "mt-2 pt-1 border-t border-white/10";
 
       if (trimmed === 'clear') {
-        cliOutput.innerHTML = `<p class="text-slate-400">Terminal output cleared. Type <span class="text-[#FF3B30] font-bold">help</span> for commands.</p>`;
+        cliOutput.innerHTML = `<p class="text-slate-400">Terminal output cleared. Type <span class="text-[#FF8370] font-bold">help</span> for commands.</p>`;
         return;
       }
 
-      const promptLine = `<div class="text-slate-400"><span class="text-emerald-400">dakshana@cluster</span>:<span class="text-[#FF3B30]">~</span>$ <span class="text-white">${cmd}</span></div>`;
+      const promptLine = `<div class="text-slate-400"><span class="text-[#7FE0B2]">dakshana@cluster</span>:<span class="text-[#FF8370]">~</span>$ <span class="text-white">${cmd}</span></div>`;
 
       if (commands[trimmed]) {
         line.innerHTML = `${promptLine}<div class="mt-1 text-slate-300 leading-relaxed">${commands[trimmed]}</div>`;
       } else if (trimmed === '') {
         return;
       } else {
-        line.innerHTML = `${promptLine}<div class="mt-1 text-rose-400">command not found: "${cmd}". Type <span class="text-[#FF3B30] underline font-bold">help</span> for valid commands.</div>`;
+        line.innerHTML = `${promptLine}<div class="mt-1 text-rose-400">command not found: "${cmd}". Type <span class="text-[#FF8370] underline font-bold">help</span> for valid commands.</div>`;
       }
 
       cliOutput.appendChild(line);
