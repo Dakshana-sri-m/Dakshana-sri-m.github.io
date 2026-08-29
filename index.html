@@ -17,6 +17,9 @@
   <!-- AOS Animation CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
+  <!-- PDF.js CDN for interactive in-browser certificate rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -858,15 +861,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           <!-- Certificate 1: Deloitte -->
-          <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-cyan/50 hover:shadow-glow-cyan transition-all group relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <div onclick="openCertModal('Deloitte Data Analytics Job Simulation', 'Deloitte • Forage', 'March 28, 2026', 'cert-deloitte.pdf', true, 'DoK5HySvEFfwT4QhW', 'Completed practical forensic analytics, forensic technology, and client simulation tasks issued via Forage by Tina McCreery, CHRO.')" 
+               class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-cyan/60 hover:shadow-glow-cyan transition-all group relative overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100">
             <div class="absolute top-0 right-0 w-24 h-24 bg-pastel-cyan/5 rounded-full blur-xl pointer-events-none"></div>
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="px-2.5 py-1 rounded-lg bg-navy-900 font-mono text-[10px] text-pastel-cyan border border-pastel-cyan/30">
                   MARCH 28, 2026
                 </span>
-                <span class="w-8 h-8 rounded-full bg-pastel-cyan/10 flex items-center justify-center text-pastel-cyan text-xs">
-                  <i class="fa-solid fa-building-columns"></i>
+                <span class="w-8 h-8 rounded-full bg-pastel-cyan/10 flex items-center justify-center text-pastel-cyan text-xs group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-expand"></i>
                 </span>
               </div>
               <div class="flex items-center gap-2">
@@ -890,9 +894,9 @@
             </div>
             
             <div class="pt-4 mt-5 border-t border-navy-800 space-y-3">
-              <a href="cert-deloitte.pdf" target="_blank" class="w-full py-2 px-3 rounded-xl bg-pastel-cyan/10 hover:bg-pastel-cyan/25 border border-pastel-cyan/30 text-pastel-cyan text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-all">
-                <i class="fa-solid fa-file-pdf"></i> View Certificate PDF
-              </a>
+              <button type="button" class="w-full py-2 px-3 rounded-xl bg-pastel-cyan/15 group-hover:bg-pastel-cyan group-hover:text-navy-950 border border-pastel-cyan/40 text-pastel-cyan text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-eye"></i> View Certificate
+              </button>
               <div class="text-[11px] font-mono text-slate-500 flex items-center justify-between">
                 <span>Tina McCreery (CHRO)</span>
                 <span class="text-pastel-mint inline-flex items-center gap-1 font-semibold">
@@ -903,15 +907,16 @@
           </div>
 
           <!-- Certificate 2: Microsoft / Simplilearn SkillUp -->
-          <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-cyan/50 hover:shadow-glow-cyan transition-all group relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <div onclick="openCertModal('Introduction to MS Excel', 'Microsoft • Simplilearn SkillUp', 'July 5, 2026', 'cert-microsoft-excel.pdf', true, '10432422', 'Declaration of Completion for advanced MS Excel training, complex formulas, and data analysis modeling issued by Krishna Kumar, CEO Simplilearn.')" 
+               class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-cyan/60 hover:shadow-glow-cyan transition-all group relative overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="200">
             <div class="absolute top-0 right-0 w-24 h-24 bg-pastel-cyan/5 rounded-full blur-xl pointer-events-none"></div>
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="px-2.5 py-1 rounded-lg bg-navy-900 font-mono text-[10px] text-pastel-cyan border border-pastel-cyan/30">
                   JULY 5, 2026
                 </span>
-                <span class="w-8 h-8 rounded-full bg-pastel-cyan/10 flex items-center justify-center text-pastel-cyan text-xs">
-                  <i class="fa-brands fa-microsoft"></i>
+                <span class="w-8 h-8 rounded-full bg-pastel-cyan/10 flex items-center justify-center text-pastel-cyan text-xs group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-expand"></i>
                 </span>
               </div>
               <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
@@ -937,9 +942,9 @@
             </div>
             
             <div class="pt-4 mt-5 border-t border-navy-800 space-y-3">
-              <a href="cert-microsoft-excel.pdf" target="_blank" class="w-full py-2 px-3 rounded-xl bg-pastel-cyan/10 hover:bg-pastel-cyan/25 border border-pastel-cyan/30 text-pastel-cyan text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-all">
-                <i class="fa-solid fa-file-pdf"></i> View Certificate PDF
-              </a>
+              <button type="button" class="w-full py-2 px-3 rounded-xl bg-pastel-cyan/15 group-hover:bg-pastel-cyan group-hover:text-navy-950 border border-pastel-cyan/40 text-pastel-cyan text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-eye"></i> View Certificate
+              </button>
               <div class="text-[11px] font-mono text-slate-500 flex items-center justify-between">
                 <span>Krishna Kumar (CEO)</span>
                 <span class="text-pastel-mint inline-flex items-center gap-1 font-semibold">
@@ -950,15 +955,16 @@
           </div>
 
           <!-- Certificate 3: River Venture Studios Singapore -->
-          <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-purple/50 hover:shadow-glow-purple transition-all group relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <div onclick="openCertModal('Two-Day Entrepreneurship & Venture Building Bootcamp', 'River Venture Studios (Singapore) × Kumaraguru Institutions', 'February 9–10, 2026', 'cert-river-bootcamp.jpg', false, 'RIVER-KI-2026', 'Certificate of Participation in the Two-Day Venture Building Bootcamp signed by Dr. D. Saravanan (Director - QA & Special Projects, KI) and Dr. Viveka Kalidasan (Founder-CEO, River Ventures).')" 
+               class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-purple/60 hover:shadow-glow-purple transition-all group relative overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="300">
             <div class="absolute top-0 right-0 w-24 h-24 bg-pastel-purple/5 rounded-full blur-xl pointer-events-none"></div>
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="px-2.5 py-1 rounded-lg bg-navy-900 font-mono text-[10px] text-pastel-purple border border-pastel-purple/30">
                   FEB 9–10, 2026
                 </span>
-                <span class="w-8 h-8 rounded-full bg-pastel-purple/10 flex items-center justify-center text-pastel-purple text-xs">
-                  <i class="fa-solid fa-rocket"></i>
+                <span class="w-8 h-8 rounded-full bg-pastel-purple/10 flex items-center justify-center text-pastel-purple text-xs group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-expand"></i>
                 </span>
               </div>
               <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
@@ -984,9 +990,9 @@
             </div>
             
             <div class="pt-4 mt-5 border-t border-navy-800 space-y-3">
-              <a href="cert-river-bootcamp.jpg" target="_blank" class="w-full py-2 px-3 rounded-xl bg-pastel-purple/10 hover:bg-pastel-purple/25 border border-pastel-purple/30 text-pastel-purple text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-all">
-                <i class="fa-solid fa-image"></i> View Certificate Image
-              </a>
+              <button type="button" class="w-full py-2 px-3 rounded-xl bg-pastel-purple/15 group-hover:bg-pastel-purple group-hover:text-navy-950 border border-pastel-purple/40 text-pastel-purple text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-eye"></i> View Certificate
+              </button>
               <div class="text-[11px] font-mono text-slate-500 flex items-center justify-between">
                 <span>Dr. Viveka Kalidasan</span>
                 <span class="text-pastel-mint inline-flex items-center gap-1 font-semibold">
@@ -997,15 +1003,16 @@
           </div>
 
           <!-- Certificate 4: Ampyo -->
-          <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-mint/50 hover:shadow-glow-mint transition-all group relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+          <div onclick="openCertModal('Data Analytical Tools Professional Certification', 'Ampyo Analytical Suite', '2026', '', false, 'AMPYO-DATA-2026', 'Professional training and practical hands-on proficiency in modern analytical toolkits, data querying pipelines, and business visualization software.')" 
+               class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-pastel-mint/60 hover:shadow-glow-mint transition-all group relative overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="400">
             <div class="absolute top-0 right-0 w-24 h-24 bg-pastel-mint/5 rounded-full blur-xl pointer-events-none"></div>
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="px-2.5 py-1 rounded-lg bg-navy-900 font-mono text-[10px] text-pastel-mint border border-pastel-mint/30">
                   ANNUAL 2026
                 </span>
-                <span class="w-8 h-8 rounded-full bg-pastel-mint/10 flex items-center justify-center text-pastel-mint text-xs">
-                  <i class="fa-solid fa-chart-line"></i>
+                <span class="w-8 h-8 rounded-full bg-pastel-mint/10 flex items-center justify-center text-pastel-mint text-xs group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-shield-halved"></i>
                 </span>
               </div>
               <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
@@ -1031,7 +1038,7 @@
             </div>
             
             <div class="pt-4 mt-5 border-t border-navy-800 space-y-3">
-              <div class="w-full py-2 px-3 rounded-xl bg-pastel-mint/10 border border-pastel-mint/20 text-pastel-mint text-xs font-mono font-semibold flex items-center justify-center gap-2">
+              <div class="w-full py-2 px-3 rounded-xl bg-pastel-mint/15 text-pastel-mint text-xs font-mono font-bold flex items-center justify-center gap-2 border border-pastel-mint/30">
                 <i class="fa-solid fa-certificate"></i> Verified Curriculum
               </div>
               <div class="text-[11px] font-mono text-slate-500 flex items-center justify-between">
@@ -1059,27 +1066,28 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          <div class="lg:col-span-8 glass-card p-8 rounded-3xl border border-pastel-amber/30 relative overflow-hidden" data-aos="fade-right">
+          <div onclick="openCertModal('Mahatma Gandhi Merit Scholarship', 'Kumaraguru Institutions & KCLAS', 'March 26, 2026', 'cert-scholarship.jpg', false, 'MGMS-2025-26', 'Awarded the prestigious Mahatma Gandhi Merit Scholarship by Dr. Deepesh (Principal i/c, KCLAS) and Shri. Shankar Vanavarayar (President, KI) in recognition of meritorious performance during Academic Year 2025-2026.')" 
+               class="lg:col-span-8 glass-card p-8 rounded-3xl border border-pastel-amber/30 hover:border-pastel-amber/60 hover:shadow-glow-amber transition-all relative overflow-hidden cursor-pointer group" data-aos="fade-right">
             <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-pastel-amber/10 rounded-full blur-2xl pointer-events-none"></div>
             
             <div class="flex items-start gap-4">
-              <div class="w-14 h-14 rounded-2xl bg-pastel-amber/15 text-pastel-amber flex items-center justify-center text-2xl shrink-0 border border-pastel-amber/30">
+              <div class="w-14 h-14 rounded-2xl bg-pastel-amber/15 text-pastel-amber flex items-center justify-center text-2xl shrink-0 border border-pastel-amber/30 group-hover:scale-110 transition-transform">
                 <i class="fa-solid fa-award"></i>
               </div>
               <div class="space-y-2 flex-1">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pastel-amber/10 text-pastel-amber text-[11px] font-mono font-semibold">
                   <span>AWARDED ON MARCH 26, 2026</span>
                 </div>
-                <h3 class="text-2xl font-extrabold text-white">Mahatma Gandhi Merit Scholarship</h3>
+                <h3 class="text-2xl font-extrabold text-white group-hover:text-pastel-amber transition-colors">Mahatma Gandhi Merit Scholarship</h3>
                 <p class="text-sm font-semibold text-pastel-amber">Kumaraguru Institutions & Kumaraguru College of Liberal Arts and Science</p>
                 <p class="text-slate-300 text-sm leading-relaxed pt-2">
                   Recognized and awarded the prestigious institutional merit scholarship for achieving meritorious rank in the <strong>Top 10</strong> of the class during the Academic Year 2025–2026.
                 </p>
                 
                 <div class="pt-4 flex flex-wrap items-center gap-4">
-                  <a href="cert-scholarship.jpg" target="_blank" class="py-2 px-4 rounded-xl bg-pastel-amber/15 hover:bg-pastel-amber/30 border border-pastel-amber/40 text-pastel-amber text-xs font-mono font-bold flex items-center gap-2 transition-all shadow-glow-amber">
-                    <i class="fa-solid fa-image"></i> View Scholarship Certificate
-                  </a>
+                  <button type="button" class="py-2.5 px-4 rounded-xl bg-pastel-amber/20 group-hover:bg-pastel-amber group-hover:text-navy-950 border border-pastel-amber/40 text-pastel-amber text-xs font-mono font-bold flex items-center gap-2 transition-all shadow-glow-amber">
+                    <i class="fa-solid fa-image"></i> Click to View Scholarship Certificate
+                  </button>
                   <div class="text-xs font-mono text-slate-400">
                     <span>Dr. Deepesh (Principal) • Shri. Shankar Vanavarayar (President)</span>
                   </div>
@@ -1348,6 +1356,140 @@
     renderWeeks('all');
 
     // ==========================================
+    // INTERACTIVE CERTIFICATE LIGHTBOX MODAL & VIEWER
+    // ==========================================
+    let currentCertZoom = 1;
+    let currentCertDocUrl = '';
+
+    window.openCertModal = function(title, issuer, date, fileSrc, isPdf, certId, description) {
+      const modal = document.getElementById('certModal');
+      const titleEl = document.getElementById('certModalTitle');
+      const issuerEl = document.getElementById('certModalIssuer');
+      const dateEl = document.getElementById('certModalDate');
+      const idEl = document.getElementById('certModalId');
+      const descEl = document.getElementById('certModalDesc');
+      const imgEl = document.getElementById('certModalImg');
+      const canvasEl = document.getElementById('certModalCanvas');
+      const loadingEl = document.getElementById('certModalLoading');
+      const downloadBtn = document.getElementById('certModalDownload');
+      const openTabBtn = document.getElementById('certModalOpenTab');
+
+      currentCertDocUrl = fileSrc;
+      currentCertZoom = 1;
+      applyCertZoom();
+
+      titleEl.textContent = title;
+      issuerEl.textContent = issuer;
+      dateEl.textContent = date;
+      idEl.textContent = certId ? `ID: ${certId}` : 'VERIFIED';
+      descEl.textContent = description || '';
+
+      if (fileSrc) {
+        downloadBtn.href = fileSrc;
+        downloadBtn.download = fileSrc;
+        downloadBtn.classList.remove('hidden');
+        openTabBtn.href = fileSrc;
+        openTabBtn.classList.remove('hidden');
+      } else {
+        downloadBtn.classList.add('hidden');
+        openTabBtn.classList.add('hidden');
+      }
+
+      // Reset view elements
+      imgEl.classList.add('hidden');
+      canvasEl.classList.add('hidden');
+      loadingEl.classList.remove('hidden');
+
+      // Open Modal
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+
+      if (!fileSrc) {
+        loadingEl.classList.add('hidden');
+        imgEl.src = '';
+        return;
+      }
+
+      if (isPdf) {
+        // Render PDF using PDF.js
+        if (typeof pdfjsLib !== 'undefined') {
+          pdfjsLib.getDocument(fileSrc).promise.then(pdf => {
+            return pdf.getPage(1);
+          }).then(page => {
+            const viewport = page.getViewport({ scale: 2.0 });
+            canvasEl.height = viewport.height;
+            canvasEl.width = viewport.width;
+            const renderContext = {
+              canvasContext: canvasEl.getContext('2d'),
+              viewport: viewport
+            };
+            return page.render(renderContext).promise;
+          }).then(() => {
+            loadingEl.classList.add('hidden');
+            canvasEl.classList.remove('hidden');
+          }).catch(err => {
+            console.error('PDF.js render error:', err);
+            loadingEl.classList.add('hidden');
+            // Fallback to image or direct link
+            window.open(fileSrc, '_blank');
+            closeCertModal();
+          });
+        } else {
+          // Direct fallback if CDN blocked
+          loadingEl.classList.add('hidden');
+          window.open(fileSrc, '_blank');
+          closeCertModal();
+        }
+      } else {
+        // Load image
+        imgEl.onload = () => {
+          loadingEl.classList.add('hidden');
+          imgEl.classList.remove('hidden');
+        };
+        imgEl.onerror = () => {
+          loadingEl.classList.add('hidden');
+          imgEl.classList.remove('hidden');
+        };
+        imgEl.src = fileSrc;
+      }
+    };
+
+    window.closeCertModal = function() {
+      const modal = document.getElementById('certModal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = '';
+      const imgEl = document.getElementById('certModalImg');
+      if (imgEl) imgEl.src = '';
+    };
+
+    window.zoomCert = function(delta) {
+      if (delta === 0) {
+        currentCertZoom = 1;
+      } else {
+        currentCertZoom = Math.min(Math.max(0.6, currentCertZoom + delta), 2.5);
+      }
+      applyCertZoom();
+    };
+
+    function applyCertZoom() {
+      const imgEl = document.getElementById('certModalImg');
+      const canvasEl = document.getElementById('certModalCanvas');
+      const zoomText = document.getElementById('certZoomLevel');
+      if (imgEl) imgEl.style.transform = `scale(${currentCertZoom})`;
+      if (canvasEl) canvasEl.style.transform = `scale(${currentCertZoom})`;
+      if (zoomText) zoomText.textContent = `${Math.round(currentCertZoom * 100)}%`;
+    }
+
+    // Keyboard ESC listener
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCertModal();
+      }
+    });
+
+    // ==========================================
     // ANTI-GRAVITY CUSTOM CURSOR & REPULSION ENGINE
     // ==========================================
     (function initAntiGravityCursor() {
@@ -1556,5 +1698,89 @@
       requestAnimationFrame(updatePhysics);
     })();
   </script>
+  <!-- CERTIFICATE LIGHTBOX MODAL & PREVIEW VIEWER -->
+  <div id="certModal" onclick="if(event.target === this) closeCertModal()" class="fixed inset-0 z-[999990] flex items-center justify-center p-3 sm:p-6 bg-navy-950/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300">
+    <div class="relative w-full max-w-5xl max-h-[94vh] flex flex-col bg-navy-900/95 border border-pastel-cyan/30 rounded-3xl shadow-2xl overflow-hidden glass-card">
+      
+      <!-- Modal Top Bar -->
+      <div class="flex items-center justify-between px-5 py-4 border-b border-navy-800 bg-navy-950/70">
+        <div class="flex items-center gap-3 overflow-hidden">
+          <span class="w-9 h-9 rounded-xl bg-pastel-cyan/15 border border-pastel-cyan/30 text-pastel-cyan flex items-center justify-center text-sm shrink-0">
+            <i class="fa-solid fa-certificate"></i>
+          </span>
+          <div class="truncate">
+            <h3 id="certModalTitle" class="text-base sm:text-lg font-bold text-white truncate">Certificate Title</h3>
+            <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mt-0.5">
+              <span id="certModalIssuer" class="text-pastel-cyan">Issuer</span>
+              <span>•</span>
+              <span id="certModalDate">Date</span>
+              <span>•</span>
+              <span id="certModalId" class="text-pastel-mint">ID</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Controls -->
+        <div class="flex items-center gap-2 shrink-0">
+          <!-- Zoom Controls -->
+          <div class="hidden sm:flex items-center bg-navy-900 border border-navy-800 rounded-xl p-1 text-xs font-mono">
+            <button onclick="zoomCert(-0.2)" title="Zoom Out" class="px-2.5 py-1 text-slate-300 hover:text-pastel-cyan hover:bg-navy-800 rounded-lg transition-colors">
+              <i class="fa-solid fa-magnifying-glass-minus"></i>
+            </button>
+            <span id="certZoomLevel" class="px-2 text-slate-400 text-[11px]">100%</span>
+            <button onclick="zoomCert(0.2)" title="Zoom In" class="px-2.5 py-1 text-slate-300 hover:text-pastel-cyan hover:bg-navy-800 rounded-lg transition-colors">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </button>
+            <button onclick="zoomCert(0)" title="Reset Zoom" class="px-2 py-1 text-slate-400 hover:text-pastel-cyan hover:bg-navy-800 rounded-lg transition-colors text-[10px]">
+              Reset
+            </button>
+          </div>
+
+          <!-- Open in New Tab -->
+          <a id="certModalOpenTab" href="#" target="_blank" title="Open full file in new tab" class="p-2.5 rounded-xl bg-navy-900 border border-navy-800 text-slate-300 hover:text-pastel-cyan hover:border-pastel-cyan/40 transition-all text-xs">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+
+          <!-- Download -->
+          <a id="certModalDownload" href="#" download title="Download Document" class="p-2.5 rounded-xl bg-pastel-cyan/15 border border-pastel-cyan/30 text-pastel-cyan hover:bg-pastel-cyan hover:text-navy-950 transition-all text-xs">
+            <i class="fa-solid fa-download"></i>
+          </a>
+
+          <!-- Close Modal Button -->
+          <button onclick="closeCertModal()" title="Close Viewer (ESC)" class="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500 hover:text-white transition-all text-xs">
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Preview Body -->
+      <div class="relative flex-1 overflow-auto p-4 sm:p-6 bg-navy-950/80 flex items-center justify-center min-h-[360px] max-h-[68vh] no-scrollbar">
+        
+        <!-- Loading Spinner -->
+        <div id="certModalLoading" class="flex flex-col items-center justify-center gap-3 text-slate-400">
+          <div class="w-10 h-10 rounded-full border-2 border-pastel-cyan border-t-transparent animate-spin"></div>
+          <span class="text-xs font-mono tracking-wider">LOADING CERTIFICATE...</span>
+        </div>
+
+        <!-- Rendered Image View -->
+        <img id="certModalImg" src="" alt="Certificate Preview" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-200 hidden border border-navy-800" />
+
+        <!-- Rendered PDF Canvas View -->
+        <canvas id="certModalCanvas" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-200 hidden border border-navy-800 bg-white"></canvas>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-5 py-3 border-t border-navy-800 bg-navy-950/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+        <p id="certModalDesc" class="text-slate-300 text-xs leading-relaxed max-w-2xl"></p>
+        <div class="flex items-center gap-2 shrink-0 font-mono text-[11px] text-pastel-mint">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Official Verified Credential</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
