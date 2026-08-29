@@ -1397,7 +1397,17 @@
     // 21-WEEK PROTOSEM DATA & INTERACTION SYSTEM (WEEK 00 - 20)
     // ==========================================
     const protoSemWeeks = [
-      { week: 0, phase: 1, title: "", slug: "week-00", status: "placeholder", phaseLabel: "PHASE 01" },
+      { 
+        week: 0, 
+        phase: 1, 
+        title: "From Strangers to Innovators: Reflections on Week 0", 
+        subtitle: "Connect, Discover, Collaborate, Explore & Envision",
+        summary: "5-Day field notes: Breaking Barriers, 16 Personalities, Spaghetti Tower Prototyping, AI Workflows & YEP Inauguration.",
+        doc: "protosem-week-00.pdf", 
+        slug: "week-00", 
+        status: "published", 
+        phaseLabel: "PHASE 01" 
+      },
       { week: 1, phase: 1, title: "", slug: "week-01", status: "placeholder", phaseLabel: "PHASE 01" },
       { week: 2, phase: 1, title: "", slug: "week-02", status: "placeholder", phaseLabel: "PHASE 01" },
       { week: 3, phase: 1, title: "", slug: "week-03", status: "placeholder", phaseLabel: "PHASE 01" },
@@ -1444,47 +1454,109 @@
 
         const card = document.createElement('a');
         card.href = `#protosem-week-${weekPad}`;
-        card.className = `group relative glass-card p-5 rounded-2xl border transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-glow-cyan flex flex-col justify-between cursor-pointer overflow-hidden block`;
-        card.setAttribute('data-aos', 'fade-up');
-        card.setAttribute('title', `WEEK ${weekPad} - Field Notes in Progress`);
-        
-        card.onclick = (e) => {
-          e.preventDefault();
-          alert(`📖 ProtoSem WEEK ${weekPad} [Phase 0${item.phase}]\n\nStatus: Field notes & project archive currently in progress.\nDetailed blog documentation will connect directly here soon!`);
-        };
 
-        card.innerHTML = `
-          <!-- Top Metadata -->
-          <div class="flex items-center justify-between pb-3 border-b border-navy-800">
-            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded ${badgeBg}">
-              Phase 0${item.phase}
-            </span>
-            <div class="flex items-center gap-1 text-slate-500 group-hover:text-pastel-cyan transition-colors">
-              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        if (item.status === 'published' && item.doc) {
+          // Published Week with PDF Report Attached
+          card.className = `group relative glass-card p-6 rounded-3xl border border-pastel-cyan/50 hover:border-pastel-cyan transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-glow-cyan flex flex-col justify-between cursor-pointer overflow-hidden block bg-gradient-to-br from-navy-900/90 to-navy-950`;
+          card.setAttribute('data-aos', 'fade-up');
+          card.setAttribute('title', `WEEK ${weekPad}: ${item.title} (Click to open PDF)`);
+          
+          card.onclick = (e) => {
+            e.preventDefault();
+            openCertModal(
+              'From Strangers to Innovators: Reflections on Week 0',
+              'PRICE ProtoSem • Traineeship Field Notes',
+              'Week 00 Report',
+              item.doc,
+              true,
+              'PROTOSEM-WEEK-00-REPORT',
+              'Complete 5-day reflections and field notes documenting the journey from Day 1 to Day 5: Connect & Observe, 16 Personalities, Spaghetti Tower prototyping, AI Workflows, and Youth Entrepreneurship Program.'
+            );
+          };
+
+          card.innerHTML = `
+            <!-- Top Metadata -->
+            <div class="flex items-center justify-between pb-3 border-b border-navy-800">
+              <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-pastel-mint/15 text-pastel-mint border border-pastel-mint/30 font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-pastel-mint animate-pulse"></span>
+                REPORT READY
+              </span>
+              <span class="text-pastel-cyan text-xs font-mono font-bold flex items-center gap-1">
+                <i class="fa-solid fa-file-pdf"></i> 5 Pages
+              </span>
             </div>
-          </div>
 
-          <!-- Main Week Heading -->
-          <div class="my-4">
-            <p class="font-mono text-2xl font-extrabold text-white group-hover:text-pastel-cyan transition-colors">
-              WEEK ${weekPad}
-            </p>
-            <p class="text-[11px] font-mono tracking-wide text-slate-400 mt-1 uppercase">
-              FIELD NOTES IN PROGRESS
-            </p>
-          </div>
+            <!-- Main Week Heading -->
+            <div class="my-4">
+              <div class="flex items-center gap-2">
+                <p class="font-mono text-2xl font-extrabold text-white group-hover:text-pastel-cyan transition-colors">
+                  WEEK ${weekPad}
+                </p>
+                <span class="text-xs font-mono text-pastel-cyan/80 bg-navy-950 px-2 py-0.5 rounded border border-navy-800">ProtoSem</span>
+              </div>
+              <p class="text-sm font-bold text-slate-100 mt-2 leading-snug group-hover:text-pastel-cyan transition-colors">
+                ${item.title}
+              </p>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed line-clamp-2">
+                ${item.summary}
+              </p>
+            </div>
 
-          <!-- Footer State -->
-          <div class="pt-3 border-t border-navy-800 flex items-center justify-between text-[10px] font-mono text-slate-500">
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-pastel-cyan/60 animate-ping"></span>
-              <span>COMING SOON</span>
-            </span>
-            <span class="group-hover:translate-x-1 transition-transform text-slate-400 group-hover:text-pastel-cyan">
-              &rarr;
-            </span>
-          </div>
-        `;
+            <!-- Footer State -->
+            <div class="pt-3 border-t border-navy-800 flex items-center justify-between text-xs font-mono text-pastel-cyan">
+              <span class="flex items-center gap-1.5 font-bold">
+                <i class="fa-solid fa-eye"></i> READ PDF REPORT
+              </span>
+              <span class="group-hover:translate-x-1 transition-transform text-pastel-cyan">
+                &rarr;
+              </span>
+            </div>
+          `;
+        } else {
+          // Placeholder Week
+          card.className = `group relative glass-card p-5 rounded-2xl border transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-glow-cyan flex flex-col justify-between cursor-pointer overflow-hidden block`;
+          card.setAttribute('data-aos', 'fade-up');
+          card.setAttribute('title', `WEEK ${weekPad} - Field Notes in Progress`);
+          
+          card.onclick = (e) => {
+            e.preventDefault();
+            alert(`📖 ProtoSem WEEK ${weekPad} [Phase 0${item.phase}]\n\nStatus: Field notes & project archive currently in progress.\nDetailed documentation will connect directly here soon!`);
+          };
+
+          card.innerHTML = `
+            <!-- Top Metadata -->
+            <div class="flex items-center justify-between pb-3 border-b border-navy-800">
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded ${badgeBg}">
+                Phase 0${item.phase}
+              </span>
+              <div class="flex items-center gap-1 text-slate-500 group-hover:text-pastel-cyan transition-colors">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </div>
+            </div>
+
+            <!-- Main Week Heading -->
+            <div class="my-4">
+              <p class="font-mono text-2xl font-extrabold text-white group-hover:text-pastel-cyan transition-colors">
+                WEEK ${weekPad}
+              </p>
+              <p class="text-[11px] font-mono tracking-wide text-slate-400 mt-1 uppercase">
+                FIELD NOTES IN PROGRESS
+              </p>
+            </div>
+
+            <!-- Footer State -->
+            <div class="pt-3 border-t border-navy-800 flex items-center justify-between text-[10px] font-mono text-slate-500">
+              <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-pastel-cyan/60 animate-ping"></span>
+                <span>COMING SOON</span>
+              </span>
+              <span class="group-hover:translate-x-1 transition-transform text-slate-400 group-hover:text-pastel-cyan">
+                &rarr;
+              </span>
+            </div>
+          `;
+        }
+
         container.appendChild(card);
       });
     }
@@ -1534,7 +1606,7 @@
       const idEl = document.getElementById('certModalId');
       const descEl = document.getElementById('certModalDesc');
       const imgEl = document.getElementById('certModalImg');
-      const canvasEl = document.getElementById('certModalCanvas');
+      const pdfContainer = document.getElementById('certModalPdfContainer');
       const loadingEl = document.getElementById('certModalLoading');
       const downloadBtn = document.getElementById('certModalDownload');
       const openTabBtn = document.getElementById('certModalOpenTab');
@@ -1562,7 +1634,8 @@
 
       // Reset view elements
       imgEl.classList.add('hidden');
-      canvasEl.classList.add('hidden');
+      pdfContainer.classList.add('hidden');
+      pdfContainer.innerHTML = '';
       loadingEl.classList.remove('hidden');
 
       // Open Modal
@@ -1577,31 +1650,52 @@
       }
 
       if (isPdf) {
-        // Render PDF using PDF.js
+        // Render PDF using PDF.js (Supports multi-page documents like Week 0 report)
         if (typeof pdfjsLib !== 'undefined') {
           pdfjsLib.getDocument(fileSrc).promise.then(pdf => {
-            return pdf.getPage(1);
-          }).then(page => {
-            const viewport = page.getViewport({ scale: 2.0 });
-            canvasEl.height = viewport.height;
-            canvasEl.width = viewport.width;
-            const renderContext = {
-              canvasContext: canvasEl.getContext('2d'),
-              viewport: viewport
-            };
-            return page.render(renderContext).promise;
+            const numPages = pdf.numPages;
+            const renderPromises = [];
+
+            for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+              const pageWrapper = document.createElement('div');
+              pageWrapper.className = 'w-full flex flex-col items-center mb-6 last:mb-0 relative';
+
+              if (numPages > 1) {
+                const pageBadge = document.createElement('div');
+                pageBadge.className = 'text-[11px] font-mono text-pastel-cyan mb-2 bg-navy-900/90 px-3 py-1 rounded-full border border-pastel-cyan/20';
+                pageBadge.textContent = `Page ${pageNum} of ${numPages}`;
+                pageWrapper.appendChild(pageBadge);
+              }
+
+              const canvas = document.createElement('canvas');
+              canvas.className = 'max-w-full rounded-xl shadow-2xl border border-navy-800 bg-white';
+              pageWrapper.appendChild(canvas);
+              pdfContainer.appendChild(pageWrapper);
+
+              const p = pdf.getPage(pageNum).then(page => {
+                const viewport = page.getViewport({ scale: 2.0 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                const renderContext = {
+                  canvasContext: canvas.getContext('2d'),
+                  viewport: viewport
+                };
+                return page.render(renderContext).promise;
+              });
+              renderPromises.push(p);
+            }
+
+            return Promise.all(renderPromises);
           }).then(() => {
             loadingEl.classList.add('hidden');
-            canvasEl.classList.remove('hidden');
+            pdfContainer.classList.remove('hidden');
           }).catch(err => {
             console.error('PDF.js render error:', err);
             loadingEl.classList.add('hidden');
-            // Fallback to image or direct link
             window.open(fileSrc, '_blank');
             closeCertModal();
           });
         } else {
-          // Direct fallback if CDN blocked
           loadingEl.classList.add('hidden');
           window.open(fileSrc, '_blank');
           closeCertModal();
@@ -1626,7 +1720,9 @@
       modal.classList.remove('opacity-100', 'pointer-events-auto');
       document.body.style.overflow = '';
       const imgEl = document.getElementById('certModalImg');
+      const pdfContainer = document.getElementById('certModalPdfContainer');
       if (imgEl) imgEl.src = '';
+      if (pdfContainer) pdfContainer.innerHTML = '';
     };
 
     window.zoomCert = function(delta) {
@@ -1640,10 +1736,10 @@
 
     function applyCertZoom() {
       const imgEl = document.getElementById('certModalImg');
-      const canvasEl = document.getElementById('certModalCanvas');
+      const pdfContainer = document.getElementById('certModalPdfContainer');
       const zoomText = document.getElementById('certZoomLevel');
       if (imgEl) imgEl.style.transform = `scale(${currentCertZoom})`;
-      if (canvasEl) canvasEl.style.transform = `scale(${currentCertZoom})`;
+      if (pdfContainer) pdfContainer.style.transform = `scale(${currentCertZoom})`;
       if (zoomText) zoomText.textContent = `${Math.round(currentCertZoom * 100)}%`;
     }
 
@@ -1919,19 +2015,19 @@
       </div>
 
       <!-- Modal Preview Body -->
-      <div class="relative flex-1 overflow-auto p-4 sm:p-6 bg-navy-950/80 flex items-center justify-center min-h-[360px] max-h-[68vh] no-scrollbar">
+      <div class="relative flex-1 overflow-auto p-4 sm:p-6 bg-navy-950/80 flex flex-col items-center justify-start min-h-[360px] max-h-[72vh]">
         
         <!-- Loading Spinner -->
-        <div id="certModalLoading" class="flex flex-col items-center justify-center gap-3 text-slate-400">
+        <div id="certModalLoading" class="flex flex-col items-center justify-center gap-3 text-slate-400 my-auto">
           <div class="w-10 h-10 rounded-full border-2 border-pastel-cyan border-t-transparent animate-spin"></div>
-          <span class="text-xs font-mono tracking-wider">LOADING CERTIFICATE...</span>
+          <span class="text-xs font-mono tracking-wider">LOADING DOCUMENT...</span>
         </div>
 
         <!-- Rendered Image View -->
-        <img id="certModalImg" src="" alt="Certificate Preview" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-200 hidden border border-navy-800" />
+        <img id="certModalImg" src="" alt="Document Preview" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-200 hidden border border-navy-800 my-auto" />
 
-        <!-- Rendered PDF Canvas View -->
-        <canvas id="certModalCanvas" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-200 hidden border border-navy-800 bg-white"></canvas>
+        <!-- Rendered Multi-Page PDF Container View -->
+        <div id="certModalPdfContainer" class="w-full flex flex-col items-center gap-6 transition-transform duration-200 hidden origin-top"></div>
 
       </div>
 
