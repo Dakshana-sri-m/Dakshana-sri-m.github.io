@@ -357,21 +357,26 @@
           </div>
 
           <!-- Quick Stat Badges -->
-          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-navy-800/80 max-w-lg">
-            <div class="glass-card p-3 rounded-xl text-center">
-              <p class="text-xs font-mono text-pastel-cyan uppercase">Scholarship</p>
-              <p class="text-lg font-bold text-white">Top 10 Rank</p>
-              <p class="text-[10px] text-slate-400">Mahatma Gandhi Merit</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-navy-800/80 max-w-xl">
+            <div onclick="openCertModal('Network Traffic Type Categorization using Machine Learning', '3rd International Conference on Computational Sciences and Applied Mathematics (ICCSAM - 2026)', 'August 18, 2026', 'cert-paper-presentation.jpg', false, 'ICCSAM-2026-PAPER', 'Presented research paper on Network Traffic Type Categorization using Machine Learning at ICCSAM 2026 in association with Asia Pacific University of Technology and Innovation, Malaysia.')" class="glass-card p-3 rounded-xl text-center cursor-pointer hover:border-pastel-cyan/50 hover:shadow-glow-cyan transition-all group">
+              <p class="text-[10px] font-mono text-pastel-cyan uppercase font-bold">Research</p>
+              <p class="text-base font-bold text-white group-hover:text-pastel-cyan">ICCSAM '26</p>
+              <p class="text-[10px] text-slate-400">Paper Presenter</p>
+            </div>
+            <div onclick="openCertModal('Mahatma Gandhi Merit Scholarship', 'Kumaraguru Institutions & KCLAS', 'March 26, 2026', 'cert-scholarship.jpg', false, 'MGMS-2025-26', 'Awarded Mahatma Gandhi Merit Scholarship for achieving Top 10 Rank.')" class="glass-card p-3 rounded-xl text-center cursor-pointer hover:border-pastel-amber/50 hover:shadow-glow-amber transition-all group">
+              <p class="text-[10px] font-mono text-pastel-amber uppercase font-bold">Scholarship</p>
+              <p class="text-base font-bold text-white group-hover:text-pastel-amber">Top 10</p>
+              <p class="text-[10px] text-slate-400">Mahatma Gandhi</p>
             </div>
             <div class="glass-card p-3 rounded-xl text-center">
-              <p class="text-xs font-mono text-pastel-purple uppercase">Programme</p>
-              <p class="text-lg font-bold text-white">20 Weeks</p>
+              <p class="text-[10px] font-mono text-pastel-purple uppercase font-bold">Traineeship</p>
+              <p class="text-base font-bold text-white">20 Weeks</p>
               <p class="text-[10px] text-slate-400">PRICE ProtoSem</p>
             </div>
             <div class="glass-card p-3 rounded-xl text-center">
-              <p class="text-xs font-mono text-pastel-mint uppercase">Focus</p>
-              <p class="text-lg font-bold text-white">Data & AI</p>
-              <p class="text-[10px] text-slate-400">Business Intelligence</p>
+              <p class="text-[10px] font-mono text-pastel-mint uppercase font-bold">Stack</p>
+              <p class="text-base font-bold text-white">Data & AI</p>
+              <p class="text-[10px] text-slate-400">Python • SQL • BI</p>
             </div>
           </div>
         </div>
@@ -410,6 +415,11 @@
 
             <!-- Focus Highlights Matrix -->
             <div class="space-y-2.5 pt-2">
+              <div onclick="openCertModal('Network Traffic Type Categorization using Machine Learning', '3rd International Conference on Computational Sciences and Applied Mathematics (ICCSAM - 2026)', 'August 18, 2026', 'cert-paper-presentation.jpg', false, 'ICCSAM-2026-PAPER', 'Presented research paper on Network Traffic Type Categorization using Machine Learning at ICCSAM 2026.')" 
+                   class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-navy-900/70 border border-pastel-cyan/40 hover:bg-pastel-cyan/15 cursor-pointer transition-all">
+                <span class="text-slate-300 flex items-center gap-2 font-semibold"><i class="fa-solid fa-scroll text-pastel-cyan"></i> Research Paper</span>
+                <span class="font-mono text-pastel-cyan font-bold flex items-center gap-1">Presented @ ICCSAM '26 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></span>
+              </div>
               <div class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-navy-900/70 border border-navy-800">
                 <span class="text-slate-400 flex items-center gap-2"><i class="fa-solid fa-code text-pastel-cyan"></i> Core Stack</span>
                 <span class="font-mono text-pastel-cyan font-medium">Python • SQL • Tableau</span>
