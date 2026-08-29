@@ -1378,6 +1378,20 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
           <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
         </svg>
+      ),
+      'file-word': (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+          <polyline points="14 2 14 8 20 8" />
+          <path d="M9 13v4" />
+          <path d="M12 13v4" />
+          <path d="M15 13v4" />
+        </svg>
+      ),
+      'paperclip': (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+          <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+        </svg>
       )
     };
 
@@ -1585,6 +1599,79 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
         }
       };
 
+      const handleDownloadAsWord = () => {
+        const docTitle = blog.title || `ProtoSem_Week_${weekIndex}_Retrospective`;
+        const htmlDoc = `
+          <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+          <head>
+            <meta charset='utf-8'>
+            <title>${docTitle}</title>
+            <style>
+              body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #151515; padding: 24pt; }
+              h1 { color: #1B4D3E; font-size: 24pt; margin-bottom: 6pt; font-family: 'Georgia', serif; font-weight: bold; }
+              h2 { color: #1B4D3E; font-size: 16pt; margin-top: 18pt; margin-bottom: 6pt; border-bottom: 1.5pt solid #1B4D3E; padding-bottom: 4pt; }
+              h3 { color: #286B57; font-size: 13pt; margin-top: 14pt; margin-bottom: 4pt; }
+              p { font-size: 11pt; margin-bottom: 10pt; line-height: 1.6; }
+              blockquote { border-left: 3pt solid #1B4D3E; margin: 12pt 0; padding: 6pt 12pt; background-color: #F4F1EA; font-style: italic; color: #333; }
+              .meta-bar { font-size: 10pt; color: #555; margin-bottom: 16pt; border-bottom: 1pt solid #DDD; padding-bottom: 8pt; }
+              .highlight-box { background: #FAF8F5; border: 1.5pt solid #1B4D3E; padding: 12pt; margin: 14pt 0; border-radius: 4pt; }
+              ul { margin: 6pt 0 12pt 20pt; }
+              li { margin-bottom: 4pt; font-size: 11pt; }
+            </style>
+          </head>
+          <body>
+            <h1>${blog.title || `ProtoSem Week ${week?.label || weekIndex} Retrospective`}</h1>
+            <div class="meta-bar">
+              <strong>Author:</strong> ${blog.author || "Dakshana Sri M"} &nbsp;|&nbsp; 
+              <strong>Sprint:</strong> ProtoSem ${week?.label || `Week ${weekIndex}`} &nbsp;|&nbsp; 
+              <strong>Date:</strong> ${blog.date || "August 2026"} &nbsp;|&nbsp; 
+              <strong>Read Time:</strong> ${blog.readTime || "5 min read"}
+            </div>
+            ${blog.summary ? `<p style="font-size:12pt; font-style:italic; color:#2C2B29; background-color:#F4F1EA; padding:10pt; border-left:3pt solid #1B4D3E;">${blog.summary}</p>` : ''}
+            
+            ${blog.highlights && blog.highlights.length > 0 ? `
+              <div class="highlight-box">
+                <strong style="color:#1B4D3E; text-transform:uppercase; font-size:10.5pt; display:block; margin-bottom:6pt;">Key Sprint Breakthroughs & Mental Models</strong>
+                <ul>
+                  ${blog.highlights.map(h => `<li><strong>${h}</strong></li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            <hr style="border:0; border-top:1pt solid #DDD; margin: 16pt 0;" />
+            
+            ${(blog.content || '').split('\n').map(line => {
+              const trimmed = line.trim();
+              if (trimmed.startsWith('## ')) return `<h2>${trimmed.replace('## ', '')}</h2>`;
+              if (trimmed.startsWith('### ')) return `<h3>${trimmed.replace('### ', '')}</h3>`;
+              if (trimmed.startsWith('> ')) return `<blockquote>${trimmed.replace('> ', '')}</blockquote>`;
+              if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li>${trimmed.substring(2)}</li>`;
+              if (trimmed === '') return '';
+              return `<p>${trimmed}</p>`;
+            }).join('\n')}
+
+            <hr style="border:0; border-top:1pt solid #DDD; margin: 20pt 0;" />
+            <p style="font-size:9pt; color:#888; text-align:center;">
+              Dakshana Sri M · ProtoSem Venture Building & Rapid Prototyping Portfolio · ${blog.date || 'August 2026'}
+            </p>
+          </body>
+          </html>
+        `;
+
+        const blob = new Blob(['\ufeff', htmlDoc], {
+          type: 'application/msword'
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const cleanName = (blog.title || `ProtoSem_Week_${weekIndex}_Retrospective`).replace(/[^a-zA-Z0-9_-]/g, '_');
+        a.download = `${cleanName}.doc`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      };
+
       const renderFormattedContent = (text) => {
         if (!text) return null;
         const lines = text.split('\n');
@@ -1684,6 +1771,43 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                     <Icon name="clock" className="w-3 h-3 text-emeraldAccent" />
                     <span>{blog.readTime}</span>
                   </span>
+                )}
+
+                {/* Download as Word Button */}
+                <button
+                  onClick={handleDownloadAsWord}
+                  className="px-3 py-1 bg-white border border-emeraldAccent/40 hover:bg-emeraldAccent hover:text-white text-emeraldAccent font-mono-tag text-xs font-bold rounded flex items-center gap-1.5 transition-colors shadow-xs"
+                  title="Download / Export formatted Microsoft Word Document (.doc)"
+                >
+                  <Icon name="file-word" className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">WORD (.DOC)</span>
+                </button>
+
+                {/* Attached File Download Button (If available) */}
+                {blog.attachedDoc && (
+                  <a
+                    href={blog.attachedDoc}
+                    download={blog.attachedDocName || `${(blog.title || 'Sprint_Essay').replace(/[^a-zA-Z0-9_-]/g, '_')}.docx`}
+                    className="px-3 py-1 bg-emeraldAccent-dim border border-emeraldAccent text-emeraldAccent hover:bg-emeraldAccent hover:text-white font-mono-tag text-xs font-bold rounded flex items-center gap-1.5 transition-colors"
+                    title={`Download attached original file: ${blog.attachedDocName || 'Document'}`}
+                  >
+                    <Icon name="paperclip" className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">ATTACHED DOC</span>
+                  </a>
+                )}
+
+                {/* Cloud Doc Link (If available) */}
+                {blog.wordDocUrl && (
+                  <a
+                    href={blog.wordDocUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3 py-1 bg-white border border-ivory-border hover:border-emeraldAccent text-ink font-mono-tag text-xs rounded flex items-center gap-1.5 transition-colors"
+                    title="Open in Microsoft 365 / OneDrive / Google Docs"
+                  >
+                    <Icon name="external-link" className="w-3.5 h-3.5 text-emeraldAccent" />
+                    <span className="hidden sm:inline">CLOUD DOC</span>
+                  </a>
                 )}
 
                 <button
@@ -1818,6 +1942,58 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                 )}
               </div>
 
+              {/* Word Document Attachment & Download Box */}
+              <div className="p-6 sm:p-8 bg-white border border-emeraldAccent/30 rounded-sm shadow-sm space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-12 h-12 rounded bg-emeraldAccent/10 border border-emeraldAccent/20 flex items-center justify-center text-emeraldAccent flex-shrink-0 mt-0.5">
+                      <Icon name="file-word" className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-editorial text-xl text-ink font-bold">
+                        MICROSOFT WORD DOCUMENT & ESSAY ATTACHMENT
+                      </h4>
+                      <p className="text-xs text-ink-muted mt-1 font-mono-tag">
+                        Download or export this sprint retrospective formatted for Microsoft Word (.doc/.docx) or offline editing.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
+                    <button
+                      onClick={handleDownloadAsWord}
+                      className="px-4 py-2.5 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded shadow hover:bg-ink flex items-center gap-2 transition-colors"
+                    >
+                      <Icon name="download" className="w-4 h-4" />
+                      <span>DOWNLOAD AS WORD (.DOC)</span>
+                    </button>
+
+                    {blog.attachedDoc && (
+                      <a
+                        href={blog.attachedDoc}
+                        download={blog.attachedDocName || `${(blog.title || 'Sprint_Essay').replace(/[^a-zA-Z0-9_-]/g, '_')}.docx`}
+                        className="px-4 py-2.5 bg-white border border-emeraldAccent text-emeraldAccent hover:bg-emeraldAccent hover:text-white font-mono-tag text-xs font-bold rounded flex items-center gap-2 transition-colors"
+                      >
+                        <Icon name="paperclip" className="w-4 h-4" />
+                        <span>DOWNLOAD ORIGINAL ATTACHED FILE</span>
+                      </a>
+                    )}
+
+                    {blog.wordDocUrl && (
+                      <a
+                        href={blog.wordDocUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-4 py-2.5 bg-ivory-light border border-ivory-border hover:border-emeraldAccent text-ink font-mono-tag text-xs font-semibold rounded flex items-center gap-2 transition-colors"
+                      >
+                        <Icon name="external-link" className="w-4 h-4 text-emeraldAccent" />
+                        <span>OPEN CLOUD DOCUMENT</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               {/* 5-Day Sprint Snapshot */}
               {week?.days && week.days.length > 0 && (
                 <div className="pt-8 border-t border-ivory-border space-y-4">
@@ -1911,6 +2087,10 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
       const [coverImage, setCoverImage] = useState(existingBlog.coverImage || "");
       const [coverUploadMode, setCoverUploadMode] = useState("device"); // "device" or "url"
       const [externalUrl, setExternalUrl] = useState(existingBlog.externalUrl || "");
+      const [attachedDoc, setAttachedDoc] = useState(existingBlog.attachedDoc || "");
+      const [attachedDocName, setAttachedDocName] = useState(existingBlog.attachedDocName || "");
+      const [wordDocUrl, setWordDocUrl] = useState(existingBlog.wordDocUrl || "");
+      const [docUploadMode, setDocUploadMode] = useState("device"); // "device" or "url"
       const [highlightsText, setHighlightsText] = useState(existingBlog.highlights ? existingBlog.highlights.join("\n") : "");
       const [content, setContent] = useState(existingBlog.content || `## Sprint Overview\nDocumenting key deliverables, customer feedback, and technical milestones for this sprint.\n\n### Architectural Decisions & Progress\nKey data flow designs, model benchmarks, and systems integrations.\n\n### Lessons Learned & Epiphanies\nCore insights and next sprint trajectory.`);
 
@@ -1925,12 +2105,18 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
           setTagsStr(w.blog.tags ? w.blog.tags.join(", ") : "ProtoSem, Sprint");
           setCoverImage(w.blog.coverImage || "");
           setExternalUrl(w.blog.externalUrl || "");
+          setAttachedDoc(w.blog.attachedDoc || "");
+          setAttachedDocName(w.blog.attachedDocName || "");
+          setWordDocUrl(w.blog.wordDocUrl || "");
           setHighlightsText(w.blog.highlights ? w.blog.highlights.join("\n") : "");
           setContent(w.blog.content || "");
         } else {
           setTitle(`Week ${newIdx} Sprint Retrospective`);
           setSummary("");
           setHighlightsText("");
+          setAttachedDoc("");
+          setAttachedDocName("");
+          setWordDocUrl("");
           setContent(`## Sprint Overview\nKey learnings and deliverables for Week ${newIdx}.`);
         }
       };
@@ -1948,15 +2134,18 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
         const highlights = highlightsText.split('\n').map(h => h.trim()).filter(Boolean);
 
         const updatedBlog = {
-          title,
-          summary,
-          date,
-          readTime,
+          title: title.trim(),
+          summary: summary.trim(),
+          date: date.trim(),
+          readTime: readTime.trim(),
           tags,
-          coverImage,
-          externalUrl,
+          coverImage: coverImage.trim(),
+          externalUrl: externalUrl.trim(),
+          attachedDoc: attachedDoc.trim(),
+          attachedDocName: attachedDocName.trim(),
+          wordDocUrl: wordDocUrl.trim(),
           highlights,
-          content,
+          content: content.trim(),
           author: "Dakshana Sri M"
         };
 
@@ -2109,6 +2298,139 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                         className="w-full px-3 py-2 bg-white border border-ivory-border rounded font-mono-tag text-xs text-ink focus:border-emeraldAccent focus:outline-hidden"
                       />
                     </div>
+                  </div>
+
+                  {/* Word Document & Essay Attachment Section */}
+                  <div className="p-5 bg-ivory-light border border-emeraldAccent/30 rounded-sm space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <Icon name="file-word" className="w-4 h-4 text-emeraldAccent" />
+                          <label className="font-mono-tag text-xs text-emeraldAccent font-bold uppercase">
+                            ATTACH WORD DOCUMENT / ESSAY FILE (.DOCX, .DOC, .PDF)
+                          </label>
+                        </div>
+                        <span className="text-xs text-ink-muted">Attach an offline Word document file or link to OneDrive/Google Docs so readers can download or view the document.</span>
+                      </div>
+
+                      {/* Mode Switcher Tabs */}
+                      <div className="flex bg-white rounded border border-ivory-border p-0.5 font-mono-tag text-xs self-start sm:self-auto">
+                        <button
+                          type="button"
+                          onClick={() => setDocUploadMode("device")}
+                          className={`px-3 py-1 rounded transition-colors flex items-center gap-1.5 ${docUploadMode === "device" ? "bg-emeraldAccent text-white font-bold" : "text-ink-muted hover:text-ink"}`}
+                        >
+                          <Icon name="upload" className="w-3 h-3" />
+                          <span>📁 FROM DEVICE</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setDocUploadMode("url")}
+                          className={`px-3 py-1 rounded transition-colors flex items-center gap-1.5 ${docUploadMode === "url" ? "bg-emeraldAccent text-white font-bold" : "text-ink-muted hover:text-ink"}`}
+                        >
+                          <Icon name="external-link" className="w-3 h-3" />
+                          <span>🔗 CLOUD LINK</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Mode A: Upload Word File from Device */}
+                    {docUploadMode === "device" && (
+                      <div>
+                        <label className="border-2 border-dashed border-emeraldAccent/30 hover:border-emeraldAccent bg-white rounded-sm p-5 flex flex-col items-center justify-center cursor-pointer group transition-all text-center">
+                          <Icon name="file-word" className="w-8 h-8 text-emeraldAccent mb-2 group-hover:scale-110 transition-transform" />
+                          <span className="font-mono-tag text-xs font-bold text-ink group-hover:text-emeraldAccent">
+                            CLICK TO CHOOSE WORD DOCUMENT (.DOCX, .DOC, .PDF)
+                          </span>
+                          <span className="text-[11px] text-ink-dim mt-1 font-mono-tag">
+                            Supports Microsoft Word .docx, .doc, .pdf, .md, .txt (Max 25MB)
+                          </span>
+                          <input
+                            type="file"
+                            accept=".docx,.doc,.pdf,.txt,.md,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,application/pdf"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) {
+                                if (file.size > 25 * 1024 * 1024) {
+                                  alert("File is too large (max 25MB).");
+                                  return;
+                                }
+                                setAttachedDocName(file.name);
+                                const reader = new FileReader();
+                                reader.onload = (ev) => {
+                                  setAttachedDoc(ev.target.result);
+                                };
+                                reader.readAsDataURL(file);
+                              }
+                            }}
+                          />
+                        </label>
+                      </div>
+                    )}
+
+                    {/* Mode B: Cloud Document URL */}
+                    {docUploadMode === "url" && (
+                      <div className="space-y-2">
+                        <div className="relative">
+                          <Icon name="external-link" className="w-3.5 h-3.5 text-ink-dim absolute left-3 top-1/2 -translate-y-1/2" />
+                          <input
+                            type="url"
+                            value={wordDocUrl}
+                            onChange={(e) => setWordDocUrl(e.target.value)}
+                            placeholder="Paste link to Microsoft 365, OneDrive, SharePoint, or Google Docs..."
+                            className="w-full pl-9 pr-3 py-2.5 bg-white border border-ivory-border rounded font-mono-tag text-xs text-ink focus:border-emeraldAccent focus:outline-hidden"
+                          />
+                        </div>
+                        <p className="text-[11px] text-ink-dim font-mono-tag">
+                          Paste any shareable cloud document link (OneDrive, Google Docs, Notion, or GitHub doc).
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Attached Document Pill & Preview */}
+                    {(attachedDoc || attachedDocName || wordDocUrl) && (
+                      <div className="p-3 bg-white border border-emeraldAccent/30 rounded flex flex-wrap items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded bg-emeraldAccent/10 flex items-center justify-center text-emeraldAccent">
+                            <Icon name="file-word" className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <span className="font-mono-tag text-xs font-bold text-ink block">
+                              {attachedDocName || (wordDocUrl ? "Cloud Word Document Linked" : "Word Document Attached")}
+                            </span>
+                            <span className="font-mono-tag text-[10px] text-ink-dim truncate max-w-xs sm:max-w-md block">
+                              {wordDocUrl ? wordDocUrl : (attachedDoc ? "Attached from local file system" : "")}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          {attachedDoc && (
+                            <a
+                              href={attachedDoc}
+                              download={attachedDocName || "Sprint_Essay.docx"}
+                              className="px-2.5 py-1 bg-emeraldAccent text-white rounded font-mono-tag text-xs font-bold flex items-center gap-1 hover:bg-ink transition-colors"
+                            >
+                              <Icon name="download" className="w-3 h-3" />
+                              <span>Test Download</span>
+                            </a>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setAttachedDoc("");
+                              setAttachedDocName("");
+                              setWordDocUrl("");
+                            }}
+                            className="px-2.5 py-1 bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 rounded font-mono-tag text-xs font-bold flex items-center gap-1 transition-colors"
+                          >
+                            <Icon name="trash-2" className="w-3 h-3" />
+                            <span>Remove</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Cover Image Uploader (Dual-Mode: Upload from Device + Paste URL) */}
@@ -2314,6 +2636,13 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
 
                   {coverImage && (
                     <img src={coverImage} alt={title} className="w-full h-48 sm:h-64 object-cover rounded border border-ivory-border shadow-xs" />
+                  )}
+
+                  {(attachedDocName || wordDocUrl) && (
+                    <div className="p-3 bg-white border border-emeraldAccent/30 rounded flex items-center gap-2 font-mono-tag text-xs text-emeraldAccent">
+                      <Icon name="file-word" className="w-4 h-4" />
+                      <span>Attached Word Document: <strong>{attachedDocName || wordDocUrl}</strong></span>
+                    </div>
                   )}
 
                   {highlightsText && (
@@ -4081,7 +4410,7 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
 
                           <div className="pt-4 border-t border-ivory-border flex items-center justify-between gap-2 font-mono-tag text-xs">
                             <span className="text-ink-dim text-[11px]">{week.blog.date || "August 2026"}</span>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1.5">
                               <button
                                 onClick={() => setReadingBlogWeekIdx(wIdx)}
                                 className="px-3 py-1.5 bg-emeraldAccent text-white font-bold rounded shadow-xs hover:bg-ink flex items-center gap-1.5 transition-colors text-[11px]"
@@ -4091,13 +4420,77 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                               </button>
                               <button
                                 onClick={() => {
+                                  const docTitle = week.blog.title || `ProtoSem_Week_${wIdx}_Retrospective`;
+                                  const htmlDoc = `
+                                    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                                    <head><meta charset='utf-8'><title>${docTitle}</title>
+                                    <style>
+                                      body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #151515; padding: 24pt; }
+                                      h1 { color: #1B4D3E; font-size: 24pt; margin-bottom: 6pt; font-family: 'Georgia', serif; font-weight: bold; }
+                                      h2 { color: #1B4D3E; font-size: 16pt; margin-top: 18pt; margin-bottom: 6pt; border-bottom: 1.5pt solid #1B4D3E; padding-bottom: 4pt; }
+                                      h3 { color: #286B57; font-size: 13pt; margin-top: 14pt; margin-bottom: 4pt; }
+                                      p { font-size: 11pt; margin-bottom: 10pt; line-height: 1.6; }
+                                      blockquote { border-left: 3pt solid #1B4D3E; margin: 12pt 0; padding: 6pt 12pt; background-color: #F4F1EA; font-style: italic; color: #333; }
+                                      .meta-bar { font-size: 10pt; color: #555; margin-bottom: 16pt; border-bottom: 1pt solid #DDD; padding-bottom: 8pt; }
+                                      .highlight-box { background: #FAF8F5; border: 1.5pt solid #1B4D3E; padding: 12pt; margin: 14pt 0; border-radius: 4pt; }
+                                      ul { margin: 6pt 0 12pt 20pt; }
+                                      li { margin-bottom: 4pt; font-size: 11pt; }
+                                    </style>
+                                    </head>
+                                    <body>
+                                      <h1>${week.blog.title || `ProtoSem Week ${week.label} Retrospective`}</h1>
+                                      <div class="meta-bar">
+                                        <strong>Author:</strong> ${week.blog.author || "Dakshana Sri M"} &nbsp;|&nbsp; 
+                                        <strong>Sprint:</strong> ProtoSem ${week.label} &nbsp;|&nbsp; 
+                                        <strong>Date:</strong> ${week.blog.date || "August 2026"} &nbsp;|&nbsp; 
+                                        <strong>Read Time:</strong> ${week.blog.readTime || "5 min read"}
+                                      </div>
+                                      ${week.blog.summary ? `<p style="font-size:12pt; font-style:italic; color:#2C2B29; background-color:#F4F1EA; padding:10pt; border-left:3pt solid #1B4D3E;">${week.blog.summary}</p>` : ''}
+                                      ${week.blog.highlights && week.blog.highlights.length > 0 ? `
+                                        <div class="highlight-box">
+                                          <strong style="color:#1B4D3E; text-transform:uppercase; font-size:10.5pt; display:block; margin-bottom:6pt;">Key Sprint Breakthroughs & Mental Models</strong>
+                                          <ul>
+                                            ${week.blog.highlights.map(h => `<li><strong>${h}</strong></li>`).join('')}
+                                          </ul>
+                                        </div>
+                                      ` : ''}
+                                      <hr style="border:0; border-top:1pt solid #DDD; margin: 16pt 0;" />
+                                      ${(week.blog.content || '').split('\n').map(line => {
+                                        const trimmed = line.trim();
+                                        if (trimmed.startsWith('## ')) return `<h2>${trimmed.replace('## ', '')}</h2>`;
+                                        if (trimmed.startsWith('### ')) return `<h3>${trimmed.replace('### ', '')}</h3>`;
+                                        if (trimmed.startsWith('> ')) return `<blockquote>${trimmed.replace('> ', '')}</blockquote>`;
+                                        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li>${trimmed.substring(2)}</li>`;
+                                        if (trimmed === '') return '';
+                                        return `<p>${trimmed}</p>`;
+                                      }).join('\n')}
+                                    </body>
+                                    </html>
+                                  `;
+                                  const blob = new Blob(['\ufeff', htmlDoc], { type: 'application/msword' });
+                                  const url = URL.createObjectURL(blob);
+                                  const a = document.createElement('a');
+                                  a.href = url;
+                                  a.download = `${docTitle.replace(/[^a-zA-Z0-9_-]/g, '_')}.doc`;
+                                  document.body.appendChild(a);
+                                  a.click();
+                                  a.remove();
+                                  URL.revokeObjectURL(url);
+                                }}
+                                className="p-1.5 bg-white border border-emeraldAccent/40 hover:bg-emeraldAccent hover:text-white text-emeraldAccent rounded transition-colors"
+                                title="Download / Export as Word (.doc)"
+                              >
+                                <Icon name="file-word" className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                onClick={() => {
                                   setEditingBlogWeekIdx(wIdx);
                                   setIsNewBlogModal(false);
                                 }}
                                 className="p-1.5 bg-white border border-ivory-border text-ink hover:text-emeraldAccent hover:border-emeraldAccent rounded transition-colors"
                                 title="Edit this blog"
                               >
-                                <Icon name="edit-3" className="w-3 h-3" />
+                                <Icon name="edit-3" className="w-3.5 h-3.5" />
                               </button>
                             </div>
                           </div>
