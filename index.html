@@ -101,6 +101,146 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    /* ==========================================
+       ANTI-GRAVITY CUSTOM CURSOR & REPULSION STYLES
+       ========================================== */
+    @media (hover: hover) and (pointer: fine) {
+      body, a, button, input, textarea, select, [role="button"] {
+        cursor: none !important;
+      }
+    }
+
+    #ag-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 0%, #7dd3fc 50%, #c084fc 100%);
+      box-shadow: 0 0 10px 2px rgba(125, 211, 252, 0.9), 0 0 18px 4px rgba(192, 132, 252, 0.6);
+      pointer-events: none;
+      z-index: 999999;
+      transform: translate3d(-50%, -50%, 0);
+      transition: width 0.2s ease, height 0.2s ease, opacity 0.3s ease;
+      will-change: transform, left, top;
+      opacity: 0;
+    }
+
+    #ag-cursor-aura {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(125, 211, 252, 0.55);
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.12) 0%, rgba(192, 132, 252, 0.05) 60%, transparent 100%);
+      box-shadow: 0 0 20px 2px rgba(125, 211, 252, 0.25), inset 0 0 10px rgba(192, 132, 252, 0.2);
+      pointer-events: none;
+      z-index: 999998;
+      transform: translate3d(-50%, -50%, 0);
+      transition: width 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                  height 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                  border-color 0.25s ease,
+                  background 0.25s ease,
+                  box-shadow 0.25s ease,
+                  opacity 0.3s ease;
+      will-change: transform, left, top;
+      opacity: 0;
+    }
+
+    /* Orbital Force Field Ring */
+    #ag-cursor-aura::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px dashed rgba(192, 132, 252, 0.45);
+      animation: agAuraRotate 7s linear infinite;
+    }
+
+    @keyframes agAuraRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Dynamic Repulsion States */
+    #ag-cursor-aura.repelling {
+      width: 66px;
+      height: 66px;
+      border-color: rgba(125, 211, 252, 0.95);
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.22) 0%, rgba(192, 132, 252, 0.18) 60%, transparent 100%);
+      box-shadow: 0 0 35px 6px rgba(125, 211, 252, 0.45), inset 0 0 16px rgba(192, 132, 252, 0.4);
+    }
+
+    #ag-cursor-dot.repelling {
+      width: 12px;
+      height: 12px;
+      box-shadow: 0 0 16px 5px rgba(125, 211, 252, 1), 0 0 28px 8px rgba(192, 132, 252, 0.8);
+    }
+
+    /* Click Gravitational Shockwave */
+    .ag-shockwave {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999997;
+      border: 2px solid #7dd3fc;
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.35) 0%, transparent 70%);
+      animation: agShockwaveAnim 0.55s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+    }
+
+    @keyframes agShockwaveAnim {
+      0% {
+        width: 15px;
+        height: 15px;
+        opacity: 0.95;
+        transform: translate3d(-50%, -50%, 0) scale(0.4);
+      }
+      100% {
+        width: 160px;
+        height: 160px;
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) scale(1.5);
+      }
+    }
+
+    /* Stardust Particle Trail */
+    .ag-particle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999996;
+      animation: agParticleAnim 0.65s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
+    }
+
+    @keyframes agParticleAnim {
+      0% {
+        opacity: 0.85;
+        transform: translate3d(-50%, -50%, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) scale(0.15) translateY(12px);
+      }
+    }
+
+    /* Smooth Spring Physics on Interactive Elements */
+    .ag-repelled {
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+      will-change: transform;
+    }
+    
+    .ag-repelled-active {
+      transition: transform 0.06s ease-out, box-shadow 0.2s ease !important;
+      will-change: transform;
+    }
+
+    .ag-floating-shadow {
+      box-shadow: 0 16px 35px -5px rgba(125, 211, 252, 0.3), 0 0 15px rgba(192, 132, 252, 0.25) !important;
+    }
   </style>
 </head>
 <body class="bg-navy-950 text-slate-200 font-sans selection:bg-pastel-cyan selection:text-navy-950 overflow-x-hidden antialiased">
@@ -1078,6 +1218,215 @@
 
     // Initial Render
     renderWeeks('all');
+
+    // ==========================================
+    // ANTI-GRAVITY CUSTOM CURSOR & REPULSION ENGINE
+    // ==========================================
+    (function initAntiGravityCursor() {
+      // Create Cursor DOM Elements
+      const cursorDot = document.createElement('div');
+      cursorDot.id = 'ag-cursor-dot';
+      
+      const cursorAura = document.createElement('div');
+      cursorAura.id = 'ag-cursor-aura';
+      
+      document.body.appendChild(cursorDot);
+      document.body.appendChild(cursorAura);
+
+      let mouseX = -100;
+      let mouseY = -100;
+      let dotX = -100;
+      let dotY = -100;
+      let auraX = -100;
+      let auraY = -100;
+      let isVisible = false;
+      let lastParticleTime = 0;
+      let lastMouseX = -100;
+      let lastMouseY = -100;
+
+      // Track active repelled elements
+      const repelledElements = new Set();
+
+      // Mouse Move Listener
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (!isVisible) {
+          isVisible = true;
+          cursorDot.style.opacity = '1';
+          cursorAura.style.opacity = '1';
+          dotX = mouseX;
+          dotY = mouseY;
+          auraX = mouseX;
+          auraY = mouseY;
+        }
+
+        // Particle Trail when moving
+        const now = performance.now();
+        const distMoved = Math.hypot(mouseX - lastMouseX, mouseY - lastMouseY);
+        if (now - lastParticleTime > 45 && distMoved > 6) {
+          createStardustParticle(mouseX, mouseY);
+          lastParticleTime = now;
+          lastMouseX = mouseX;
+          lastMouseY = mouseY;
+        }
+      }, { passive: true });
+
+      // Mouse Leave / Enter Window
+      document.addEventListener('mouseleave', () => {
+        isVisible = false;
+        cursorDot.style.opacity = '0';
+        cursorAura.style.opacity = '0';
+      });
+
+      document.addEventListener('mouseenter', () => {
+        isVisible = true;
+        cursorDot.style.opacity = '1';
+        cursorAura.style.opacity = '1';
+      });
+
+      // Click Shockwave Burst
+      window.addEventListener('mousedown', (e) => {
+        const shockwave = document.createElement('div');
+        shockwave.className = 'ag-shockwave';
+        shockwave.style.left = `${e.clientX}px`;
+        shockwave.style.top = `${e.clientY}px`;
+        document.body.appendChild(shockwave);
+        setTimeout(() => shockwave.remove(), 600);
+
+        // Click Pulse on interactive elements near cursor
+        applyShockwaveImpulse(e.clientX, e.clientY);
+      });
+
+      function createStardustParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'ag-particle';
+        const size = Math.random() * 4 + 3;
+        const colors = ['#7dd3fc', '#c084fc', '#86efac', '#fda4af', '#fde68a'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = color;
+        particle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+        particle.style.left = `${x + (Math.random() - 0.5) * 12}px`;
+        particle.style.top = `${y + (Math.random() - 0.5) * 12}px`;
+
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 650);
+      }
+
+      function applyShockwaveImpulse(cx, cy) {
+        const targets = document.querySelectorAll('button, a, .glass-card, .phase-btn, .carousel-btn, [role="button"]');
+        targets.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+          const elX = rect.left + rect.width / 2;
+          const elY = rect.top + rect.height / 2;
+          const dist = Math.hypot(elX - cx, elY - cy);
+          if (dist < 180 && dist > 1) {
+            const angle = Math.atan2(elY - cy, elX - cx);
+            const impulse = ((180 - dist) / 180) * 18;
+            const pushX = Math.cos(angle) * impulse;
+            const pushY = Math.sin(angle) * impulse;
+            
+            el.style.transform = `translate3d(${pushX.toFixed(1)}px, ${pushY.toFixed(1)}px, 0) scale(0.97)`;
+            el.classList.add('ag-repelled');
+            setTimeout(() => {
+              if (!repelledElements.has(el)) {
+                el.style.transform = '';
+              }
+            }, 300);
+          }
+        });
+      }
+
+      // Physics Render Loop
+      function updatePhysics() {
+        if (isVisible) {
+          // Smooth Dot Lerp
+          dotX += (mouseX - dotX) * 0.75;
+          dotY += (mouseY - dotY) * 0.75;
+          cursorDot.style.left = `${dotX}px`;
+          cursorDot.style.top = `${dotY}px`;
+
+          // Silky Inertial Aura Lerp
+          auraX += (mouseX - auraX) * 0.18;
+          auraY += (mouseY - auraY) * 0.18;
+          cursorAura.style.left = `${auraX}px`;
+          cursorAura.style.top = `${auraY}px`;
+
+          // Calculate Anti-Gravity Repulsion on Interactive Targets
+          const interactiveTargets = document.querySelectorAll(
+            'button, a, .glass-card, .phase-btn, .carousel-btn, .skill-pill, [data-ag-repel], .social-link'
+          );
+
+          let isRepellingAny = false;
+          const currentlyRepelling = new Set();
+
+          interactiveTargets.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            // Skip elements outside viewport
+            if (rect.bottom < -50 || rect.top > window.innerHeight + 50 || rect.right < -50 || rect.left > window.innerWidth + 50) {
+              return;
+            }
+
+            const elCenterX = rect.left + rect.width / 2;
+            const elCenterY = rect.top + rect.height / 2;
+            const dist = Math.hypot(elCenterX - mouseX, elCenterY - mouseY);
+
+            // Determine repulsion radius and max push force based on element type
+            const isCard = el.classList.contains('glass-card') || rect.width > 220;
+            const radius = isCard ? 130 : Math.max(75, Math.min(rect.width, rect.height) * 1.6);
+            const maxPush = isCard ? 12 : 24;
+            const maxTilt = isCard ? 2.5 : 6;
+
+            if (dist < radius && dist > 0.5) {
+              isRepellingAny = true;
+              currentlyRepelling.add(el);
+              repelledElements.add(el);
+
+              // Anti-gravity inverse force calculation
+              const angle = Math.atan2(elCenterY - mouseY, elCenterX - mouseX);
+              const force = Math.pow(1 - (dist / radius), 1.35);
+
+              const pushX = Math.cos(angle) * maxPush * force;
+              const pushY = Math.sin(angle) * maxPush * force;
+              const tilt = -Math.sin(angle) * maxTilt * force;
+              const liftScale = 1 + (0.04 * force);
+
+              el.classList.remove('ag-repelled');
+              el.classList.add('ag-repelled-active', 'ag-floating-shadow');
+              el.style.transform = `translate3d(${pushX.toFixed(2)}px, ${pushY.toFixed(2)}px, 0px) rotate(${tilt.toFixed(2)}deg) scale(${liftScale.toFixed(3)})`;
+            }
+          });
+
+          // Reset elements that moved out of repulsion range
+          repelledElements.forEach(el => {
+            if (!currentlyRepelling.has(el)) {
+              el.classList.remove('ag-repelled-active', 'ag-floating-shadow');
+              el.classList.add('ag-repelled');
+              el.style.transform = '';
+              repelledElements.delete(el);
+            }
+          });
+
+          // Toggle Aura Repelling Visual States
+          if (isRepellingAny) {
+            cursorAura.classList.add('repelling');
+            cursorDot.classList.add('repelling');
+          } else {
+            cursorAura.classList.remove('repelling');
+            cursorDot.classList.remove('repelling');
+          }
+        }
+
+        requestAnimationFrame(updatePhysics);
+      }
+
+      requestAnimationFrame(updatePhysics);
+    })();
   </script>
 </body>
 </html>
