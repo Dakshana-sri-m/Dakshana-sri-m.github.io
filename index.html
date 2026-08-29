@@ -723,14 +723,63 @@
 
         </div>
 
-        <!-- THE 20-WEEK JOURNEY GRID -->
-        <div class="max-w-6xl mx-auto">
-          <div id="weeksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            <!-- Dynamic 20 week cards populated by JavaScript (safe schema without fake data) -->
+        <!-- PHASE 01 FEATURED HIGHLIGHT BANNER (Distinctive Large Size) -->
+        <div id="phase1HighlightBanner" class="max-w-6xl mx-auto mb-8" data-aos="fade-up">
+          <div onclick="openCertModal('From Strangers to Innovators: Reflections on Week 0', 'PRICE ProtoSem • Traineeship Field Notes', 'Week 00 Report', 'protosem-week-00.pdf', true, 'PROTOSEM-WEEK-00-REPORT', 'Complete 5-day reflections and field notes documenting the journey from Day 1 to Day 5: Connect & Observe, 16 Personalities, Spaghetti Tower prototyping, AI Workflows, and Youth Entrepreneurship Program.')"
+               class="glass-card p-6 sm:p-8 rounded-3xl border border-pastel-cyan/50 hover:border-pastel-cyan hover:shadow-glow-cyan transition-all duration-300 relative overflow-hidden cursor-pointer group bg-gradient-to-r from-navy-900/90 via-navy-900/70 to-navy-950">
+            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-pastel-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+              <div class="space-y-3 flex-1">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <span class="px-3 py-1 rounded-full bg-pastel-cyan/15 text-pastel-cyan border border-pastel-cyan/30 text-xs font-mono font-bold flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-pastel-cyan animate-pulse"></span>
+                    PHASE 01 HIGHLIGHT • FOUNDATION & IMMERSION (WEEKS 00–05)
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-pastel-mint/15 text-pastel-mint border border-pastel-mint/30 text-[11px] font-mono font-bold">
+                    <i class="fa-solid fa-file-pdf"></i> 5-Page Report Ready
+                  </span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-pastel-cyan transition-colors">
+                  From Strangers to Innovators: Reflections on Week 0
+                </h3>
+
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl">
+                  An intensive 5-day reflective journal documenting the transformation from isolated disciplines into an agile, interdisciplinary innovation cohort.
+                </p>
+
+                <!-- Daily Breakdown Pills -->
+                <div class="flex flex-wrap gap-2 pt-1 text-[11px] font-mono">
+                  <span class="px-2.5 py-1 rounded-lg bg-navy-950/80 text-slate-300 border border-navy-800"><strong class="text-pastel-cyan">Day 1:</strong> Connect & Observe</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-navy-950/80 text-slate-300 border border-navy-800"><strong class="text-pastel-purple">Day 2:</strong> 16 Personalities</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-navy-950/80 text-slate-300 border border-navy-800"><strong class="text-pastel-mint">Day 3:</strong> Spaghetti Tower</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-navy-950/80 text-slate-300 border border-navy-800"><strong class="text-pastel-amber">Day 4:</strong> AI Workflows</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-navy-950/80 text-slate-300 border border-navy-800"><strong class="text-pastel-rose">Day 5:</strong> YEP Inauguration</span>
+                </div>
+              </div>
+
+              <!-- Action Button -->
+              <div class="flex flex-col items-start lg:items-end justify-center shrink-0">
+                <button type="button" class="py-3 px-5 rounded-2xl bg-pastel-cyan text-navy-950 font-mono font-bold text-xs flex items-center gap-2.5 shadow-glow-cyan group-hover:scale-105 transition-all">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>READ WEEK 00 REPORT</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </button>
+                <span class="text-[11px] font-mono text-slate-400 mt-2">Click to open in interactive PDF viewer</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="text-center mt-12 text-xs font-mono text-slate-500 max-w-xl mx-auto flex items-center justify-center gap-2">
+        <!-- THE 20-WEEK JOURNEY GRID (All Cards Uniform Sizing) -->
+        <div class="max-w-6xl mx-auto">
+          <div id="weeksGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
+            <!-- Dynamic 21 week cards populated with uniform dimensions by JavaScript -->
+          </div>
+        </div>
+
+        <div class="text-center mt-10 text-xs font-mono text-slate-500 max-w-xl mx-auto flex items-center justify-center gap-2">
           <i class="fa-solid fa-book-bookmark text-pastel-cyan/70"></i>
           <span>Future story & field notes will connect directly to each week card without altering layout.</span>
         </div>
@@ -1437,7 +1486,17 @@
 
     function renderWeeks(phaseFilter = 'all') {
       const container = document.getElementById('weeksGrid');
+      const banner = document.getElementById('phase1HighlightBanner');
       container.innerHTML = '';
+
+      // Show/Hide Phase 1 Highlight banner depending on filter
+      if (banner) {
+        if (phaseFilter === 'all' || phaseFilter === '1' || phaseFilter === 1) {
+          banner.classList.remove('hidden');
+        } else {
+          banner.classList.add('hidden');
+        }
+      }
 
       const filtered = phaseFilter === 'all' 
         ? protoSemWeeks 
@@ -1446,21 +1505,42 @@
       filtered.forEach(item => {
         const weekPad = String(item.week).padStart(2, '0');
         
-        let phaseColor = 'text-pastel-cyan border-pastel-cyan/30';
-        let badgeBg = 'bg-pastel-cyan/10 text-pastel-cyan';
-        if (item.phase === 2) { phaseColor = 'text-pastel-purple border-pastel-purple/30'; badgeBg = 'bg-pastel-purple/10 text-pastel-purple'; }
-        if (item.phase === 3) { phaseColor = 'text-pastel-mint border-pastel-mint/30'; badgeBg = 'bg-pastel-mint/10 text-pastel-mint'; }
-        if (item.phase === 4) { phaseColor = 'text-pastel-amber border-pastel-amber/30'; badgeBg = 'bg-pastel-amber/10 text-pastel-amber'; }
+        // Equalized Phase Styling with Phase 1 prominent highlight
+        let borderClass = 'border-navy-800 hover:border-pastel-cyan/50';
+        let badgeBg = 'bg-pastel-cyan/10 text-pastel-cyan border-pastel-cyan/20';
+        let glowClass = 'hover:shadow-glow-cyan';
+        let accentText = 'text-pastel-cyan';
+
+        if (item.phase === 1) {
+          borderClass = 'border-pastel-cyan/40 bg-pastel-cyan/[0.04] hover:border-pastel-cyan shadow-sm';
+          badgeBg = 'bg-pastel-cyan/15 text-pastel-cyan border-pastel-cyan/30';
+          glowClass = 'hover:shadow-glow-cyan';
+          accentText = 'text-pastel-cyan';
+        } else if (item.phase === 2) {
+          borderClass = 'border-navy-800 hover:border-pastel-purple/50 bg-navy-900/40';
+          badgeBg = 'bg-pastel-purple/10 text-pastel-purple border-pastel-purple/20';
+          glowClass = 'hover:shadow-glow-purple';
+          accentText = 'text-pastel-purple';
+        } else if (item.phase === 3) {
+          borderClass = 'border-navy-800 hover:border-pastel-mint/50 bg-navy-900/40';
+          badgeBg = 'bg-pastel-mint/10 text-pastel-mint border-pastel-mint/20';
+          glowClass = 'hover:shadow-glow-mint';
+          accentText = 'text-pastel-mint';
+        } else if (item.phase === 4) {
+          borderClass = 'border-navy-800 hover:border-pastel-amber/50 bg-navy-900/40';
+          badgeBg = 'bg-pastel-amber/10 text-pastel-amber border-pastel-amber/20';
+          glowClass = 'hover:shadow-glow-amber';
+          accentText = 'text-pastel-amber';
+        }
 
         const card = document.createElement('a');
         card.href = `#protosem-week-${weekPad}`;
+        // EXACT SAME UNIFORM SIZE FOR EVERY CARD
+        card.className = `group relative glass-card p-4 sm:p-5 rounded-2xl border ${borderClass} transition-all duration-300 transform hover:-translate-y-1.5 ${glowClass} flex flex-col justify-between cursor-pointer overflow-hidden block h-[165px] select-none`;
+        card.setAttribute('data-aos', 'fade-up');
 
         if (item.status === 'published' && item.doc) {
-          // Published Week with PDF Report Attached
-          card.className = `group relative glass-card p-6 rounded-3xl border border-pastel-cyan/50 hover:border-pastel-cyan transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-glow-cyan flex flex-col justify-between cursor-pointer overflow-hidden block bg-gradient-to-br from-navy-900/90 to-navy-950`;
-          card.setAttribute('data-aos', 'fade-up');
-          card.setAttribute('title', `WEEK ${weekPad}: ${item.title} (Click to open PDF)`);
-          
+          card.setAttribute('title', `WEEK ${weekPad}: ${item.title} (Click to open PDF Report)`);
           card.onclick = (e) => {
             e.preventDefault();
             openCertModal(
@@ -1476,48 +1556,42 @@
 
           card.innerHTML = `
             <!-- Top Metadata -->
-            <div class="flex items-center justify-between pb-3 border-b border-navy-800">
-              <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-pastel-mint/15 text-pastel-mint border border-pastel-mint/30 font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-pastel-mint animate-pulse"></span>
-                REPORT READY
+            <div class="flex items-center justify-between pb-2 border-b border-navy-800">
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border ${badgeBg} font-bold">
+                Phase 0${item.phase}
               </span>
-              <span class="text-pastel-cyan text-xs font-mono font-bold flex items-center gap-1">
-                <i class="fa-solid fa-file-pdf"></i> 5 Pages
+              <span class="text-[10px] font-mono text-pastel-mint font-bold flex items-center gap-1">
+                <i class="fa-solid fa-file-pdf"></i> PDF
               </span>
             </div>
 
-            <!-- Main Week Heading -->
-            <div class="my-4">
-              <div class="flex items-center gap-2">
-                <p class="font-mono text-2xl font-extrabold text-white group-hover:text-pastel-cyan transition-colors">
+            <!-- Main Week Heading & Uniform Icon -->
+            <div class="my-auto py-1">
+              <div class="flex items-center justify-between">
+                <p class="font-mono text-xl sm:text-2xl font-extrabold text-white group-hover:${accentText} transition-colors">
                   WEEK ${weekPad}
                 </p>
-                <span class="text-xs font-mono text-pastel-cyan/80 bg-navy-950 px-2 py-0.5 rounded border border-navy-800">ProtoSem</span>
+                <div class="w-8 h-8 rounded-lg bg-pastel-cyan/15 text-pastel-cyan flex items-center justify-center text-xs border border-pastel-cyan/30 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
               </div>
-              <p class="text-sm font-bold text-slate-100 mt-2 leading-snug group-hover:text-pastel-cyan transition-colors">
-                ${item.title}
-              </p>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed line-clamp-2">
-                ${item.summary}
+              <p class="text-[11px] font-mono tracking-wide text-pastel-cyan mt-1 truncate font-semibold">
+                Reflection Report
               </p>
             </div>
 
-            <!-- Footer State -->
-            <div class="pt-3 border-t border-navy-800 flex items-center justify-between text-xs font-mono text-pastel-cyan">
-              <span class="flex items-center gap-1.5 font-bold">
-                <i class="fa-solid fa-eye"></i> READ PDF REPORT
+            <!-- Footer State (Uniform Height) -->
+            <div class="pt-2 border-t border-navy-800 flex items-center justify-between text-[10px] font-mono text-pastel-cyan">
+              <span class="flex items-center gap-1 font-bold">
+                <i class="fa-solid fa-eye text-[9px]"></i> READ REPORT
               </span>
-              <span class="group-hover:translate-x-1 transition-transform text-pastel-cyan">
+              <span class="group-hover:translate-x-1 transition-transform text-pastel-cyan font-bold">
                 &rarr;
               </span>
             </div>
           `;
         } else {
-          // Placeholder Week
-          card.className = `group relative glass-card p-5 rounded-2xl border transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-glow-cyan flex flex-col justify-between cursor-pointer overflow-hidden block`;
-          card.setAttribute('data-aos', 'fade-up');
           card.setAttribute('title', `WEEK ${weekPad} - Field Notes in Progress`);
-          
           card.onclick = (e) => {
             e.preventDefault();
             alert(`📖 ProtoSem WEEK ${weekPad} [Phase 0${item.phase}]\n\nStatus: Field notes & project archive currently in progress.\nDetailed documentation will connect directly here soon!`);
@@ -1525,32 +1599,37 @@
 
           card.innerHTML = `
             <!-- Top Metadata -->
-            <div class="flex items-center justify-between pb-3 border-b border-navy-800">
-              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded ${badgeBg}">
+            <div class="flex items-center justify-between pb-2 border-b border-navy-800">
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border ${badgeBg}">
                 Phase 0${item.phase}
               </span>
-              <div class="flex items-center gap-1 text-slate-500 group-hover:text-pastel-cyan transition-colors">
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <div class="flex items-center gap-1 text-slate-500 group-hover:${accentText} transition-colors text-[10px]">
+                <i class="fa-solid fa-clock"></i>
               </div>
             </div>
 
-            <!-- Main Week Heading -->
-            <div class="my-4">
-              <p class="font-mono text-2xl font-extrabold text-white group-hover:text-pastel-cyan transition-colors">
-                WEEK ${weekPad}
-              </p>
-              <p class="text-[11px] font-mono tracking-wide text-slate-400 mt-1 uppercase">
-                FIELD NOTES IN PROGRESS
+            <!-- Main Week Heading & Uniform Icon -->
+            <div class="my-auto py-1">
+              <div class="flex items-center justify-between">
+                <p class="font-mono text-xl sm:text-2xl font-extrabold text-white group-hover:${accentText} transition-colors">
+                  WEEK ${weekPad}
+                </p>
+                <div class="w-8 h-8 rounded-lg bg-navy-950 text-slate-500 flex items-center justify-center text-xs border border-navy-800 group-hover:text-slate-300 transition-colors">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+              </div>
+              <p class="text-[10px] font-mono tracking-wide text-slate-400 mt-1 uppercase truncate">
+                IN PROGRESS
               </p>
             </div>
 
-            <!-- Footer State -->
-            <div class="pt-3 border-t border-navy-800 flex items-center justify-between text-[10px] font-mono text-slate-500">
-              <span class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-pastel-cyan/60 animate-ping"></span>
+            <!-- Footer State (Uniform Height) -->
+            <div class="pt-2 border-t border-navy-800 flex items-center justify-between text-[10px] font-mono text-slate-500">
+              <span class="flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-500/60"></span>
                 <span>COMING SOON</span>
               </span>
-              <span class="group-hover:translate-x-1 transition-transform text-slate-400 group-hover:text-pastel-cyan">
+              <span class="group-hover:translate-x-1 transition-transform text-slate-400 group-hover:${accentText}">
                 &rarr;
               </span>
             </div>
