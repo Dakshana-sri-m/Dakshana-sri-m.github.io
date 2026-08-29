@@ -328,8 +328,13 @@ export const INITIAL_PORTFOLIO_DATA = {
           readTime: "5 min read",
           author: "Dakshana Sri M",
           coverImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+          pdfUrl: "assets/protosem/protosem_week_0_retrospective.pdf",
+          pdfName: "From_Strangers_to_Innovators_Week_0_Protosem.pdf",
+          attachedDoc: "assets/protosem/protosem_week_0_retrospective.pdf",
+          attachedDocName: "From_Strangers_to_Innovators_Week_0_Protosem.pdf",
           summary: "What happens when you bring students from Arts, Engineering, Computer Science, and distinct academic backgrounds into a single room and ask them to build together? Here is the story of our first five days at Protosem, navigating from strangers to collaborators.",
           externalUrl: "",
+          wordDocUrl: "",
           tags: ["ProtoSem", "Retrospective", "Venture Building", "Rapid Prototyping"],
           highlights: [
             "Connection and keen observation are the true starting points of meaningful problem-solving. You can’t solve a problem you haven’t genuinely listened to.",
