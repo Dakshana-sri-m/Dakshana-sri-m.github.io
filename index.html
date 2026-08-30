@@ -4117,9 +4117,9 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
             />
           )}
 
-          {gameState.matchedPairIds.length >= (data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs).filter(p => p.enabled !== false).length &&
-           (data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs).filter(p => p.enabled !== false).length > 0 &&
-           !gameState.isCompleteModalDismissed && (
+          {(gameState?.matchedPairIds || []).length >= ((data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs) || []).filter(p => p && p.enabled !== false).length &&
+           ((data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs) || []).filter(p => p && p.enabled !== false).length > 0 &&
+           !gameState?.isCompleteModalDismissed && (
             <TilesOfMeCompletionModal
               pairs={data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs}
               onClose={() => {
