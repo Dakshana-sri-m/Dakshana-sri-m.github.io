@@ -1615,23 +1615,6 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
           <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
           <rect x="6" y="14" width="12" height="8" />
         </svg>
-      ),
-      'external-link': (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-          <polyline points="15 3 21 3 21 9" />
-          <line x1="10" y1="14" x2="21" y2="3" />
-        </svg>
-      ),
-      'chevron-left': (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      ),
-      'chevron-right': (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
       )
     };
 
@@ -1665,14 +1648,10 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                 <p className="text-xs text-ink-muted">A temporary display state was caught and recovered.</p>
                 <button
                   onClick={() => {
-                    try {
-                      localStorage.removeItem("dakshana_portfolio_v2_data");
-                      localStorage.removeItem("dakshana_tiles_of_me_state_v1");
-                      localStorage.removeItem("dakshana_tiles_sidebar_collapsed");
-                    } catch(e){}
+                    localStorage.removeItem("dakshana_portfolio_v2_data");
                     window.location.reload();
                   }}
-                  className="px-5 py-2.5 bg-emeraldAccent text-white text-xs font-bold rounded shadow hover:bg-ink transition-colors cursor-pointer"
+                  className="px-4 py-2 bg-emeraldAccent text-white text-xs font-bold rounded"
                 >
                   RELOAD PORTFOLIO
                 </button>
@@ -3034,79 +3013,182 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
     }
 
     /* ========================================================================= */
-    /* TILES OF ME: PERSISTENT STATIC SIDE DECK & MATCHING GAME COMPONENTS       */
+    /* TILES OF ME: INTERACTIVE BACKGROUND MATCHING GAME COMPONENTS              */
     /* ========================================================================= */
 
-    function TilesOfMeSideRail({
+    function TilesOfMeCard({
+      tile,
+      pair,
+      isFlipped,
+      isMatched,
+      onFlip,
+      editMode,
+      onOpenSettings
+    }) {
+      if (!pair) return null;
+      const hasImage = !!pair.image;
+
+      const handleClick = (e) => {
+        e.stopPropagation();
+        onFlip(tile.id);
+      };
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onFlip(tile.id);
+        }
+      };
+
+      return (
+        <div
+          className={`tile-perspective select-none relative inline-block transition-transform duration-300 ${isMatched ? 'tile-found-pop' : 'hover:-translate-y-1'}`}
+          style={{ width: '132px', height: '116px' }}
+          role="button"
+          tabIndex={0}
+          aria-label={`Tiles of Me interactive piece: ${isFlipped || isMatched ? pair.name + ' - ' + pair.meaning : 'Hidden identity tile. Click to flip.'}`}
+          aria-pressed={isFlipped || isMatched}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+        >
+          <div className={`tile-card-inner cursor-pointer rounded-lg transition-all ${isFlipped || isMatched ? 'is-flipped' : ''}`}>
+            
+            {/* FRONT FACE (Unrevealed) */}
+            <div className="tile-card-front bg-white/95 backdrop-blur-md border border-ivory-darkBorder hover:border-emeraldAccent shadow-sm hover:shadow-md flex flex-col items-center justify-between p-2.5 transition-all group">
+              <div className="w-full flex items-center justify-between font-mono-tag text-[8.5px] text-ink-dim">
+                <span className="flex items-center gap-1 text-emeraldAccent font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emeraldAccent animate-pulse"></span>
+                  TILES OF ME
+                </span>
+                <span className="text-[7.5px] text-ink-dim/80 uppercase">#{tile.instance}</span>
+              </div>
+
+              <div className="w-9 h-9 rounded-full bg-ivory-light border border-ivory-border flex items-center justify-center text-ink-muted group-hover:text-emeraldAccent group-hover:scale-110 group-hover:border-emeraldAccent transition-all shadow-2xs">
+                <span className="font-editorial text-xl font-bold">?</span>
+              </div>
+
+              <div className="w-full flex items-center justify-center">
+                <span className="font-mono-tag text-[7.5px] text-ink-dim uppercase tracking-wider group-hover:text-emeraldAccent transition-colors">
+                  CLICK TO REVEAL
+                </span>
+              </div>
+            </div>
+
+            {/* BACK FACE (Revealed / Matched) */}
+            <div className={`tile-card-back flex flex-col justify-between p-2.5 text-left relative ${
+              isMatched
+                ? 'bg-white border-2 border-emeraldAccent tile-matched-glow shadow-md'
+                : 'bg-white border-2 border-emeraldAccent/40 shadow-sm'
+            }`}>
+              {hasImage ? (
+                <div className="absolute inset-0 z-0 overflow-hidden rounded-md">
+                  <img src={pair.image} alt={pair.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-black/20"></div>
+                </div>
+              ) : null}
+
+              <div className={`relative z-10 flex items-center justify-between font-mono-tag text-[8px] ${hasImage ? 'text-white' : 'text-emeraldAccent'}`}>
+                <span className="px-1.5 py-0.5 rounded bg-emeraldAccent/15 backdrop-blur-xs font-bold uppercase truncate max-w-[75px]">
+                  {pair.category || "IDENTITY"}
+                </span>
+                {isMatched ? (
+                  <span className="px-1.5 py-0.5 rounded bg-emeraldAccent text-white font-bold flex items-center gap-0.5 text-[8px] shadow-xs">
+                    <Icon name="check" className="w-2.5 h-2.5" />
+                    <span>FOUND</span>
+                  </span>
+                ) : (
+                  <span className="text-[7.5px] opacity-80 uppercase tracking-wide">REVEALED</span>
+                )}
+              </div>
+
+              <div className="relative z-10 my-auto flex items-center gap-2 py-1">
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  hasImage
+                    ? 'bg-white/20 text-white backdrop-blur-xs'
+                    : 'bg-emeraldAccent-dim text-emeraldAccent border border-emeraldAccent/20'
+                }`}>
+                  <Icon name={pair.symbol || 'sparkles'} className="w-3.5 h-3.5" />
+                </div>
+                <div className="min-w-0">
+                  <h5 className={`font-mono-tag text-[10px] font-bold leading-tight uppercase truncate ${hasImage ? 'text-white' : 'text-ink'}`}>
+                    {pair.name}
+                  </h5>
+                  <p className={`font-mono-tag text-[7.5px] truncate ${hasImage ? 'text-ivory-light' : 'text-ink-dim'}`}>
+                    {pair.meaning ? pair.meaning.slice(0, 32) + '...' : ''}
+                  </p>
+                </div>
+              </div>
+
+              <div className={`relative z-10 flex items-center justify-between font-mono-tag text-[7.5px] border-t pt-1 ${
+                hasImage ? 'border-white/20 text-ivory-light' : 'border-ivory-border text-ink-muted'
+              }`}>
+                <span className="truncate">{isMatched ? '✓ Connection locked' : 'Find pair tile'}</span>
+                {editMode && (
+                  <button
+                    type="button"
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                      onOpenSettings();
+                    }}
+                    className="text-emeraldAccent hover:underline font-bold"
+                  >
+                    EDIT
+                  </button>
+                )}
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      );
+    }
+
+    function TilesOfMeIndicator({
       gameState,
       pairs,
-      onFlip,
       onReset,
       onOpenSettings,
       editMode
     }) {
-      const [isCollapsed, setIsCollapsed] = useState(() => {
-        try {
-          const saved = localStorage.getItem("dakshana_tiles_sidebar_collapsed");
-          if (saved !== null) return JSON.parse(saved);
-        } catch(e){}
-        return false;
-      });
-
-      const toggleCollapsed = () => {
-        const next = !isCollapsed;
-        setIsCollapsed(next);
-        try { localStorage.setItem("dakshana_tiles_sidebar_collapsed", JSON.stringify(next)); } catch(e){}
-      };
-
+      const [isOpen, setIsOpen] = useState(false);
       const enabledPairs = (pairs || []).filter(p => p.enabled !== false);
       const totalPairs = enabledPairs.length;
       const foundCount = (gameState?.matchedPairIds || []).length;
       const isAllFound = foundCount >= totalPairs && totalPairs > 0;
 
-      // Generate the 12 tile instances (2 per pair)
-      const allTileInstances = [];
-      enabledPairs.forEach(pair => {
-        allTileInstances.push({ id: `tile_${pair.id}_1`, pairId: pair.id, instance: 1 });
-        allTileInstances.push({ id: `tile_${pair.id}_2`, pairId: pair.id, instance: 2 });
-      });
-
       return (
-        <aside
-          className="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-40 font-mono-tag select-none"
-          aria-label="Tiles of Me Persistent Game Side Deck"
-        >
-          {isCollapsed ? (
-            /* Collapsed Static Side Tab */
-            <div className="flex flex-col items-center bg-white/95 backdrop-blur-xl border border-ivory-darkBorder/90 rounded-full shadow-2xl p-2 gap-3 group hover:border-emeraldAccent transition-all">
-              <button
-                onClick={toggleCollapsed}
-                className="w-9 h-9 rounded-full bg-emeraldAccent-dim text-emeraldAccent hover:bg-emeraldAccent hover:text-white flex items-center justify-center transition-colors shadow-xs"
-                title="Expand Tiles of Me Side Deck"
-              >
-                <Icon name="puzzle" className="w-4 h-4" />
-              </button>
-
-              <div
-                onClick={toggleCollapsed}
-                className="cursor-pointer py-2 px-1 flex flex-col items-center gap-1.5 text-[10px] font-bold text-ink hover:text-emeraldAccent"
-                style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-                title="Expand Tiles of Me Side Deck"
-              >
-                <span className="tracking-widest uppercase">TILES OF ME</span>
-                <span className="px-1 py-0.5 rounded bg-ivory-light text-emeraldAccent text-[9px] border border-ivory-border">
-                  {foundCount}/{totalPairs}
+        <div className="fixed bottom-6 left-6 z-40 font-mono-tag">
+          
+          {/* Main Floating Pill */}
+          <div className="relative">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`flex items-center gap-3 px-3.5 py-2 rounded-full border shadow-lg backdrop-blur-xl transition-all ${
+                isAllFound
+                  ? 'bg-emeraldAccent text-white border-emeraldAccent shadow-emeraldAccent/30'
+                  : 'bg-white/95 text-ink border-ivory-darkBorder hover:border-emeraldAccent'
+              }`}
+              title="Click to view Tiles of Me game progress"
+              aria-label="Tiles of Me game status"
+            >
+              <div className="flex items-center gap-1.5">
+                <span className={`w-2 h-2 rounded-full ${isAllFound ? 'bg-white animate-ping' : 'bg-emeraldAccent animate-pulse'}`}></span>
+                <span className="text-[11px] font-bold uppercase tracking-wider">
+                  TILES OF ME
                 </span>
               </div>
 
-              <div className="flex flex-col gap-1 py-1">
+              <div className="flex items-center gap-1">
                 {enabledPairs.map((p, idx) => {
                   const isFound = (gameState?.matchedPairIds || []).includes(p.id);
                   return (
                     <span
                       key={p.id || idx}
-                      className={`w-1.5 h-1.5 rounded-full transition-all ${
-                        isFound ? 'bg-emeraldAccent scale-125' : 'bg-ivory-border'
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        isFound
+                          ? (isAllFound ? 'bg-white scale-110' : 'bg-emeraldAccent scale-110 shadow-xs')
+                          : (isAllFound ? 'bg-white/40' : 'bg-ivory-border')
                       }`}
                       title={`${p.name}: ${isFound ? 'Found' : 'Hidden'}`}
                     />
@@ -3114,185 +3196,129 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                 })}
               </div>
 
-              <button
-                onClick={toggleCollapsed}
-                className="p-1 rounded-full text-ink-dim hover:text-emeraldAccent hover:bg-ivory-light transition-colors"
-                title="Open Deck"
-              >
-                <Icon name="chevron-left" className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          ) : (
-            /* Full Expanded Static Side Deck (Static on Side) */
-            <div className="w-[195px] sm:w-[215px] bg-white/95 backdrop-blur-xl border border-ivory-darkBorder/90 rounded-2xl shadow-2xl p-3 sm:p-3.5 space-y-3 animate-in fade-in zoom-in-95 duration-200">
-              
-              {/* Deck Header */}
-              <div className="flex items-center justify-between border-b border-ivory-border pb-2.5">
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <span className={`w-2 h-2 rounded-full ${isAllFound ? 'bg-emeraldAccent animate-ping' : 'bg-emeraldAccent animate-pulse'}`}></span>
-                    <span className="font-bold text-[11px] text-ink uppercase tracking-wider block truncate">
-                      TILES OF ME
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5 mt-0.5">
-                    <div className="flex items-center gap-0.5">
-                      {enabledPairs.map((p, idx) => {
-                        const isFound = (gameState?.matchedPairIds || []).includes(p.id);
-                        return (
-                          <span
-                            key={p.id || idx}
-                            className={`w-1.5 h-1.5 rounded-full ${isFound ? 'bg-emeraldAccent' : 'bg-ivory-border'}`}
-                          />
-                        );
-                      })}
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                isAllFound ? 'bg-white/20 text-white' : 'bg-ivory-light text-emeraldAccent'
+              }`}>
+                {foundCount}/{totalPairs}
+              </span>
+            </button>
+
+            {/* Popover Progress Drawer */}
+            {isOpen && (
+              <div className="absolute bottom-12 left-0 w-80 sm:w-96 bg-white border border-ivory-border rounded-lg shadow-2xl p-5 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
+                <div className="flex items-start justify-between border-b border-ivory-border pb-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emeraldAccent animate-pulse"></span>
+                      <h4 className="font-editorial text-xl text-ink font-bold">TILES OF ME</h4>
                     </div>
-                    <span className="text-[9px] font-bold text-emeraldAccent">
-                      {foundCount}/{totalPairs} PAIRS
-                    </span>
+                    <p className="text-[11px] text-ink-muted mt-0.5">
+                      Find all {totalPairs} matching pairs hidden throughout my portfolio.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-1 rounded text-ink-muted hover:text-ink hover:bg-ivory-light transition-colors"
+                    aria-label="Close panel"
+                  >
+                    <Icon name="x" className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between text-[10px] text-ink-dim">
+                    <span>DISCOVERY PROGRESS</span>
+                    <span className="text-emeraldAccent font-bold">{Math.round((foundCount / (totalPairs || 1)) * 100)}% COMPLETE</span>
+                  </div>
+                  <div className="w-full h-1.5 bg-ivory-muted rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-emeraldAccent transition-all duration-500 rounded-full"
+                      style={{ width: `${(foundCount / (totalPairs || 1)) * 100}%` }}
+                    />
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1">
+                {/* List of Pairs */}
+                <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                  {enabledPairs.map((p) => {
+                    const isFound = (gameState?.matchedPairIds || []).includes(p.id);
+                    return (
+                      <div
+                        key={p.id}
+                        className={`p-2.5 rounded border transition-all flex items-center justify-between gap-3 ${
+                          isFound
+                            ? 'bg-emeraldAccent-dim/30 border-emeraldAccent/30'
+                            : 'bg-ivory-light/60 border-ivory-border opacity-70'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
+                            isFound ? 'bg-emeraldAccent text-white shadow-xs' : 'bg-white border border-ivory-border text-ink-dim'
+                          }`}>
+                            <Icon name={p.symbol || 'sparkles'} className="w-3.5 h-3.5" />
+                          </div>
+                          <div className="min-w-0">
+                            <span className="font-bold text-[11px] text-ink block truncate">
+                              {p.name}
+                            </span>
+                            <span className="text-[9.5px] text-ink-muted block truncate">
+                              {isFound ? (p.meaning || p.category) : "Hidden in section margins..."}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div>
+                          {isFound ? (
+                            <span className="px-2 py-0.5 rounded bg-emeraldAccent text-white font-bold text-[9px] flex items-center gap-1">
+                              <Icon name="check" className="w-2.5 h-2.5" />
+                              <span>FOUND</span>
+                            </span>
+                          ) : (
+                            <span className="text-[9px] font-mono-tag text-ink-dim px-2 py-0.5 bg-white border border-ivory-border rounded">
+                              MYSTERY
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Footer Action Buttons */}
+                <div className="pt-2 border-t border-ivory-border flex items-center justify-between gap-2 text-[10px]">
                   <button
                     onClick={() => {
-                      if (confirm("Reset tile matches? All tiles will be hidden again.")) {
+                      if (confirm("Reset game discovery? All tiles will be hidden again.")) {
                         onReset();
+                        setIsOpen(false);
                       }
                     }}
-                    className="p-1 rounded text-ink-muted hover:text-red-600 hover:bg-ivory-light transition-colors"
-                    title="Reset game"
+                    className="text-ink-muted hover:text-red-600 flex items-center gap-1 transition-colors"
                   >
-                    <Icon name="rotate-ccw" className="w-3.5 h-3.5" />
+                    <Icon name="rotate-ccw" className="w-3 h-3" />
+                    <span>RESET GAME</span>
                   </button>
 
                   {editMode && (
                     <button
-                      onClick={onOpenSettings}
-                      className="p-1 rounded text-emeraldAccent hover:bg-emeraldAccent/10 transition-colors"
-                      title="Configure tiles"
+                      onClick={() => {
+                        setIsOpen(false);
+                        onOpenSettings();
+                      }}
+                      className="text-emeraldAccent font-bold hover:underline flex items-center gap-1"
                     >
-                      <Icon name="settings" className="w-3.5 h-3.5" />
+                      <Icon name="settings" className="w-3 h-3" />
+                      <span>EDIT TILES</span>
                     </button>
                   )}
-
-                  <button
-                    onClick={toggleCollapsed}
-                    className="p-1 rounded text-ink-muted hover:text-ink hover:bg-ivory-light transition-colors"
-                    title="Collapse to edge"
-                  >
-                    <Icon name="chevron-right" className="w-3.5 h-3.5" />
-                  </button>
                 </div>
+
               </div>
+            )}
+          </div>
 
-              {/* 12 Static Tiles Grid (2 Columns x 6 Rows) */}
-              <div className="grid grid-cols-2 gap-2 max-h-[58vh] sm:max-h-[62vh] overflow-y-auto pr-0.5 scrollbar-thin">
-                {allTileInstances.map((tile, tIdx) => {
-                  const pair = enabledPairs.find(p => p.id === tile.pairId);
-                  const isFlipped = (gameState?.flippedTileIds || []).includes(tile.id);
-                  const isMatched = (gameState?.matchedPairIds || []).includes(tile.pairId);
-
-                  return (
-                    <div
-                      key={tile.id}
-                      className={`tile-perspective select-none relative aspect-square transition-transform duration-200 ${
-                        isMatched ? 'tile-found-pop' : 'hover:scale-[1.03]'
-                      }`}
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => onFlip(tile.id)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          onFlip(tile.id);
-                        }
-                      }}
-                      title={isFlipped || isMatched ? `${pair?.name} (${pair?.category})` : `Tile #${tIdx + 1} - Click to flip`}
-                    >
-                      <div className={`tile-card-inner cursor-pointer rounded-lg ${isFlipped || isMatched ? 'is-flipped' : ''}`}>
-                        
-                        {/* Front Face (Hidden state) */}
-                        <div className="tile-card-front bg-white border border-ivory-darkBorder hover:border-emeraldAccent shadow-2xs flex flex-col items-center justify-between p-1.5 group">
-                          <span className="text-[7.5px] text-ink-dim font-bold self-start font-mono">
-                            #{tIdx + 1 < 10 ? '0' + (tIdx + 1) : tIdx + 1}
-                          </span>
-                          <div className="w-6 h-6 rounded-full bg-ivory-light border border-ivory-border flex items-center justify-center text-ink-muted group-hover:text-emeraldAccent group-hover:scale-110 transition-all">
-                            <span className="font-editorial text-xs font-bold">?</span>
-                          </div>
-                          <span className="text-[7px] text-emeraldAccent font-semibold tracking-wider">
-                            FLIP
-                          </span>
-                        </div>
-
-                        {/* Back Face (Revealed / Matched state) */}
-                        <div className={`tile-card-back flex flex-col items-center justify-between p-1.5 relative ${
-                          isMatched
-                            ? 'bg-emeraldAccent-dim/50 border-2 border-emeraldAccent tile-matched-glow shadow-xs'
-                            : 'bg-white border border-emeraldAccent/60 shadow-xs'
-                        }`}>
-                          {pair?.image ? (
-                            <div className="absolute inset-0 z-0 overflow-hidden rounded-md">
-                              <img src={pair.image} alt={pair?.name} className="w-full h-full object-cover" />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                            </div>
-                          ) : null}
-
-                          <div className="relative z-10 w-full flex items-center justify-between text-[7px]">
-                            <span className={`px-1 py-0.2 rounded font-bold truncate max-w-[50px] ${
-                              pair?.image ? 'bg-black/60 text-white' : 'bg-emeraldAccent-dim text-emeraldAccent'
-                            }`}>
-                              {pair?.category || 'ID'}
-                            </span>
-                            {isMatched && (
-                              <span className="w-2.5 h-2.5 rounded-full bg-emeraldAccent text-white flex items-center justify-center text-[6.5px]">
-                                ✓
-                              </span>
-                            )}
-                          </div>
-
-                          <div className="relative z-10 my-auto flex flex-col items-center justify-center">
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                              pair?.image ? 'text-white' : 'text-emeraldAccent'
-                            }`}>
-                              <Icon name={pair?.symbol || 'sparkles'} className="w-3.5 h-3.5" />
-                            </div>
-                            <span className={`font-mono-tag text-[8px] font-bold uppercase truncate max-w-[65px] leading-tight ${
-                              pair?.image ? 'text-white' : 'text-ink'
-                            }`}>
-                              {pair?.name}
-                            </span>
-                          </div>
-
-                          <span className={`relative z-10 text-[6.5px] truncate max-w-full ${
-                            pair?.image ? 'text-white/80' : 'text-ink-dim'
-                          }`}>
-                            {isMatched ? 'MATCHED' : 'PAIR TILE'}
-                          </span>
-                        </div>
-
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Footer Clue / Status Bar */}
-              <div className="pt-2 border-t border-ivory-border flex items-center justify-between text-[9px] text-ink-muted">
-                <span className="text-ink-dim truncate">
-                  {isAllFound ? '🎉 All connections found!' : `${totalPairs - foundCount} pairs remaining`}
-                </span>
-                <button
-                  onClick={toggleCollapsed}
-                  className="text-emeraldAccent font-bold hover:underline flex-shrink-0"
-                >
-                  MINIMIZE
-                </button>
-              </div>
-
-            </div>
-          )}
-        </aside>
+        </div>
       );
     }
 
@@ -3818,10 +3844,10 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
       const [openTilesSettings, setOpenTilesSettings] = useState(false);
 
       const handleTileFlip = (tileId) => {
-        if (isFlippingLock || !tileId) return;
+        if (isFlippingLock) return;
 
-        const pairs = (data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs) || [];
-        const enabledPairs = pairs.filter(p => p && p.enabled !== false && p.id);
+        const pairs = data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs;
+        const enabledPairs = pairs.filter(p => p.enabled !== false);
         const allTileInstances = [];
         enabledPairs.forEach(pair => {
           allTileInstances.push({ id: `tile_${pair.id}_1`, pairId: pair.id, instance: 1 });
@@ -3831,17 +3857,14 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
         const targetTile = allTileInstances.find(t => t.id === tileId);
         if (!targetTile) return;
 
-        const matchedIds = gameState?.matchedPairIds || [];
-        const flippedIds = gameState?.flippedTileIds || [];
-
         // Already matched or flipped
-        if (matchedIds.includes(targetTile.pairId)) return;
-        if (flippedIds.includes(tileId)) return;
+        if (gameState.matchedPairIds.includes(targetTile.pairId)) return;
+        if (gameState.flippedTileIds.includes(tileId)) return;
 
-        const currentFlipped = [...flippedIds, tileId];
+        const currentFlipped = [...gameState.flippedTileIds, tileId];
 
         if (currentFlipped.length === 1) {
-          const nextState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState?.moves || 0) + 1 };
+          const nextState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState.moves || 0) + 1 };
           setGameState(nextState);
           try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch(e){}
         } else if (currentFlipped.length === 2) {
@@ -3850,14 +3873,14 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
 
           if (firstTile && secondTile && firstTile.pairId === secondTile.pairId) {
             // MATCH FOUND!
-            const nextMatched = [...matchedIds, firstTile.pairId];
+            const nextMatched = [...gameState.matchedPairIds, firstTile.pairId];
             const isComplete = nextMatched.length >= enabledPairs.length;
             const nextState = {
               ...gameState,
               matchedPairIds: nextMatched,
               flippedTileIds: [],
-              moves: (gameState?.moves || 0) + 1,
-              isCompleteModalDismissed: isComplete ? false : !!gameState?.isCompleteModalDismissed
+              moves: (gameState.moves || 0) + 1,
+              isCompleteModalDismissed: isComplete ? false : gameState.isCompleteModalDismissed
             };
             setGameState(nextState);
             try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch(e){}
@@ -3866,7 +3889,7 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
             showToast(`✨ MATCH FOUND! [ ${pairName} ] connected (${nextMatched.length}/${enabledPairs.length})`, "success");
           } else {
             // MISMATCH: Show both for 700ms, then flip back smoothly
-            const tempState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState?.moves || 0) + 1 };
+            const tempState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState.moves || 0) + 1 };
             setGameState(tempState);
             setIsFlippingLock(true);
             setTimeout(() => {
@@ -3889,16 +3912,45 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
           isCompleteModalDismissed: false
         };
         setGameState(freshState);
-        try {
-          localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(freshState));
-        } catch (e) {}
-        showToast("Tiles of Me game reset. All tiles hidden!", "info");
+        try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(freshState)); } catch(e){}
+        showToast("Tiles of Me game reset. Explore the portfolio to discover all connections again!", "info");
       };
 
       const handleSaveTilesSettings = (updatedTilesConfig) => {
         updateField("tilesOfMe", updatedTilesConfig);
-        setOpenTilesSettings(false);
         showToast("Tiles of Me settings saved successfully!", "success");
+      };
+
+      const renderSectionTile = (tileId, extraClasses = "") => {
+        const pairs = data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs;
+        const enabledPairs = pairs.filter(p => p.enabled !== false);
+        const allTileInstances = [];
+        enabledPairs.forEach(pair => {
+          allTileInstances.push({ id: `tile_${pair.id}_1`, pairId: pair.id, instance: 1 });
+          allTileInstances.push({ id: `tile_${pair.id}_2`, pairId: pair.id, instance: 2 });
+        });
+
+        const tile = allTileInstances.find(t => t.id === tileId);
+        if (!tile) return null;
+        const pair = enabledPairs.find(p => p.id === tile.pairId);
+        if (!pair) return null;
+
+        const isFlipped = (gameState.flippedTileIds || []).includes(tile.id);
+        const isMatched = (gameState.matchedPairIds || []).includes(tile.pairId);
+
+        return (
+          <div className={`tile-anchor-wrapper ${extraClasses}`}>
+            <TilesOfMeCard
+              tile={tile}
+              pair={pair}
+              isFlipped={isFlipped}
+              isMatched={isMatched}
+              onFlip={handleTileFlip}
+              editMode={editMode}
+              onOpenSettings={() => setOpenTilesSettings(true)}
+            />
+          </div>
+        );
       };
 
       const handleSaveBlog = (targetWeekIdx, updatedBlog) => {
@@ -3908,11 +3960,54 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
             ...currentWeeks[targetWeekIdx],
             blog: updatedBlog
           };
+        } else {
+          for (let i = currentWeeks.length; i < targetWeekIdx; i++) {
+            currentWeeks.push({
+              weekNumber: i,
+              label: `W${i < 10 ? '0' + i : i}`,
+              title: `Week ${i}: Venture Prototype Development`,
+              status: "PLANNED",
+              theme: "Venture Prototyping",
+              introHeadline: `WEEK ${i} SPRINT`,
+              introQuote: "Continuous prototyping and validation.",
+              introText: "Advancing through the 20-week venture sprint trajectory.",
+              blog: null,
+              days: [1, 2, 3, 4, 5].map(d => ({
+                dayNumber: d,
+                title: `Day 0${d} — Sprint Execution`,
+                theme: d === 1 ? 'DISCOVERY' : d === 2 ? 'ARCHITECTURE' : d === 3 ? 'BUILD' : d === 4 ? 'VALIDATION' : 'DEMO',
+                summary: "Sprint objectives and tasks.",
+                takeaway: "Key sprint insight.",
+                reflection: { whatHappened: "", whatINoticed: "", whatIContributed: "", whatSurprisedMe: "", whatILearned: "", whatWouldIDoDifferently: "", howChangedThinking: "" },
+                image: ""
+              }))
+            });
+          }
+          currentWeeks[targetWeekIdx] = {
+            weekNumber: targetWeekIdx,
+            label: `W${targetWeekIdx < 10 ? '0' + targetWeekIdx : targetWeekIdx}`,
+            title: `Week ${targetWeekIdx}: ${updatedBlog.title || 'Venture Prototyping'}`,
+            status: "IN_PROGRESS",
+            theme: "System Execution & Testing",
+            introHeadline: `WEEK ${targetWeekIdx} SPRINTS`,
+            introQuote: "Prototyping velocity and sprint deliverables.",
+            introText: updatedBlog.summary || "Advancing through the 20-week venture sprint trajectory.",
+            blog: updatedBlog,
+            days: [1, 2, 3, 4, 5].map(d => ({
+              dayNumber: d,
+              title: `Day 0${d} — Sprint Execution`,
+              theme: d === 1 ? 'DISCOVERY' : d === 2 ? 'ARCHITECTURE' : d === 3 ? 'BUILD' : d === 4 ? 'VALIDATION' : 'DEMO',
+              summary: "Sprint objectives and tasks.",
+              takeaway: "Key sprint insight.",
+              reflection: { whatHappened: "", whatINoticed: "", whatIContributed: "", whatSurprisedMe: "", whatILearned: "", whatWouldIDoDifferently: "", howChangedThinking: "" },
+              image: ""
+            }))
+          };
         }
         updateField("protosem.weeks", currentWeeks);
         setEditingBlogWeekIdx(null);
         setIsNewBlogModal(false);
-        showToast(`Blog post for Week ${targetWeekIdx + 1} saved successfully!`, "success");
+        showToast(`Blog post for Week ${targetWeekIdx} saved successfully!`, "success");
       };
 
       const handleDeleteBlog = (targetWeekIdx) => {
@@ -4133,13 +4228,12 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
           )}
 
           {/* ========================================================================= */}
-          {/* TILES OF ME: PERSISTENT STATIC SIDE DECK & COMPLETION / SETTINGS MODALS   */}
+          {/* TILES OF ME: FLOATING PROGRESS INDICATOR & COMPLETION / SETTINGS MODALS   */}
           {/* ========================================================================= */}
           {data.tilesOfMe?.enabled !== false && (
-            <TilesOfMeSideRail
+            <TilesOfMeIndicator
               gameState={gameState}
               pairs={data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs}
-              onFlip={handleTileFlip}
               onReset={handleResetTilesGame}
               onOpenSettings={() => setOpenTilesSettings(true)}
               editMode={editMode}
@@ -4337,9 +4431,12 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                   <span>/</span>
                   <span>TAMIL NADU, INDIA</span>
                 </div>
-                <div className="flex items-center gap-2 mt-2 sm:mt-0">
-                  <span className="w-2 h-2 rounded-full bg-emeraldAccent animate-pulse"></span>
-                  <span className="text-ink font-medium">STATUS: PROTOSEM W01 COMPLETED</span>
+                <div className="flex items-center gap-4 mt-2 sm:mt-0">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emeraldAccent animate-pulse"></span>
+                    <span className="text-ink font-medium">STATUS: PROTOSEM W01 COMPLETED</span>
+                  </div>
+                  {renderSectionTile('tile_datascience_1')}
                 </div>
               </div>
 
@@ -4413,29 +4510,32 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                   </div>
 
                   {/* Operational Status Matrix */}
-                  <div className="pt-6 border-t border-ivory-border grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {[
-                      { label: "CURRENTLY", val: data.liveStatus.currently, field: "liveStatus.currently" },
-                      { label: "LEARNING", val: data.liveStatus.learning, field: "liveStatus.learning" },
-                      { label: "BUILDING", val: data.liveStatus.building, field: "liveStatus.building" },
-                      { label: "PREPARING", val: data.liveStatus.preparing, field: "liveStatus.preparing" }
-                    ].map((item, idx) => (
-                      <div key={idx} className="p-3 bg-white border border-ivory-border rounded-sm shadow-xs">
-                        <span className="font-mono-tag text-[9px] text-emeraldAccent block mb-1 uppercase tracking-wider font-semibold">
-                          {item.label}
-                        </span>
-                        {editMode ? (
-                          <input
-                            type="text"
-                            value={item.val}
-                            onChange={(e) => updateField(item.field, e.target.value)}
-                            className="bg-transparent border-b border-emeraldAccent text-xs text-ink w-full focus:outline-none"
-                          />
-                        ) : (
-                          <p className="text-xs text-ink font-medium truncate" title={item.val}>{item.val}</p>
-                        )}
-                      </div>
-                    ))}
+                  <div className="pt-6 border-t border-ivory-border flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-1">
+                      {[
+                        { label: "CURRENTLY", val: data.liveStatus.currently, field: "liveStatus.currently" },
+                        { label: "LEARNING", val: data.liveStatus.learning, field: "liveStatus.learning" },
+                        { label: "BUILDING", val: data.liveStatus.building, field: "liveStatus.building" },
+                        { label: "PREPARING", val: data.liveStatus.preparing, field: "liveStatus.preparing" }
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 bg-white border border-ivory-border rounded-sm shadow-xs">
+                          <span className="font-mono-tag text-[9px] text-emeraldAccent block mb-1 uppercase tracking-wider font-semibold">
+                            {item.label}
+                          </span>
+                          {editMode ? (
+                            <input
+                              type="text"
+                              value={item.val}
+                              onChange={(e) => updateField(item.field, e.target.value)}
+                              className="bg-transparent border-b border-emeraldAccent text-xs text-ink w-full focus:outline-none"
+                            />
+                          ) : (
+                            <p className="text-xs text-ink font-medium truncate" title={item.val}>{item.val}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    {renderSectionTile('tile_student_1', 'self-end md:self-center')}
                   </div>
 
                 </div>
@@ -4506,10 +4606,13 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
               
               {/* WHO I AM Overview */}
               <div>
-                <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
-                  <span>02</span>
-                  <span className="w-8 h-px bg-emeraldAccent/40"></span>
-                  <span>PERSONAL IDENTITY & NARRATIVE</span>
+                <div className="flex items-center justify-between font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
+                  <div className="flex items-center gap-3">
+                    <span>02</span>
+                    <span className="w-8 h-px bg-emeraldAccent/40"></span>
+                    <span>PERSONAL IDENTITY & NARRATIVE</span>
+                  </div>
+                  {renderSectionTile('tile_student_2')}
                 </div>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -4627,10 +4730,13 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
 
               {/* 3 Evolution Chapters (Student, Builder, Leader) */}
               <div className="space-y-8 pt-8 border-t border-ivory-border">
-                <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent font-bold uppercase">
-                  <span>EVOLUTION</span>
-                  <span className="w-8 h-px bg-emeraldAccent/40"></span>
-                  <span>STUDENT → BUILDER → LEADER</span>
+                <div className="flex items-center justify-between font-mono-tag text-xs text-emeraldAccent font-bold uppercase">
+                  <div className="flex items-center gap-3">
+                    <span>EVOLUTION</span>
+                    <span className="w-8 h-px bg-emeraldAccent/40"></span>
+                    <span>STUDENT → BUILDER → LEADER</span>
+                  </div>
+                  {renderSectionTile('tile_builder_1')}
                 </div>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
