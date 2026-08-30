@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dakshana Sri M — Student · Builder · Leader</title>
-  <meta name="description" content="Personal editorial operating space and portfolio of Dakshana Sri M — Data Science × Venture Building × Leadership × Research." />
+  <meta name="description"
+    content="Personal editorial operating space and portfolio of Dakshana Sri M — Data Science × Venture Building × Leadership × Research." />
 
   <!-- Google Fonts: DM Serif Display, Instrument Serif, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,11 +22,14 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- React 18 & ReactDOM 18 UMD (Cloudflare CDN) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"
+    crossorigin="anonymous"></script>
 
   <!-- Babel Standalone (Cloudflare CDN) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"
+    crossorigin="anonymous"></script>
 
   <!-- Custom Tailwind Config: Light Editorial Palette -->
   <script>
@@ -123,13 +130,16 @@
       width: 6px;
       height: 6px;
     }
+
     ::-webkit-scrollbar-track {
       background: #F4F1EA;
     }
+
     ::-webkit-scrollbar-thumb {
       background: #D0C9BD;
       border-radius: 3px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: #1B4D3E;
     }
@@ -139,6 +149,7 @@
       body {
         cursor: default;
       }
+
       .cursor-dot {
         position: fixed;
         top: 0;
@@ -153,6 +164,7 @@
         transition: opacity 0.15s ease, transform 0.12s ease-out, background-color 0.2s ease;
         box-shadow: 0 0 10px rgba(27, 77, 62, 0.4);
       }
+
       .cursor-ring {
         position: fixed;
         top: 0;
@@ -166,12 +178,13 @@
         z-index: 9998;
         transform: translate(-50%, -50%);
         transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                    height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.2s ease,
-                    background-color 0.2s ease,
-                    opacity 0.2s ease,
-                    transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+          height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.2s ease,
+          background-color 0.2s ease,
+          opacity 0.2s ease,
+          transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
       }
+
       .cursor-ring.hovered {
         width: 56px;
         height: 56px;
@@ -179,35 +192,63 @@
         background: rgba(27, 77, 62, 0.14);
         box-shadow: 0 0 20px rgba(27, 77, 62, 0.15);
       }
+
       .cursor-ring.clicking {
         transform: translate(-50%, -50%) scale(0.82);
         background: rgba(27, 77, 62, 0.25);
       }
+
       .cursor-dot.hovered {
         transform: translate(-50%, -50%) scale(1.6);
         background-color: #286B57;
       }
     }
+
     @media (pointer: coarse) {
-      .cursor-dot, .cursor-ring {
+
+      .cursor-dot,
+      .cursor-ring {
         display: none !important;
       }
     }
 
     @keyframes soundwave {
-      0%, 100% { height: 6px; }
-      50% { height: 28px; }
+
+      0%,
+      100% {
+        height: 6px;
+      }
+
+      50% {
+        height: 28px;
+      }
     }
-    .animate-wave-1 { animation: soundwave 1.2s ease-in-out infinite; }
-    .animate-wave-2 { animation: soundwave 1.5s ease-in-out infinite 0.2s; }
-    .animate-wave-3 { animation: soundwave 0.9s ease-in-out infinite 0.4s; }
-    .animate-wave-4 { animation: soundwave 1.4s ease-in-out infinite 0.1s; }
-    .animate-wave-5 { animation: soundwave 1.1s ease-in-out infinite 0.3s; }
+
+    .animate-wave-1 {
+      animation: soundwave 1.2s ease-in-out infinite;
+    }
+
+    .animate-wave-2 {
+      animation: soundwave 1.5s ease-in-out infinite 0.2s;
+    }
+
+    .animate-wave-3 {
+      animation: soundwave 0.9s ease-in-out infinite 0.4s;
+    }
+
+    .animate-wave-4 {
+      animation: soundwave 1.4s ease-in-out infinite 0.1s;
+    }
+
+    .animate-wave-5 {
+      animation: soundwave 1.1s ease-in-out infinite 0.3s;
+    }
 
     /* Tiles of Me 3D Flip Card & Micro-interactions */
     .tile-perspective {
       perspective: 1000px;
     }
+
     .tile-card-inner {
       position: relative;
       width: 100%;
@@ -216,10 +257,13 @@
       transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
       transform-style: preserve-3d;
     }
+
     .tile-card-inner.is-flipped {
       transform: rotateY(180deg);
     }
-    .tile-card-front, .tile-card-back {
+
+    .tile-card-front,
+    .tile-card-back {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -229,21 +273,39 @@
       border-radius: 8px;
       overflow: hidden;
     }
+
     .tile-card-back {
       transform: rotateY(180deg);
     }
+
     .tile-matched-glow {
       animation: subtleTileGlow 2.5s ease-in-out infinite alternate;
     }
+
     @keyframes subtleTileGlow {
-      0% { box-shadow: 0 0 0 1px rgba(27, 77, 62, 0.2), 0 4px 12px rgba(27, 77, 62, 0.08); }
-      100% { box-shadow: 0 0 0 2px rgba(27, 77, 62, 0.5), 0 8px 24px rgba(27, 77, 62, 0.18); }
+      0% {
+        box-shadow: 0 0 0 1px rgba(27, 77, 62, 0.2), 0 4px 12px rgba(27, 77, 62, 0.08);
+      }
+
+      100% {
+        box-shadow: 0 0 0 2px rgba(27, 77, 62, 0.5), 0 8px 24px rgba(27, 77, 62, 0.18);
+      }
     }
+
     @keyframes tileFoundPop {
-      0% { transform: scale(0.92); }
-      50% { transform: scale(1.06); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(0.92);
+      }
+
+      50% {
+        transform: scale(1.06);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
+
     .tile-found-pop {
       animation: tileFoundPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -255,14 +317,18 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
-      #light-shader-canvas, .cursor-dot, .cursor-ring {
+
+      #light-shader-canvas,
+      .cursor-dot,
+      .cursor-ring {
         display: none !important;
       }
     }
   </style>
 </head>
+
 <body class="bg-ivory text-ink antialiased bg-paper-grain relative selection:bg-emeraldAccent selection:text-white">
-  
+
   <!-- Soft Sunlight Shader Canvas -->
   <canvas id="light-shader-canvas"></canvas>
 
@@ -270,55 +336,55 @@
 
   <!-- Sunlight Shader Script -->
   <script>
-    (function initSunlightShader() {
-      const canvas = document.getElementById('light-shader-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let width, height;
-      let mouse = { x: 0.5, y: 0.3, targetX: 0.5, targetY: 0.3 };
-      let time = 0;
+      (function initSunlightShader() {
+        const canvas = document.getElementById('light-shader-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let mouse = { x: 0.5, y: 0.3, targetX: 0.5, targetY: 0.3 };
+        let time = 0;
 
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      }
-      window.addEventListener('resize', resize);
-      resize();
+        function resize() {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
 
-      window.addEventListener('mousemove', (e) => {
-        mouse.targetX = e.clientX / width;
-        mouse.targetY = e.clientY / height;
-      });
+        window.addEventListener('mousemove', (e) => {
+          mouse.targetX = e.clientX / width;
+          mouse.targetY = e.clientY / height;
+        });
 
-      function render() {
-        time += 0.003;
-        mouse.x += (mouse.targetX - mouse.x) * 0.03;
-        mouse.y += (mouse.targetY - mouse.y) * 0.03;
+        function render() {
+          time += 0.003;
+          mouse.x += (mouse.targetX - mouse.x) * 0.03;
+          mouse.y += (mouse.targetY - mouse.y) * 0.03;
 
-        ctx.clearRect(0, 0, width, height);
+          ctx.clearRect(0, 0, width, height);
 
-        const x1 = (mouse.x * 0.3 + 0.35 + Math.sin(time * 0.7) * 0.15) * width;
-        const y1 = (mouse.y * 0.3 + 0.25 + Math.cos(time * 0.5) * 0.12) * height;
-        const grad1 = ctx.createRadialGradient(x1, y1, 10, x1, y1, width * 0.55);
-        grad1.addColorStop(0, 'rgba(255, 248, 220, 0.35)');
-        grad1.addColorStop(0.5, 'rgba(250, 240, 215, 0.12)');
-        grad1.addColorStop(1, 'rgba(244, 241, 234, 0)');
-        ctx.fillStyle = grad1;
-        ctx.fillRect(0, 0, width, height);
+          const x1 = (mouse.x * 0.3 + 0.35 + Math.sin(time * 0.7) * 0.15) * width;
+          const y1 = (mouse.y * 0.3 + 0.25 + Math.cos(time * 0.5) * 0.12) * height;
+          const grad1 = ctx.createRadialGradient(x1, y1, 10, x1, y1, width * 0.55);
+          grad1.addColorStop(0, 'rgba(255, 248, 220, 0.35)');
+          grad1.addColorStop(0.5, 'rgba(250, 240, 215, 0.12)');
+          grad1.addColorStop(1, 'rgba(244, 241, 234, 0)');
+          ctx.fillStyle = grad1;
+          ctx.fillRect(0, 0, width, height);
 
-        const x2 = (0.7 - mouse.x * 0.2 + Math.cos(time * 0.4) * 0.1) * width;
-        const y2 = (0.6 - mouse.y * 0.2 + Math.sin(time * 0.6) * 0.1) * height;
-        const grad2 = ctx.createRadialGradient(x2, y2, 20, x2, y2, width * 0.45);
-        grad2.addColorStop(0, 'rgba(27, 77, 62, 0.045)');
-        grad2.addColorStop(0.6, 'rgba(27, 77, 62, 0.015)');
-        grad2.addColorStop(1, 'rgba(244, 241, 234, 0)');
-        ctx.fillStyle = grad2;
-        ctx.fillRect(0, 0, width, height);
+          const x2 = (0.7 - mouse.x * 0.2 + Math.cos(time * 0.4) * 0.1) * width;
+          const y2 = (0.6 - mouse.y * 0.2 + Math.sin(time * 0.6) * 0.1) * height;
+          const grad2 = ctx.createRadialGradient(x2, y2, 20, x2, y2, width * 0.45);
+          grad2.addColorStop(0, 'rgba(27, 77, 62, 0.045)');
+          grad2.addColorStop(0.6, 'rgba(27, 77, 62, 0.015)');
+          grad2.addColorStop(1, 'rgba(244, 241, 234, 0)');
+          ctx.fillStyle = grad2;
+          ctx.fillRect(0, 0, width, height);
 
-        requestAnimationFrame(render);
-      }
-      render();
-    })();
+          requestAnimationFrame(render);
+        }
+        render();
+      })();
   </script>
 
   <!-- React Application Logic Script -->
@@ -840,122 +906,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
             introHeadline: "WEEK 1: SURVIVED",
             introQuote: "A (mostly accurate) recap of everything that happened — Team 2 LOADING",
             introText: "A full recap of Week 1: Recommendation algorithms, Design Thinking 101 with Meera, Power BI dashboards, IDEO method, Value Chain SWOT analysis, Onam break, Prospect Theory, personal portfolio branding, Base44 AI prototyping, Ram's vision talk, multi-sector industry supply chains, and the final boss Week 1 presentation.",
-            blog: {
-              title: "Week 1: Survived — Algorithms, Empathy, Dashboards & Prototyping",
-              date: "August 2026",
-              readTime: "6 min read",
-              author: "Dakshana Sri M",
-              coverImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-              pdfUrl: "",
-              pdfName: "Week_1_Survived_Algorithms_Empathy_Dashboards_Prototyping.pdf",
-              attachedDoc: "",
-              attachedDocName: "Week_1_Survived_Algorithms_Empathy_Dashboards_Prototyping.pdf",
-              summary: "Over five intense days, Team 2 navigated recommendation engines, Design Thinking 101 with Meera, Power BI interactive dashboards, Value Chain SWOT analysis, Prospect Theory, personal portfolio architecture, Base44 rapid AI apps, and industry supply chains — culminating in our Week 1 capstone presentation.",
-              externalUrl: "",
-              wordDocUrl: "",
-              tags: ["ProtoSem", "Week 1", "Design Thinking", "Power BI", "Behavioral Economics", "Rapid Prototyping"],
-              highlights: [
-                "Fall in love with the problem before attempting to fall in love with your solution; the 'obvious solution' from minute one is rarely the right one.",
-                "Turning overwhelming data into dynamic, interactive dashboards with clean KPIs and visual hierarchies makes business insights actionable.",
-                "A granular Value Chain SWOT Analysis across individual stages uncovers critical vulnerabilities that generic company-wide reviews miss.",
-                "Daniel Kahneman's Prospect Theory shows psychological loss aversion heavily dictates user adoption and decision-making.",
-                "Moving from idea to prototype is faster than ever with modern architectures and AI tooling, but real-world business execution remains messy and fundamental."
-              ],
-              content: `Over five intense days, our cohort went on an immersive learning curve—moving from recommendation algorithm and design thinking methodologies to Power BI visualization, behavioral economics, mobile architectures, and industry masterclasses, all culminating in our Week 1 Milestone Presentation. Equipped with sticky notes, insightful debates, sharp analytical frameworks, and healthy team camaraderie, here is how Team 2 navigated the week.
-
----
-
-## Day 1: Algorithms, Empathy : Eyewear
-
-### Tech Talk: Recommendation Algorithms
-Day 1 launched with an exploration into the digital logic powering modern e-commerce and streaming giants: **Recommendation Engines**. We broke down collaborative filtering versus content-based filtering without drowning in mathematical jargon, examining how platforms predict customer preferences so precisely.
-
-> *"Netflix now knows me better than my own family. Concerning, but efficient."*  
-> — **Cohort Observation**
-
-### Design Thinking 101: Led by Meera
-Next, Meera facilitated an engaging masterclass on **Design Thinking 101**. We explored the five foundational stages: **Empathize → Define → Ideate → Prototype → Test**. The golden takeaway was crystal clear: fall in love with the problem before even attempting to fall in love with your solution.
-
-> *"Turns out the 'obvious solution' from minute one is rarely the right one. Rude, but fair."*  
-> — **Design Thinking Sprint**
-
-### Hands-on Activity: Eyewear Retail Case Study
-We immediately applied the 5-stage framework to a live **Eyewear Retail Case Study**, constructing user personas, analyzing omnichannel friction points, and prioritizing customer-centric solutions.
-
-> *"Group activity, four eyes better than two — pun fully intended."*  
-> — **Team 2 Discussions**
-
----
-
-## Day 2: Dashboards & Deeper Thinking
-
-### Tech Talk: Power BI Dashboards
-Day 2 plunged into business intelligence and data analytics. We tackled **Power BI**, focusing on turning overwhelming spreadsheets into dynamic, interactive dashboards using clean KPIs, custom slicers, and structured data storytelling.
-
-> *"Nothing says 'I have my life together' like a well-filtered pie chart."*  
-> — **Power BI Workshop**
-
-### Activity: IDEO Methodology & Value Chain SWOT Analysis
-Building upon IDEO’s celebrated innovation cycle (*"fail fast to learn faster"*), we conducted a granular **Value Chain SWOT Analysis**. Rather than generic broad-brush assumptions, we broke industrial processes down into individual stages—from raw materials and lens manufacturing to logistics and customer touchpoints—evaluating Strengths, Weaknesses, Opportunities, and Threats at every phase.
-
-> *"SWOT: Strengths, Weaknesses, Opportunities, Threats — not Stressed, Worried, Overwhelmed, Tired."*  
-> — **Strategy Sprint**
-
----
-
-## Day 3: Onam Break: Cultural Recharge & Bonding
-
-A joyful festive interlude celebrating Onam with the cohort. We admired vibrant flower pookalams, shared traditional festive sadya meals, and recharged our creative and collaborative energy for the intense sprint ahead.
-
-> *"Official schedule: wake up, admire the pookalam, eat an unreasonable amount of sadya, nap like it's a KPI."*  
-> — **Cohort Musings**
-
----
-
-## Day 4: Behavioral Economics : Building a Brand
-
-### Tech Talk: Prospect Theory & Decision Psychology
-On Day 4, we dove into Behavioral Economics and Daniel Kahneman's **Prospect Theory**. We explored how psychological loss aversion influences user behavior—proving that the pain of losing is experienced nearly twice as intensely as the joy of equivalent gains.
-
-> *"Explains perfectly why nobody in the group wanted to be the one who lost the case study debate."*  
-> — **Behavioral Economics Session**
-
-### Personal Branding: Building the Portfolio
-We pivoted to professional career architecture, discussing digital presence, industry positioning, project storytelling, and building authentic tech portfolios with concrete proof-of-work.
-
-> *"Portfolio status: under construction, much like everyone's confidence at 9am."*  
-> — **Portfolio Workshop**
-
----
-
-## Day 5: Building, Motivation : The Grand Finale
-
-### Tech Talk: App Development & Base44
-Day 5 started with a deep dive into modern software architecture, comparing Native frameworks (Kotlin/Swift) with Cross-Platform alternatives (Flutter/React Native), alongside rapid development tools like **Base44**.
-
-> *"The gap between 'I have an app idea, and I have an app' just got a lot smaller."*  
-> — **Application Architecture Talk**
-
-### Motivation & Vision Talk: Led by Ram
-Mr. Ram delivered an energetic and thought-provoking **Vision Talk** centered on the 80:20 Pareto Principle, emphasizing the discipline of mastering core fundamentals and navigating real-world problem statements.
-- Mr. Ram engaging the cohort during the 80:20 Pareto Principle talk
-- The cohort actively participating during Day 5 sessions.
-
-### Guest Lecture: Industry Perspectives (Agri, Textile, Retail)
-We gained rich insights from veteran guest speakers representing key industrial domains:
-- **Agriculture**: Unpacking supply chain logistics, distribution friction, and tech enablement.
-- **Textiles**: Tracing the journey from raw cotton fibers to consumer apparel.
-- **Retail**: Examining modern omnichannel points of sale, CRM, and retail metrics.
-
-> *"Three very different industries, one common theme: real-world business is messier than the case studies."*  
-> — **Industry Panel**
-
-### The Finale: Week 1 Milestone Presentation
-The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams synthesized recommendation logic, dashboards, design thinking insights, and value chain SWOT models into a cohesive pitch.
-
-> *"Nothing bonds a team like collectively realizing the deadline was today, not tomorrow."*  
-> — **Team 2 Reflections**`
-            },
+            blog: null,
             days: [
               {
                 dayNumber: 1,
@@ -1967,32 +1918,66 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
     function ImageLightbox({ src, alt, caption, onClose }) {
       if (!src) return null;
       const isPdf = src.toLowerCase().endsWith('.pdf');
+      const isResume = src.toLowerCase().includes('resume') || (alt && alt.toLowerCase().includes('resume'));
+      const [viewMode, setViewMode] = React.useState(isPdf ? 'pdf' : 'default');
+      const [currentSrc, setCurrentSrc] = React.useState(src);
+
+      React.useEffect(() => {
+        setCurrentSrc(src);
+        setViewMode(src.toLowerCase().endsWith('.pdf') ? 'pdf' : 'default');
+      }, [src]);
 
       return (
         <div className="fixed inset-0 z-50 bg-ink/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6" onClick={onClose}>
-          <div className="w-full max-w-4xl max-h-[92vh] bg-white rounded-sm border border-ivory-border shadow-2xl flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between px-5 py-3 border-b border-ivory-border bg-ivory-light">
+          <div className="w-full max-w-5xl max-h-[94vh] bg-white rounded-sm border border-ivory-border shadow-2xl flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="flex flex-wrap items-center justify-between px-5 py-3 border-b border-ivory-border bg-ivory-light gap-2">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emeraldAccent animate-pulse"></span>
                 <span className="font-mono-tag text-xs font-bold text-ink truncate max-w-xs sm:max-w-md">{alt || "Official Credential Document"}</span>
-                {isPdf && (
+                {isResume && (
+                  <span className="px-2 py-0.5 bg-emeraldAccent text-white rounded text-[10px] font-mono font-bold">
+                    CURRICULUM VITAE
+                  </span>
+                )}
+                {isPdf && !isResume && (
                   <span className="px-2 py-0.5 bg-emeraldAccent-dim text-emeraldAccent rounded text-[10px] font-mono font-bold">
                     PDF
                   </span>
                 )}
               </div>
-              <div className="flex items-center gap-3">
-                {isPdf && (
-                  <a
-                    href={src}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-mono-tag text-xs font-semibold text-emeraldAccent hover:underline flex items-center gap-1"
-                  >
-                    <span>NEW TAB</span>
-                    <Icon name="external-link" className="w-3.5 h-3.5" />
-                  </a>
+              <div className="flex items-center gap-2">
+                {isResume && (
+                  <div className="flex items-center bg-white border border-ivory-border rounded p-0.5 text-xs font-mono-tag">
+                    <button
+                      onClick={() => {
+                        setViewMode('pdf');
+                        setCurrentSrc("assets/resume/dakshana_sri_m_resume.pdf");
+                      }}
+                      className={`px-2.5 py-1 rounded transition-colors ${viewMode === 'pdf' ? 'bg-emeraldAccent text-white font-bold' : 'text-ink-muted hover:text-ink'}`}
+                    >
+                      PDF VIEW
+                    </button>
+                    <button
+                      onClick={() => {
+                        setViewMode('interactive');
+                        setCurrentSrc("assets/resume/resume_template.html");
+                      }}
+                      className={`px-2.5 py-1 rounded transition-colors ${viewMode === 'interactive' ? 'bg-emeraldAccent text-white font-bold' : 'text-ink-muted hover:text-ink'}`}
+                    >
+                      INTERACTIVE HTML
+                    </button>
+                  </div>
                 )}
+                <a
+                  href={currentSrc}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-mono-tag text-xs font-semibold text-emeraldAccent hover:underline flex items-center gap-1 px-2 py-1 bg-white border border-ivory-border rounded"
+                  title="Open in new window"
+                >
+                  <span>NEW TAB</span>
+                  <Icon name="external-link" className="w-3.5 h-3.5" />
+                </a>
                 <button
                   onClick={onClose}
                   className="px-3 py-1 bg-white border border-ivory-border hover:bg-emeraldAccent hover:text-white rounded font-mono-tag text-xs font-bold transition-colors"
@@ -2002,17 +1987,17 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
               </div>
             </div>
 
-            <div className="flex-1 p-3 sm:p-4 overflow-auto bg-ivory-card flex items-center justify-center min-h-[50vh] max-h-[76vh]">
-              {isPdf ? (
-                <div className="w-full h-full min-h-[65vh] flex flex-col gap-2">
+            <div className="flex-1 p-3 sm:p-4 overflow-auto bg-ivory-card flex items-center justify-center min-h-[55vh] max-h-[78vh]">
+              {viewMode === 'pdf' || (isPdf && viewMode !== 'interactive') ? (
+                <div className="w-full h-full min-h-[68vh] flex flex-col gap-2">
                   <iframe
-                    src={`${src}#toolbar=1`}
-                    title={alt || "Certificate PDF Viewer"}
-                    className="w-full h-[62vh] rounded border border-ivory-border bg-white shadow-inner"
+                    src={`${currentSrc}#toolbar=1`}
+                    title={alt || "Document PDF Viewer"}
+                    className="w-full h-[65vh] rounded border border-ivory-border bg-white shadow-inner"
                   />
-                  <div className="text-center pt-1">
+                  <div className="text-center pt-1 flex items-center justify-center gap-3">
                     <a
-                      href={src}
+                      href={currentSrc}
                       download
                       className="inline-flex items-center gap-2 px-4 py-2 bg-emeraldAccent text-white text-xs font-mono-tag font-bold rounded shadow hover:bg-ink transition-colors"
                     >
@@ -2021,9 +2006,27 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                     </a>
                   </div>
                 </div>
+              ) : viewMode === 'interactive' ? (
+                <div className="w-full h-full min-h-[68vh] flex flex-col gap-2">
+                  <iframe
+                    src={currentSrc}
+                    title="Interactive Resume Viewer"
+                    className="w-full h-[65vh] rounded border border-ivory-border bg-white shadow-inner"
+                  />
+                  <div className="text-center pt-1 flex items-center justify-center gap-3">
+                    <a
+                      href="assets/resume/dakshana_sri_m_resume.pdf"
+                      download
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-emeraldAccent text-white text-xs font-mono-tag font-bold rounded shadow hover:bg-ink transition-colors"
+                    >
+                      <Icon name="download" className="w-3.5 h-3.5" />
+                      <span>DOWNLOAD RESUME PDF</span>
+                    </a>
+                  </div>
+                </div>
               ) : (
                 <img
-                  src={src}
+                  src={currentSrc}
                   alt={alt || "Certificate Document"}
                   className="w-full h-auto max-h-[74vh] object-contain rounded shadow"
                 />
@@ -2103,14 +2106,14 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
             <hr style="border:0; border-top:1pt solid #DDD; margin: 16pt 0;" />
             
             ${(blog.content || '').split('\n').map(line => {
-              const trimmed = line.trim();
-              if (trimmed.startsWith('## ')) return `<h2>${trimmed.replace('## ', '')}</h2>`;
-              if (trimmed.startsWith('### ')) return `<h3>${trimmed.replace('### ', '')}</h3>`;
-              if (trimmed.startsWith('> ')) return `<blockquote>${trimmed.replace('> ', '')}</blockquote>`;
-              if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li>${trimmed.substring(2)}</li>`;
-              if (trimmed === '') return '';
-              return `<p>${trimmed}</p>`;
-            }).join('\n')}
+          const trimmed = line.trim();
+          if (trimmed.startsWith('## ')) return `<h2>${trimmed.replace('## ', '')}</h2>`;
+          if (trimmed.startsWith('### ')) return `<h3>${trimmed.replace('### ', '')}</h3>`;
+          if (trimmed.startsWith('> ')) return `<blockquote>${trimmed.replace('> ', '')}</blockquote>`;
+          if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li>${trimmed.substring(2)}</li>`;
+          if (trimmed === '') return '';
+          return `<p>${trimmed}</p>`;
+        }).join('\n')}
 
             <hr style="border:0; border-top:1pt solid #DDD; margin: 20pt 0;" />
             <p style="font-size:9pt; color:#888; text-align:center;">
@@ -2212,7 +2215,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
 
       return (
         <div className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-y-auto" onClick={onClose}>
-          <div 
+          <div
             className="w-full max-w-5xl bg-white rounded-sm border border-ivory-border shadow-2xl flex flex-col my-auto max-h-[94vh] overflow-hidden"
             onClick={e => e.stopPropagation()}
           >
@@ -2362,251 +2365,251 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                 </div>
               </div>
             ) : (
-            /* Scrollable Editorial Essay Content */
-            <div className="flex-1 overflow-y-auto px-6 sm:px-12 py-8 space-y-8 bg-paper-grain">
-              
-              {/* PDF Document Notice Banner */}
-              {pdfSource && (
-                <div className="p-4 bg-emeraldAccent-dim/50 border border-emeraldAccent/40 rounded-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5">
-                    <Icon name="file-pdf" className="w-5 h-5 text-emeraldAccent flex-shrink-0" />
-                    <div>
-                      <span className="font-mono-tag text-xs font-bold text-ink block">
-                        Official PDF Document is attached for this sprint
-                      </span>
-                      <span className="text-[11px] text-ink-muted font-mono-tag">
-                        {blog.pdfName || "From Strangers to Innovators: Reflections on Week 0 at Protosem.pdf"}
-                      </span>
+              /* Scrollable Editorial Essay Content */
+              <div className="flex-1 overflow-y-auto px-6 sm:px-12 py-8 space-y-8 bg-paper-grain">
+
+                {/* PDF Document Notice Banner */}
+                {pdfSource && (
+                  <div className="p-4 bg-emeraldAccent-dim/50 border border-emeraldAccent/40 rounded-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5">
+                      <Icon name="file-pdf" className="w-5 h-5 text-emeraldAccent flex-shrink-0" />
+                      <div>
+                        <span className="font-mono-tag text-xs font-bold text-ink block">
+                          Official PDF Document is attached for this sprint
+                        </span>
+                        <span className="text-[11px] text-ink-muted font-mono-tag">
+                          {blog.pdfName || "From Strangers to Innovators: Reflections on Week 0 at Protosem.pdf"}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setActiveView("pdf")}
+                        className="px-3 py-1.5 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded shadow hover:bg-ink flex items-center gap-1.5 transition-colors"
+                      >
+                        <Icon name="eye" className="w-3.5 h-3.5" />
+                        <span>VIEW EMBEDDED PDF</span>
+                      </button>
+                      <a
+                        href={pdfSource}
+                        download={blog.pdfName || `${(blog.title || 'ProtoSem_Sprint').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`}
+                        className="px-3 py-1.5 bg-white border border-ivory-border hover:border-emeraldAccent text-ink font-mono-tag text-xs font-bold rounded flex items-center gap-1.5 transition-colors"
+                      >
+                        <Icon name="download" className="w-3.5 h-3.5 text-emeraldAccent" />
+                        <span>DOWNLOAD</span>
+                      </a>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setActiveView("pdf")}
-                      className="px-3 py-1.5 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded shadow hover:bg-ink flex items-center gap-1.5 transition-colors"
-                    >
-                      <Icon name="eye" className="w-3.5 h-3.5" />
-                      <span>VIEW EMBEDDED PDF</span>
-                    </button>
-                    <a
-                      href={pdfSource}
-                      download={blog.pdfName || `${(blog.title || 'ProtoSem_Sprint').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`}
-                      className="px-3 py-1.5 bg-white border border-ivory-border hover:border-emeraldAccent text-ink font-mono-tag text-xs font-bold rounded flex items-center gap-1.5 transition-colors"
-                    >
-                      <Icon name="download" className="w-3.5 h-3.5 text-emeraldAccent" />
-                      <span>DOWNLOAD</span>
-                    </a>
+                )}
+                <div className="space-y-4 border-b border-ivory-border pb-6">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-mono-tag text-xs text-emeraldAccent font-bold uppercase tracking-wider">
+                      WEEK {week?.weekNumber ?? weekIndex} SPRINT JOURNAL
+                    </span>
+                    <span className="text-ink-dim">·</span>
+                    <span className="font-mono-tag text-xs text-ink-dim">{blog.date || "August 2026"}</span>
+                  </div>
+
+                  <h1 className="font-editorial text-3xl sm:text-5xl text-ink leading-tight">
+                    {blog.title}
+                  </h1>
+
+                  {blog.summary && (
+                    <p className="text-ink-muted text-base sm:text-lg font-serif italic leading-relaxed">
+                      "{blog.summary}"
+                    </p>
+                  )}
+
+                  {/* Author Card & Tags */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded bg-emeraldAccent text-white font-editorial text-base flex items-center justify-center font-bold shadow-sm">
+                        DM
+                      </div>
+                      <div>
+                        <span className="font-mono-tag text-xs font-bold text-ink block">
+                          {blog.author || "Dakshana Sri M"}
+                        </span>
+                        <span className="font-mono-tag text-[10px] text-ink-dim block">
+                          Data Science × Venture Prototyping Fellow
+                        </span>
+                      </div>
+                    </div>
+
+                    {blog.tags && blog.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {blog.tags.map((t, idx) => (
+                          <span key={idx} className="px-2.5 py-0.5 rounded-full bg-emeraldAccent-dim border border-emeraldAccent/20 text-emeraldAccent font-mono-tag text-[10px] font-semibold">
+                            #{t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
-              )}
-              <div className="space-y-4 border-b border-ivory-border pb-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono-tag text-xs text-emeraldAccent font-bold uppercase tracking-wider">
-                    WEEK {week?.weekNumber ?? weekIndex} SPRINT JOURNAL
-                  </span>
-                  <span className="text-ink-dim">·</span>
-                  <span className="font-mono-tag text-xs text-ink-dim">{blog.date || "August 2026"}</span>
-                </div>
 
-                <h1 className="font-editorial text-3xl sm:text-5xl text-ink leading-tight">
-                  {blog.title}
-                </h1>
-
-                {blog.summary && (
-                  <p className="text-ink-muted text-base sm:text-lg font-serif italic leading-relaxed">
-                    "{blog.summary}"
-                  </p>
+                {/* Cover Hero Image */}
+                {blog.coverImage && (
+                  <div className="rounded overflow-hidden border border-ivory-border shadow-sm">
+                    <img src={blog.coverImage} alt={blog.title} className="w-full h-64 sm:h-96 object-cover" />
+                    <div className="p-2.5 bg-ivory-light border-t border-ivory-border text-center font-mono-tag text-[10px] text-ink-dim">
+                      ProtoSem Sprint Milestone · {week?.title || `Week ${weekIndex}`}
+                    </div>
+                  </div>
                 )}
 
-                {/* Author Card & Tags */}
-                <div className="flex flex-wrap items-center justify-between gap-4 pt-3">
+                {/* Highlights Box */}
+                {blog.highlights && blog.highlights.length > 0 && (
+                  <div className="p-6 bg-emeraldAccent-dim/40 border-l-4 border-emeraldAccent rounded-r-sm space-y-3 shadow-xs">
+                    <div className="flex items-center gap-2 font-mono-tag text-xs text-emeraldAccent font-bold uppercase tracking-wider">
+                      <Icon name="sparkles" className="w-4 h-4" />
+                      <span>KEY SPRINT BREAKTHROUGHS & MENTAL MODELS</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {blog.highlights.map((h, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink font-medium">
+                          <Icon name="check" className="w-3.5 h-3.5 text-emeraldAccent flex-shrink-0 mt-0.5" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Body Content */}
+                <div className="prose max-w-none text-ink font-sans">
+                  {blog.content ? (
+                    renderFormattedContent(blog.content)
+                  ) : (
+                    <p className="text-ink-muted text-sm italic">{blog.summary}</p>
+                  )}
+                </div>
+
+                {/* Word Document Attachment & Download Box */}
+                <div className="p-6 sm:p-8 bg-white border border-emeraldAccent/30 rounded-sm shadow-sm space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-12 h-12 rounded bg-emeraldAccent/10 border border-emeraldAccent/20 flex items-center justify-center text-emeraldAccent flex-shrink-0 mt-0.5">
+                        <Icon name="file-word" className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h4 className="font-editorial text-xl text-ink font-bold">
+                          MICROSOFT WORD DOCUMENT & ESSAY ATTACHMENT
+                        </h4>
+                        <p className="text-xs text-ink-muted mt-1 font-mono-tag">
+                          Download or export this sprint retrospective formatted for Microsoft Word (.doc/.docx) or offline editing.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
+                      <button
+                        onClick={handleDownloadAsWord}
+                        className="px-4 py-2.5 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded shadow hover:bg-ink flex items-center gap-2 transition-colors"
+                      >
+                        <Icon name="download" className="w-4 h-4" />
+                        <span>DOWNLOAD AS WORD (.DOC)</span>
+                      </button>
+
+                      {blog.attachedDoc && (
+                        <a
+                          href={blog.attachedDoc}
+                          download={blog.attachedDocName || `${(blog.title || 'Sprint_Essay').replace(/[^a-zA-Z0-9_-]/g, '_')}.docx`}
+                          className="px-4 py-2.5 bg-white border border-emeraldAccent text-emeraldAccent hover:bg-emeraldAccent hover:text-white font-mono-tag text-xs font-bold rounded flex items-center gap-2 transition-colors"
+                        >
+                          <Icon name="paperclip" className="w-4 h-4" />
+                          <span>DOWNLOAD ORIGINAL ATTACHED FILE</span>
+                        </a>
+                      )}
+
+                      {blog.wordDocUrl && (
+                        <a
+                          href={blog.wordDocUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-4 py-2.5 bg-ivory-light border border-ivory-border hover:border-emeraldAccent text-ink font-mono-tag text-xs font-semibold rounded flex items-center gap-2 transition-colors"
+                        >
+                          <Icon name="external-link" className="w-4 h-4 text-emeraldAccent" />
+                          <span>OPEN CLOUD DOCUMENT</span>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* 5-Day Sprint Snapshot */}
+                {week?.days && week.days.length > 0 && (
+                  <div className="pt-8 border-t border-ivory-border space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono-tag text-xs text-emeraldAccent font-bold uppercase">
+                        5-DAY SPRINT TIMELINE SNAPSHOT
+                      </span>
+                      <span className="font-mono-tag text-[10px] text-ink-dim">5 Daily Deliverables</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
+                      {week.days.map((d, dIdx) => (
+                        <div key={dIdx} className="p-3 bg-white rounded border border-ivory-border shadow-xs text-xs space-y-1">
+                          <span className="font-mono-tag text-[9px] text-emeraldAccent font-bold block">
+                            DAY 0{d.dayNumber} · {d.theme}
+                          </span>
+                          <h5 className="font-bold text-ink truncate text-[11px]">{d.title}</h5>
+                          <p className="text-ink-muted text-[10px] line-clamp-2">{d.takeaway || d.summary}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Author Footer Bio */}
+                <div className="p-6 bg-ivory-light border border-ivory-border rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded bg-emeraldAccent text-white font-editorial text-base flex items-center justify-center font-bold shadow-sm">
+                    <div className="w-12 h-12 rounded bg-ink text-white font-editorial text-lg flex items-center justify-center font-bold">
                       DM
                     </div>
                     <div>
-                      <span className="font-mono-tag text-xs font-bold text-ink block">
-                        {blog.author || "Dakshana Sri M"}
-                      </span>
-                      <span className="font-mono-tag text-[10px] text-ink-dim block">
-                        Data Science × Venture Prototyping Fellow
-                      </span>
-                    </div>
-                  </div>
-
-                  {blog.tags && blog.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {blog.tags.map((t, idx) => (
-                        <span key={idx} className="px-2.5 py-0.5 rounded-full bg-emeraldAccent-dim border border-emeraldAccent/20 text-emeraldAccent font-mono-tag text-[10px] font-semibold">
-                          #{t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Cover Hero Image */}
-              {blog.coverImage && (
-                <div className="rounded overflow-hidden border border-ivory-border shadow-sm">
-                  <img src={blog.coverImage} alt={blog.title} className="w-full h-64 sm:h-96 object-cover" />
-                  <div className="p-2.5 bg-ivory-light border-t border-ivory-border text-center font-mono-tag text-[10px] text-ink-dim">
-                    ProtoSem Sprint Milestone · {week?.title || `Week ${weekIndex}`}
-                  </div>
-                </div>
-              )}
-
-              {/* Highlights Box */}
-              {blog.highlights && blog.highlights.length > 0 && (
-                <div className="p-6 bg-emeraldAccent-dim/40 border-l-4 border-emeraldAccent rounded-r-sm space-y-3 shadow-xs">
-                  <div className="flex items-center gap-2 font-mono-tag text-xs text-emeraldAccent font-bold uppercase tracking-wider">
-                    <Icon name="sparkles" className="w-4 h-4" />
-                    <span>KEY SPRINT BREAKTHROUGHS & MENTAL MODELS</span>
-                  </div>
-                  <ul className="space-y-2">
-                    {blog.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink font-medium">
-                        <Icon name="check" className="w-3.5 h-3.5 text-emeraldAccent flex-shrink-0 mt-0.5" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Body Content */}
-              <div className="prose max-w-none text-ink font-sans">
-                {blog.content ? (
-                  renderFormattedContent(blog.content)
-                ) : (
-                  <p className="text-ink-muted text-sm italic">{blog.summary}</p>
-                )}
-              </div>
-
-              {/* Word Document Attachment & Download Box */}
-              <div className="p-6 sm:p-8 bg-white border border-emeraldAccent/30 rounded-sm shadow-sm space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-12 h-12 rounded bg-emeraldAccent/10 border border-emeraldAccent/20 flex items-center justify-center text-emeraldAccent flex-shrink-0 mt-0.5">
-                      <Icon name="file-word" className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-editorial text-xl text-ink font-bold">
-                        MICROSOFT WORD DOCUMENT & ESSAY ATTACHMENT
-                      </h4>
-                      <p className="text-xs text-ink-muted mt-1 font-mono-tag">
-                        Download or export this sprint retrospective formatted for Microsoft Word (.doc/.docx) or offline editing.
+                      <h4 className="font-editorial text-xl text-ink">Dakshana Sri M</h4>
+                      <p className="text-xs text-ink-muted font-mono-tag">
+                        Documenting the 20-week venture building journey from ideas to shipping prototypes.
                       </p>
                     </div>
                   </div>
-
-                  <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
-                    <button
-                      onClick={handleDownloadAsWord}
-                      className="px-4 py-2.5 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded shadow hover:bg-ink flex items-center gap-2 transition-colors"
+                  {blog.externalUrl && (
+                    <a
+                      href={blog.externalUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-4 py-2 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded shadow hover:bg-ink transition-colors flex items-center gap-2 flex-shrink-0"
                     >
-                      <Icon name="download" className="w-4 h-4" />
-                      <span>DOWNLOAD AS WORD (.DOC)</span>
+                      <span>READ ON MEDIUM / SUBSTACK</span>
+                      <Icon name="external-link" className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </div>
+
+                {/* Navigation Bar */}
+                <div className="flex items-center justify-between pt-4 border-t border-ivory-border font-mono-tag text-xs">
+                  {weekIndex > 0 ? (
+                    <button
+                      onClick={() => onNavigateWeek(weekIndex - 1)}
+                      className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded flex items-center gap-2 transition-colors"
+                    >
+                      <Icon name="arrow-left" className="w-3.5 h-3.5" />
+                      <span>WEEK {weekIndex - 1 < 10 ? '0' + (weekIndex - 1) : weekIndex - 1} ESSAY</span>
                     </button>
+                  ) : <div />}
 
-                    {blog.attachedDoc && (
-                      <a
-                        href={blog.attachedDoc}
-                        download={blog.attachedDocName || `${(blog.title || 'Sprint_Essay').replace(/[^a-zA-Z0-9_-]/g, '_')}.docx`}
-                        className="px-4 py-2.5 bg-white border border-emeraldAccent text-emeraldAccent hover:bg-emeraldAccent hover:text-white font-mono-tag text-xs font-bold rounded flex items-center gap-2 transition-colors"
-                      >
-                        <Icon name="paperclip" className="w-4 h-4" />
-                        <span>DOWNLOAD ORIGINAL ATTACHED FILE</span>
-                      </a>
-                    )}
-
-                    {blog.wordDocUrl && (
-                      <a
-                        href={blog.wordDocUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-4 py-2.5 bg-ivory-light border border-ivory-border hover:border-emeraldAccent text-ink font-mono-tag text-xs font-semibold rounded flex items-center gap-2 transition-colors"
-                      >
-                        <Icon name="external-link" className="w-4 h-4 text-emeraldAccent" />
-                        <span>OPEN CLOUD DOCUMENT</span>
-                      </a>
-                    )}
-                  </div>
+                  {weekIndex < totalWeeks - 1 ? (
+                    <button
+                      onClick={() => onNavigateWeek(weekIndex + 1)}
+                      className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded flex items-center gap-2 transition-colors"
+                    >
+                      <span>WEEK {weekIndex + 1 < 10 ? '0' + (weekIndex + 1) : weekIndex + 1} ESSAY</span>
+                      <Icon name="arrow-right" className="w-3.5 h-3.5" />
+                    </button>
+                  ) : <div />}
                 </div>
               </div>
-
-              {/* 5-Day Sprint Snapshot */}
-              {week?.days && week.days.length > 0 && (
-                <div className="pt-8 border-t border-ivory-border space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono-tag text-xs text-emeraldAccent font-bold uppercase">
-                      5-DAY SPRINT TIMELINE SNAPSHOT
-                    </span>
-                    <span className="font-mono-tag text-[10px] text-ink-dim">5 Daily Deliverables</span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
-                    {week.days.map((d, dIdx) => (
-                      <div key={dIdx} className="p-3 bg-white rounded border border-ivory-border shadow-xs text-xs space-y-1">
-                        <span className="font-mono-tag text-[9px] text-emeraldAccent font-bold block">
-                          DAY 0{d.dayNumber} · {d.theme}
-                        </span>
-                        <h5 className="font-bold text-ink truncate text-[11px]">{d.title}</h5>
-                        <p className="text-ink-muted text-[10px] line-clamp-2">{d.takeaway || d.summary}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Author Footer Bio */}
-              <div className="p-6 bg-ivory-light border border-ivory-border rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded bg-ink text-white font-editorial text-lg flex items-center justify-center font-bold">
-                    DM
-                  </div>
-                  <div>
-                    <h4 className="font-editorial text-xl text-ink">Dakshana Sri M</h4>
-                    <p className="text-xs text-ink-muted font-mono-tag">
-                      Documenting the 20-week venture building journey from ideas to shipping prototypes.
-                    </p>
-                  </div>
-                </div>
-                {blog.externalUrl && (
-                  <a
-                    href={blog.externalUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-4 py-2 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded shadow hover:bg-ink transition-colors flex items-center gap-2 flex-shrink-0"
-                  >
-                    <span>READ ON MEDIUM / SUBSTACK</span>
-                    <Icon name="external-link" className="w-3.5 h-3.5" />
-                  </a>
-                )}
-              </div>
-
-              {/* Navigation Bar */}
-              <div className="flex items-center justify-between pt-4 border-t border-ivory-border font-mono-tag text-xs">
-                {weekIndex > 0 ? (
-                  <button
-                    onClick={() => onNavigateWeek(weekIndex - 1)}
-                    className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded flex items-center gap-2 transition-colors"
-                  >
-                    <Icon name="arrow-left" className="w-3.5 h-3.5" />
-                    <span>WEEK {weekIndex - 1 < 10 ? '0' + (weekIndex - 1) : weekIndex - 1} ESSAY</span>
-                  </button>
-                ) : <div />}
-
-                {weekIndex < totalWeeks - 1 ? (
-                  <button
-                    onClick={() => onNavigateWeek(weekIndex + 1)}
-                    className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded flex items-center gap-2 transition-colors"
-                  >
-                    <span>WEEK {weekIndex + 1 < 10 ? '0' + (weekIndex + 1) : weekIndex + 1} ESSAY</span>
-                    <Icon name="arrow-right" className="w-3.5 h-3.5" />
-                  </button>
-                ) : <div />}
-              </div>
-            </div>
             )}
           </div>
         </div>
@@ -2694,7 +2697,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
 
       return (
         <div className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-y-auto" onClick={onClose}>
-          <div 
+          <div
             className="w-full max-w-4xl bg-white rounded-sm border border-ivory-border shadow-2xl flex flex-col my-auto max-h-[94vh] overflow-hidden"
             onClick={e => e.stopPropagation()}
           >
@@ -2734,7 +2737,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
 
             {/* Form Body */}
             <div className="flex-1 overflow-y-auto px-6 sm:px-10 py-6 space-y-6">
-              
+
               {activeTab === "edit" ? (
                 <div className="space-y-5">
                   {/* Week Selector */}
@@ -3162,7 +3165,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                     </span>
                     <h2 className="font-editorial text-3xl sm:text-4xl text-ink">{title}</h2>
                     {summary && <p className="text-ink-muted italic font-serif text-base">"{summary}"</p>}
-                    
+
                     {tagsStr && (
                       <div className="flex flex-wrap gap-1.5 pt-2">
                         {tagsStr.split(',').map((t, idx) => (
@@ -3285,7 +3288,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           onKeyDown={handleKeyDown}
         >
           <div className={`tile-card-inner cursor-pointer rounded-lg transition-all ${isFlipped || isMatched ? 'is-flipped' : ''}`}>
-            
+
             {/* FRONT FACE (Unrevealed) */}
             <div className="tile-card-front bg-white/95 backdrop-blur-md border border-ivory-darkBorder hover:border-emeraldAccent shadow-sm hover:shadow-md flex flex-col items-center justify-between p-2.5 transition-all group">
               <div className="w-full flex items-center justify-between font-mono-tag text-[8.5px] text-ink-dim">
@@ -3308,11 +3311,10 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
             </div>
 
             {/* BACK FACE (Revealed / Matched) */}
-            <div className={`tile-card-back flex flex-col justify-between p-2.5 text-left relative ${
-              isMatched
-                ? 'bg-white border-2 border-emeraldAccent tile-matched-glow shadow-md'
-                : 'bg-white border-2 border-emeraldAccent/40 shadow-sm'
-            }`}>
+            <div className={`tile-card-back flex flex-col justify-between p-2.5 text-left relative ${isMatched
+              ? 'bg-white border-2 border-emeraldAccent tile-matched-glow shadow-md'
+              : 'bg-white border-2 border-emeraldAccent/40 shadow-sm'
+              }`}>
               {hasImage ? (
                 <div className="absolute inset-0 z-0 overflow-hidden rounded-md">
                   <img src={pair.image} alt={pair.name} className="w-full h-full object-cover" />
@@ -3335,11 +3337,10 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
               </div>
 
               <div className="relative z-10 my-auto flex items-center gap-2 py-1">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                  hasImage
-                    ? 'bg-white/20 text-white backdrop-blur-xs'
-                    : 'bg-emeraldAccent-dim text-emeraldAccent border border-emeraldAccent/20'
-                }`}>
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${hasImage
+                  ? 'bg-white/20 text-white backdrop-blur-xs'
+                  : 'bg-emeraldAccent-dim text-emeraldAccent border border-emeraldAccent/20'
+                  }`}>
                   <Icon name={pair.symbol || 'sparkles'} className="w-3.5 h-3.5" />
                 </div>
                 <div className="min-w-0">
@@ -3352,9 +3353,8 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                 </div>
               </div>
 
-              <div className={`relative z-10 flex items-center justify-between font-mono-tag text-[7.5px] border-t pt-1 ${
-                hasImage ? 'border-white/20 text-ivory-light' : 'border-ivory-border text-ink-muted'
-              }`}>
+              <div className={`relative z-10 flex items-center justify-between font-mono-tag text-[7.5px] border-t pt-1 ${hasImage ? 'border-white/20 text-ivory-light' : 'border-ivory-border text-ink-muted'
+                }`}>
                 <span className="truncate">{isMatched ? '✓ Connection locked' : 'Find pair tile'}</span>
                 {editMode && (
                   <button
@@ -3392,16 +3392,15 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
 
       return (
         <div className="fixed bottom-6 left-6 z-40 font-mono-tag">
-          
+
           {/* Main Floating Pill */}
           <div className="relative">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`flex items-center gap-3 px-3.5 py-2 rounded-full border shadow-lg backdrop-blur-xl transition-all ${
-                isAllFound
-                  ? 'bg-emeraldAccent text-white border-emeraldAccent shadow-emeraldAccent/30'
-                  : 'bg-white/95 text-ink border-ivory-darkBorder hover:border-emeraldAccent'
-              }`}
+              className={`flex items-center gap-3 px-3.5 py-2 rounded-full border shadow-lg backdrop-blur-xl transition-all ${isAllFound
+                ? 'bg-emeraldAccent text-white border-emeraldAccent shadow-emeraldAccent/30'
+                : 'bg-white/95 text-ink border-ivory-darkBorder hover:border-emeraldAccent'
+                }`}
               title="Click to view Tiles of Me game progress"
               aria-label="Tiles of Me game status"
             >
@@ -3418,20 +3417,18 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                   return (
                     <span
                       key={p.id || idx}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        isFound
-                          ? (isAllFound ? 'bg-white scale-110' : 'bg-emeraldAccent scale-110 shadow-xs')
-                          : (isAllFound ? 'bg-white/40' : 'bg-ivory-border')
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-all ${isFound
+                        ? (isAllFound ? 'bg-white scale-110' : 'bg-emeraldAccent scale-110 shadow-xs')
+                        : (isAllFound ? 'bg-white/40' : 'bg-ivory-border')
+                        }`}
                       title={`${p.name}: ${isFound ? 'Found' : 'Hidden'}`}
                     />
                   );
                 })}
               </div>
 
-              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                isAllFound ? 'bg-white/20 text-white' : 'bg-ivory-light text-emeraldAccent'
-              }`}>
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isAllFound ? 'bg-white/20 text-white' : 'bg-ivory-light text-emeraldAccent'
+                }`}>
                 {foundCount}/{totalPairs}
               </span>
             </button>
@@ -3479,16 +3476,14 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                     return (
                       <div
                         key={p.id}
-                        className={`p-2.5 rounded border transition-all flex items-center justify-between gap-3 ${
-                          isFound
-                            ? 'bg-emeraldAccent-dim/30 border-emeraldAccent/30'
-                            : 'bg-ivory-light/60 border-ivory-border opacity-70'
-                        }`}
+                        className={`p-2.5 rounded border transition-all flex items-center justify-between gap-3 ${isFound
+                          ? 'bg-emeraldAccent-dim/30 border-emeraldAccent/30'
+                          : 'bg-ivory-light/60 border-ivory-border opacity-70'
+                          }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                            isFound ? 'bg-emeraldAccent text-white shadow-xs' : 'bg-white border border-ivory-border text-ink-dim'
-                          }`}>
+                          <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${isFound ? 'bg-emeraldAccent text-white shadow-xs' : 'bg-white border border-ivory-border text-ink-dim'
+                            }`}>
                             <Icon name={p.symbol || 'sparkles'} className="w-3.5 h-3.5" />
                           </div>
                           <div className="min-w-0">
@@ -3565,7 +3560,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
       return (
         <div className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-300">
           <div className="w-full max-w-2xl bg-white rounded-lg border border-ivory-border shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            
+
             <div className="p-6 sm:p-8 bg-paper-grain border-b border-ivory-border text-center space-y-3 relative">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emeraldAccent-dim border border-emeraldAccent/30 text-emeraldAccent font-mono-tag text-xs font-bold uppercase tracking-wider">
                 <Icon name="sparkles" className="w-3.5 h-3.5" />
@@ -3582,7 +3577,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
             </div>
 
             <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
-              
+
               <div className="flex flex-wrap items-center justify-center gap-2 font-mono-tag text-xs font-bold text-emeraldAccent">
                 {enabledPairs.map((p, idx) => (
                   <React.Fragment key={p.id || idx}>
@@ -3719,7 +3714,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
       return (
         <div className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
           <div className="w-full max-w-4xl bg-white rounded-lg border border-ivory-border shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
-            
+
             {/* Header */}
             <div className="px-6 py-4 border-b border-ivory-border bg-ivory-light flex items-center justify-between">
               <div className="flex items-center gap-2.5">
@@ -3738,7 +3733,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
 
             {/* Body */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
-              
+
               <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-paper-grain border border-ivory-border rounded-sm">
                 <div>
                   <h4 className="font-editorial text-2xl text-ink">Background Game Architecture</h4>
@@ -3774,10 +3769,9 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                   const isEditing = editingPairIdx === pIdx;
 
                   return (
-                    <div key={pair.id || pIdx} className={`p-5 rounded border transition-all ${
-                      isEditing ? 'border-emeraldAccent bg-ivory-light/40 shadow-md' : 'border-ivory-border bg-white'
-                    }`}>
-                      
+                    <div key={pair.id || pIdx} className={`p-5 rounded border transition-all ${isEditing ? 'border-emeraldAccent bg-ivory-light/40 shadow-md' : 'border-ivory-border bg-white'
+                      }`}>
+
                       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-ivory-border">
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-1 text-ink-dim">
@@ -3826,9 +3820,8 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
 
                           <button
                             onClick={() => setEditingPairIdx(isEditing ? null : pIdx)}
-                            className={`px-3 py-1 rounded text-xs font-semibold border ${
-                              isEditing ? 'bg-emeraldAccent text-white border-emeraldAccent' : 'bg-white text-ink border-ivory-border hover:border-emeraldAccent'
-                            }`}
+                            className={`px-3 py-1 rounded text-xs font-semibold border ${isEditing ? 'bg-emeraldAccent text-white border-emeraldAccent' : 'bg-white text-ink border-ivory-border hover:border-emeraldAccent'
+                              }`}
                           >
                             {isEditing ? "COLLAPSE" : "EDIT DETAILS"}
                           </button>
@@ -3846,7 +3839,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                       {/* Expanded Edit Form */}
                       {isEditing && (
                         <div className="pt-4 space-y-4 font-mono-tag text-xs">
-                          
+
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                               <label className="text-[10px] text-ink-dim uppercase block font-bold mb-1">PAIR NAME</label>
@@ -4104,7 +4097,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
         if (currentFlipped.length === 1) {
           const nextState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState.moves || 0) + 1 };
           setGameState(nextState);
-          try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch(e){}
+          try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch (e) { }
         } else if (currentFlipped.length === 2) {
           const firstTile = allTileInstances.find(t => t.id === currentFlipped[0]);
           const secondTile = allTileInstances.find(t => t.id === currentFlipped[1]);
@@ -4121,8 +4114,8 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
               isCompleteModalDismissed: isComplete ? false : gameState.isCompleteModalDismissed
             };
             setGameState(nextState);
-            try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch(e){}
-            
+            try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch (e) { }
+
             const pairName = enabledPairs.find(p => p.id === firstTile.pairId)?.name || "IDENTITY PIECE";
             showToast(`✨ MATCH FOUND! [ ${pairName} ] connected (${nextMatched.length}/${enabledPairs.length})`, "success");
           } else {
@@ -4133,7 +4126,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
             setTimeout(() => {
               setGameState(prev => {
                 const revertState = { ...prev, flippedTileIds: [] };
-                try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(revertState)); } catch(e){}
+                try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(revertState)); } catch (e) { }
                 return revertState;
               });
               setIsFlippingLock(false);
@@ -4150,7 +4143,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           isCompleteModalDismissed: false
         };
         setGameState(freshState);
-        try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(freshState)); } catch(e){}
+        try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(freshState)); } catch (e) { }
         showToast("Tiles of Me game reset. Explore the portfolio to discover all connections again!", "info");
       };
 
@@ -4301,7 +4294,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
         const a = document.createElement("a");
         a.href = dataStr;
-        a.download = `dakshana_portfolio_backup_${new Date().toISOString().slice(0,10)}.json`;
+        a.download = `dakshana_portfolio_backup_${new Date().toISOString().slice(0, 10)}.json`;
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -4413,7 +4406,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
 
       return (
         <div className="min-h-screen text-ink pb-24">
-          
+
           <DynamicCursor />
 
           {lightboxImage && (
@@ -4479,18 +4472,18 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           )}
 
           {(gameState?.matchedPairIds || []).length >= ((data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs) || []).filter(p => p && p.enabled !== false).length &&
-           ((data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs) || []).filter(p => p && p.enabled !== false).length > 0 &&
-           !gameState?.isCompleteModalDismissed && (
-            <TilesOfMeCompletionModal
-              pairs={data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs}
-              onClose={() => {
-                const dismissedState = { ...gameState, isCompleteModalDismissed: true };
-                setGameState(dismissedState);
-                try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(dismissedState)); } catch(e){}
-              }}
-              onReset={handleResetTilesGame}
-            />
-          )}
+            ((data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs) || []).filter(p => p && p.enabled !== false).length > 0 &&
+            !gameState?.isCompleteModalDismissed && (
+              <TilesOfMeCompletionModal
+                pairs={data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs}
+                onClose={() => {
+                  const dismissedState = { ...gameState, isCompleteModalDismissed: true };
+                  setGameState(dismissedState);
+                  try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(dismissedState)); } catch (e) { }
+                }}
+                onReset={handleResetTilesGame}
+              />
+            )}
 
           {openTilesSettings && (
             <TilesOfMeSettingsModal
@@ -4506,7 +4499,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <header className="sticky top-0 z-40 w-full border-b border-ivory-border bg-ivory/90 backdrop-blur-md transition-all duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-4 flex items-center justify-between">
-              
+
               <a href="#home" className="group flex items-center gap-3.5">
                 <div className="w-8 h-8 rounded-sm bg-white border border-ivory-border flex items-center justify-center font-editorial text-lg text-ink group-hover:border-emeraldAccent transition-colors">
                   D
@@ -4527,11 +4520,10 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                   <a
                     key={item.id}
                     href={item.href}
-                    className={`font-mono-tag text-xs tracking-widest transition-all relative py-1 ${
-                      activeSection === item.id
-                        ? "text-emeraldAccent font-semibold"
-                        : "text-ink-muted hover:text-ink"
-                    }`}
+                    className={`font-mono-tag text-xs tracking-widest transition-all relative py-1 ${activeSection === item.id
+                      ? "text-emeraldAccent font-semibold"
+                      : "text-ink-muted hover:text-ink"
+                      }`}
                   >
                     {item.label}
                     {activeSection === item.id && (
@@ -4542,7 +4534,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
               </nav>
 
               <div className="flex items-center gap-2.5">
-                
+
                 {/* View Resume Button */}
                 <button
                   onClick={() => {
@@ -4580,11 +4572,10 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                     setEditMode(next);
                     showToast(next ? "Edit Mode Enabled — Click text fields to customize" : "Public Mode Enabled", "info");
                   }}
-                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider border transition-all ${
-                    editMode
-                      ? "bg-emeraldAccent text-white font-medium border-emeraldAccent shadow-md"
-                      : "bg-white text-ink-muted border-ivory-border hover:border-emeraldAccent/40 hover:text-ink"
-                  }`}
+                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider border transition-all ${editMode
+                    ? "bg-emeraldAccent text-white font-medium border-emeraldAccent shadow-md"
+                    : "bg-white text-ink-muted border-ivory-border hover:border-emeraldAccent/40 hover:text-ink"
+                    }`}
                   title="Toggle Edit Mode"
                 >
                   <span className={`w-1.5 h-1.5 rounded-full ${editMode ? "bg-white animate-ping" : "bg-emeraldAccent"}`}></span>
@@ -4660,7 +4651,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="home" className="relative min-h-[88vh] flex flex-col justify-center border-b border-ivory-border pt-8 pb-16 lg:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              
+
               <div className="flex flex-wrap items-center justify-between border-b border-ivory-border pb-4 mb-10 text-xs font-mono-tag text-ink-muted">
                 <div className="flex items-center gap-3">
                   <span className="text-emeraldAccent font-semibold">DAKSHANA SRI M</span>
@@ -4679,9 +4670,9 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-                
+
                 <div className="lg:col-span-7 space-y-7">
-                  
+
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-white border border-ivory-border text-xs font-mono-tag tracking-wider text-emeraldAccent font-medium shadow-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-emeraldAccent"></span>
                     <span>{data.meta.role}</span>
@@ -4699,7 +4690,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                     <p className="font-editorial italic text-2xl sm:text-3xl text-emeraldAccent leading-snug">
                       "{data.meta.tagline}"
                     </p>
-                    
+
                     <p className="text-base sm:text-lg text-ink-muted max-w-xl font-light leading-relaxed">
                       {data.meta.subtagline}
                     </p>
@@ -4791,7 +4782,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                         className="w-full h-full object-cover grayscale contrast-110 brightness-100 group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70"></div>
-                      
+
                       <div className="absolute bottom-4 left-4 right-4 p-4 bg-white/95 backdrop-blur-md border border-ivory-border rounded-sm shadow-md">
                         <div className="flex items-center justify-between text-xs font-mono-tag">
                           <div>
@@ -4841,7 +4832,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="about" className="py-24 border-b border-ivory-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-              
+
               {/* WHO I AM Overview */}
               <div>
                 <div className="flex items-center justify-between font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -4852,7 +4843,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                   </div>
                   {renderSectionTile('tile_student_2')}
                 </div>
-                
+
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                   <div className="lg:col-span-6 space-y-4">
                     <h2 className="font-editorial text-4xl sm:text-6xl text-ink">
@@ -4976,7 +4967,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                   </div>
                   {renderSectionTile('tile_builder_1')}
                 </div>
-                
+
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                   <div className="lg:col-span-6 space-y-4">
                     <h2 className="font-editorial text-4xl sm:text-6xl text-ink">
@@ -5140,7 +5131,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                                     )}
                                   </div>
                                   <span className="font-mono-tag text-xs text-ink-dim block -mt-1 font-medium">{init.organization}</span>
-                                  
+
                                   <ul className="space-y-1.5 text-xs text-ink-muted">
                                     {init.highlights.map((hi, hiIdx) => (
                                       <li key={hiIdx} className="flex items-start gap-2">
@@ -5237,7 +5228,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="certificate" className="py-24 border-b border-ivory-border bg-ivory-light/40">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
+
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                   <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -5451,7 +5442,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="protosem" className="py-24 border-b border-ivory-border bg-white/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
+
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
                   <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -5558,17 +5549,16 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                           setActiveWeekIndex(i);
                           setActiveDayIndex(0);
                         }}
-                        className={`flex-shrink-0 px-3.5 py-2 rounded-sm font-mono-tag text-xs flex flex-col items-center gap-1 transition-all border ${
-                          isCurrent
-                            ? "bg-emeraldAccent text-white font-bold border-emeraldAccent shadow-md ring-2 ring-emeraldAccent/30"
-                            : hasBlog
+                        className={`flex-shrink-0 px-3.5 py-2 rounded-sm font-mono-tag text-xs flex flex-col items-center gap-1 transition-all border ${isCurrent
+                          ? "bg-emeraldAccent text-white font-bold border-emeraldAccent shadow-md ring-2 ring-emeraldAccent/30"
+                          : hasBlog
                             ? "bg-white text-emeraldAccent border-emeraldAccent/50 hover:border-emeraldAccent font-semibold shadow-xs"
                             : isCompleted
-                            ? "bg-white text-ink border-ivory-border hover:border-emeraldAccent"
-                            : existingWeek
-                            ? "bg-white text-ink-muted border-ivory-border hover:border-ink-dim"
-                            : "bg-ivory-muted/40 text-ink-muted border-ivory-border/70 hover:border-emeraldAccent/60 hover:text-ink"
-                        }`}
+                              ? "bg-white text-ink border-ivory-border hover:border-emeraldAccent"
+                              : existingWeek
+                                ? "bg-white text-ink-muted border-ivory-border hover:border-ink-dim"
+                                : "bg-ivory-muted/40 text-ink-muted border-ivory-border/70 hover:border-emeraldAccent/60 hover:text-ink"
+                          }`}
                       >
                         <span className="font-bold">{label}</span>
                         <span className="text-[10px]">
@@ -5684,11 +5674,10 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                     <button
                       key={dIdx}
                       onClick={() => setActiveDayIndex(dIdx)}
-                      className={`p-3 rounded-sm border text-left transition-all ${
-                        activeDayIndex === dIdx
-                          ? "bg-emeraldAccent text-white border-emeraldAccent font-semibold shadow-sm"
-                          : "bg-white text-ink-muted border-ivory-border hover:border-emeraldAccent/40 hover:text-ink"
-                      }`}
+                      className={`p-3 rounded-sm border text-left transition-all ${activeDayIndex === dIdx
+                        ? "bg-emeraldAccent text-white border-emeraldAccent font-semibold shadow-sm"
+                        : "bg-white text-ink-muted border-ivory-border hover:border-emeraldAccent/40 hover:text-ink"
+                        }`}
                     >
                       <span className={`text-[10px] block ${activeDayIndex === dIdx ? "text-white/80" : "text-ink-dim"}`}>
                         DAY 0{day.dayNumber}
@@ -5721,6 +5710,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                         </div>
                       )}
                     </div>
+
 
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                       <div className="md:col-span-8 space-y-4">
@@ -5983,11 +5973,10 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                       <button
                         key={t}
                         onClick={() => setSelectedBlogTag(t)}
-                        className={`px-3 py-1 rounded-sm transition-all text-[11px] font-semibold border ${
-                          selectedBlogTag === t
-                            ? "bg-emeraldAccent text-white border-emeraldAccent shadow-xs"
-                            : "bg-white text-ink-muted border-ivory-border hover:border-emeraldAccent/40 hover:text-ink"
-                        }`}
+                        className={`px-3 py-1 rounded-sm transition-all text-[11px] font-semibold border ${selectedBlogTag === t
+                          ? "bg-emeraldAccent text-white border-emeraldAccent shadow-xs"
+                          : "bg-white text-ink-muted border-ivory-border hover:border-emeraldAccent/40 hover:text-ink"
+                          }`}
                       >
                         {t === "ALL" ? "ALL (20 WEEKS)" : t === "PUBLISHED" ? "PUBLISHED ESSAYS" : t === "PLANNED" ? "PLANNED / DRAFTS" : `#${t}`}
                       </button>
@@ -6014,10 +6003,10 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                       if (selectedBlogTag === "PLANNED") return !hasBlog;
                       if (!hasBlog && selectedBlogTag !== "ALL") return false;
                       if (!hasBlog) return true;
-                      const matchesSearch = !blogSearchQuery || 
+                      const matchesSearch = !blogSearchQuery ||
                         (week.blog.title && week.blog.title.toLowerCase().includes(blogSearchQuery.toLowerCase())) ||
                         (week.blog.summary && week.blog.summary.toLowerCase().includes(blogSearchQuery.toLowerCase()));
-                      const matchesTag = selectedBlogTag === "ALL" || 
+                      const matchesTag = selectedBlogTag === "ALL" ||
                         (week.blog.tags && week.blog.tags.some(tag => tag.toLowerCase().includes(selectedBlogTag.toLowerCase())));
                       return matchesSearch && matchesTag;
                     })
@@ -6114,14 +6103,14 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                                       ` : ''}
                                       <hr style="border:0; border-top:1pt solid #DDD; margin: 16pt 0;" />
                                       ${(week.blog.content || '').split('\n').map(line => {
-                                        const trimmed = line.trim();
-                                        if (trimmed.startsWith('## ')) return `<h2>${trimmed.replace('## ', '')}</h2>`;
-                                        if (trimmed.startsWith('### ')) return `<h3>${trimmed.replace('### ', '')}</h3>`;
-                                        if (trimmed.startsWith('> ')) return `<blockquote>${trimmed.replace('> ', '')}</blockquote>`;
-                                        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li>${trimmed.substring(2)}</li>`;
-                                        if (trimmed === '') return '';
-                                        return `<p>${trimmed}</p>`;
-                                      }).join('\n')}
+                                    const trimmed = line.trim();
+                                    if (trimmed.startsWith('## ')) return `<h2>${trimmed.replace('## ', '')}</h2>`;
+                                    if (trimmed.startsWith('### ')) return `<h3>${trimmed.replace('### ', '')}</h3>`;
+                                    if (trimmed.startsWith('> ')) return `<blockquote>${trimmed.replace('> ', '')}</blockquote>`;
+                                    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return `<li>${trimmed.substring(2)}</li>`;
+                                    if (trimmed === '') return '';
+                                    return `<p>${trimmed}</p>`;
+                                  }).join('\n')}
                                     </body>
                                     </html>
                                   `;
@@ -6192,7 +6181,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="skill" className="py-24 border-b border-ivory-border bg-ivory-light/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
+
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                   <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -6261,7 +6250,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="project" className="py-24 border-b border-ivory-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
+
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                   <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -6314,7 +6303,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                 {data.projects.map((proj, pIdx) => (
                   <div key={proj.id || pIdx} className="p-8 sm:p-10 paper-card rounded-sm">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                      
+
                       <div className="lg:col-span-5 space-y-5">
                         <span className="inline-block px-3 py-1 bg-emeraldAccent text-white font-mono-tag font-bold rounded-sm text-[10px] tracking-wider uppercase shadow-xs">
                           {proj.badge}
@@ -6353,7 +6342,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                       </div>
 
                       <div className="lg:col-span-7 space-y-6 lg:border-l lg:border-ivory-border lg:pl-10">
-                        
+
                         <div className="space-y-1">
                           <span className="font-mono-tag text-xs text-emeraldAccent uppercase tracking-wider block font-bold">01 / THE PROBLEM</span>
                           <p className="text-sm text-ink-muted font-light leading-relaxed">
@@ -6446,7 +6435,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="build" className="py-24 border-b border-ivory-border bg-ivory-light/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
+
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                   <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -6496,13 +6485,12 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                   <div key={item.id || idx} className="p-7 paper-card rounded-sm flex flex-col justify-between group">
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-4 font-mono-tag text-xs">
-                        <span className={`px-2.5 py-1 rounded-sm text-[10px] font-bold tracking-wider ${
-                          item.category === "BUILDING NOW"
-                            ? "bg-emeraldAccent text-white"
-                            : item.category === "EXPLORING"
+                        <span className={`px-2.5 py-1 rounded-sm text-[10px] font-bold tracking-wider ${item.category === "BUILDING NOW"
+                          ? "bg-emeraldAccent text-white"
+                          : item.category === "EXPLORING"
                             ? "bg-emeraldAccent-dim text-emeraldAccent border border-emeraldAccent/20"
                             : "bg-ivory-muted text-ink-dim border border-ivory-border"
-                        }`}>
+                          }`}>
                           {item.category}
                         </span>
                         <span className="px-2 py-0.5 rounded bg-ivory-light border border-ivory-border text-[10px] text-ink font-semibold">
@@ -6591,7 +6579,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="achievements" className="py-24 border-b border-ivory-border">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
+
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                   <div className="flex items-center gap-3 font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -6624,7 +6612,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
               </div>
 
               <div className="space-y-12">
-                
+
                 {/* 1. Research Presentation */}
                 {data.achievements.research.map((r, idx) => (
                   <div key={r.id || idx} className="p-8 sm:p-10 paper-card rounded-sm space-y-6">
@@ -6792,9 +6780,9 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           {/* ========================================================================= */}
           <section id="contact" className="py-24 border-b border-ivory-border relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
+
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                
+
                 <div className="lg:col-span-6 space-y-8">
                   <div>
                     <div className="flex items-center justify-between font-mono-tag text-xs text-emeraldAccent mb-3 font-semibold">
@@ -6817,7 +6805,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
                     <div className="font-mono-tag text-xs text-emeraldAccent uppercase tracking-wider font-bold">
                       DIRECT INQUIRIES & CONTACT
                     </div>
-                    
+
                     {/* Email Card */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-ivory-light border border-ivory-border rounded gap-3">
                       <div className="flex items-center gap-2.5">
@@ -7050,7 +7038,7 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
           <footer className="py-12 border-t border-ivory-border bg-ivory text-ink-dim font-mono-tag text-xs">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <span className="text-ink font-semibold">{data.meta.name}</span> · 
+                <span className="text-ink font-semibold">{data.meta.name}</span> ·
                 <span className="text-emeraldAccent ml-1 font-medium">STUDENT → BUILDER → LEADER</span>
               </div>
               <div className="text-center sm:text-right text-[11px]">
@@ -7071,4 +7059,5 @@ The ultimate milestone of Week 1: presenting our end-to-end solutions! Teams syn
     );
   </script>
 </body>
+
 </html>
