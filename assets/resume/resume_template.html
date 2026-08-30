@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dakshana Sri M — Curriculum Vitae & Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background-color: #ffffff;
+      line-height: 1.45;
+      font-size: 10.5pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .resume-container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .header {
+      border-bottom: 2px solid #1B4D3E;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-left h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 24pt;
+      font-weight: 400;
+      color: #111111;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 3px;
+    }
+
+    .header-left .role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: #1B4D3E;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      color: #444444;
+      line-height: 1.5;
+    }
+
+    .contact-info a {
+      color: #1B4D3E;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* SECTION STYLES */
+    .section {
+      margin-bottom: 13px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 11.5pt;
+      color: #1B4D3E;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #D5CEBF;
+      padding-bottom: 3px;
+      margin-bottom: 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #E2DDD3;
+      margin-left: 10px;
+    }
+
+    /* SUMMARY */
+    .summary-text {
+      font-size: 9.5pt;
+      color: #333333;
+      line-height: 1.45;
+      text-align: justify;
+    }
+
+    /* ITEM STYLES */
+    .item {
+      margin-bottom: 8px;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 10pt;
+      color: #111111;
+    }
+
+    .item-subtitle {
+      font-weight: 500;
+      font-size: 9.5pt;
+      color: #1B4D3E;
+    }
+
+    .item-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      color: #666666;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .item-bullets {
+      list-style-type: square;
+      padding-left: 16px;
+      margin-top: 3px;
+    }
+
+    .item-bullets li {
+      font-size: 9pt;
+      color: #333333;
+      margin-bottom: 2px;
+      line-height: 1.38;
+    }
+
+    .item-bullets li strong {
+      color: #111111;
+    }
+
+    /* GRID FOR TWO COLUMNS */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* SKILLS TABLE / PILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 5px 10px;
+      font-size: 9pt;
+    }
+
+    .skill-cat {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 8pt;
+      color: #1B4D3E;
+      text-transform: uppercase;
+    }
+
+    .skill-list {
+      color: #222222;
+      font-size: 9pt;
+    }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.5pt;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 2px;
+      background: #E8F0EC;
+      color: #1B4D3E;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume-container">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <h1>DAKSHANA SRI M</h1>
+        <div class="role">Data Science × Applied Machine Learning × Venture Building × Student Leader</div>
+      </div>
+      <div class="contact-info">
+        <div>📧 <a href="mailto:dakshanasrim1406@gmail.com">dakshanasrim1406@gmail.com</a></div>
+        <div>📞 +91 8870042836 · Coimbatore, India</div>
+        <div>🔗 <a href="https://linkedin.com/in/dakshana-sri-m-aa0b9537b">linkedin.com/in/dakshana-sri-m</a></div>
+        <div>💻 <a href="https://github.com/Dakshana-sri-m">github.com/Dakshana-sri-m</a></div>
+      </div>
+    </header>
+
+    <!-- EXECUTIVE PROFILE -->
+    <section class="section">
+      <h2 class="section-title">Executive Profile</h2>
+      <p class="summary-text">
+        Undergraduate Data Science scholar at Kumaraguru College of Liberal Arts and Science (Mahatma Gandhi Merit Scholar) with a focus on Applied Machine Learning, network traffic intelligence, and venture prototyping. Active ecosystem leader as LEED Director and Class Representative with proven expertise in organizing premier summits, spearheading podcast media, and translating theoretical algorithms into real-world software and hardware prototypes.
+      </p>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Bachelor of Science in Data Science (B.Sc. Data Science)</span>
+            <div class="item-subtitle">Kumaraguru College of Liberal Arts and Science (KCLAS) · Coimbatore, India</div>
+          </div>
+          <span class="item-date">2024 – Present</span>
+        </div>
+        <ul class="item-bullets">
+          <li><strong>Honors & Awards:</strong> Awarded the prestigious <strong>Mahatma Gandhi Merit Scholarship (2025–2026)</strong> by Kumaraguru Institutions for exemplary academic excellence and ecosystem contribution.</li>
+          <li><strong>Coursework:</strong> Statistical Computing, Machine Learning, Python Programming, Database Management (SQL), Data Structures, Applied Linear Algebra, Business Analytics.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESEARCH & PUBLICATIONS -->
+    <section class="section">
+      <h2 class="section-title">Research & Publications</h2>
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Network Traffic Type Categorization Using Machine Learning</span>
+            <div class="item-subtitle">ICCSAM 2026 · VETIAS & Asia Pacific University of Technology and Innovation (APU), Malaysia</div>
+          </div>
+          <span class="item-date">August 18, 2026</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Author & Presenter at the <em>3rd International Conference on Computational Sciences and Applied Mathematics</em>.</li>
+          <li>Designed and evaluated supervised machine learning classifiers on statistical flow-level behavioral signatures to classify encrypted network traffic without violating payload encryption (TLS 1.3 / QUIC).</li>
+          <li>Achieved high classification accuracy with low computational footprint, enabling real-time edge network monitoring.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP & INITIATIVES -->
+    <section class="section">
+      <h2 class="section-title">Leadership & Ecosystem Initiatives</h2>
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">LEED Director & Executive Organizer</span>
+            <div class="item-subtitle">Leadership, Entrepreneurship & Ecosystem Development Cell</div>
+          </div>
+          <span class="item-date">2024 – Present</span>
+        </div>
+        <ul class="item-bullets">
+          <li><strong>Institutional Podcast Series:</strong> Directed and hosted student and entrepreneur interview series uncovering real business mechanics and startup trajectories.</li>
+          <li><strong>Entrepreneurship Summit (E-Summit):</strong> Organized collegiate summit connecting student innovators with industry founders, orchestrating panels and logistics.</li>
+          <li><strong>Shark Tank Competition:</strong> Designed problem statements, judged pitch decks, and mentored student ventures on valuation and unit economics.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Class Representative (Semester 2)</span>
+            <div class="item-subtitle">Department of Data Science · KCLAS</div>
+          </div>
+          <span class="item-date">2025</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Coordinated academic schedules, resolved logistical bottlenecks between faculty and 50+ students, and fostered collaborative peer study cohorts.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SPECIALIZED VENTURE FELLOWSHIPS -->
+    <section class="section">
+      <h2 class="section-title">Specialized Programs & Fellowships</h2>
+      <div class="grid-2">
+        <div class="item">
+          <div class="item-header">
+            <span class="item-title">ProtoSem Fellow</span>
+            <span class="item-date">Forge Innovation</span>
+          </div>
+          <p class="summary-text" style="font-size:8.5pt;">
+            Comprehensive immersion in industrial innovation, systems thinking, sensor integration, and translating computational models into functional hardware-software prototypes.
+          </p>
+        </div>
+        <div class="item">
+          <div class="item-header">
+            <span class="item-title">Venture Building Bootcamp</span>
+            <span class="item-date">River Venture Studios, Singapore</span>
+          </div>
+          <p class="summary-text" style="font-size:8.5pt;">
+            Intensive global venture accelerator program focused on lean validation, unit economics, market testing, and investor pitch deck formulation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section">
+      <h2 class="section-title">Key Projects</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Automated Traffic Signal Control System Using AI & Computer Vision</span>
+          <span class="item-date">Python · OpenCV · YOLO</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Developed dynamic signal timing adjustment based on real-time vehicle density analysis from intersection camera feeds, decreasing idle congestion by ~28%.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Supply Chain Demand & Inventory Forecasting Engine</span>
+          <span class="item-date">Python · Scikit-Learn · Pandas</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Engineered time-series regression pipeline analyzing multi-echelon retail sales data to predict stockouts and automate reorder alerts with 92% seasonal precision.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <h2 class="section-title">Technical & Professional Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-cat">Programming & Data</div>
+        <div class="skill-list">Python (Pandas, NumPy, Scikit-Learn, TensorFlow, PyTorch), SQL (PostgreSQL, MySQL), R, JavaScript, HTML5/CSS3</div>
+        <div class="skill-cat">Analytics & ML</div>
+        <div class="skill-list">Supervised & Unsupervised Learning, Feature Engineering, EDA, Time Series, Computer Vision basics</div>
+        <div class="skill-cat">Tools & Platforms</div>
+        <div class="skill-list">Git & GitHub, Microsoft Excel (Advanced Pivot & Modeling), Tableau, Power BI, VS Code, Linux Edge Tools</div>
+        <div class="skill-cat">Leadership & Soft</div>
+        <div class="skill-list">Public Speaking, Cohort Management, Event Organizing, Podcast Production, Problem Framing</div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
