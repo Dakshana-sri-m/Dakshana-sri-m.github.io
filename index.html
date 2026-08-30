@@ -1594,10 +1594,14 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
           <path d="M12 19V5" />
         </svg>
       ),
-      'arrow-down': (
+      'chevron-left': (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-          <path d="m19 12-7 7-7-7" />
-          <path d="M12 5v14" />
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      ),
+      'chevron-right': (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+          <polyline points="9 18 15 12 9 6" />
         </svg>
       )
     };
@@ -1632,10 +1636,14 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
                 <p className="text-xs text-ink-muted">A temporary display state was caught and recovered.</p>
                 <button
                   onClick={() => {
-                    localStorage.removeItem("dakshana_portfolio_v2_data");
+                    try {
+                      localStorage.removeItem("dakshana_portfolio_v2_data");
+                      localStorage.removeItem("dakshana_tiles_of_me_state_v1");
+                      localStorage.removeItem("dakshana_tiles_sidebar_collapsed");
+                    } catch(e){}
                     window.location.reload();
                   }}
-                  className="px-4 py-2 bg-emeraldAccent text-white text-xs font-bold rounded"
+                  className="px-5 py-2.5 bg-emeraldAccent text-white text-xs font-bold rounded shadow hover:bg-ink transition-colors cursor-pointer"
                 >
                   RELOAD PORTFOLIO
                 </button>
@@ -3756,7 +3764,17 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
       const [gameState, setGameState] = useState(() => {
         try {
           const saved = localStorage.getItem("dakshana_tiles_of_me_state_v1");
-          if (saved) return JSON.parse(saved);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && typeof parsed === 'object') {
+              return {
+                matchedPairIds: Array.isArray(parsed.matchedPairIds) ? parsed.matchedPairIds : [],
+                flippedTileIds: Array.isArray(parsed.flippedTileIds) ? parsed.flippedTileIds : [],
+                moves: typeof parsed.moves === 'number' ? parsed.moves : 0,
+                isCompleteModalDismissed: !!parsed.isCompleteModalDismissed
+              };
+            }
+          }
         } catch (e) {
           console.warn("Tiles game state read error:", e);
         }
@@ -3771,10 +3789,10 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
       const [openTilesSettings, setOpenTilesSettings] = useState(false);
 
       const handleTileFlip = (tileId) => {
-        if (isFlippingLock) return;
+        if (isFlippingLock || !tileId) return;
 
-        const pairs = data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs;
-        const enabledPairs = pairs.filter(p => p.enabled !== false);
+        const pairs = (data.tilesOfMe?.pairs || DEFAULT_DATA.tilesOfMe.pairs) || [];
+        const enabledPairs = pairs.filter(p => p && p.enabled !== false && p.id);
         const allTileInstances = [];
         enabledPairs.forEach(pair => {
           allTileInstances.push({ id: `tile_${pair.id}_1`, pairId: pair.id, instance: 1 });
@@ -3784,14 +3802,17 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
         const targetTile = allTileInstances.find(t => t.id === tileId);
         if (!targetTile) return;
 
-        // Already matched or flipped
-        if (gameState.matchedPairIds.includes(targetTile.pairId)) return;
-        if (gameState.flippedTileIds.includes(tileId)) return;
+        const matchedIds = gameState?.matchedPairIds || [];
+        const flippedIds = gameState?.flippedTileIds || [];
 
-        const currentFlipped = [...gameState.flippedTileIds, tileId];
+        // Already matched or flipped
+        if (matchedIds.includes(targetTile.pairId)) return;
+        if (flippedIds.includes(tileId)) return;
+
+        const currentFlipped = [...flippedIds, tileId];
 
         if (currentFlipped.length === 1) {
-          const nextState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState.moves || 0) + 1 };
+          const nextState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState?.moves || 0) + 1 };
           setGameState(nextState);
           try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch(e){}
         } else if (currentFlipped.length === 2) {
@@ -3800,14 +3821,14 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
 
           if (firstTile && secondTile && firstTile.pairId === secondTile.pairId) {
             // MATCH FOUND!
-            const nextMatched = [...gameState.matchedPairIds, firstTile.pairId];
+            const nextMatched = [...matchedIds, firstTile.pairId];
             const isComplete = nextMatched.length >= enabledPairs.length;
             const nextState = {
               ...gameState,
               matchedPairIds: nextMatched,
               flippedTileIds: [],
-              moves: (gameState.moves || 0) + 1,
-              isCompleteModalDismissed: isComplete ? false : gameState.isCompleteModalDismissed
+              moves: (gameState?.moves || 0) + 1,
+              isCompleteModalDismissed: isComplete ? false : !!gameState?.isCompleteModalDismissed
             };
             setGameState(nextState);
             try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(nextState)); } catch(e){}
@@ -3816,7 +3837,7 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
             showToast(`✨ MATCH FOUND! [ ${pairName} ] connected (${nextMatched.length}/${enabledPairs.length})`, "success");
           } else {
             // MISMATCH: Show both for 700ms, then flip back smoothly
-            const tempState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState.moves || 0) + 1 };
+            const tempState = { ...gameState, flippedTileIds: currentFlipped, moves: (gameState?.moves || 0) + 1 };
             setGameState(tempState);
             setIsFlippingLock(true);
             setTimeout(() => {
@@ -3839,12 +3860,15 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
           isCompleteModalDismissed: false
         };
         setGameState(freshState);
-        try { localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(freshState)); } catch(e){}
-        showToast("Tiles of Me game reset. Explore the portfolio to discover all connections again!", "info");
+        try {
+          localStorage.setItem("dakshana_tiles_of_me_state_v1", JSON.stringify(freshState));
+        } catch (e) {}
+        showToast("Tiles of Me game reset. All tiles hidden!", "info");
       };
 
       const handleSaveTilesSettings = (updatedTilesConfig) => {
         updateField("tilesOfMe", updatedTilesConfig);
+        setOpenTilesSettings(false);
         showToast("Tiles of Me settings saved successfully!", "success");
       };
 
@@ -3855,54 +3879,11 @@ Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-t
             ...currentWeeks[targetWeekIdx],
             blog: updatedBlog
           };
-        } else {
-          for (let i = currentWeeks.length; i < targetWeekIdx; i++) {
-            currentWeeks.push({
-              weekNumber: i,
-              label: `W${i < 10 ? '0' + i : i}`,
-              title: `Week ${i}: Venture Prototype Development`,
-              status: "PLANNED",
-              theme: "Venture Prototyping",
-              introHeadline: `WEEK ${i} SPRINT`,
-              introQuote: "Continuous prototyping and validation.",
-              introText: "Advancing through the 20-week venture sprint trajectory.",
-              blog: null,
-              days: [1, 2, 3, 4, 5].map(d => ({
-                dayNumber: d,
-                title: `Day 0${d} — Sprint Execution`,
-                theme: d === 1 ? 'DISCOVERY' : d === 2 ? 'ARCHITECTURE' : d === 3 ? 'BUILD' : d === 4 ? 'VALIDATION' : 'DEMO',
-                summary: "Sprint objectives and tasks.",
-                takeaway: "Key sprint insight.",
-                reflection: { whatHappened: "", whatINoticed: "", whatIContributed: "", whatSurprisedMe: "", whatILearned: "", whatWouldIDoDifferently: "", howChangedThinking: "" },
-                image: ""
-              }))
-            });
-          }
-          currentWeeks[targetWeekIdx] = {
-            weekNumber: targetWeekIdx,
-            label: `W${targetWeekIdx < 10 ? '0' + targetWeekIdx : targetWeekIdx}`,
-            title: `Week ${targetWeekIdx}: ${updatedBlog.title || 'Venture Prototyping'}`,
-            status: "IN_PROGRESS",
-            theme: "System Execution & Testing",
-            introHeadline: `WEEK ${targetWeekIdx} SPRINTS`,
-            introQuote: "Prototyping velocity and sprint deliverables.",
-            introText: updatedBlog.summary || "Advancing through the 20-week venture sprint trajectory.",
-            blog: updatedBlog,
-            days: [1, 2, 3, 4, 5].map(d => ({
-              dayNumber: d,
-              title: `Day 0${d} — Sprint Execution`,
-              theme: d === 1 ? 'DISCOVERY' : d === 2 ? 'ARCHITECTURE' : d === 3 ? 'BUILD' : d === 4 ? 'VALIDATION' : 'DEMO',
-              summary: "Sprint objectives and tasks.",
-              takeaway: "Key sprint insight.",
-              reflection: { whatHappened: "", whatINoticed: "", whatIContributed: "", whatSurprisedMe: "", whatILearned: "", whatWouldIDoDifferently: "", howChangedThinking: "" },
-              image: ""
-            }))
-          };
         }
         updateField("protosem.weeks", currentWeeks);
         setEditingBlogWeekIdx(null);
         setIsNewBlogModal(false);
-        showToast(`Blog post for Week ${targetWeekIdx} saved successfully!`, "success");
+        showToast(`Blog post for Week ${targetWeekIdx + 1} saved successfully!`, "success");
       };
 
       const handleDeleteBlog = (targetWeekIdx) => {
