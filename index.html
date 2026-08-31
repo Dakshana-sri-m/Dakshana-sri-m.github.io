@@ -840,7 +840,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Take even more granular notes during initial peer problem pitches.",
                   howChangedThinking: "Realized that great product founders start with acute observational curiosity about human behavior."
                 },
-                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                image: "assets/protosem/week0/day1_group.jpg"
               },
               {
                 dayNumber: 2,
@@ -857,7 +857,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Spend more time understanding opposite cognitive profiles (introverted analytical vs extraverted intuitive).",
                   howChangedThinking: "High-performing teams are not homogeneous; they are deliberately balanced cognitive ecosystems."
                 },
-                image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80"
+                image: "assets/protosem/week0/day2_whiteboard.jpg"
               },
               {
                 dayNumber: 3,
@@ -874,7 +874,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Test weight load at 2-minute intervals instead of waiting for full structural completion.",
                   howChangedThinking: "Prototyping is not about building the final product; it's about asking reality a physical question."
                 },
-                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                image: "assets/protosem/week0/day3_team.jpg"
               },
               {
                 dayNumber: 4,
@@ -891,7 +891,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Build automated evaluation benchmarks for AI-generated code outputs.",
                   howChangedThinking: "Viewed AI not as a novelty chatbot, but as an operational leverage tool for rapid hypothesis testing."
                 },
-                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
+                image: "assets/protosem/week0/day4_comic.jpg"
               },
               {
                 dayNumber: 5,
@@ -908,7 +908,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Connect with more guest speakers during the networking window.",
                   howChangedThinking: "Understood that my technical data skills must serve real-world economic and community needs."
                 },
-                image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
+                image: "assets/protosem/week0/day5_speech.jpg"
               }
             ]
           },
@@ -1847,7 +1847,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                 <p className="text-xs text-ink-muted">A temporary display state was caught and recovered.</p>
                 <button
                   onClick={() => {
-                    localStorage.removeItem("dakshana_portfolio_v2_data");
+                    localStorage.removeItem("dakshana_portfolio_v4_data");
                     window.location.reload();
                   }}
                   className="px-4 py-2 bg-emeraldAccent text-white text-xs font-bold rounded"
@@ -3994,7 +3994,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
     function App() {
       const [data, setData] = useState(() => {
         try {
-          const saved = localStorage.getItem("dakshana_portfolio_v2_data");
+          const saved = localStorage.getItem("dakshana_portfolio_v4_data");
           if (saved) {
             const parsed = JSON.parse(saved);
             parsed.meta = { ...DEFAULT_DATA.meta, ...parsed.meta };
@@ -4263,6 +4263,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
           delete updated.blog;
           currentWeeks[targetWeekIdx] = updated;
           updateField("protosem.weeks", currentWeeks);
+          localStorage.setItem("dakshana_portfolio_v4_data", JSON.stringify(data));
           showToast(`Removed blog from Week ${targetWeekIdx}.`, "info");
         }
       };
@@ -4272,7 +4273,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
           const updated = typeof updater === 'function' ? updater(prev) : updater;
           setHistory(h => [...h.slice(-10), prev]);
           try {
-            localStorage.setItem("dakshana_portfolio_v2_data", JSON.stringify(updated));
+            localStorage.setItem("dakshana_portfolio_v4_data", JSON.stringify(updated));
           } catch (e) {
             console.error("Storage write error:", e);
           }
@@ -4290,7 +4291,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
           const last = history[history.length - 1];
           setHistory(h => h.slice(0, -1));
           setData(last);
-          localStorage.setItem("dakshana_portfolio_v2_data", JSON.stringify(last));
+          localStorage.setItem("dakshana_portfolio_v4_data", JSON.stringify(last));
           showToast("Reverted to previous state", "info");
         } else {
           showToast("No further undo history", "info");
@@ -4300,7 +4301,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
       const handleReset = () => {
         if (confirm("Reset to original content? All custom edits will be restored to defaults.")) {
           setData(DEFAULT_DATA);
-          localStorage.removeItem("dakshana_portfolio_v2_data");
+          localStorage.removeItem("dakshana_portfolio_v4_data");
           showToast("Portfolio data restored to defaults", "info");
         }
       };
