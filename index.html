@@ -31,6 +31,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"
     crossorigin="anonymous"></script>
 
+  <!-- Framer Motion -->
+  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
   <!-- Custom Tailwind Config: Light Editorial Palette -->
   <script>
     tailwind.config = {
@@ -390,6 +393,7 @@
   <!-- React Application Logic Script -->
   <script type="text/babel">
     const { useState, useEffect } = React;
+    const { motion, AnimatePresence } = window.FramerMotion;
 
     const DEFAULT_DATA = {
       meta: {
@@ -4649,7 +4653,13 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
           {/* ========================================================================= */}
           {/* 1. HOME                                                                   */}
           {/* ========================================================================= */}
-          <section id="home" className="relative min-h-[88vh] flex flex-col justify-center border-b border-ivory-border pt-8 pb-16 lg:py-20">
+          <motion.section 
+            id="home" 
+            className="relative min-h-[88vh] flex flex-col justify-center border-b border-ivory-border pt-8 pb-16 lg:py-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
               <div className="flex flex-wrap items-center justify-between border-b border-ivory-border pb-4 mb-10 text-xs font-mono-tag text-ink-muted">
@@ -4687,9 +4697,14 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                       {data.meta.headline}
                     </h1>
 
-                    <p className="font-editorial italic text-2xl sm:text-3xl text-emeraldAccent leading-snug">
+                    <motion.p 
+                      className="font-editorial italic text-2xl sm:text-3xl text-emeraldAccent leading-snug"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    >
                       "{data.meta.tagline}"
-                    </p>
+                    </motion.p>
 
                     <p className="text-base sm:text-lg text-ink-muted max-w-xl font-light leading-relaxed">
                       {data.meta.subtagline}
@@ -4825,12 +4840,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 2. ABOUT (WHO I AM + STORY + FATHER MENTORSHIP + GROWTH + ENFJ PROFILE)    */}
           {/* ========================================================================= */}
-          <section id="about" className="py-24 border-b border-ivory-border">
+          <motion.section 
+            id="about" 
+            className="py-24 border-b border-ivory-border"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
               {/* WHO I AM Overview */}
@@ -5091,7 +5113,12 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
 
                 <div className="space-y-8">
                   {data.about.growthChapters.map((ch, idx) => (
-                    <div key={idx} className="p-8 paper-card rounded-sm">
+                    <motion.div 
+                      key={idx} 
+                      className="p-8 paper-card rounded-sm bg-white border border-ivory-border"
+                      whileHover={{ y: -5, boxShadow: "0 15px 35px -5px rgba(27, 77, 62, 0.08)" }}
+                      transition={{ duration: 0.3 }}
+                    >
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                         <div className="lg:col-span-4 space-y-2">
                           <span className="font-mono-tag text-xs text-emeraldAccent tracking-widest block font-bold">
@@ -5171,7 +5198,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                           )}
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -5221,12 +5248,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 3. CERTIFICATE                                                            */}
           {/* ========================================================================= */}
-          <section id="certificate" className="py-24 border-b border-ivory-border bg-ivory-light/40">
+          <motion.section 
+            id="certificate" 
+            className="py-24 border-b border-ivory-border bg-ivory-light/40"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -5435,12 +5469,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 4. PROTOSEM (20 WEEKS · WEEK 0 BLOG + 5 CORE LESSONS + JOURNAL)           */}
           {/* ========================================================================= */}
-          <section id="protosem" className="py-24 border-b border-ivory-border bg-white/80">
+          <motion.section 
+            id="protosem" 
+            className="py-24 border-b border-ivory-border bg-white/80"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -5876,12 +5917,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 5. SKILL                                                                  */}
           {/* ========================================================================= */}
-          <section id="skill" className="py-24 border-b border-ivory-border bg-ivory-light/50">
+          <motion.section 
+            id="skill" 
+            className="py-24 border-b border-ivory-border bg-ivory-light/50"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -5945,12 +5993,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 6. PROJECT                                                                */}
           {/* ========================================================================= */}
-          <section id="project" className="py-24 border-b border-ivory-border">
+          <motion.section 
+            id="project" 
+            className="py-24 border-b border-ivory-border"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -6130,12 +6185,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 7. BUILD (WHAT I'M BUILDING: BUILDING NOW, EXPLORING, PARKED)             */}
           {/* ========================================================================= */}
-          <section id="build" className="py-24 border-b border-ivory-border bg-ivory-light/50">
+          <motion.section 
+            id="build" 
+            className="py-24 border-b border-ivory-border bg-ivory-light/50"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -6274,12 +6336,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 8. ACHIEVEMENTS (MERIT SCHOLARSHIP + ICCSAM 2026 RESEARCH PAPER)          */}
           {/* ========================================================================= */}
-          <section id="achievements" className="py-24 border-b border-ivory-border">
+          <motion.section 
+            id="achievements" 
+            className="py-24 border-b border-ivory-border"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -6475,12 +6544,19 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* 9. CONTACT                                                                */}
           {/* ========================================================================= */}
-          <section id="contact" className="py-24 border-b border-ivory-border relative">
+          <motion.section 
+            id="contact" 
+            className="py-24 border-b border-ivory-border relative"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -6732,7 +6808,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
               </div>
 
             </div>
-          </section>
+          </motion.section>
 
           {/* ========================================================================= */}
           {/* COMPACT MINIMAL FOOTER                                                    */}
