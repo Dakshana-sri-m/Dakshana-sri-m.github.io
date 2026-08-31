@@ -393,7 +393,18 @@
   <!-- React Application Logic Script -->
   <script type="text/babel">
     const { useState, useEffect } = React;
-    const { motion, AnimatePresence } = window.FramerMotion;
+    
+    // Robust fallback for Framer Motion to prevent blank screens
+    const Motion = window.Motion || window.FramerMotion;
+    const motion = Motion ? Motion.motion : new Proxy({}, {
+      get: (target, prop) => {
+        return function(props) {
+          const { initial, animate, whileHover, whileInView, transition, viewport, ...rest } = props;
+          return React.createElement(prop, rest);
+        }
+      }
+    });
+    const AnimatePresence = Motion ? Motion.AnimatePresence : ({children}) => children;
 
     const DEFAULT_DATA = {
       meta: {
