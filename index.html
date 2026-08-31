@@ -972,7 +972,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Spend more time challenging baseline persona assumptions during the ideation phase.",
                   howChangedThinking: "Technical solutions only deliver value when rooted in validated human friction and empathy."
                 },
-                image: ""
+                image: "assets/protosem/week1/day1_eyewear.jpg"
               },
               {
                 dayNumber: 2,
@@ -1023,7 +1023,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Define interactive cross-filtering dimensions earlier in the dashboard wireframing process.",
                   howChangedThinking: "Business strategy and software architecture both require micro-level stage mapping rather than broad generalizations."
                 },
-                image: ""
+                image: "assets/protosem/week1/day2_dashboard.jpg"
               },
               {
                 dayNumber: 3,
@@ -1095,7 +1095,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Incorporate explicit behavioral economics principles into future UX/UI feature flows.",
                   howChangedThinking: "Building great software requires understanding how human psychology actually processes risk, value, and loss."
                 },
-                image: ""
+                image: "assets/protosem/week1/day4_portfolio.png"
               },
               {
                 dayNumber: 5,
@@ -1157,7 +1157,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                   whatWouldIDoDifferently: "Structure presentation slides earlier in the day to leave more time for practice delivery.",
                   howChangedThinking: "Week 1 proved that moving from passive student to active builder is about mindset, rapid experimentation, and cohesive teamwork."
                 },
-                image: ""
+                image: "assets/protosem/week1/day5_motivation.jpg"
               }
             ]
           }
@@ -1847,7 +1847,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
                 <p className="text-xs text-ink-muted">A temporary display state was caught and recovered.</p>
                 <button
                   onClick={() => {
-                    localStorage.removeItem("dakshana_portfolio_v4_data");
+                    localStorage.removeItem("dakshana_portfolio_v5_data");
                     window.location.reload();
                   }}
                   className="px-4 py-2 bg-emeraldAccent text-white text-xs font-bold rounded"
@@ -3994,7 +3994,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
     function App() {
       const [data, setData] = useState(() => {
         try {
-          const saved = localStorage.getItem("dakshana_portfolio_v4_data");
+          const saved = localStorage.getItem("dakshana_portfolio_v5_data");
           if (saved) {
             const parsed = JSON.parse(saved);
             parsed.meta = { ...DEFAULT_DATA.meta, ...parsed.meta };
@@ -4263,7 +4263,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
           delete updated.blog;
           currentWeeks[targetWeekIdx] = updated;
           updateField("protosem.weeks", currentWeeks);
-          localStorage.setItem("dakshana_portfolio_v4_data", JSON.stringify(data));
+          localStorage.setItem("dakshana_portfolio_v5_data", JSON.stringify(data));
           showToast(`Removed blog from Week ${targetWeekIdx}.`, "info");
         }
       };
@@ -4273,7 +4273,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
           const updated = typeof updater === 'function' ? updater(prev) : updater;
           setHistory(h => [...h.slice(-10), prev]);
           try {
-            localStorage.setItem("dakshana_portfolio_v4_data", JSON.stringify(updated));
+            localStorage.setItem("dakshana_portfolio_v5_data", JSON.stringify(updated));
           } catch (e) {
             console.error("Storage write error:", e);
           }
@@ -4291,7 +4291,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
           const last = history[history.length - 1];
           setHistory(h => h.slice(0, -1));
           setData(last);
-          localStorage.setItem("dakshana_portfolio_v4_data", JSON.stringify(last));
+          localStorage.setItem("dakshana_portfolio_v5_data", JSON.stringify(last));
           showToast("Reverted to previous state", "info");
         } else {
           showToast("No further undo history", "info");
@@ -4301,7 +4301,7 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
       const handleReset = () => {
         if (confirm("Reset to original content? All custom edits will be restored to defaults.")) {
           setData(DEFAULT_DATA);
-          localStorage.removeItem("dakshana_portfolio_v4_data");
+          localStorage.removeItem("dakshana_portfolio_v5_data");
           showToast("Portfolio data restored to defaults", "info");
         }
       };
@@ -6850,3 +6850,4 @@ Week 0 at Protosem proved that interdisciplinary learning is more than an academ
 </body>
 
 </html>
+
